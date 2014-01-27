@@ -1,0 +1,34 @@
+body{
+    padding: 0px 20px 0px 20px;
+}
+
+#row1 {
+    padding: 0px;
+}
+#row1 .jumbotron{  
+    margin: auto;
+    padding: 0px;
+    width: 1000px;
+    height: 200px;
+}
+#row1 .jumbotron img{
+    
+}
+
+#row1{
+    padding: 0px;
+    margin: 0px;
+}
+
+#row2{   
+    padding: 50px;
+}
+#row2 div{
+    text-align: center;
+    padding: 20px;
+}
+
+#row2 div a{
+    text-decoration: none;
+}
+

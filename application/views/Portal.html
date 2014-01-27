@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+<?php echo link_tag(base_url().'resources/cerulean.css'); ?>        
+        <?php echo link_tag(base_url().'resources/fonts.css'); ?>
+        <?php echo link_tag("http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900|Quicksand:400,700|Questrial"); ?>        
+        
+       
+    <title>Starter Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="twitterBootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="portal-template.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+  <div class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="#">Title</a>
+    <ul class="nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Link</a></li>
+      <li><a href="#">Link</a></li>
+    </ul>
+  </div>
+</div>
+	<div id="header-wrapper">
+	<div id="header" class="container">
+		<div id="logo">
+			<h1><span class="icon icon-cog"></span><a href="<?php echo site_url(); ?>">Portal.com</a></h1>
+			<div id="menu">
+				<ul>
+					<li class="current_page_item"><a href="<?php echo site_url(); ?>" accesskey="1" title="">Home</a></li>
+                                        <li><a href="<?php echo site_url() . 'searchProperty'; ?>" accesskey="2" title="">Search Properties</a></li>
+					<li><a href="#" accesskey="3" title="">About Us</a></li>
+					<li><a href="#" accesskey="4" title="">Careers</a></li>
+					<li><a href="#" accesskey="5" title="">Contact Us</a></li>
+                                        
+                                        <?php 
+                                        /**
+                                         * If the user is logged, then show the profile link. Else show sign in/register links 
+                                         */ 
+                                        ?>
+                                        
+                                        <?php if ($this->session->userdata('logged')) { ?> 
+                                            <li class="current_page_item"><a href="<?php echo site_url() . 'profile/' . $this->session->userdata('user_id'); ?>" accesskey="6" title="">My Profile</a></li>
+                                            <li class="current_page_item"><a href="<?php echo site_url() . 'logout'; ?>" accesskey="7" title="">Logout</a></li>
+                                        <?php }else{ ?>
+                                            <li><a href="<?php echo site_url() . 'login'; ?>" accesskey="6" title="">Sign In</a></li>
+                                            <li><a href="<?php echo site_url() . 'register'; ?>" accesskey="7" title="">Register</a></li>
+                                        <?php } ?>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+	
+	
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="twitterBootstrap/js/bootstrap.min.js"></script>
+	<script src="portal-js.js"></script>
+  </body>
+</html>
