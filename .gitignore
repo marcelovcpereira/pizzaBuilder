@@ -11,3 +11,5 @@ application/logs/*
 application/libraries/*
 !application/libraries/index.html
 !application/libraries/.htaccess
+
+nbproject/*
