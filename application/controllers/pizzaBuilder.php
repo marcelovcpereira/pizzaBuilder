@@ -3,7 +3,7 @@
 class PizzaBuilder extends CI_Controller
 {
     /**
-     * Default page of the Menu
+     * Starts building the pizza
      */
     public function index()
     {
@@ -11,7 +11,7 @@ class PizzaBuilder extends CI_Controller
     }
     
     /**
-     * Loads the menu view page
+     * Loads the view page
      */
     private function _load_index()
     {

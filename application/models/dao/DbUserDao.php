@@ -1,7 +1,11 @@
 <?php
 require_once 'UserDao.php';
 require_once APPPATH . 'models/domain/Address.php';
-
+/**
+ * Class that persists a User object in a Database.
+ * It extends UserDao, so it will implement UserDao's abstract methods:
+ * save,fetch and delete. 
+ */
 class DbUserDao extends UserDao
 {
     private $table = 'user';

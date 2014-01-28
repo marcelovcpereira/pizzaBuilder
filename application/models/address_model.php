@@ -193,5 +193,5 @@ class Address_model extends CI_Model
     }
             
 }
-/* End of file user_model.php */
-/* Location: ./application/models/user_model.php */
+/* End of file address_model.php */
+/* Location: ./application/models/address_model.php */

@@ -2,6 +2,7 @@
 require_once APPPATH . 'models/domain/User.php';
 require_once APPPATH . 'models/domain/Address.php';
 
+
 class Portal extends CI_Controller
 {
     /**
@@ -9,7 +10,15 @@ class Portal extends CI_Controller
      */
     public function index()
     {
-		$this->load->view('template',array('page'=>'home_view'));
+        //stub
+	//$auth = new AuthHandler();
+        //$user = $auth->getUser();
+        $user = null;
+        $data = array(
+            'page'=>'home_view', //that's where we're going
+            'user' => $user     //that's the user who is here
+        );
+        $this->load->view('template',$data);
     }    
    
 }
