@@ -2,6 +2,10 @@
     "name": "marcelovcpereira/pizzabuilder"
     ,"config":
     {
-    "vendor-dir":"aplication/libraries"
+		"vendor-dir":"application/libraries"
     }
+	,"require":
+	{
+		"opauth/oauth": "dev-master"
+	}
 }

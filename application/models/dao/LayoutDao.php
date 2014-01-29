@@ -20,9 +20,10 @@ abstract class LayoutDao implements Dao
     
     //To be overwritten by the Concrete SubClasses
     abstract public function fetch($id);
-    abstract public function delete();
-    abstract public function save();
+    abstract public function fetchAll();
+    abstract public function delete($id);
+    abstract public function save(Dao $dao);
     
 }
-
-
+/* End of file LayoutDao.php */
+/* Location: ./application/controllers/LayoutDao.php */

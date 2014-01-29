@@ -28,5 +28,5 @@ abstract class UserDao implements Dao
     abstract public function save();
     
 }
-
-
+/* End of file UserDao.php */
+/* Location: ./application/controllers/UserDao.php */

@@ -7,20 +7,29 @@ class Menu extends CI_Controller
      */
     public function index()
     {
-		$this->_load_index();
+		//Loading PizzaModel
+		$this->load->model('pizza_model');
+		
+		//Get a List of pizzas of the menu
+		//$menu = $this->pizza_model->getMenu();
+                $pizzas = $this->pizza_model->getMenu();
+		
+		//Parameters to the view. Each index will be
+		//a variable at the view level.		
+		$viewParams = array('page' => 'menu_view',
+                                    'params' => array('pizzas' => $pizzas));
+							
+		//I should create a Templator, because /\ this
+		//call is a little bit confusing
+		
+		//Load the menu_view page withOUT the list of pizzas as menu
+		$this->load->view('template', $viewParams);		
     }
     
-    /**
-     * Loads the menu view page
-     */
-    private function _load_index()
-    {
-       $this->load->view('template', array('page' => 'menu_view'));
-    }
-    
+        
     
 }
 
 
-/* End of file portal.php */
-/* Location: ./application/controllers/portal.php */
+/* End of file menu.php */
+/* Location: ./application/controllers/menu.php */

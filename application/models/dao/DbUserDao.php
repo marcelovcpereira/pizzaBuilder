@@ -18,6 +18,7 @@ class DbUserDao extends UserDao
     
     public function delete() 
     {
+        //stub
         return null;
     }
 
@@ -121,8 +122,10 @@ class DbUserDao extends UserDao
 
     public function save() 
     {
+        //stub
         return null;
     }
 
 }
-
+/* End of file DbUserDao.php */
+/* Location: ./application/controllers/DbUserDao.php */

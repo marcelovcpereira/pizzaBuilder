@@ -66,5 +66,5 @@ class AuthHandler
 }
 
 
-/* End of file portal.php */
-/* Location: ./application/controllers/portal.php */
+/* End of file authHandler.php */
+/* Location: ./application/controllers/authHandler.php */

@@ -11,11 +11,11 @@
  */
 interface Dao
 {    
-    abstract public function fetch($id);
-    abstract public function delete();
-    abstract public function save();
+    public function fetch($id);
+    public function fetchAll();
+    public function delete($id);
+    public function save(Dao $dao);
     
 }
-
-
-
+/* End of file Dao.php */
+/* Location: ./application/controllers/Dao.php */

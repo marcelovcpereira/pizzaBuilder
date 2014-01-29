@@ -22,5 +22,5 @@ class PizzaBuilder extends CI_Controller
 }
 
 
-/* End of file portal.php */
-/* Location: ./application/controllers/portal.php */
+/* End of file PizzaBuilder.php */
+/* Location: ./application/controllers/PizzaBuilder.php */

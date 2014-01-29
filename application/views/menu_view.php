@@ -1,45 +1,34 @@
 <!-- ROW1: Contains MENU -->
 <div id="row1" class="row">
-    (stub) Page: HOME > MENU <br>
+    (stub) Page: HOME > MENU (stub)<br>
     <span class="label label-primary">MENU</span>
 </div>
 
 <!-- ROW1: Contains MENU -->
-<div id="row2" class="row">
-    
-    <!-- Menu Option 1 -->
-    <div class="col-lg-3">
-        <a href="#">
-        <div> 
-            Pizza1         
-        </div> 
-        </a>
-    </div><!-- Menu Option 1 -->
-    
-   <!-- Menu Option 2 -->
-    <div class="col-lg-3">
-        <a href="#">
-        <div> 
-            Pizza 2          
-        </div> 
-        </a>
-    </div><!-- Menu Option 2 -->
-    
-    <!-- Menu Option 3 -->
-    <div class="col-lg-3">
-        <a href="#">
-        <div> 
-            Pizza3           
-        </div> 
-        </a>
-    </div><!-- Menu Option 3 -->
-    
-    <!-- Menu Option 4 -->
-    <div class="col-lg-3">
-        <a href="#">
-        <div> 
-            Pizza4            
-        </div> 
-        </a>
-    </div><!-- Menu Option 4 -->
+
+    <!-- Foreach pizza of the menu, load itemView -->
+<?php
+    $counter = 0;    
+    foreach($pizzas as $pizza)
+    { 
+        //if this is the first column of the view
+        //print the div opening new row in bootstrap
+        if($counter === 0)
+        {
+            echo "<div class='row'>";
+        }
+        
+        //Loads the pizza as an menu Item
+        $this->load->view('_menu_item_view',array('pizza'=>$pizza));  
+        
+        //If this is the fourth element, close the row
+        if($counter === 3)
+        {
+            echo "</div>";
+        }
+        
+        //counter that has 4 values (1,2,3,4)
+        $counter = ($counter + 1)%4;
+    }
+?> 
 </div><!-- ROW1: Contains MENU -->

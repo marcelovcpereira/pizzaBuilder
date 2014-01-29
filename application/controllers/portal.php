@@ -10,8 +10,24 @@ class Portal extends CI_Controller
      */
     public function index()
     {
+		/*
+		 * Testing OAuth library
+		 *
+		$strategy = array('consumer_key' => 'asdjasidasdja',
+						'consumer_secret' => 'hehehehehehe',
+						'strategy_url_name' => 'strategyURL',
+						'request_token_url' => 'que danado é isso',
+						'access_token_url' => 'mais um...');
+		
+		$environment = array('host' => 'localhost',
+							'path' => 'path/to/where',
+							'callback_url' => 'portal');
+							
+		$auth = new OAuthStrategy($strategy,$environment);
+		*/
+		
         //stub
-	//$auth = new AuthHandler();
+		//$auth = new AuthHandler();
         //$user = $auth->getUser();
         $user = null;
         $data = array(

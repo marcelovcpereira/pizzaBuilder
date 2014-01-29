@@ -185,3 +185,5 @@ class User
 
 
 }
+/* End of file User.php */
+/* Location: ./application/controllers/User.php */

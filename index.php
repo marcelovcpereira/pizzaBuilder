@@ -191,6 +191,12 @@ if (defined('ENVIRONMENT'))
 		define('APPPATH', BASEPATH.$application_folder.'/');
 	}
 
+/**--------------------------------------------------------------------
+ * REQUIRING COMPOSER AUTOLOAD
+ *---------------------------------------------------------------------
+ */
+require APPPATH . 'libraries/autoload.php';
+
 /*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE
