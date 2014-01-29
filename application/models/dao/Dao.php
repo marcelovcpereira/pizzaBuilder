@@ -1,7 +1,7 @@
 <?php
 
 /* 
- * This class indicates what a DAO should do.
+ * This interface indicates what a DAO should do.
  * Every DAO object should be able to execute the CRUD operations.
  * @author     marcelovcpereira
  * @since      v0.1 Dev
