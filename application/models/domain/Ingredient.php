@@ -11,7 +11,9 @@
  */
 
 class Ingredient {
-
+    
+    //id of the ingredient
+    private $id;
     //The Ingredient name.
     private $name;
     //The Ingredient description.
@@ -26,6 +28,15 @@ class Ingredient {
         $this->setPicturePath("");
     }
     
+    public function getId() {
+        return $this->id;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+        
     public function getName() {
         return $this->name;
     }
@@ -51,7 +62,7 @@ class Ingredient {
     }
 
     public function __toString() {
-        $string = "|Ingredient:";
+        $string = "|INGREDIENT:";
         $string .= $this->getName() . ",<br>"
                 . $this->getDescription() . ",<br>"
                 . $this->getPicturePath() . "|";

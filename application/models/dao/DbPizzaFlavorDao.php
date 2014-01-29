@@ -12,6 +12,8 @@ class DbPizzaFlavorDao extends PizzaFlavorDao
      * The table name!
      */
     private $table = 'flavors';
+    private $flavor_ingredients = 'flavor_ingredients';
+    private $ingredientsTable = 'ingredients';
     
     //Dry approach to the query creation
     private $idCol = 'id';
@@ -65,6 +67,12 @@ class DbPizzaFlavorDao extends PizzaFlavorDao
             $flavor->setName($row->name);
             $flavor->setDescription($row->description);
             $flavor->setPicturePath($row->picture);
+            
+            //Querying for the ingredients of this flavor
+            $ingredients = $this->getIngredients($flavor->getId());
+            
+            //Set the ingredient array to the flavor
+            $flavor->setIngredients($ingredients);
         }
         
         
@@ -106,6 +114,12 @@ class DbPizzaFlavorDao extends PizzaFlavorDao
                 $flavor->setDescription($row->description);
                 $flavor->setPicturePath($row->picture);
                 
+                //Querying for the ingredients of this flavor
+                $ingredients = $this->getIngredients($flavor->getId());
+
+                //Set the ingredient array to the flavor
+                $flavor->setIngredients($ingredients);
+                
                 //Add to the array
                 $flavors[] = $flavor;
             }
@@ -123,6 +137,45 @@ class DbPizzaFlavorDao extends PizzaFlavorDao
     public function save($object) 
     {
         //stub
+    }
+    
+    /**
+     * Searchs for all the ingredients of a given Flavor
+     * @param type int $flavorId
+     * @return Ingredient[] ingredients array
+     */
+    public function getIngredients($flavorId)
+    {
+        //Returned array
+        $ingredients = array();
+        
+        $query = "SELECT i.id, i.name, i.description, i.picture"
+                ." FROM {$this->flavor_ingredients} fi"
+                .",{$this->ingredientsTable} i"
+                ." WHERE"
+                ." fi.flavorId = ?"
+                ." AND fi.ingredientId = i.id"
+                ;
+        
+        //Executes the query with the specified prepared statement ($flavorId)
+        $result = $this->connection->query($query,array($flavorId));
+        
+        //If this flavor has ingredients, lets populate
+        if($result->num_rows() > 0)
+        {
+            //Foreach ingredient create an object and add to array
+            foreach($result->result() as $row)
+            {
+                $ingredient = new Ingredient();
+                $ingredient->setId($row->id);
+                $ingredient->setName($row->name);
+                $ingredient->setDescription($row->description);
+                $ingredient->setPicturePath($row->picture);
+                
+                $ingredients[] = $ingredient;
+            }
+        }
+        return $ingredients;
     }
 
 }

@@ -29,6 +29,7 @@ class PizzaFlavor {
         $this->setName("");
         $this->setDescription("");
         $this->setPicturePath("");
+        $this->ingredients = array();
     }
     
     public function getId() {
@@ -76,8 +77,16 @@ class PizzaFlavor {
     public function __toString() {
         $string = "|Flavor:";
         $string .= $this->getName() . ",<br>"
-                . $this->getDescription() . ",<br>"
-                . $this->getPicturePath() . "|";
+                . $this->getDescription() . ",<br>";
+        $ingredients = $this->getIngredients();
+        if($ingredients !== array())
+        {
+            foreach($ingredients as $ingredient)
+            {
+                $string .= $ingredient;
+            }
+        }
+        $string .= "<br>".$this->getPicturePath() . "|";
         return $string;
     }
 

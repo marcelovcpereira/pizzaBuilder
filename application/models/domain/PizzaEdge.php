@@ -1,5 +1,5 @@
 <?php
-
+require_once 'Ingredient.php';
 /*
  * This class represents a PizzaEdge entity of the
  * application. 
@@ -17,6 +17,8 @@ class PizzaEdge {
     private $name;
     //The edge description.
     private $description;
+    //The filling of the edge
+    private $filling;
     //The path to the picture of this edge!
     private $picturePath;
     
@@ -24,9 +26,19 @@ class PizzaEdge {
     {
         $this->setName("");
         $this->setDescription("");
+        $this->setFilling(null);
         $this->setPicturePath("");
     }
     
+    public function getFilling() {
+        return $this->filling;
+    }
+
+    public function setFilling(Ingredient $filling = null) {
+        $this->filling = $filling;
+    }
+
+        
     public function getId() {
         return $this->id;
     }
@@ -63,7 +75,8 @@ class PizzaEdge {
     public function __toString() {
         $string = "|Edge:";
         $string .= $this->getName() . ",<br>"
-                . $this->getDescription() . ",<br>"
+                . $this->getDescription() . ",<br>FILL:"
+                . $this->getFilling() . ",<br>"
                 . $this->getPicturePath() . "|";
         return $string;
     }

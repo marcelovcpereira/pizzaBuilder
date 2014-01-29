@@ -1,6 +1,5 @@
 <?php
 require_once 'PizzaDao.php';
-require_once 'DbPizzaFlavorDao.php';
 require_once APPPATH . 'models/domain/Pizza.php';
 require_once APPPATH . 'models/domain/PizzaCrust.php';
 require_once APPPATH . 'models/domain/PizzaEdge.php';
@@ -40,6 +39,7 @@ class DbPizzaDao extends PizzaDao
     private $sizes = 'sizes';
     private $layouts = 'layouts';
     private $flavors = 'flavors';
+    private $ingredients = 'ingredients';
 	
     
     /**
@@ -60,15 +60,22 @@ class DbPizzaDao extends PizzaDao
     }
 
     /**
-     * This function returns ALL PIZZAS available at the database.
+     * This function returns ALL available PIZZAS at the database.
      * The query was made with joins instead of separate queries
      * for each part of the pizza (crust, edge, size, layout, flavor1).
-     * The only separate parts are the flavor2, 3 and 4, because they
-     * can be null. So instead of creating a more complex query, I 
-     * check if the additional flavors are valid. If so, I query them
-     * individually (but that's not the common case, most pizzas have 1 flavor).
+     * 
+     * There are, though, some separate parts: the flavor2, 3 and 4 can be null. 
+     * So instead of creating a more complex query*, I check if the additional 
+     * flavors are valid. If so, I query them individually 
+     * (but that's not the common case, most pizzas have 1 flavor).
+     * Also each Flavor has an array of ingredients. So this is also
+     * a separate search. 
+     * Another separate query is the EdgeFilling that can also be null.
+     * If the filling ID is valid, search for the edge filling ingredient.
      * After querying I create the objects, populate them and return
      * them as an array.
+     * (*)mysql can't mix right and left joins
+     * 
      * @return type Pizza[] An array of pizzas
      */
     public function fetchAll() 
@@ -113,8 +120,7 @@ class DbPizzaDao extends PizzaDao
                 .",f.id as flavor1Id"
                 .",f.name as flavor1Name"
                 .",f.description as flavor1Description"
-                .",f.picture as flavor1PicturePath"
-                        
+                .",f.picture as flavor1PicturePath"              
                 ." FROM"
                 ." {$this->table} p"
                 .",{$this->crusts} c"
@@ -127,9 +133,9 @@ class DbPizzaDao extends PizzaDao
                 ." AND p.{$this->edgeCol} = e.id"
                 ." AND p.{$this->sizeCol} = s.id"
                 ." AND p.{$this->layoutCol} = l.id"
-                ." AND p.{$this->flavor1Col} = f.id"
-                ;
-
+                ." AND p.{$this->flavor1Col} = f.id";
+                
+                
         //Executes the query
         $result = $this->connection->query($query);        
         
@@ -156,6 +162,20 @@ class DbPizzaDao extends PizzaDao
                 $edge->setDescription($row->edgeDescription);
                 $edge->setPicturePath($row->edgePicturePath);
                 
+                //If the Edge has a filling ingredient, let's
+                //create it and set to the edge
+                if(intval($row->edgeFilling) !== 0)
+                {   
+                    //Initialize the IngredientDao (for the edge filling)
+                    $ingredientDao = new DbIngredientDao($this->connection);
+                    
+                    //Search for the ingredient
+                    $filling = $ingredientDao->fetch($row->edgeFilling);
+                    
+                    //Adding it to the Edge
+                    $edge->setFilling($filling);
+                }
+                
                 //Creating the Layout
                 $layout = new PizzaLayout();
                 $layout->setId($row->layoutId);
@@ -177,6 +197,13 @@ class DbPizzaDao extends PizzaDao
                 $flavor->setName($row->flavor1Name);
                 $flavor->setDescription($row->flavor1Description);
                 $flavor->setPicturePath($row->flavor1PicturePath);
+                
+                //Search for the flavor ingredients
+                $flavorDao = new DbPizzaFlavorDao($this->connection);
+                $ingredients = $flavorDao->getIngredients($flavor->getId());
+                
+                //Add ingredients to the flavor
+                $flavor->setIngredients($ingredients);
                 
                 //Initializing empty additional flavors
                 $flavor2 = null;
