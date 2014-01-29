@@ -233,7 +233,7 @@ class DbPizzaDao extends PizzaDao
         return $pizzas;
     }
 
-    public function save(Dao $dao) 
+    public function save($object) 
     {
         //stub
         return null;

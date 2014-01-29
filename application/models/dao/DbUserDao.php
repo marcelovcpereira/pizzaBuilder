@@ -120,7 +120,7 @@ class DbUserDao extends UserDao
         return $user;
     }
 
-    public function save() 
+    public function save($object) 
     {
         //stub
         return null;

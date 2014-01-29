@@ -120,7 +120,7 @@ class DbPizzaEdgeDao extends PizzaEdgeDao
         //stub
     }    
 
-    public function save(Dao $dao) 
+    public function save($object) 
     {
         //stub
     }

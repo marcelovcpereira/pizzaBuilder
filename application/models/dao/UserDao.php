@@ -25,7 +25,7 @@ abstract class UserDao implements Dao
     //To be overwritten by the Concrete SubClasses
     abstract public function fetch($id);
     abstract public function delete();
-    abstract public function save();
+    abstract public function save($object);
     
 }
 /* End of file UserDao.php */

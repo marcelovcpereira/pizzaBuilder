@@ -14,7 +14,7 @@ interface Dao
     public function fetch($id);
     public function fetchAll();
     public function delete($id);
-    public function save(Dao $dao);
+    public function save($object);
     
 }
 /* End of file Dao.php */

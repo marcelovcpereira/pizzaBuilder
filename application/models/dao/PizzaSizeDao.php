@@ -19,7 +19,7 @@ abstract class PizzaSizeDao implements Dao
     abstract public function fetch($id);
     abstract public function fetchAll();
     abstract public function delete($id);
-    abstract public function save(Dao $dao);
+    abstract public function save($object);
     
 }
 /* End of file PizzaSizeDao.php */

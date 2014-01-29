@@ -120,7 +120,7 @@ class DbPizzaSizeDao extends PizzaSizeDao
         //stub
     }    
 
-    public function save(Dao $dao) 
+    public function save($object) 
     {
         //stub
     }

@@ -124,7 +124,7 @@ class DbIngredientDao extends IngredientDao
         return $ingredients;
     }
 
-    public function save(Dao $dao) 
+    public function save($object) 
     {
         //stub
         return null;
