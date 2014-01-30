@@ -1,12 +1,4 @@
-<!-- ROW1: Contains MENU -->
-<div id="row1" class="row">
-    (stub) Page: HOME > MENU (stub)<br>
-    <span class="label label-primary">MENU</span>
-</div>
-
-<!-- ROW1: Contains MENU -->
-
-    <!-- Foreach pizza of the menu, load itemView -->
+<!-- Foreach pizza of the menu, load itemView -->
 <?php
     $counter = 0;    
     foreach($pizzas as $pizza)

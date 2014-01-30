@@ -17,13 +17,14 @@ class Menu extends CI_Controller
 		//Parameters to the view. Each index will be
 		//a variable at the view level.		
 		$viewParams = array('page' => 'menu_view',
-                                    'params' => array('pizzas' => $pizzas));
+                                    'pizzas' => $pizzas);
 							
 		//I should create a Templator, because /\ this
 		//call is a little bit confusing
 		
 		//Load the menu_view page withOUT the list of pizzas as menu
-		$this->load->view('template', $viewParams);		
+		$this->templatewrapper->load('menu_view', $viewParams);
+                //$this->load->view('template', $viewParams);		
     }
     
         

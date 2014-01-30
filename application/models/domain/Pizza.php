@@ -164,6 +164,18 @@ class Pizza {
         $string .= $this->getFlavor4();
         return $string;
     }
+    
+    public function getRecipe()
+    {
+        $recipe = "";
+        $ingredients1 = $this->getFlavor1()->getIngredients();
+        foreach($ingredients1 as $ingredient)
+        {
+            $recipe .= $ingredient->getName() . ",";
+        }
+        $recipe = substr($recipe,0,  strlen($recipe)-1 );
+        return $recipe;
+    }
 
 
 }
