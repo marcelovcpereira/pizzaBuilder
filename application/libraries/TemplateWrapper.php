@@ -10,8 +10,21 @@ class TemplateWrapper
     
     public static function load($page, $params)
     {
+        $data = array(
+          'home' => 'Home'  ,
+            'profile' => 'Profile',
+            'about' => 'About',
+            'menu' => 'Menu',
+            'product_name' => 'Pizza Builder',
+            'account' => 'Account',
+            'sign_up' => 'Sign Up',
+            'login' => 'Login',
+            'logout' => 'Logout',
+            'header_title' => 'Pizza Builder'
+        );
+        
 	$CI =& get_instance();
-        $CI->load->view('_header');
+        $CI->parser->parse('_header',$data);
         $CI->load->view($page,$params);
         $CI->load->view('_footer');
     }
