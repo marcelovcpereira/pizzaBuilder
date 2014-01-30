@@ -5,8 +5,20 @@
         <group>
             <file>file:/P:/Projects/PizzaBuilder/application/models/dao/DbPizzaFlavorDao.php</file>
             <file>file:/P:/Projects/PizzaBuilder/application/models/dao/DbPizzaDao.php</file>
+            <file>file:/P:/Projects/PizzaBuilder/application/libraries/TemplateWrapper.php</file>
             <file>file:/P:/Projects/PizzaBuilder/application/models/pizza_model.php</file>
-            <file>file:/P:/Projects/PizzaBuilder/application/models/domain/PizzaFlavor.php</file>
+            <file>file:/P:/Projects/PizzaBuilder/application/config/autoload.php</file>
+            <file>file:/P:/Projects/PizzaBuilder/application/views/home_view.php</file>
+            <file>file:/P:/Projects/PizzaBuilder/application/models/dao/Dao.php</file>
+            <file>file:/P:/Projects/PizzaBuilder/application/controllers/menu.php</file>
+            <file>file:/P:/Projects/PizzaBuilder/application/models/domain/Pizza.php</file>
+            <file>file:/P:/Projects/PizzaBuilder/application/controllers/portal.php</file>
+            <file>file:/P:/Projects/PizzaBuilder/application/views/_header.php</file>
+            <file>file:/P:/Projects/PizzaBuilder/application/models/domain/Ingredient.php</file>
+            <file>file:/P:/Projects/PizzaBuilder/resources/js/portal-js.js</file>
+            <file>file:/P:/Projects/PizzaBuilder/resources/css/portal-template.css</file>
+            <file>file:/P:/Projects/PizzaBuilder/application/views/_menu_item_view.php</file>
+            <file>file:/P:/Projects/PizzaBuilder/application/views/menu_view.php</file>
         </group>
     </open-files>
 </project-private>

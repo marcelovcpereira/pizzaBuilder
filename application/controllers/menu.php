@@ -24,7 +24,7 @@ class Menu extends CI_Controller
 		
 		//Load the menu_view page withOUT the list of pizzas as menu
 		$this->templatewrapper->load('menu_view', $viewParams);
-                //$this->load->view('template', $viewParams);		
+		//$this->templatewrapper->twigLoad('menuTwig_view.php', $viewParams);
     }
     
         

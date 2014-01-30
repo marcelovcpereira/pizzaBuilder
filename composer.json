@@ -6,6 +6,6 @@
     }
 	,"require":
 	{
-		"opauth/oauth": "dev-master"
+		"twig/twig": "1.15.*@dev"
 	}
 }
