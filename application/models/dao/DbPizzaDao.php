@@ -82,10 +82,17 @@ class DbPizzaDao extends PizzaDao
     public function fetchAll() 
     {     
 		/* 
-		 * Trying to fetch from cache (APCu).
-		 * If it's not cached, execute all the method and cache it.
-		 */
-		if(! ($pizzas = apcu_fetch('allPizzas')))
+		* Trying to fetch from cache (APCu).
+		* If it's not cached, execute all the method and cache it.
+		*/		
+		
+		//the key value where this query will be stored		
+		$key = 'allPizzas';
+		//5 hours to reset this cache
+		$timeToLive = 18000;
+		 
+		$pizzas = apcu_fetch($key);
+		if($pizzas === FALSE)
 		{	
 			//Returned Pizza List
 			$pizzas = array();
@@ -264,8 +271,8 @@ class DbPizzaDao extends PizzaDao
 				/*
 				 * The menu of a store does not change very much,
 				 * so we can cache it for 5 hours (or forever...).
-				 */
-				apcu_add('allPizzas',$pizzas, 18000);
+				 */				
+				apcu_add($key,$pizzas, $timeToLive);
 			}
 		}
 			

@@ -11,20 +11,14 @@ class Menu extends CI_Controller
 		$this->load->model('pizza_model');
 		
 		//Get a List of pizzas of the menu
-		//$menu = $this->pizza_model->getMenu();
-                $pizzas = $this->pizza_model->getMenu();
+        $pizzas = $this->pizza_model->getMenu();
 		
-		//Parameters to the view. Each index will be
-		//a variable at the view level.		
-		$viewParams = array('page' => 'menu_view',
-                                    'pizzas' => $pizzas);
-							
-		//I should create a Templator, because /\ this
-		//call is a little bit confusing
+		//Parameters to the view
+		$viewParams = array('pizzas' => $pizzas);							
 		
-		//Load the menu_view page withOUT the list of pizzas as menu
+		//Load the menu_view page with the list of pizzas as menu
+		$this->templatewrapper->set('twig');
 		$this->templatewrapper->load('menu_view', $viewParams);
-		//$this->templatewrapper->twigLoad('menuTwig_view.php', $viewParams);
     }
     
         

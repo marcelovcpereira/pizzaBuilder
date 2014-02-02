@@ -15,7 +15,8 @@ class PizzaBuilder extends CI_Controller
      */
     private function _load_index()
     {
-       $this->load->view('template', array('page' => 'menu_view'));
+       //$this->load->view('template', array('page' => 'menu_view'));
+	   $this->templatewrapper->load('home_view', array());
     }
     
     

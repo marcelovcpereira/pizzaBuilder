@@ -10,13 +10,12 @@ class Portal extends CI_Controller
      */
     public function index()
     {
-	
+		//that's the user who is here
         $user = null;
-        $data = array(
-            'page'=>'home_view', //that's where we're going
-            'user' => $user     //that's the user who is here
-        );
-        //$this->load->view('template',$data);
+		//Parameters to the view
+        $data = array('user' => $user); 
+        //Load the home_view page with the user
+		$this->templatewrapper->set('twig');
         $this->templatewrapper->load('home_view', $data);
     }    
    

@@ -1,0 +1,51 @@
+<!-- Menu Item -->
+<div name="menuItem{{pizza.id}}" id="menuItem" class="col-sm-6 col-md-4 col-lg-3" 
+     value="false" 
+     data-toggle="popover">    
+    <a href="javascript:popPizzaDetails('{{pizza.id}}','{{pizza.name}}')" >
+        <!-- PANEL -->
+        <div class="panel panel-default">
+            
+            <!-- PANEL BODY -->
+            <div class="panel-body thumbnail">
+                <img class="img-circle" src="/PizzaBuilder/resources/images/{{pizza.picturePath}}" 
+                     alt="{{pizza.name}} Image">            
+            </div><!-- PANEL BODY -->
+ 
+            <!-- PANEL FOOTER -->
+            <div class="panel panel-footer"> 
+                <div class="pizzaText">
+                    <!-- PIZZA NAME -->
+                    <h3>{{pizza.name}}</h3>
+					
+					<hr>
+                    <!-- DESCRIPTION -->
+                    <span class="caption">
+                        {{pizza.description}}
+                    </span>
+                    <br>
+                    
+                </div>
+                
+                <!-- HIDDEN DETAILS DIV -->
+                <div id="content{{pizza.id}}" class="sr-only">
+                    {{pizza.description}}
+					<button type="button" class="btn btn-warning">
+						<span class="glyphicon glyphicon-pencil"></span>
+						Edit before add
+					</button>
+                </div><!-- HIDDEN DETAILS DIV -->
+                
+            </div><!-- PANEL FOOTER -->
+
+            <div class="botao">
+                <!-- BUTTON  --> 
+				
+                    <button type="button" class="btn btn-warning">
+						<span class="glyphicon glyphicon-shopping-cart"></span>
+						Add
+					</button>
+                </div>
+        </div><!-- PANEL -->
+    </a>
+</div><!-- Menu Item -->
