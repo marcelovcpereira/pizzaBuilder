@@ -1,15 +1,19 @@
-{% for pizza in pizzas %}
-	{% if loop.index0 is divisible by(4) %}		
-		<div class='row'>
-	{% endif %}
-	
-	{% include 'twig__menu_item_view.html'%}
-	
-	{% if loop.index is divisible by(4) %}	
-		</div>
-	{% endif %}
-	
-{% endfor %}
+{% include 'twig_history.html' %}
+<div id="menuRow" class="container">
+    {% for pizza in pizzas %}
+            {% if loop.index0 is divisible by(4) %}	                    
+                    <!-- CONTAINER -->
+                    <div class='row'>
+            {% endif %}
+
+            {% include 'twig__menu_item_view.html'%}
+
+            {% if loop.index is divisible by(4) %}	
+                    </div> <!-- END: ROW -->
+            {% endif %}
+
+    {% endfor %}
+</div>
        
 
         

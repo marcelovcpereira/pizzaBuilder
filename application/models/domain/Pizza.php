@@ -37,6 +37,23 @@ class Pizza {
     private $flavor3;
     private $flavor4;
     
+    public function __construct()
+    {
+        $this->setName("");
+        $this->setDescription("");
+        $this->setObservations("");
+        $this->setPicturePath("");
+        $this->setCrust();
+        $this->setEdge();
+        $this->setFlavor1();
+        $this->setFlavor2();
+        $this->setFlavor3();
+        $this->setFlavor4();
+        $this->setLayout();
+        $this->setSize();
+        
+    }
+    
     public function getPicturePath() {
         return $this->picturePath;
     }
@@ -94,19 +111,19 @@ class Pizza {
         $this->description = $description;
     }
 
-    public function setEdge(PizzaEdge $edge) {
+    public function setEdge(PizzaEdge $edge = null) {
         $this->edge = $edge;
     }
 
-    public function setLayout(PizzaLayout $layout) {
+    public function setLayout(PizzaLayout $layout = null) {
         $this->layout = $layout;
     }
 
-    public function setSize(PizzaSize $size) {
+    public function setSize(PizzaSize $size = null) {
         $this->size = $size;
     }
 
-    public function setFlavor1(PizzaFlavor $flavor1) {
+    public function setFlavor1(PizzaFlavor $flavor1 = null) {
         $this->flavor1 = $flavor1;
     }
 
@@ -130,7 +147,7 @@ class Pizza {
         return $this->crust;
     }
 
-    public function setCrust(PizzaCrust $crust) {
+    public function setCrust(PizzaCrust $crust = null) {
         $this->crust = $crust;
     }
     
@@ -175,6 +192,34 @@ class Pizza {
         }
         $recipe = substr($recipe,0,  strlen($recipe)-1 );
         return $recipe;
+    }
+    
+    /**
+     * Return all flavors as an array
+     * @return type PizzaFlavor[] array of flavors of this pizza
+     */
+    public function getFlavors()
+    {
+        $return = array();
+        
+        if($this->flavor1 !== null){
+            $return[] = $this->flavor1;
+        }
+        
+        if($this->flavor2 !== null){
+            $return[] = $this->flavor2;
+        }
+        
+        if($this->flavor3 !== null){
+            $return[] = $this->flavor3;
+        }
+        
+        if($this->flavor4 !== null){
+            $return[] = $this->flavor4;
+        }
+        
+        return $return;
+       
     }
 
 

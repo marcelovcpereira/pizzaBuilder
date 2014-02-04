@@ -14,7 +14,8 @@ class Menu extends CI_Controller
         $pizzas = $this->pizza_model->getMenu();
 		
 		//Parameters to the view
-		$viewParams = array('pizzas' => $pizzas);							
+		$viewParams = array('pizzas' => $pizzas,
+                                    'history_title'=>'Menu');							
 		
 		//Load the menu_view page with the list of pizzas as menu
 		$this->templatewrapper->set('twig');

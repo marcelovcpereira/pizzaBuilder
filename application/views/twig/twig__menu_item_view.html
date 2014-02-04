@@ -1,51 +1,80 @@
-<!-- Menu Item -->
-<div name="menuItem{{pizza.id}}" id="menuItem" class="col-sm-6 col-md-4 col-lg-3" 
-     value="false" 
-     data-toggle="popover">    
-    <a href="javascript:popPizzaDetails('{{pizza.id}}','{{pizza.name}}')" >
-        <!-- PANEL -->
-        <div class="panel panel-default">
-            
-            <!-- PANEL BODY -->
-            <div class="panel-body thumbnail">
-                <img class="img-circle" src="/PizzaBuilder/resources/images/{{pizza.picturePath}}" 
-                     alt="{{pizza.name}} Image">            
-            </div><!-- PANEL BODY -->
- 
-            <!-- PANEL FOOTER -->
-            <div class="panel panel-footer"> 
-                <div class="pizzaText">
-                    <!-- PIZZA NAME -->
-                    <h3>{{pizza.name}}</h3>
-					
-					<hr>
-                    <!-- DESCRIPTION -->
-                    <span class="caption">
-                        {{pizza.description}}
-                    </span>
-                    <br>
+<a id="pizzaCardLink{{pizza.id}}" class="pizzaCardLink" href="javascript:flipPizzaCard('{{pizza.id}}')">
+    <div class="pizzaCard{{pizza.id}}" id="pizzaCard{{pizza.id}}" value="false">
+        <!-- Menu Item: the name attribute is used by JavaScript -->
+        <div name="menuItem{{pizza.id}}" id="menuItem" class="col-lg-3 col-md-4 col-sm-6 col-xs-12" 
+             value="false" 
+             data-toggle="popover">
+                <!-- PANEL -->
+                <div class="panel panel-default">
                     
-                </div>
-                
-                <!-- HIDDEN DETAILS DIV -->
-                <div id="content{{pizza.id}}" class="sr-only">
-                    {{pizza.description}}
-					<button type="button" class="btn btn-warning">
-						<span class="glyphicon glyphicon-pencil"></span>
-						Edit before add
-					</button>
-                </div><!-- HIDDEN DETAILS DIV -->
-                
-            </div><!-- PANEL FOOTER -->
+                    <!-- PANEL BODY -->
+                    <div class="panel-body thumbnail">
+                        <img class="img-circle" src="/PizzaBuilder/resources/images/{{pizza.picturePath}}" 
+                             alt="{{pizza.name}} Image">            
+                    </div><!-- PANEL BODY -->
+                    
 
-            <div class="botao">
-                <!-- BUTTON  --> 
-				
-                    <button type="button" class="btn btn-warning">
-						<span class="glyphicon glyphicon-shopping-cart"></span>
-						Add
-					</button>
-                </div>
-        </div><!-- PANEL -->
-    </a>
-</div><!-- Menu Item -->
+                    <!-- PANEL FOOTER -->
+                    <div class="panel panel-footer"> 
+                        <div class="pizzaText">
+                            <!-- PIZZA NAME -->
+                            <h3>{{pizza.name}}</h3>
+
+                                                <hr>
+                            <!-- DESCRIPTION -->
+                            <span class="caption">
+                                {{pizza.description}}
+                            </span>
+                            <br>
+                        </div>
+                    </div><!-- PANEL FOOTER -->
+                    
+                    <div class="botao">
+                        <!-- BUTTON  --> 
+                        <button type="button" class="btn btn-warning">
+                            <span class="glyphicon glyphicon-shopping-cart"></span>
+                            Add
+                        </button>
+                    </div>
+                    
+                </div><!-- PANEL -->
+        </div><!-- Menu Item -->
+    </div>
+</a>
+
+<!-- HIDDEN DETAILS DIV, USED TO SHOW DETAILS -->
+<div id="content{{pizza.id}}" name="content{{pizza.id}}" class="sr-only">
+    <div id="panelPizzaDetails{{pizza.id}}" name="panelPizzaDetails" class="panel panel-default">
+        <div id="scrollableContent{{pizza.id}}" class="scrollableContent">
+            <div class="crustDiv">                        
+                <span class="label label-warning">Crust: {{pizza.crust.name}}</span>
+                <small>{{pizza.crust.description}}</small>
+            </div>
+            <div class="edgeDiv">                        
+                <span class="label label-warning">Edge: {{pizza.edge.name}}</span>
+                <small>{{pizza.edge.description}}</small>
+            </div>
+            <div class="sizeDiv">
+                <span class="label label-warning">Size: {{pizza.size.name}}</span>
+                <small>{{pizza.size.description}}</small>
+            </div>   
+            <div class="layoutDiv">
+                <span class="label label-warning">Layout: {{pizza.layout.name}}</span>
+                <small>{{pizza.layout.description}}</small>
+            </div>                     
+            <div class="flavorsDiv">
+                {% for flavor in pizza.getflavors %}
+                <span class="label label-warning">Flavor: {{flavor.name}}</span>
+                <small>{{flavor.description}}</small>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <button type="button" class="btn btn-warning">
+            <i class="glyphicon glyphicon-pencil"></i>
+            Edit before add
+        </button>
+    </div>
+</div><!-- HIDDEN DETAILS DIV -->
+
+

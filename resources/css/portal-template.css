@@ -3,53 +3,100 @@
 @font-face { font-family: Stark; src: url('../fonts/Stark.OTF'); } 
 
 body{
-    padding: 0px 20px 0px 20px;
-	background-color: #FFF2E0;
-	/*background-color: #FFECD1;*/
+    background-color: #FFF2E0;    
 }
+
+/*-----------FOOTER-------------*/
+#rowComplemento{
+    height: 200px;
+}
+#footerRow{
+    height: 300px;
+    background-color: #f0ad4e;
+    color: white;
+    padding: 20px;
+}
+#footerRow h2 .span{
+    margin: 5px;
+}
+
+#footerDiv{
+    text-align: center;
+}
+
+.github{
+    font-family: Stark;
+}
+/*-----------END:FOOTER-------------*/
 
 /* ----------NAVBAR----------- */
 
+/*History Alert*/
+#historyRow{
+    display: block;
+    height: 80px;
+    font-family: Stark; 
+    margin-bottom: 5px;
+    text-align: center;
+}
+#history{
+    width: 100%;  
+    height: 80px;
+    line-height: 45px;
+    text-align: center;
+    border: 1px solid #9C6619;
+}
+#history .spanHistory{
+    float: left;
+}
+#history .spanTitle{
+    font-size: 32px;
+}
+#history .spanUser{
+    float: right;
+}
+/*History Alert*/
+
 /* PIZZA BUILDER TITLE NAVBAR */
 .navbar-header a{	
-	font-family: Stark;
-	font-weight: bold;
-	font-size: 24px;
+    font-family: Stark;
+    font-weight: bold;
+    font-size: 24px;
 }
 .navbar-default .navbar-brand{
-	color: white;
+    color: white;
 }
 .navbar-default .navbar-brand:hover{
-	color: #9C6619;
+    color: #9C6619;
 }
 
 /* NAVBAR BACKGROUND */
 .navbar-default{
-	background-color: #f0ad4e;
+    background-color: #f0ad4e;
 }
 
 
 /* MENUS: HOME, MENU, ABOUT*/
 .collapse ul li{
-	font-family: Stark;
-	font-size: 18px;
+    font-family: Stark;
+    font-size: 18px;
 }
 .collapse ul li:hover{
-	background-color: white;
+    background-color: white;
 }
 .navbar-default .navbar-nav  li  a{
-	color: white;
+    color: white;
 }
 .navbar-default .navbar-nav  li  a:hover{
-	color: #f0ad4e;
+    color: #f0ad4e;
 }
 /*----------END: NAVBAR-------------*/
 
 
 /*----------HOME---------------*/
 .label-warning{
-	font-family: Stark;
-	font-size: 20px;
+    font-family: Stark;
+    font-size: 20px;
 }
 
 #row1 .jumbotron{  
@@ -63,12 +110,9 @@ body{
 /*---------GENERAL LAYOUT-----------*/
 #row1 {
     padding: 0px;
-	margin: 0px
+    margin: 0px
 }
 
-#row2{   
-    padding: 50px;
-}
 #row2 div{
     text-align: center;
     padding: 20px;
@@ -81,10 +125,18 @@ body{
 
 
 /*----------------Menu Item View--------------*/
+
+/* Padding to align the pizza cards (items) */
+#menuRow{
+    padding-left: 60px;
+    padding-right: 60px;
+}
+/* PIZZA CARD WIDTH AND HEIGHT */
 #menuItem{
     height: 340px;
-	width: 269px;
+    width: 269px;
     margin-bottom: 15px;
+    text-align:left;
     
 }
 #menuItem a{
@@ -100,32 +152,107 @@ body{
     height:100%;
     overflow: hidden;
     background-color: #F8D19C;
-	box-shadow: 2px 2px 2px #888888;
-	border: 3px solid #B48E59;
-	
+    box-shadow: 2px 2px 2px #888888;
+    border: 3px solid #B48E59;
 }
 
 #menuItem .panel:hover{
     border-color: #ed9c28;	
 }
 
+/* Crust Image */
+.crustDiv span{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Edge Image */
+.edgeDiv span{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Size Image */
+.sizeDiv span{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Size Image */
+.layoutDiv span{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Size Image */
+.flavorsDiv span{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+/* Details side of MenuItem card */
+div[name='panelPizzaDetails']{
+    text-align: center;
+    color: #745B39;
+    font-family: Stark;
+    font-weight: lighter;
+    position: relative;
+}
+.scrollableContent{
+    height: 285px;
+    overflow-x: hidden;
+    overflow-y: auto;    
+}
+div[name='panelPizzaDetails'] span{
+    background-color: #745B39;
+    font-family: Stark;
+    font-size: 16px;  
+    width: 97%;
+    margin: 3px;
+}
+/* Details side button (edit) */
+div[name='panelPizzaDetails'] button{    
+    width: 97%;  
+    position: absolute;
+    bottom: 0px;
+    left: 4px;
+    font-size: 16px;
+    height: 45px;
+    font-weight: bold;
+    margin-bottom: 3px;    
+    background-color: #9C6619;
+    border-color: #9C6619;
+}
+div[name='panelPizzaDetails'] button:hover{
+    background-color: white;	
+    color: #9C6619;
+}
+
+
+
 /*removing bottom margin in the menu item thumbnail*/
 /* PIZZA ITEM IMAGE SIZE: 135px */
 #menuItem .panel .panel-body{
     margin-bottom: 0px; 
-	padding: 2px;
+    padding: 2px;
     height: 135px;
-	border: 1px solid #B48E59;
-	border-top: none;
-	overflow: hidden;
+    border: 1px solid #B48E59;
+    border-top: none;
+    overflow: hidden;
+    background-color: #fcf8e3;
 }
 /*removing bottom margin in the menu item description*/
 #menuItem .panel .panel-footer{
     margin-bottom: 0px;  
     height: 150px;
     border-color: transparent;
-	border-width: 0px; 
-	color: #745B39;
+    border-width: 0px; 
+    color: #745B39;
+    overflow-y: auto;
 }
 #menuItem .panel .panel-footer .pizzaText{
     height: 100%;
@@ -139,17 +266,17 @@ body{
 /*setting ADD Button properties */
 #menuItem .panel .botao button{        
     width: 97%;    
-	font-family: Stark;
-	font-size: 16px;
+    font-family: Stark;
+    font-size: 16px;
     height: 45px;
     font-weight: bold;
-	margin-bottom: 6px;
-	background-color: #9C6619;
-	border-color: #9C6619;
+    margin-bottom: 6px;
+    background-color: #9C6619;
+    border-color: #9C6619;
 }
 #menuItem .panel .botao button:hover{
-	background-color: white;	
-	color: #9C6619;
+    background-color: white;	
+    color: #9C6619;
 }
 #menuItem .panel .panel-footer:hover{
     border-color: transparent;
@@ -157,14 +284,14 @@ body{
 
 /*removing top margin in pizza name (h3) */
 #menuItem .panel .panel-footer h3{
-	font-family: Freshman;	
-	font-size: 22px;
+    font-family: Freshman;	
+    font-size: 22px;
     margin-top: 0px;
-	margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 #menuItem .panel .panel-footer hr{
-	margin: 3px;
-	border-color: #9C6619;
+    margin: 3px;
+    border-color: #9C6619;
 }
 
 .popover-title {
@@ -177,13 +304,13 @@ body{
 }
 
 .popover button{
-	width: 97%;    
-	font-family: Stark;
-	font-size: 16px;
+    width: 97%;    
+    font-family: Stark;
+    font-size: 16px;
     height: 35px;
-	margin-bottom: 6px;
-	background-color: #d58512;
-	border-color: #d58512;
+    margin-bottom: 6px;
+    background-color: #d58512;
+    border-color: #d58512;
 }
 /*----------------END: Menu Item View--------------*/
 

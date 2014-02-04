@@ -61,7 +61,7 @@ class PizzaCrust {
     }
 
     public function __toString() {
-        $string = "|Crust:";
+        $string = "Crust:";
         $string .= $this->getName() . ",<br>"
                 . $this->getDescription() . ",<br>"
                 . $this->getPicturePath() . "|";
