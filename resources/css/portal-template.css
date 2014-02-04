@@ -132,22 +132,22 @@ body{
     padding-right: 60px;
 }
 /* PIZZA CARD WIDTH AND HEIGHT */
-#menuItem{
+div[name='menuItem']{
     height: 340px;
     width: 269px;
     margin-bottom: 15px;
     text-align:left;
     
 }
-#menuItem a{
+div[name='menuItem'] a{
     color: black;
 }
 /*removing underline on anchors*/
-#menuItem a:hover{
+div[name='menuItem'] a:hover{
     text-decoration: none;
 }
 /*setting the panel size so it fits the menuItem container*/
-#menuItem .panel{
+div[name='menuItem'] .panel{
     width: 100%;
     height:100%;
     overflow: hidden;
@@ -156,7 +156,7 @@ body{
     border: 3px solid #B48E59;
 }
 
-#menuItem .panel:hover{
+div[name='menuItem'] .panel:hover{
     border-color: #ed9c28;	
 }
 
@@ -236,7 +236,7 @@ div[name='panelPizzaDetails'] button:hover{
 
 /*removing bottom margin in the menu item thumbnail*/
 /* PIZZA ITEM IMAGE SIZE: 135px */
-#menuItem .panel .panel-body{
+div[name='menuItem'] .panel .panel-body{
     margin-bottom: 0px; 
     padding: 2px;
     height: 135px;
@@ -246,7 +246,7 @@ div[name='panelPizzaDetails'] button:hover{
     background-color: #fcf8e3;
 }
 /*removing bottom margin in the menu item description*/
-#menuItem .panel .panel-footer{
+div[name='menuItem'] .panel .panel-footer{
     margin-bottom: 0px;  
     height: 150px;
     border-color: transparent;
@@ -254,17 +254,17 @@ div[name='panelPizzaDetails'] button:hover{
     color: #745B39;
     overflow-y: auto;
 }
-#menuItem .panel .panel-footer .pizzaText{
+div[name='menuItem'] .panel .panel-footer .pizzaText{
     height: 100%;
 }
 /* Aliging ADD button to center*/
 /* Background to card color */
-#menuItem .panel .botao{
+div[name='menuItem'] .panel .botao{
     text-align: center; 
     background-color: #F8D19C;
 }
 /*setting ADD Button properties */
-#menuItem .panel .botao button{        
+div[name='menuItem'] .panel .botao button{        
     width: 97%;    
     font-family: Stark;
     font-size: 16px;
@@ -274,22 +274,22 @@ div[name='panelPizzaDetails'] button:hover{
     background-color: #9C6619;
     border-color: #9C6619;
 }
-#menuItem .panel .botao button:hover{
+div[name='menuItem'] .panel .botao button:hover{
     background-color: white;	
     color: #9C6619;
 }
-#menuItem .panel .panel-footer:hover{
+div[name='menuItem'] .panel .panel-footer:hover{
     border-color: transparent;
 }
 
 /*removing top margin in pizza name (h3) */
-#menuItem .panel .panel-footer h3{
+div[name='menuItem'] .panel .panel-footer h3{
     font-family: Freshman;	
     font-size: 22px;
     margin-top: 0px;
     margin-bottom: 0px;
 }
-#menuItem .panel .panel-footer hr{
+div[name='menuItem'] .panel .panel-footer hr{
     margin: 3px;
     border-color: #9C6619;
 }
