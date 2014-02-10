@@ -47,24 +47,39 @@
     <div id="panelPizzaDetails{{pizza.id}}" name="panelPizzaDetails" class="panel panel-default">
         <div id="scrollableContent{{pizza.id}}" class="scrollableContent">
             <div class="crustDiv">                        
-                <span class="label label-warning">Crust: {{pizza.crust.name}}</span>
+                <span class="label label-warning">
+					Crust: {{pizza.crust.name}}
+					<i name="infoCrust" class="glyphicon glyphicon-question-sign"></i>
+				</span>
                 <small>{{pizza.crust.description}}</small>
             </div>
             <div class="edgeDiv">                        
-                <span class="label label-warning">Edge: {{pizza.edge.name}}</span>
+                <span class="label label-warning">
+					Edge: {{pizza.edge.name}}
+					<i name="infoEdge" class="glyphicon glyphicon-question-sign"></i>
+				</span>
                 <small>{{pizza.edge.description}}</small>
             </div>
             <div class="sizeDiv">
-                <span class="label label-warning">Size: {{pizza.size.name}}</span>
+                <span class="label label-warning">
+					Size: {{pizza.size.name}}
+					<i name="infoSize" class="glyphicon glyphicon-question-sign"></i>
+				</span>
                 <small>{{pizza.size.description}}</small>
             </div>   
             <div class="layoutDiv">
-                <span class="label label-warning">Layout: {{pizza.layout.name}}</span>
+                <span class="label label-warning">
+					Layout: {{pizza.layout.name}}
+					<i name="infoLayout" class="glyphicon glyphicon-question-sign"></i>
+				</span>
                 <small>{{pizza.layout.description}}</small>
             </div>                     
             <div class="flavorsDiv">
                 {% for flavor in pizza.getflavors %}
-                <span class="label label-warning">Flavor: {{flavor.name}}</span>
+                <span class="label label-warning">
+					Flavor: {{flavor.name}}
+					<i name="infoFlavor" class="glyphicon glyphicon-question-sign"></i>
+				</span>
                 <small>{{flavor.description}}</small>
                 {% endfor %}
             </div>

@@ -1,0 +1,203 @@
+<!--BUILDER DIV-->
+<div id="builderDiv" >
+    <!-- SIZE ROW -->
+    <div class="row">        
+        <!-- SIZE COLUMN -->
+        <div id="sizeColumn" class="col-lg-12">
+            <h2 class="alert alert-warning">Pizza size</h2>
+
+            <div class="col-lg-2"></div>
+            <!-- SIZE CARDS WITHIN MIDDLE COLUMN-->
+            <div class="col-lg-8">
+
+                {% for size in pizzaBuilder.getSizes %}
+                <a id="pizzaSizeCardLink{{size.id}}" class="col-lg-4" href="">                                    
+                    <!-- Size Item -->
+                    <div id="sizeItem{{size.id}}" name="sizeItem"  class="col-lg-4 col-md-4 col-sm-6 col-xs-12" 
+                         value="false">
+                        <!-- PANEL -->
+                        <div class="panel panel-default">
+
+                            <!-- PANEL BODY -->
+                            <div class="panel-body thumbnail">
+                                <img class="img-circle" src="/PizzaBuilder/resources/images/{{size.picturePath}}" 
+                                     alt="{{size.name}} Image">            
+                            </div><!-- PANEL BODY -->
+                            
+                            <!-- PANEL FOOTER -->
+                            <div class="panel panel-footer"> 
+                                <div class="sizeText">
+                                    <!-- SIZE NAME -->
+                                    <h3>{{size.name}}</h3>
+
+                                    <hr>
+                                    <!-- DESCRIPTION -->
+                                    <span class="caption">
+                                        {{size.description}}
+                                    </span>
+                                    <br>
+                                </div>
+                            </div><!-- PANEL FOOTER -->
+                        </div><!-- PANEL -->
+                    </div><!-- Size Item -->
+                </a>			
+                {% endfor %}
+            </div><!-- SIZE CARDS WITHIN MIDDLE COLUMN-->
+            <div class="col-lg-2"></div>
+        </div><!-- SIZE COLUMN -->
+    </div><!-- SIZE ROW -->
+
+
+    <!-- CRUST ROW -->
+    <div class="row">
+        <!-- CRUST COLUMN -->
+        <div id="crustColumn" class="col-lg-12">
+            <h2 class="alert alert-warning">Crust type</h2>
+            {% for crust in pizzaBuilder.getCrusts %}
+
+            <a id="pizzaCrustCardLink{{crust.id}}" class="col-lg-3" href="">
+                <div id="pizzaCrustCard{{crust.id}}" class="pizzaCrustCard{{crust.id}}"  value="false">
+                    <!-- Size Item -->
+                    <div id="crustItem{{crust.id}}" name="crustItem"  class="col-lg-3 col-md-4 col-sm-6 col-xs-12" 
+                         value="false">
+                        <!-- PANEL -->
+                        <div class="panel panel-default">
+
+                            <!-- PANEL BODY -->
+                            <div class="panel-body thumbnail">
+
+                                <img class="img-circle" src="/PizzaBuilder/resources/images/{{crust.picturePath}}" 
+                                     alt="{{crust.name}} Image">            
+
+                            </div><!-- PANEL BODY -->
+
+
+                            <!-- PANEL FOOTER -->
+                            <div class="panel panel-footer"> 
+                                <div class="crustText">
+                                    <!-- crust NAME -->
+                                    <h3>{{crust.name}}</h3>
+
+                                    <hr>
+                                    <!-- DESCRIPTION -->
+                                    <span class="caption">
+                                        {{crust.description}}
+                                    </span>
+                                    <br>
+                                </div>
+                            </div><!-- PANEL FOOTER -->
+                        </div><!-- PANEL -->
+                    </div><!-- Size Item -->
+                </div>
+            </a>
+            {% endfor %}
+        </div><!-- CRUST COLUMN -->
+    </div><!-- CRUST ROW -->
+
+    <!-- EDGE ROW -->
+    <div class="row">
+        <!-- EDGE COLUMN -->
+        <div id="edgeColumn" class="col-lg-12">
+            <h2 class="alert alert-warning">Edge</h2>
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                {% for edge in pizzaBuilder.getEdges %}
+                    <a id="pizzaEdgeCardLink{{edge.id}}" class="col-lg-4" href="">                                    
+                    <!-- edge Item -->
+                    <div id="edgeItem{{edge.id}}" name="edgeItem"  class="col-lg-4 col-md-4 col-sm-6 col-xs-12" 
+                         value="false">
+                        <!-- PANEL -->
+                        <div class="panel panel-default">
+
+                            <!-- PANEL BODY -->
+                            <div class="panel-body thumbnail">
+                                <img class="img-circle" src="/PizzaBuilder/resources/images/{{edge.picturePath}}" 
+                                     alt="{{edge.name}} Image">            
+                            </div><!-- PANEL BODY -->
+                            
+                            <!-- PANEL FOOTER -->
+                            <div class="panel panel-footer"> 
+                                <div class="edgeText">
+                                    <!-- edge NAME -->
+                                    <h3>{{edge.name}}</h3>
+
+                                    <hr>
+                                    <!-- DESCRIPTION -->
+                                    <span class="caption">
+                                        {{edge.description}}
+                                    </span>
+                                    <br>
+                                </div>
+                            </div><!-- PANEL FOOTER -->
+                        </div><!-- PANEL -->
+                    </div><!-- edge Item -->
+                </a>
+                {% endfor %}
+            </div>
+            <div class="col-lg-2"></div>
+        </div><!-- EDGE COLUMN -->
+    </div><!-- EDGE ROW -->
+    
+     <!-- LAYOUT ROW -->
+    <div class="row">
+        <!-- LAYOUT COLUMN -->
+        <div id="layoutColumn" class="col-lg-12">
+            <h2 class="alert alert-warning">Layout</h2>
+            {% for layout in pizzaBuilder.getLayouts %}
+
+            <a id="pizzaLayoutCardLink{{layout.id}}" class="col-lg-3" href="">
+                <div id="pizzaLayoutCard{{layout.id}}" class="pizzaLayoutCard{{layout.id}}"  value="false">
+                    <!-- layout Item -->
+                    <div id="layoutItem{{layout.id}}" name="layoutItem"  class="col-lg-3 col-md-4 col-sm-6 col-xs-12" 
+                         value="false">
+                        <!-- PANEL -->
+                        <div class="panel panel-default">
+
+                            <!-- PANEL BODY -->
+                            <div class="panel-body thumbnail">
+
+                                <img class="img-circle" src="/PizzaBuilder/resources/images/{{layout.picturePath}}" 
+                                     alt="{{layout.name}} Image">            
+
+                            </div><!-- PANEL BODY -->
+
+
+                            <!-- PANEL FOOTER -->
+                            <div class="panel panel-footer"> 
+                                <div class="layoutText">
+                                    <!-- layout NAME -->
+                                    <h3>{{layout.name}}</h3>
+
+                                    <hr>
+                                    <!-- DESCRIPTION -->
+                                    <span class="caption">
+                                        {{layout.description}}
+                                    </span>
+                                    <br>
+                                </div>
+                            </div><!-- PANEL FOOTER -->
+                        </div><!-- PANEL -->
+                    </div><!-- layout Item -->
+                </div>
+            </a>
+            {% endfor %}
+        </div><!-- LAYOUT COLUMN -->
+    </div><!-- LAYOUT ROW -->
+    
+     <!-- FLAVOR ROW -->
+    <div class="row">
+        <!-- FLAVOR COLUMN -->
+        <div id="edgeColumn" class="col-lg-12">
+            <h2 class="alert alert-warning">Flavors</h2>
+        </div><!-- FLAVOR COLUMN -->
+    </div><!-- FLAVOR ROW -->
+    
+    <!-- OBS ROW -->
+    <div class="row">
+        <!-- OBS COLUMN -->
+        <div id="edgeColumn" class="col-lg-12">
+            <h2 class="alert alert-warning">Observations</h2>   
+        </div><!-- OBS COLUMN -->
+    </div><!-- OBS ROW -->
+
+</div><!--BUILDER DIV-->

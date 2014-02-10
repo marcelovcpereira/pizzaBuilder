@@ -32,6 +32,7 @@ class TemplateWrapper {
         'profile' => 'Profile',
         'about' => 'About',
         'menu' => 'Menu',
+		'builder' => 'Builder',
         'product_name' => 'Pizza Builder',
         'account' => 'Account',
         'sign_up' => 'Sign Up',
@@ -101,7 +102,8 @@ class TemplateWrapper {
         /* Loading Twig Filesystem Loader */
         $twigLoader = new Twig_Loader_Filesystem(APPPATH . 'views/twig');
         /* Loading Twig Environment */
-        $twigEnv = new Twig_Environment($twigLoader, array());
+        $twigEnv = new Twig_Environment($twigLoader, array('debug' => true));
+		$twigEnv->addExtension(new Twig_Extension_Debug());
 
         /* Rendering the header tenplate */
         echo $twigEnv->render($this->prefix . $this->header . $this->sufix, TemplateWrapper::$data);

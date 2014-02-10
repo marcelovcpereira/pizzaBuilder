@@ -3,14 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/P:/Projects/PizzaBuilder/application/views/twig/twig_home_view.html</file>
-            <file>file:/P:/Projects/PizzaBuilder/application/libraries/TemplateWrapper.php</file>
+            <file>file:/P:/Projects/PizzaBuilder/application/models/domain/PizzaCrust.php</file>
+            <file>file:/P:/Projects/PizzaBuilder/application/views/twig/twig__builderDiv_view.html</file>
+            <file>file:/P:/Projects/PizzaBuilder/application/views/twig/twig_pizzaBuilder_view.html</file>
             <file>file:/P:/Projects/PizzaBuilder/application/views/twig/twig__footer.html</file>
-            <file>file:/P:/Projects/PizzaBuilder/application/views/twig/twig_history.html</file>
-            <file>file:/P:/Projects/PizzaBuilder/application/views/twig/twig__menu_item_view.html</file>
-            <file>file:/P:/Projects/PizzaBuilder/application/views/twig/twig__header.html</file>
+            <file>file:/P:/Projects/PizzaBuilder/application/models/domain/PizzaBuilderDomain.php</file>
             <file>file:/P:/Projects/PizzaBuilder/resources/css/portal-template.css</file>
-            <file>file:/P:/Projects/PizzaBuilder/application/views/twig/twig_menu_view.html</file>
         </group>
     </open-files>
 </project-private>

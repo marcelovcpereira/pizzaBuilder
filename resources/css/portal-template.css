@@ -11,17 +11,22 @@ body{
     height: 200px;
 }
 #footerRow{
-    height: 300px;
+    height: 220px;
     background-color: #f0ad4e;
+	border-top: 1px solid #8a6d3b;
     color: white;
-    padding: 20px;
+    padding: 10px;
+	position: relative;
 }
 #footerRow h2 .span{
     margin: 5px;
 }
 
-#footerDiv{
+#footerDiv2{
     text-align: center;
+}
+#footerDiv2 > h2{
+	margin-top: 4px;
 }
 
 .github{
@@ -30,6 +35,10 @@ body{
 /*-----------END:FOOTER-------------*/
 
 /* ----------NAVBAR----------- */
+.navbar{
+	box-shadow: 2px 2px 2px #888888;
+	border: none;	
+}
 
 /*History Alert*/
 #historyRow{
@@ -37,7 +46,6 @@ body{
     height: 80px;
     font-family: Stark; 
     margin-bottom: 5px;
-    text-align: center;
 }
 #history{
     width: 100%;  
@@ -45,17 +53,40 @@ body{
     line-height: 45px;
     text-align: center;
     border: 1px solid #9C6619;
+    position: relative;
+	overflow: hidden;
+	background: url('/PizzaBuilder/resources/images/bannerPizza.png');
+}
+#history img{
+	float: left;
+	vertical-align: top;
+	padding: 0px;
+	margin: 0px;
 }
 #history .spanHistory{
     float: left;
 }
 #history .spanTitle{
     font-size: 32px;
+	color: #9C6619;
+	text-shadow: -1px 0 #fcf8e3, 0 1px #fcf8e3, 1px 0 #fcf8e3, 0 -1px #fcf8e3;
 }
 #history .spanUser{
-    float: right;
+    position: absolute;
+    right: 5px;
+	color: #9C6619;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
-/*History Alert*/
+
+/*BAS RELIEF PIZZA IMAGE*/
+#pizzaBasRelief{
+	display: block;
+	width: 50px;
+	height: 50px;
+	float: right;
+	margin-right: 10px;
+}
+
 
 /* PIZZA BUILDER TITLE NAVBAR */
 .navbar-header a{	
@@ -64,10 +95,10 @@ body{
     font-size: 24px;
 }
 .navbar-default .navbar-brand{
-    color: white;
+    color: #9C6619;
 }
 .navbar-default .navbar-brand:hover{
-    color: #9C6619;
+    color: #FFFFFF;
 }
 
 /* NAVBAR BACKGROUND */
@@ -94,9 +125,19 @@ body{
 
 
 /*----------HOME---------------*/
-.label-warning{
+
+/* MENU LINKS */
+.menuLink h3 span{
     font-family: Stark;
     font-size: 20px;
+	color: #745B39;
+	text-decoration: underline;
+}
+.menuLink h3 span:hover{
+	border: 1px solid #745B39;
+}
+#row1{ 
+	text-align: center;  
 }
 
 #row1 .jumbotron{  
@@ -104,7 +145,27 @@ body{
     padding: 0px;
     width: 1000px;
     height: 165px;
+	background: url('/PizzaBuilder/resources/images/news_pizzaSmall.jpg');
+	border: 1px solid #745B39;
+	text-align: center;
+	position: relative;
 }
+#row1 .jumbotron h1{
+	background-color: rgba(252,248,227,0.5);
+	margin-top: 25px;
+	width: 100%;
+	line-height: 100px;
+	font-family: Stark;
+	font-size: 34px;
+	color: #fcf8e3;/*#745B39;*/
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+#row1 .jumbotron h1 small{
+	text-transform: uppercase;
+	font-size: 18px;
+	color: #fcf8e3;
+}
+
 /*----------END: HOME---------------*/
 
 /*---------GENERAL LAYOUT-----------*/
@@ -160,35 +221,37 @@ div[name='menuItem'] .panel:hover{
     border-color: #ed9c28;	
 }
 
-/* Crust Image */
+/* Crust Detail */
 .crustDiv span{
     display: block;
     width: 100%;
     height: auto;
 }
 
-/* Edge Image */
+
+
+/* Edge Detail */
 .edgeDiv span{
     display: block;
     width: 100%;
     height: auto;
 }
 
-/* Size Image */
+/* Size Detail */
 .sizeDiv span{
     display: block;
     width: 100%;
     height: auto;
 }
 
-/* Size Image */
+/* Size Detail */
 .layoutDiv span{
     display: block;
     width: 100%;
     height: auto;
 }
 
-/* Size Image */
+/* Size Detail */
 .flavorsDiv span{
     display: block;
     width: 100%;
@@ -202,10 +265,27 @@ div[name='panelPizzaDetails']{
     font-weight: lighter;
     position: relative;
 }
+
+/* scrollable div that contains pizza details */
 .scrollableContent{
     height: 285px;
     overflow-x: hidden;
     overflow-y: auto;    
+}
+
+/* each pizza part detail title */
+.scrollableContent span{
+	font-weight: lighter;
+}
+
+/* each pizza part detail text */
+.scrollableContent small{
+	font-family: Verdana;
+}
+
+/* each pizza part detail info icon */
+.scrollableContent .glyphicon{
+	float: right;
 }
 div[name='panelPizzaDetails'] span{
     background-color: #745B39;
@@ -257,7 +337,7 @@ div[name='menuItem'] .panel .panel-footer{
 div[name='menuItem'] .panel .panel-footer .pizzaText{
     height: 100%;
 }
-/* Aliging ADD button to center*/
+/* Aligning ADD button to center*/
 /* Background to card color */
 div[name='menuItem'] .panel .botao{
     text-align: center; 
@@ -314,3 +394,287 @@ div[name='menuItem'] .panel .panel-footer hr{
 }
 /*----------------END: Menu Item View--------------*/
 
+/*----------------Pizza Builder View---------------*/
+
+/* START PROGRESS NAV */
+div[name='progressDiv']{
+	border-color: #9C6619;
+	background-color: #F8D19C;
+	box-shadow: 2px 2px 2px #888888;
+	height: 400px;
+	margin: 0px;
+	font-family: Stark;
+	font-weight: lighter;
+}
+
+/* Progress TEXT */
+div[name='progressDiv'] h3{
+	font-family: Freshman;
+	font-weight: lighter;
+	font-size: 24px;
+	color: #fcf8e3;
+	margin: 0px;
+}
+div[name='progressDiv'] .label{
+	width: 97%;
+	display: block;
+	margin: 4px;
+	padding: 4px 0px 0px 0px;
+	border: 1px solid #9C6619;
+	background-color: #9C6619;
+	box-shadow: 1px 1px 1px #888888;
+}
+
+.progressTag{
+	margin-bottom: 8px;
+}
+
+div[name='progressDiv'] .percent{	
+	display: inline-block;
+	background-color: #fcf8e3;
+	font-family: Stark;
+	font-size: 65px;
+	width: 100%;
+	color: #9C6619;
+}
+
+div[name='progressDiv'] .pizzaDetails{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+/* END PROGRESS NAV */
+
+/* START BUILDER DIV */
+#builderDiv h2{
+    background-color: #745B39;
+    font-family: Stark, Verdana;
+    font-size: 24px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    color: #ed9c28;
+    height: 100%;
+    vertical-align: super;
+    margin: 8px auto;
+}
+/* SIZE CARDS */
+#builderDiv #sizeColumn div[name='sizeItem']{
+	height: 200px;
+        width: 240px;
+        margin-bottom: 15px;
+        text-align:center;
+        display: inline;
+}
+/*setting the panel size so it fits the menuItem container*/
+div[name='sizeItem'] .panel{
+    width: 100%;
+    height:100%;
+    overflow: hidden;
+    background-color: #F8D19C;
+    box-shadow: 2px 2px 2px #888888;
+    border: 3px solid #B48E59;
+}
+
+div[name='sizeItem'] .panel:hover{
+    border-color: #ed9c28;	
+}
+
+/* size thumbnail */
+#builderDiv #sizeColumn div[name='sizeItem'] .panel .panel-body{
+	height: 120px;
+        margin-bottom: 0px; 
+        padding: 2px;
+        border: 1px solid #B48E59;
+        border-top: none;
+        overflow: hidden;
+        background-color: #fcf8e3;
+}
+#builderDiv #sizeColumn div[name='sizeItem'] .panel .panel-footer{
+    margin-bottom: 0px;  
+    height: 150px;
+    border-color: transparent;
+    border-width: 0px; 
+    color: #745B39;
+    overflow-y: auto;
+}
+#builderDiv #sizeColumn div[name='sizeItem'] .panel .panel-footer h3{
+    font-family: Freshman;	
+    font-size: 22px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+div[name='sizeItem'] .panel .panel-footer hr{
+    margin: 3px;
+    border-color: #9C6619;
+}
+
+#sizeColumn{
+    display: inline-block;
+}
+/* END SIZE CARD */
+
+/* START CRUST CARD */
+#builderDiv #crustColumn div[name='crustItem']{
+	height: 270px;
+        width: 240px;
+        margin-bottom: 15px;
+        text-align:left;
+}
+/*setting the panel size so it fits the crustItem container*/
+div[name='crustItem'] .panel{
+    width: 100%;
+    height:100%;
+    overflow: hidden;
+    background-color: #F8D19C;
+    box-shadow: 2px 2px 2px #888888;
+    border: 3px solid #B48E59;
+}
+
+div[name='crustItem'] .panel:hover{
+    border-color: #ed9c28;	
+}
+
+/* crust thumbnail */
+#builderDiv #crustColumn div[name='crustItem'] .panel .panel-body{
+	height: 120px;
+        margin-bottom: 0px; 
+        padding: 2px;
+        border: 1px solid #B48E59;
+        border-top: none;
+        overflow: hidden;
+        background-color: #fcf8e3;
+}
+#builderDiv #crustColumn div[name='crustItem'] .panel .panel-footer{
+    margin-bottom: 0px;  
+    height: 150px;
+    border-color: transparent;
+    border-width: 0px; 
+    color: #745B39;
+    overflow-y: auto;
+    text-decoration: none;
+}
+#builderDiv #crustColumn div[name='crustItem'] .panel .panel-footer h3{
+    font-family: Freshman;	
+    font-size: 22px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+div[name='crustItem'] .panel .panel-footer hr{
+    margin: 3px;
+    border-color: #9C6619;
+}
+/* END CRUST CARD */
+
+
+/* START EDGE CARD */
+#builderDiv #edgeColumn div[name='edgeItem']{
+	height: 270px;
+        width: 240px;
+        margin-bottom: 15px;
+        text-align:left;
+}
+/*setting the panel size so it fits the crustItem container*/
+div[name='edgeItem'] .panel{
+    width: 100%;
+    height:100%;
+    overflow: hidden;
+    background-color: #F8D19C;
+    box-shadow: 2px 2px 2px #888888;
+    border: 3px solid #B48E59;
+}
+
+div[name='edgeItem'] .panel:hover{
+    border-color: #ed9c28;	
+}
+
+/* crust thumbnail */
+#builderDiv #edgeColumn div[name='edgeItem'] .panel .panel-body{
+	height: 120px;
+        margin-bottom: 0px; 
+        padding: 2px;
+        border: 1px solid #B48E59;
+        border-top: none;
+        overflow: hidden;
+        background-color: #fcf8e3;
+}
+#builderDiv #edgeColumn div[name='edgeItem'] .panel .panel-footer{
+    margin-bottom: 0px;  
+    height: 150px;
+    border-color: transparent;
+    border-width: 0px; 
+    color: #745B39;
+    overflow-y: auto;
+    text-decoration: none;
+}
+#builderDiv #edgeColumn div[name='edgeItem'] .panel .panel-footer h3{
+    font-family: Freshman;	
+    font-size: 22px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+div[name='edgeItem'] .panel .panel-footer hr{
+    margin: 3px;
+    border-color: #9C6619;
+}
+/* END EDGE CARD */
+
+/* START LAYOUT CARD */
+#builderDiv #layoutColumn div[name='layoutItem']{
+	height: 260px;
+        width: 240px;
+        margin-bottom: 15px;
+        text-align:left;
+}
+/*setting the panel size so it fits the crustItem container*/
+div[name='layoutItem'] .panel{
+    width: 100%;
+    height:100%;
+    overflow: hidden;
+    background-color: #F8D19C;
+    box-shadow: 2px 2px 2px #888888;
+    border: 3px solid #B48E59;
+}
+
+div[name='layoutItem'] .panel:hover{
+    border-color: #ed9c28;	
+}
+
+/* crust thumbnail */
+#builderDiv #layoutColumn div[name='layoutItem'] .panel .panel-body{
+    height: 140px;
+    margin-bottom: 0px; 
+    padding: 2px;
+    border: 1px solid #B48E59;
+    border-top: none;
+    overflow: hidden;
+    background-color: #fcf8e3;
+}
+
+#builderDiv #layoutColumn div[name='layoutItem'] .panel .panel-footer{
+    margin-bottom: 0px;  
+    height: 120px;
+    border-color: transparent;
+    border-width: 0px; 
+    color: #745B39;
+    overflow-y: auto;
+    text-decoration: none;
+}
+#builderDiv #layoutColumn div[name='layoutItem'] .panel .panel-footer h3{
+    font-family: Freshman;	
+    font-size: 22px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+div[name='layoutItem'] .panel .panel-footer hr{
+    margin: 3px;
+    border-color: #9C6619;
+}
+/* END LAYOUT CARD */
+
+/* END BUILDER DIV */
+	
+/*--------------END:Pizza Builder View-------------*/
