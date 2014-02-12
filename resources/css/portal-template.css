@@ -74,8 +74,8 @@ body{
 #history .spanUser{
     position: absolute;
     right: 5px;
-	color: #9C6619;
-	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    color: #9C6619;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 /*BAS RELIEF PIZZA IMAGE*/
@@ -87,7 +87,6 @@ body{
 	margin-right: 10px;
 }
 
-
 /* PIZZA BUILDER TITLE NAVBAR */
 .navbar-header a{	
     font-family: Stark;
@@ -98,14 +97,17 @@ body{
     color: #9C6619;
 }
 .navbar-default .navbar-brand:hover{
-    color: #FFFFFF;
+    color: #fff;
 }
 
 /* NAVBAR BACKGROUND */
 .navbar-default{
     background-color: #f0ad4e;
 }
-
+/*NAVBAR MENU LINKS*/
+.navbar-default .navbar-nav li a:hover{
+	background-color: white;
+}
 
 /* MENUS: HOME, MENU, ABOUT*/
 .collapse ul li{
@@ -121,6 +123,8 @@ body{
 .navbar-default .navbar-nav  li  a:hover{
     color: #f0ad4e;
 }
+
+
 /*----------END: NAVBAR-------------*/
 
 
@@ -446,6 +450,9 @@ div[name='progressDiv'] .pizzaDetails{
 /* END PROGRESS NAV */
 
 /* START BUILDER DIV */
+#builderDiv{
+    text-align: center; 
+}
 #builderDiv h2{
     background-color: #745B39;
     font-family: Stark, Verdana;
@@ -456,6 +463,7 @@ div[name='progressDiv'] .pizzaDetails{
     height: 100%;
     vertical-align: super;
     margin: 8px auto;
+    text-align: left;
 }
 /* SIZE CARDS */
 #builderDiv #sizeColumn div[name='sizeItem']{
@@ -675,6 +683,130 @@ div[name='layoutItem'] .panel .panel-footer hr{
 }
 /* END LAYOUT CARD */
 
+/* START FLAVOR CARD */
+#builderDiv #flavorColumn div[name='flavorItem']{
+	height: 260px;
+        width: 240px;
+        margin-bottom: 15px;
+        text-align:left;
+}
+/*setting the panel size so it fits the crustItem container*/
+div[name='flavorItem'] .panel{
+    width: 100%;
+    height:100%;
+    overflow: hidden;
+    background-color: #F8D19C;
+    box-shadow: 2px 2px 2px #888888;
+    border: 3px solid #B48E59;
+}
+
+div[name='flavorItem'] .panel:hover{
+    border-color: #ed9c28;	
+}
+
+/* crust thumbnail */
+#builderDiv #flavorColumn div[name='flavorItem'] .panel .panel-body{
+    height: 140px;
+    margin-bottom: 0px; 
+    padding: 2px;
+    border: 1px solid #B48E59;
+    border-top: none;
+    overflow: hidden;
+    background-color: #fcf8e3;
+    text-align: center;
+    color: #909090;
+    font-family: Stark;
+    font-size: 18px;
+}
+
+#builderDiv #flavorColumn div[name='flavorItem'] .panel .panel-footer{
+    margin-bottom: 0px;  
+    height: 120px;
+    border-color: transparent;
+    border-width: 0px; 
+    color: #745B39;
+    overflow-y: auto;
+    text-decoration: none;
+}
+#builderDiv #flavorColumn div[name='flavorItem'] .panel .panel-footer h3{
+    font-family: Freshman;	
+    font-size: 22px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+#builderDiv #flavorColumn div[name='flavorItem'] .panel .panel-footer i{
+    font-size: 28px;
+    color: #F0804E;
+    line-height: 40px;
+}
+#builderDiv #flavorColumn div[name='flavorItem'] .panel .panel-footer i:hover{
+    color: #9c4219;
+}
+
+div[name='flavorItem'] .panel .panel-footer hr{
+    margin: 3px;
+    border-color: #9C6619;
+}
+#flavorCardLink1,
+#flavorCardLink2,
+#flavorCardLink3,
+#flavorCardLink4{   
+    text-decoration: none;    
+    display: table;    
+}
+#flavorCardLink1 > h3,
+#flavorCardLink2 > h3,
+#flavorCardLink3 > h3,
+#flavorCardLink4 > h3{
+    font-family: Freshman;
+    font-size: 24px;    
+    color: #745B39;
+}
+#builderDiv #flavorColumn .flavorDiv1,
+#builderDiv #flavorColumn .flavorDiv2,
+#builderDiv #flavorColumn .flavorDiv3,
+#builderDiv #flavorColumn .flavorDiv4{
+    margin: 0 auto;
+    width: 20%;
+    height: content-box;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    
+}
+
+.flavorText a{
+    display: block;
+}
+/* END FLAVOR CARD */
+
+/* START OBS COLUMN */
+
+.obsTextArea textarea{
+    width: 50%;
+    margin: 0 auto;
+}
+/* END OBS COLUMN */
+
+/* START ADD BUTTON */
+#builderDiv button{
+    width: 40%;
+    height: 80px;
+    font-family: Stark;
+    font-size: 20px;
+    box-shadow: 2px 2px 2px #888888;
+}
+/* END ADD BUTTON */
+
+#builderDiv hr{
+    border-color: black;    
+}
+
+/* Div that wraps all cards in PizzaBuilder */
+.cardDiv{
+    margin: 0 auto;
+    display: inline-block;
+}
 /* END BUILDER DIV */
 	
 /*--------------END:Pizza Builder View-------------*/

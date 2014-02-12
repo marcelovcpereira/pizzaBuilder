@@ -1,0 +1,32 @@
+<div class='cardDiv'>
+    <a id="pizza{{type|capitalize}}CardLink{{object.id}}" class="col-lg-3 col-md-4 col-sm-6 col-xs-12" href="">
+        <!-- Card Item -->
+        <div id="{{type}}Item{{object.id}}" name="{{type}}Item"  class="col-lg-3 col-md-4 col-sm-6 col-xs-12" 
+             value="false">
+            <!-- PANEL -->
+            <div class="panel panel-default">
+
+                <!-- PANEL BODY -->
+                <div class="panel-body thumbnail">
+                    <img src="/PizzaBuilder/resources/images/{{object.picturePath}}" 
+                         alt="{{object.name}} Image"> 
+                </div><!-- PANEL BODY -->
+
+                <!-- PANEL FOOTER -->
+                <div class="panel panel-footer"> 
+                    <div class="{{type}}Text">
+                        <!-- object NAME -->
+                        <h3>{{object.name}}</h3>
+
+                        <hr>
+                        <!-- DESCRIPTION -->
+                        <span class="caption">
+                            {{object.description}}
+                        </span>
+                        <br>
+                    </div>
+                </div><!-- PANEL FOOTER -->
+            </div><!-- PANEL -->
+        </div><!-- Card Item -->
+    </a>
+</div>
