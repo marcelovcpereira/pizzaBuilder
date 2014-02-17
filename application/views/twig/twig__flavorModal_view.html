@@ -1,0 +1,82 @@
+<!-- HIDDEN INGREDIENTS MODAL -->
+<div class="modal fade" id="ingredientsPane" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-value="0">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                
+                <ul class="nav nav-tabs">
+
+                    <li class="active">
+                        <a href="#ingredientsContent" data-toggle="tab">
+                            <h4 class="modal-title" id="myModalLabel">Ingredients</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#flavorsContent" data-toggle="tab"><h4 class="modal-title" id="myModalLabel">Flavors</h4></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- CONTENT TABS -->
+            <div class="tab-content">
+                <!-- INGREDIENT CONTENT PANE -->
+                <div class="tab-pane active" id="ingredientsContent">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div id="ingredientsList" class="col-lg-7">
+                                <ul>
+                                    {% for ingredient in pizzaBuilder.getIngredients %}
+                                    <li id="ingredient{{ingredient.id}}" class="alert alert-warning" value="{{ingredient.id}}">
+                                        {{ingredient.name}}                 
+                                        <button type="button" class="btn btn-danger pull-right">-</button>
+                                        <button type="button" class="btn btn-warning pull-right">+</button>
+                                    </li>
+
+                                    <div id="hiddenIngredientCard{{ingredient.id}}" class="hide">
+                                        {% include 'twig__card_view.html' 
+                                        with {'type' : 'ingredient', 'object' : pizzaBuilder.getIngredients[loop.index0]} %}
+                                    </div>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div id="ingredientColumn" class="col-lg-5">
+                                {% include 'twig__card_view.html' 
+                                with {'type' : 'ingredient', 'object' : pizzaBuilder.getIngredients[0]} %}
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- INGREDIENT CONTENT PANE -->
+
+                <!-- FLAVORS CONTENT PANE -->
+                <div class="tab-pane" id="flavorsContent">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div id="flavorsList" class="col-lg-7">
+                                <ul>
+                                    {% for flavor in pizzaBuilder.getFlavors %}
+                                    <li id="flavor{{flavor.id}}" class="alert alert-warning" value="{{flavor.id}}">
+                                        {{flavor.name}}  
+                                    </li>
+                                    <div id="hiddenFlavorCard{{flavor.id}}" class="hide">
+                                        {% include 'twig__card_view.html' 
+                                        with {'type' : 'flavor', 'object' : pizzaBuilder.getFlavors[loop.index0]} %}
+                                    </div>
+                                    {% endfor %}
+                                </ul>
+                            </div>  
+                            <div id="flavorsColumn" class="col-lg-5">
+                                {% include 'twig__card_view.html' 
+                                with {'type' : 'flavor', 'object' : pizzaBuilder.getFlavors[0]} %}
+                            </div>                      
+                        </div>
+                    </div>
+                </div><!-- FLAVORS CONTENT PANE -->
+            </div><!-- CONTENT TABS -->
+            <div class="modal-footer">
+             <h3 class="modal-title" id="myModalLabel">Flavor:</h3>
+             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+             <button type="button" class="btn btn-warning">Save Flavor</button>
+         </div>
+     </div>
+ </div>
+</div><!-- HIDDEN INGREDIENTS MODAL -->

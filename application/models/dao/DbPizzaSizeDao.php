@@ -38,14 +38,14 @@ class DbPizzaSizeDao extends PizzaSizeDao
         
         //Selects a crust by id
         $query = "SELECT"
-                ." s.{$this->idCol}"
-                .",s.{$this->nameCol}"
-                .",s.{$this->descriptionCol}" 
-                .",s.{$this->picturePathCol}"
-                ." FROM"
-                ." {$this->table} s"
-                ." WHERE"
-                ." s.{$this->idCol} = ?";
+        ." s.{$this->idCol}"
+        .",s.{$this->nameCol}"
+        .",s.{$this->descriptionCol}" 
+        .",s.{$this->picturePathCol}"
+        ." FROM"
+        ." {$this->table} s"
+        ." WHERE"
+        ." s.{$this->idCol} = ?";
 
         //Executes the query with the specified prepared statement ($id)
         $result = $this->connection->query($query,array($id));        
@@ -77,40 +77,54 @@ class DbPizzaSizeDao extends PizzaSizeDao
      */
     public function fetchAll() 
     { 
-        //Returned Size List
-        $sizes = array();
-        
-        //Selects a size by id
-        $query = "SELECT"
-                ." s.{$this->idCol}"
-                .",s.{$this->nameCol}"
-                .",s.{$this->descriptionCol}" 
-                .",s.{$this->picturePathCol}"
-                ." FROM"
-                ." {$this->table} s";
-
-        //Executes the query
-        $result = $this->connection->query($query);        
-        
-        //Checks if there's results
-        if($result->num_rows() > 0 )
+        //the key value where this query will be cached     
+        $key = 'allSizes';
+        //5 hours to reset this cache
+        $timeToLive = 18000;         
+        //Getting code igniter instance
+        $CI = & get_instance();
+        //Seeking value in CacheWrapper 
+        $sizes = $CI->cachewrapper->fetch($key);
+        if($sizes === FALSE)
         {
-            //For each size found on table
-            foreach($result->result() as $row)
+            //Returned Size List
+            $sizes = array();
+            
+            //Selects a size by id
+            $query = "SELECT"
+            ." s.{$this->idCol}"
+            .",s.{$this->nameCol}"
+            .",s.{$this->descriptionCol}" 
+            .",s.{$this->picturePathCol}"
+            ." FROM"
+            ." {$this->table} s";
+
+            //Executes the query
+            $result = $this->connection->query($query);        
+            
+            //Checks if there's results
+            if($result->num_rows() > 0 )
             {
-                //Instantiate a new PizzaSize
-                //and let's initialize it.
-                $size = new PizzaSize();
-                $size->setId($row->id);
-                $size->setName($row->name);
-                $size->setDescription($row->description);
-                $size->setPicturePath($row->picture);
-                
-                //Add to the array
-                $sizes[] = $size;
+                //For each size found on table
+                foreach($result->result() as $row)
+                {
+                    //Instantiate a new PizzaSize
+                    //and let's initialize it.
+                    $size = new PizzaSize();
+                    $size->setId($row->id);
+                    $size->setName($row->name);
+                    $size->setDescription($row->description);
+                    $size->setPicturePath($row->picture);
+                    
+                    //Add to the array
+                    $sizes[] = $size;
+                }
+                /*
+                 * Caching the crust types
+                 */ 
+                $CI->cachewrapper->add($key,$sizes,$timeToLive);
             }
         }
-        
         
         return $sizes;
     }

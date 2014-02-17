@@ -96,56 +96,72 @@ class DbPizzaEdgeDao extends PizzaEdgeDao {
      * @return type \PizzaEdge[] A list of all pizza edges
      */
     public function fetchAll() {
-        //Returned edges List
-        $edges = array();
-        //Selects all edges
-        $query = "SELECT"
-                . " e.{$this->idCol}"
-                . ",e.{$this->nameCol}"
-                . ",e.{$this->descriptionCol}"
-                . ",e.{$this->picturePathCol}"
-                . ",i.id as fillingId"
-                . ",i.name as fillingName"
-                . ",i.description as fillingDescription"
-                . ",i.picture as fillingPicturePath"
-                . " FROM"
-                . " {$this->table} e"
-                . " LEFT JOIN {$this->ingredients} i"
-                . " ON e.{$this->fillingCol} = i.id";
+        //the key value where this query will be cached     
+        $key = 'allEdges';
+        //5 hours to reset this cache
+        $timeToLive = 18000;         
+        //Getting code igniter instance
+        $CI = & get_instance();
+        //Seeking value in CacheWrapper 
+        $edges = $CI->cachewrapper->fetch($key);
+        if($edges === FALSE)
+        {
+            //Returned edges List
+            $edges = array();
+            //Selects all edges
+            $query = "SELECT"
+                    . " e.{$this->idCol}"
+                    . ",e.{$this->nameCol}"
+                    . ",e.{$this->descriptionCol}"
+                    . ",e.{$this->picturePathCol}"
+                    . ",i.id as fillingId"
+                    . ",i.name as fillingName"
+                    . ",i.description as fillingDescription"
+                    . ",i.picture as fillingPicturePath"
+                    . " FROM"
+                    . " {$this->table} e"
+                    . " LEFT JOIN {$this->ingredients} i"
+                    . " ON e.{$this->fillingCol} = i.id";
 
-        //Executes the query
-        $result = $this->connection->query($query);
+            //Executes the query
+            $result = $this->connection->query($query);
 
-        //Checks if there's results
-        if ($result->num_rows() > 0) {
-            //For each edge found on table
-            foreach ($result->result() as $row) {
-                //Instantiate a new PizzaEdge
-                //and let's initialize it.
-                $edge = new PizzaEdge();
-                $edge->setId($row->id);
-                $edge->setName($row->name);
-                $edge->setDescription($row->description);
-                $edge->setPicturePath($row->picture);
+            //Checks if there's results
+            if ($result->num_rows() > 0) 
+            {
+                //For each edge found on table
+                foreach ($result->result() as $row)
+                {
+                    //Instantiate a new PizzaEdge
+                    //and let's initialize it.
+                    $edge = new PizzaEdge();
+                    $edge->setId($row->id);
+                    $edge->setName($row->name);
+                    $edge->setDescription($row->description);
+                    $edge->setPicturePath($row->picture);
 
-                //If the edge has filling (filling id is valid)
-                if (intval($row->fillingId) !== 0) {
-                    //Creating the Filling Ingredient
-                    $filling = new Ingredient();
-                    $filling->setId($row->fillingId);
-                    $filling->setName($row->fillingName);
-                    $filling->setDescription($row->fillingDescription);
-                    $filling->setPicturePath($row->fillingPicturePath);
+                    //If the edge has filling (filling id is valid)
+                    if (intval($row->fillingId) !== 0) {
+                        //Creating the Filling Ingredient
+                        $filling = new Ingredient();
+                        $filling->setId($row->fillingId);
+                        $filling->setName($row->fillingName);
+                        $filling->setDescription($row->fillingDescription);
+                        $filling->setPicturePath($row->fillingPicturePath);
 
-                    //Adding it to the Edge
-                    $edge->setFilling($filling);
+                        //Adding it to the Edge
+                        $edge->setFilling($filling);
+                    }
+
+                    //Add to the array
+                    $edges[] = $edge;
                 }
-
-                //Add to the array
-                $edges[] = $edge;
+                /*
+                 * Caching the edge types
+                 */ 
+                $CI->cachewrapper->add($key,$edges,$timeToLive);
             }
         }
-
 
         return $edges;
     }

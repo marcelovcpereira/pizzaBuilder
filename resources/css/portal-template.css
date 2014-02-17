@@ -13,10 +13,10 @@ body{
 #footerRow{
     height: 220px;
     background-color: #f0ad4e;
-	border-top: 1px solid #8a6d3b;
+    border-top: 1px solid #8a6d3b;
     color: white;
     padding: 10px;
-	position: relative;
+    position: relative;
 }
 #footerRow h2 .span{
     margin: 5px;
@@ -54,8 +54,8 @@ body{
     text-align: center;
     border: 1px solid #9C6619;
     position: relative;
-	overflow: hidden;
-	background: url('/PizzaBuilder/resources/images/bannerPizza.png');
+    overflow: hidden;
+    background: url('/PizzaBuilder/resources/images/bannerPizza.png');
 }
 #history img{
 	float: left;
@@ -68,8 +68,8 @@ body{
 }
 #history .spanTitle{
     font-size: 32px;
-	color: #9C6619;
-	text-shadow: -1px 0 #fcf8e3, 0 1px #fcf8e3, 1px 0 #fcf8e3, 0 -1px #fcf8e3;
+    color: #9C6619;
+    text-shadow: -1px 0 #fcf8e3, 0 1px #fcf8e3, 1px 0 #fcf8e3, 0 -1px #fcf8e3;
 }
 #history .spanUser{
     position: absolute;
@@ -134,8 +134,8 @@ body{
 .menuLink h3 span{
     font-family: Stark;
     font-size: 20px;
-	color: #745B39;
-	text-decoration: underline;
+    color: #745B39;
+    text-decoration: underline;
 }
 .menuLink h3 span:hover{
 	border: 1px solid #745B39;
@@ -149,10 +149,10 @@ body{
     padding: 0px;
     width: 1000px;
     height: 165px;
-	background: url('/PizzaBuilder/resources/images/news_pizzaSmall.jpg');
-	border: 1px solid #745B39;
-	text-align: center;
-	position: relative;
+    background: url('/PizzaBuilder/resources/images/news_pizzaSmall.jpg');
+    border: 1px solid #745B39;
+    text-align: center;
+    position: relative;
 }
 #row1 .jumbotron h1{
 	background-color: rgba(252,248,227,0.5);
@@ -223,6 +223,7 @@ div[name='menuItem'] .panel{
 
 div[name='menuItem'] .panel:hover{
     border-color: #ed9c28;	
+    box-shadow: 2px 2px 2px #888888;
 }
 
 /* Crust Detail */
@@ -322,7 +323,7 @@ div[name='panelPizzaDetails'] button:hover{
 /* PIZZA ITEM IMAGE SIZE: 135px */
 div[name='menuItem'] .panel .panel-body{
     margin-bottom: 0px; 
-    padding: 2px;
+    padding: 0px;
     height: 135px;
     border: 1px solid #B48E59;
     border-top: none;
@@ -465,13 +466,17 @@ div[name='progressDiv'] .pizzaDetails{
     margin: 8px auto;
     text-align: left;
 }
+.cardImage{
+    width: 100% !important;
+    height: 100% !important;
+}
 /* SIZE CARDS */
 #builderDiv #sizeColumn div[name='sizeItem']{
 	height: 200px;
-        width: 240px;
-        margin-bottom: 15px;
-        text-align:center;
-        display: inline;
+    width: 240px;
+    margin-bottom: 15px;
+    text-align:center;
+    display: inline;
 }
 /*setting the panel size so it fits the menuItem container*/
 div[name='sizeItem'] .panel{
@@ -490,12 +495,12 @@ div[name='sizeItem'] .panel:hover{
 /* size thumbnail */
 #builderDiv #sizeColumn div[name='sizeItem'] .panel .panel-body{
 	height: 120px;
-        margin-bottom: 0px; 
-        padding: 2px;
-        border: 1px solid #B48E59;
-        border-top: none;
-        overflow: hidden;
-        background-color: #fcf8e3;
+    margin-bottom: 0px; 
+    border: 1px solid #B48E59;
+    padding: 0px;
+    border-top: none;
+    overflow: hidden;
+    background-color: #fcf8e3;
 }
 #builderDiv #sizeColumn div[name='sizeItem'] .panel .panel-footer{
     margin-bottom: 0px;  
@@ -525,9 +530,9 @@ div[name='sizeItem'] .panel .panel-footer hr{
 /* START CRUST CARD */
 #builderDiv #crustColumn div[name='crustItem']{
 	height: 270px;
-        width: 240px;
-        margin-bottom: 15px;
-        text-align:left;
+    width: 240px;
+    margin-bottom: 15px;
+    text-align:left;
 }
 /*setting the panel size so it fits the crustItem container*/
 div[name='crustItem'] .panel{
@@ -546,12 +551,12 @@ div[name='crustItem'] .panel:hover{
 /* crust thumbnail */
 #builderDiv #crustColumn div[name='crustItem'] .panel .panel-body{
 	height: 120px;
-        margin-bottom: 0px; 
-        padding: 2px;
-        border: 1px solid #B48E59;
-        border-top: none;
-        overflow: hidden;
-        background-color: #fcf8e3;
+    margin-bottom: 0px; 
+    padding: 0px;
+    border: 1px solid #B48E59;
+    border-top: none;
+    overflow: hidden;
+    background-color: #fcf8e3;
 }
 #builderDiv #crustColumn div[name='crustItem'] .panel .panel-footer{
     margin-bottom: 0px;  
@@ -579,9 +584,9 @@ div[name='crustItem'] .panel .panel-footer hr{
 /* START EDGE CARD */
 #builderDiv #edgeColumn div[name='edgeItem']{
 	height: 270px;
-        width: 240px;
-        margin-bottom: 15px;
-        text-align:left;
+    width: 240px;
+    margin-bottom: 15px;
+    text-align:left;
 }
 /*setting the panel size so it fits the crustItem container*/
 div[name='edgeItem'] .panel{
@@ -600,12 +605,12 @@ div[name='edgeItem'] .panel:hover{
 /* crust thumbnail */
 #builderDiv #edgeColumn div[name='edgeItem'] .panel .panel-body{
 	height: 120px;
-        margin-bottom: 0px; 
-        padding: 2px;
-        border: 1px solid #B48E59;
-        border-top: none;
-        overflow: hidden;
-        background-color: #fcf8e3;
+    margin-bottom: 0px; 
+    padding: 0px;
+    border: 1px solid #B48E59;
+    border-top: none;
+    overflow: hidden;
+    background-color: #fcf8e3;
 }
 #builderDiv #edgeColumn div[name='edgeItem'] .panel .panel-footer{
     margin-bottom: 0px;  
@@ -632,9 +637,9 @@ div[name='edgeItem'] .panel .panel-footer hr{
 /* START LAYOUT CARD */
 #builderDiv #layoutColumn div[name='layoutItem']{
 	height: 260px;
-        width: 240px;
-        margin-bottom: 15px;
-        text-align:left;
+    width: 240px;
+    margin-bottom: 15px;
+    text-align:left;
 }
 /*setting the panel size so it fits the crustItem container*/
 div[name='layoutItem'] .panel{
@@ -654,7 +659,7 @@ div[name='layoutItem'] .panel:hover{
 #builderDiv #layoutColumn div[name='layoutItem'] .panel .panel-body{
     height: 140px;
     margin-bottom: 0px; 
-    padding: 2px;
+    padding: 0px;
     border: 1px solid #B48E59;
     border-top: none;
     overflow: hidden;
@@ -686,9 +691,9 @@ div[name='layoutItem'] .panel .panel-footer hr{
 /* START FLAVOR CARD */
 #builderDiv #flavorColumn div[name='flavorItem']{
 	height: 260px;
-        width: 240px;
-        margin-bottom: 15px;
-        text-align:left;
+    width: 240px;
+    margin-bottom: 15px;
+    text-align:left;
 }
 /*setting the panel size so it fits the crustItem container*/
 div[name='flavorItem'] .panel{
@@ -708,7 +713,7 @@ div[name='flavorItem'] .panel:hover{
 #builderDiv #flavorColumn div[name='flavorItem'] .panel .panel-body{
     height: 140px;
     margin-bottom: 0px; 
-    padding: 2px;
+    padding: 0px;
     border: 1px solid #B48E59;
     border-top: none;
     overflow: hidden;
@@ -806,7 +811,161 @@ div[name='flavorItem'] .panel .panel-footer hr{
 .cardDiv{
     margin: 0 auto;
     display: inline-block;
+    padding-top: 10px;
 }
+.cardDivSelected{
+    border: 3px solid #d2322d;
+}
+
+
+/* START INGREDIENTS MODAL */
+#ingredientsPane{
+    border: 1px solid #745B39;
+   
+}
+#ingredientsPane #ingredientsList{
+    overflow: auto;
+}
+
+
+#ingredientsPane h4,h3{
+    font-family: Freshman;
+    font-size: 20px;
+    color: #745B39;    
+}
+#ingredientsPane h3{
+    float: left;
+}
+#ingredientsPane .modal-header,
+#ingredientsPane .modal-footer,
+#ingredientsPane .modal-content{
+    background-color: #F8D19C;
+    border: none;      
+}
+#ingredientsPane .modal-header{
+    padding-bottom: 0px;
+}
+#ingredientsPane .modal-header button{
+    color: black;
+}
+#ingredientsPane .modal-header ul li a{
+    background-color: transparent;
+    text-decoration: none;
+    color: transparent;
+    border: none;
+}
+#ingredientsPane .modal-header ul li{
+    background-color: #F8D19C;
+}
+#ingredientsPane .modal-header .active{
+    background-color: #FFF2E0;
+}
+#ingredientsPane .modal-footer button{
+    font-weight: bold; 
+}
+#ingredientsPane .modal-body{
+    background-color: #FFF2E0;
+}
+
+#ingredientsPane ul{
+    list-style-type: none;
+    margin: auto 0;
+    padding-left: 0px;
+}
+#ingredientsPane .tab-content ul li{
+    padding: 4px;
+    height: 44px;
+    line-height: 35px;
+    font-family: Stark;
+    font-weight: lighter;
+    font-size: 16px;
+    border: 1px solid #745B39;
+    background-color: #FFF2E0;
+}
+#ingredientsPane ul li:hover{
+    cursor: pointer;
+    background-color: #F8D19C;
+}
+
+#ingredientsPane ul li button{
+    margin-left: 4px;
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;    
+    font-weight: bold;
+}
+/* START INGREDIENTS CARD */
+#ingredientsPane #ingredientColumn,
+#ingredientsPane #flavorsColumn,
+#ingredientsPane #ingredientColumn a,
+#ingredientsPane #flavorsColumn a{
+    padding: 0;
+    margin-top: 20px;
+}
+#ingredientsPane #ingredientColumn div[name='ingredientItem'],
+#ingredientsPane #flavorsColumn div[name='flavorItem']{
+    height: 270px;
+    width: 240px;
+    margin-bottom: 15px;
+    text-align:left;
+}
+/*setting the panel size so it fits the crustItem container*/
+div[name='ingredientItem'] .panel,
+div[name='flavorItem'] .panel{
+    width: 100%;
+    height:100%;
+    overflow: hidden;
+    background-color: #F8D19C;
+    box-shadow: 2px 2px 2px #888888;
+    border: 3px solid #B48E59;
+}
+
+div[name='ingredientItem'] .panel:hover,
+div[name='flavorItem'] .panel:hover{
+    border-color: #ed9c28;  
+}
+
+#ingredientsPane #ingredientColumn div[name='ingredientItem'] .panel .panel-body,
+#ingredientsPane #flavorsColumn div[name='flavorItem'] .panel .panel-body{
+    height: 120px;
+    margin-bottom: 0px; 
+    padding: 0px;
+    border: 1px solid #B48E59;
+    border-top: none;
+    overflow: hidden;
+    background-color: #fcf8e3;
+}
+#ingredientsPane #ingredientColumn div[name='ingredientItem'] .panel .panel-footer,
+#ingredientsPane #flavorsColumn div[name='flavorItem'] .panel .panel-footer{
+    margin-bottom: 0px;  
+    height: 150px;
+    border-color: transparent;
+    border-width: 0px; 
+    color: #745B39;
+    overflow-y: auto;
+    text-decoration: none;
+}
+#ingredientsPane #ingredientColumn div[name='ingredientItem'] .panel .panel-footer h3,
+#ingredientsPane #flavorsColumn div[name='flavorItem'] .panel .panel-footer h3{
+    font-family: Freshman;  
+    font-size: 22px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    width: 100%;
+}
+
+div[name='ingredientItem'] .panel .panel-footer hr,
+div[name='flavorItem'] .panel .panel-footer hr{
+    margin: 3px;
+    border-color: #9C6619;
+    width: 100%;
+    height: auto;
+}
+.ingredientText{
+    display: block;
+}
+/* END INGREDIENTS CARD */
+/* END INGREDIENTS MODAL */
+
+
 /* END BUILDER DIV */
-	
+
 /*--------------END:Pizza Builder View-------------*/

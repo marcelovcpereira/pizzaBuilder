@@ -44,8 +44,7 @@ class Pizza_model extends CI_Model
 		 */
 		public function getMenu()
 		{
-                        return $this->pizzaDAO->fetchAll();
-			//$this->pizzaDAO->fetchAll();
+            return $this->pizzaDAO->fetchAll();
 		}
 }
 /* End of file pizza_model.php */

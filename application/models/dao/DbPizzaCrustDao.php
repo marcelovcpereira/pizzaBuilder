@@ -77,40 +77,55 @@ class DbPizzaCrustDao extends PizzaCrustDao
      */
     public function fetchAll() 
     { 
-        //Returned Crust List
-        $crusts = array();
-        
-        //Selects a crust by id
-        $query = "SELECT"
-                ." c.{$this->idCol}"
-                .",c.{$this->nameCol}"
-                .",c.{$this->descriptionCol}" 
-                .",c.{$this->picturePathCol}"
-                ." FROM"
-                ." {$this->table} c";
-
-        //Executes the query
-        $result = $this->connection->query($query);        
-        
-        //Checks if there's results
-        if($result->num_rows() > 0 )
+        //the key value where this query will be cached     
+        $key = 'allCrusts';
+        //5 hours to reset this cache
+        $timeToLive = 18000;         
+        //Getting code igniter instance
+        $CI = & get_instance();
+        //Seeking value in CacheWrapper 
+        $crusts = $CI->cachewrapper->fetch($key);
+        if($crusts === FALSE)
         {
-            //For each crust found on table
-            foreach($result->result() as $row)
+            //Returned Crust List
+            $crusts = array();
+            
+            //Selects a crust by id
+            $query = "SELECT"
+                    ." c.{$this->idCol}"
+                    .",c.{$this->nameCol}"
+                    .",c.{$this->descriptionCol}" 
+                    .",c.{$this->picturePathCol}"
+                    ." FROM"
+                    ." {$this->table} c";
+
+            //Executes the query
+            $result = $this->connection->query($query);        
+            
+            //Checks if there's results
+            if($result->num_rows() > 0 )
             {
-                //Instantiate a new PizzaCrust
-                //and let's initialize it.
-                $crust = new PizzaCrust();
-                $crust->setId($row->id);
-                $crust->setName($row->name);
-                $crust->setDescription($row->description);
-                $crust->setPicturePath($row->picture);
-                
-                //Add to the array
-                $crusts[] = $crust;
+                //For each crust found on table
+                foreach($result->result() as $row)
+                {
+                    //Instantiate a new PizzaCrust
+                    //and let's initialize it.
+                    $crust = new PizzaCrust();
+                    $crust->setId($row->id);
+                    $crust->setName($row->name);
+                    $crust->setDescription($row->description);
+                    $crust->setPicturePath($row->picture);
+                    
+                    //Add to the array
+                    $crusts[] = $crust;
+                }
+
+                /*
+                 * Caching the crust types
+                 */ 
+                $CI->cachewrapper->add($key,$crusts,$timeToLive);
             }
         }
-        
         
         return $crusts;
     }

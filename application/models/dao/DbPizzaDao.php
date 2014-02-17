@@ -40,15 +40,15 @@ class DbPizzaDao extends PizzaDao
     private $layouts = 'layouts';
     private $flavors = 'flavors';
     private $ingredients = 'ingredients';
-	
+    
     
     /**
      * Constructor, sending the connection to the parent
      */
     public function __construct($conn) {
-        parent::__construct($conn);		
+    	parent::__construct($conn);		
     }
-	
+    
     public function fetch($id)
     {
     }
@@ -56,7 +56,7 @@ class DbPizzaDao extends PizzaDao
     public function delete($id) 
     {
         //stub
-        return null;
+    	return null;
     }
 
     /**
@@ -82,16 +82,21 @@ class DbPizzaDao extends PizzaDao
     public function fetchAll() 
     {     
 		/* 
-		* Trying to fetch from cache (APCu).
+		* Trying to fetch from cache.
 		* If it's not cached, execute all the method and cache it.
 		*/		
 		
-		//the key value where this query will be stored		
+		//the key value where this query will be cached		
 		$key = 'allPizzas';
 		//5 hours to reset this cache
 		$timeToLive = 18000;
-		 
-		$pizzas = apcu_fetch($key);
+		
+		//Getting code igniter instance
+		$CI = & get_instance();
+		//Seeking value in CacheWrapper 
+		$pizzas = $CI->cachewrapper->fetch($key);
+
+		//If key not found in cache, create and cache it
 		if($pizzas === FALSE)
 		{	
 			//Returned Pizza List
@@ -100,56 +105,56 @@ class DbPizzaDao extends PizzaDao
 			//Selects all Pizzas
 			$query = "SELECT"
 					//pizza columns
-					." p.{$this->idCol}"
-					.",p.{$this->nameCol}"
-					.",p.{$this->descriptionCol}" 
-					.",p.{$this->picturePathCol}"
-					.",p.{$this->obsCol}"
-					.",p.{$this->flavor2Col}"
-					.",p.{$this->flavor3Col}"
-					.",p.{$this->flavor4Col}"
+			." p.{$this->idCol}"
+			.",p.{$this->nameCol}"
+			.",p.{$this->descriptionCol}" 
+			.",p.{$this->picturePathCol}"
+			.",p.{$this->obsCol}"
+			.",p.{$this->flavor2Col}"
+			.",p.{$this->flavor3Col}"
+			.",p.{$this->flavor4Col}"
 					//crust columns
-					.",c.id as crustId"
-					.",c.name as crustName"
-					.",c.description as crustDescription"
-					.",c.picture as crustPicturePath"
+			.",c.id as crustId"
+			.",c.name as crustName"
+			.",c.description as crustDescription"
+			.",c.picture as crustPicturePath"
 					//edge columns
-					.",e.id as edgeId"
-					.",e.name as edgeName"
-					.",e.description as edgeDescription"
-					.",e.filling as edgeFilling"
-					.",e.picture as edgePicturePath"
+			.",e.id as edgeId"
+			.",e.name as edgeName"
+			.",e.description as edgeDescription"
+			.",e.filling as edgeFilling"
+			.",e.picture as edgePicturePath"
 					//size columns
-					.",s.id as sizeId"
-					.",s.name as sizeName"
-					.",s.description as sizeDescription"
-					.",s.picture as sizePicturePath"
+			.",s.id as sizeId"
+			.",s.name as sizeName"
+			.",s.description as sizeDescription"
+			.",s.picture as sizePicturePath"
 					//layout columns
-					.",l.id as layoutId"
-					.",l.name as layoutName"
-					.",l.description as layoutDescription"
-					.",l.pattern as layoutPattern"
-					.",l.picture as layoutPicturePath"
+			.",l.id as layoutId"
+			.",l.name as layoutName"
+			.",l.description as layoutDescription"
+			.",l.pattern as layoutPattern"
+			.",l.picture as layoutPicturePath"
 					//flavor1 columns
-					.",f.id as flavor1Id"
-					.",f.name as flavor1Name"
-					.",f.description as flavor1Description"
-					.",f.picture as flavor1PicturePath"              
-					." FROM"
-					." {$this->table} p"
-					.",{$this->crusts} c"
-					.",{$this->edges} e"
-					.",{$this->sizes} s"
-					.",{$this->layouts} l"
-					.",{$this->flavors} f"
-					." WHERE"
-					." p.{$this->crustCol} = c.id"
-					." AND p.{$this->edgeCol} = e.id"
-					." AND p.{$this->sizeCol} = s.id"
-					." AND p.{$this->layoutCol} = l.id"
-					." AND p.{$this->flavor1Col} = f.id";
-					
-					
+			.",f.id as flavor1Id"
+			.",f.name as flavor1Name"
+			.",f.description as flavor1Description"
+			.",f.picture as flavor1PicturePath"              
+			." FROM"
+			." {$this->table} p"
+			.",{$this->crusts} c"
+			.",{$this->edges} e"
+			.",{$this->sizes} s"
+			.",{$this->layouts} l"
+			.",{$this->flavors} f"
+			." WHERE"
+			." p.{$this->crustCol} = c.id"
+			." AND p.{$this->edgeCol} = e.id"
+			." AND p.{$this->sizeCol} = s.id"
+			." AND p.{$this->layoutCol} = l.id"
+			." AND p.{$this->flavor1Col} = f.id";
+			
+			
 			//Executes the query
 			$result = $this->connection->query($query);        
 			
@@ -204,7 +209,7 @@ class DbPizzaDao extends PizzaDao
 					$size->setName($row->sizeName);
 					$size->setDescription($row->sizeDescription);
 					$size->setPicturePath($row->sizePicturePath);
-				
+					
 					//Create the mandatory Flavor                 
 					$flavor = new PizzaFlavor();
 					$flavor->setId($row->flavor1Id);
@@ -272,18 +277,19 @@ class DbPizzaDao extends PizzaDao
 				 * The menu of a store does not change very much,
 				 * so we can cache it for 5 hours (or forever...).
 				 */				
-				apcu_add($key,$pizzas, $timeToLive);
+				//apcu_add($key,$pizzas, $timeToLive);
+				$CI->cachewrapper->add($key,$pizzas,$timeToLive);
 			}
 		}
-			
-        return $pizzas;
-    }
+		
+		return $pizzas;
+	}
 
-    public function save($object) 
-    {
+	public function save($object) 
+	{
         //stub
-        return null;
-    }
+		return null;
+	}
 
 }
 /* End of file DbPizzaDao.php */

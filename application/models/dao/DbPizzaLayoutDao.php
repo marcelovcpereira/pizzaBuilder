@@ -80,42 +80,56 @@ class DbPizzaLayoutDao extends PizzaLayoutDao
      */
     public function fetchAll() 
     { 
-        //Returned layout List
-        $layouts = array();
-        
-        //Selects a layout by id
-        $query = "SELECT"
-                ." l.{$this->idCol}"
-                .",l.{$this->nameCol}"
-                .",l.{$this->descriptionCol}"
-                .",l.{$this->patternCol}" 
-                .",l.{$this->picturePathCol}"
-                ." FROM"
-                ." {$this->table} l";
-
-        //Executes the query
-        $result = $this->connection->query($query);        
-        
-        //Checks if there's results
-        if($result->num_rows() > 0 )
+        //the key value where this query will be cached     
+        $key = 'allLayouts';
+        //5 hours to reset this cache
+        $timeToLive = 18000;         
+        //Getting code igniter instance
+        $CI = & get_instance();
+        //Seeking value in CacheWrapper 
+        $layouts = $CI->cachewrapper->fetch($key);
+        if($layouts === FALSE)
         {
-            //For each layout found on table
-            foreach($result->result() as $row)
+            //Returned layout List
+            $layouts = array();
+            
+            //Selects a layout by id
+            $query = "SELECT"
+                    ." l.{$this->idCol}"
+                    .",l.{$this->nameCol}"
+                    .",l.{$this->descriptionCol}"
+                    .",l.{$this->patternCol}" 
+                    .",l.{$this->picturePathCol}"
+                    ." FROM"
+                    ." {$this->table} l";
+
+            //Executes the query
+            $result = $this->connection->query($query);        
+            
+            //Checks if there's results
+            if($result->num_rows() > 0 )
             {
-                //Instantiate a new PizzaLayout
-                //and let's initialize it.
-                $layout = new PizzaLayout();
-                $layout->setId($row->id);
-                $layout->setName($row->name);
-                $layout->setDescription($row->description);
-                $layout->setPattern($row->pattern);
-                $layout->setPicturePath($row->picture);
-                
-                //Add to the array
-                $layouts[] = $layout;
+                //For each layout found on table
+                foreach($result->result() as $row)
+                {
+                    //Instantiate a new PizzaLayout
+                    //and let's initialize it.
+                    $layout = new PizzaLayout();
+                    $layout->setId($row->id);
+                    $layout->setName($row->name);
+                    $layout->setDescription($row->description);
+                    $layout->setPattern($row->pattern);
+                    $layout->setPicturePath($row->picture);
+                    
+                    //Add to the array
+                    $layouts[] = $layout;
+                }
+                /*
+                 * Caching all layouts
+                 */ 
+                $CI->cachewrapper->add($key,$layouts,$timeToLive);
             }
         }
-        
         
         return $layouts;
     }

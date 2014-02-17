@@ -85,46 +85,60 @@ class DbPizzaFlavorDao extends PizzaFlavorDao
      */
     public function fetchAll() 
     { 
-        //Returned PizzaFlavor List
-        $flavors = array();
-        
-        //Selects a PizzaFlavor by id
-        $query = "SELECT"
-                ." f.{$this->idCol}"
-                .",f.{$this->nameCol}"
-                .",f.{$this->descriptionCol}" 
-                .",f.{$this->picturePathCol}"
-                ." FROM"
-                ." {$this->table} f";
-
-        //Executes the query
-        $result = $this->connection->query($query);        
-        
-        //Checks if there's results
-        if($result->num_rows() > 0 )
+        //the key value where this query will be cached     
+        $key = 'allFlavors';
+        //5 hours to reset this cache
+        $timeToLive = 18000;         
+        //Getting code igniter instance
+        $CI = & get_instance();
+        //Seeking value in CacheWrapper 
+        $flavors = $CI->cachewrapper->fetch($key);
+        if($flavors === FALSE)
         {
-            //For each PizzaFlavor found on table
-            foreach($result->result() as $row)
-            {
-                //Instantiate a new PizzaFlavor
-                //and let's initialize it.
-                $flavor = new PizzaFlavor();
-                $flavor->setId($row->id);
-                $flavor->setName($row->name);
-                $flavor->setDescription($row->description);
-                $flavor->setPicturePath($row->picture);
-                
-                //Querying for the ingredients of this flavor
-                $ingredients = $this->getIngredients($flavor->getId());
+            //Returned PizzaFlavor List
+            $flavors = array();
+            
+            //Selects a PizzaFlavor by id
+            $query = "SELECT"
+                    ." f.{$this->idCol}"
+                    .",f.{$this->nameCol}"
+                    .",f.{$this->descriptionCol}" 
+                    .",f.{$this->picturePathCol}"
+                    ." FROM"
+                    ." {$this->table} f";
 
-                //Set the ingredient array to the flavor
-                $flavor->setIngredients($ingredients);
-                
-                //Add to the array
-                $flavors[] = $flavor;
+            //Executes the query
+            $result = $this->connection->query($query);        
+            
+            //Checks if there's results
+            if($result->num_rows() > 0 )
+            {
+                //For each PizzaFlavor found on table
+                foreach($result->result() as $row)
+                {
+                    //Instantiate a new PizzaFlavor
+                    //and let's initialize it.
+                    $flavor = new PizzaFlavor();
+                    $flavor->setId($row->id);
+                    $flavor->setName($row->name);
+                    $flavor->setDescription($row->description);
+                    $flavor->setPicturePath($row->picture);
+                    
+                    //Querying for the ingredients of this flavor
+                    $ingredients = $this->getIngredients($flavor->getId());
+
+                    //Set the ingredient array to the flavor
+                    $flavor->setIngredients($ingredients);
+                    
+                    //Add to the array
+                    $flavors[] = $flavor;
+                }
+                /*
+                 * Caching all flavors
+                 */ 
+                $CI->cachewrapper->add($key,$flavors,$timeToLive);
             }
         }
-        
         
         return $flavors;
     }

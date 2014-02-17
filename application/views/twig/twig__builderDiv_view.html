@@ -1,25 +1,9 @@
-<!-- HIDDEN INGREDIENTS MODAL -->
-<div class="modal fade" id="ingredientsPane" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Ingredients</h4>
-            </div>
-            <div class="modal-body">
-                Ingredients list
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save Flavor</button>
-            </div>
-        </div>
-    </div>
-</div><!-- HIDDEN INGREDIENTS MODAL -->
+<!-- Loading hidden modal -->
+{% include 'twig__flavorModal_view.html' %}<!-- Loading hidden modal -->
+
 
 <!--BUILDER DIV-->
 <div id="builderDiv" >
-
     <!-- SIZE ROW -->
     <div class="row">        
         <!-- SIZE COLUMN -->
@@ -103,3 +87,4 @@
         <i class="glyphicon glyphicon-shopping-cart"></i>
     </button>
 </div><!--BUILDER DIV-->
+
