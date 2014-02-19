@@ -767,17 +767,14 @@ div[name='flavorItem'] .panel .panel-footer hr{
     font-size: 24px;    
     color: #745B39;
 }
-#builderDiv #flavorColumn .flavorDiv1,
-#builderDiv #flavorColumn .flavorDiv2,
-#builderDiv #flavorColumn .flavorDiv3,
-#builderDiv #flavorColumn .flavorDiv4{
+#builderDiv #flavorColumn .flavorDiv{
     margin: 0 auto;
     width: 20%;
     height: content-box;
-    display: inline-block;
+    display: inline-table;
     text-align: center;
     text-decoration: none;
-    
+    cursor: pointer;
 }
 
 .flavorText a{
@@ -812,9 +809,12 @@ div[name='flavorItem'] .panel .panel-footer hr{
     margin: 0 auto;
     display: inline-block;
     padding-top: 10px;
+    cursor: pointer;
 }
 .cardDivSelected{
-    border: 3px solid #d2322d;
+    border: 5px solid #d2322d !important;
+    box-shadow: 2px 2px 2px #d2322d !important;
+    box-shadow: -2px -2px -2px #d2322d !important;
 }
 
 
@@ -861,10 +861,37 @@ div[name='flavorItem'] .panel .panel-footer hr{
     background-color: #FFF2E0;
 }
 #ingredientsPane .modal-footer button{
-    font-weight: bold; 
+    font-weight: bold;
+    margin: 5px;
+    width: 30%;
+    height: 50%;
+    box-shadow: 2px 2px 2px #888888;
+}
+
+#ingredientsPane .modal-footer{
+    text-align: left;
+    margin-top: 0px;
+}
+
+#ingredientsPane .modal-footer #visibleFlavor{
+    padding: 0px;
+    margin-left: 10px;
+    padding: 6px;
+    width: 150px;
+    height: 44px;
 }
 #ingredientsPane .modal-body{
     background-color: #FFF2E0;
+}
+
+#ingredientsPane .modal-body #h3customFlavorSummary{
+    font-family: Stark;
+    font-size: 120%;
+}
+#ingredientsPane .modal-body #customFlavorSummary{
+    font-family: Stark;
+    margin-top: 4px;
+    color: #745B39;
 }
 
 #ingredientsPane ul{
@@ -881,6 +908,9 @@ div[name='flavorItem'] .panel .panel-footer hr{
     font-size: 16px;
     border: 1px solid #745B39;
     background-color: #FFF2E0;
+}
+.activeFlavor{
+    background-color: #ed9c28 !important;
 }
 #ingredientsPane ul li:hover{
     cursor: pointer;

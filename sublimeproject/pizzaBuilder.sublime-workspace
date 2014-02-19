@@ -4,12 +4,72 @@
 		"selected_items":
 		[
 			[
-				"b",
-				"background-color"
+				"tradi",
+				"traditionalFlavor"
+			],
+			[
+				"tra",
+				"traditionalFlavor"
+			],
+			[
+				"reset",
+				"resetSummary"
 			],
 			[
 				"font-",
-				"font-weight"
+				"font-family"
+			],
+			[
+				"remo",
+				"removeClass"
+			],
+			[
+				"l",
+				"length"
+			],
+			[
+				"target",
+				"targetID"
+			],
+			[
+				"al",
+				"allFlavors"
+			],
+			[
+				"ing",
+				"ingredients"
+			],
+			[
+				"user",
+				"userFlavor"
+			],
+			[
+				"ingre",
+				"ingredientName"
+			],
+			[
+				"custom",
+				"customFlavor"
+			],
+			[
+				"ingredient",
+				"ingredientId"
+			],
+			[
+				"pi",
+				"picturePath"
+			],
+			[
+				"t",
+				"toggle"
+			],
+			[
+				"ingredients",
+				"ingredientsPane"
+			],
+			[
+				"b",
+				"background-color"
 			],
 			[
 				"mo",
@@ -43,7 +103,7 @@
 			"file": "/P/Projects/PizzaBuilder/application/views/twig/twig__builderDiv_view.html",
 			"settings":
 			{
-				"buffer_size": 3211,
+				"buffer_size": 3345,
 				"line_ending": "Unix"
 			}
 		},
@@ -51,7 +111,7 @@
 			"file": "/P/Projects/PizzaBuilder/application/views/twig/twig__flavorModal_view.html",
 			"settings":
 			{
-				"buffer_size": 4561,
+				"buffer_size": 5972,
 				"line_ending": "Windows"
 			}
 		},
@@ -59,7 +119,7 @@
 			"file": "/P/Projects/PizzaBuilder/resources/js/portal-js.js",
 			"settings":
 			{
-				"buffer_size": 3675,
+				"buffer_size": 11010,
 				"line_ending": "Unix"
 			}
 		},
@@ -67,7 +127,7 @@
 			"file": "/P/Projects/PizzaBuilder/application/views/twig/twig__card_view.html",
 			"settings":
 			{
-				"buffer_size": 1165,
+				"buffer_size": 2832,
 				"line_ending": "Unix"
 			}
 		},
@@ -75,7 +135,7 @@
 			"file": "/P/Projects/PizzaBuilder/application/views/twig/twig__flavorCard_view.html",
 			"settings":
 			{
-				"buffer_size": 1690,
+				"buffer_size": 1593,
 				"line_ending": "Unix"
 			}
 		},
@@ -83,7 +143,7 @@
 			"file": "/P/Projects/PizzaBuilder/resources/css/portal-template.css",
 			"settings":
 			{
-				"buffer_size": 20538,
+				"buffer_size": 21023,
 				"line_ending": "Unix"
 			}
 		}
@@ -111,7 +171,7 @@
 	},
 	"console":
 	{
-		"height": 0.0
+		"height": 125.0
 	},
 	"distraction_free":
 	{
@@ -124,6 +184,8 @@
 	},
 	"file_history":
 	[
+		"/P/Projects/PizzaBuilder/application/models/domain/Ingredient.php",
+		"/P/Projects/PizzaBuilder/application/models/domain/PizzaFlavor.php",
 		"/P/Projects/PizzaBuilder/application/views/twig/twig_flavorModal_view",
 		"/P/Projects/PizzaBuilder/application/views/twig/twig__flavorCard_view.html",
 		"/P/Projects/PizzaBuilder/application/views/twig/twig_pizzaBuilder_view.html",
@@ -166,6 +228,18 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"myModalLa",
+			"flavorDiv",
+			".flavorDiv",
+			".flavorDi",
+			"#flavor",
+			"#flavorDiv",
+			"resetModal",
+			"resetFlavor",
+			"customFlavorSummary",
+			"visibleFlav",
+			"parent",
+			"flavorDiv",
 			"hiddenIngredientCard",
 			"ingredientColumn",
 			"divSele",
@@ -196,7 +270,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -204,15 +278,15 @@
 					"file": "/P/Projects/PizzaBuilder/application/views/twig/twig__builderDiv_view.html",
 					"settings":
 					{
-						"buffer_size": 3211,
+						"buffer_size": 3345,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								48,
-								54
+								2104,
+								2104
 							]
 						],
 						"settings":
@@ -222,7 +296,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 810.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -232,15 +306,15 @@
 					"file": "/P/Projects/PizzaBuilder/application/views/twig/twig__flavorModal_view.html",
 					"settings":
 					{
-						"buffer_size": 4561,
+						"buffer_size": 5972,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								162,
-								162
+								106,
+								106
 							]
 						],
 						"settings":
@@ -260,15 +334,15 @@
 					"file": "/P/Projects/PizzaBuilder/resources/js/portal-js.js",
 					"settings":
 					{
-						"buffer_size": 3675,
+						"buffer_size": 11010,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1904,
-								1904
+								8252,
+								8252
 							]
 						],
 						"settings":
@@ -278,7 +352,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 540.0,
+						"translation.y": 1080.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -288,20 +362,20 @@
 					"file": "/P/Projects/PizzaBuilder/application/views/twig/twig__card_view.html",
 					"settings":
 					{
-						"buffer_size": 1165,
+						"buffer_size": 2832,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1157,
-								1158
+								423,
+								423
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/PHP-Twig.tmbundle/Syntaxes/HTML (Twig).tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
@@ -316,15 +390,15 @@
 					"file": "/P/Projects/PizzaBuilder/application/views/twig/twig__flavorCard_view.html",
 					"settings":
 					{
-						"buffer_size": 1690,
+						"buffer_size": 1593,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								63,
-								63
+								48,
+								71
 							]
 						],
 						"settings":
@@ -350,15 +424,15 @@
 					"file": "/P/Projects/PizzaBuilder/resources/css/portal-template.css",
 					"settings":
 					{
-						"buffer_size": 20538,
+						"buffer_size": 21023,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								20485,
-								20485
+								15551,
+								15552
 							]
 						],
 						"settings":
@@ -368,7 +442,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 13942.0,
+						"translation.y": 10941.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -404,7 +478,7 @@
 		"cols":
 		[
 			0.0,
-			0.736603899541,
+			0.674092868375,
 			1.0
 		],
 		"rows":
@@ -439,6 +513,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 118.0,
+	"side_bar_width": 167.0,
 	"status_bar_visible": true
 }

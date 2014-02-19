@@ -1,30 +1,77 @@
-<div class='cardDiv'>    
-        <!-- Card Item -->
-        <div id="{{type}}Item{{object.id}}" name="{{type}}Item"  class="col-lg-3 col-md-4 col-sm-6 col-xs-12" 
-             value="false">
-            <!-- PANEL -->
-            <div class="panel panel-default">
+{# default Div class #}
+{% set class = "cardDiv" %}
 
-                <!-- PANEL BODY -->
-                <div class="panel-body thumbnail">
-                    <img class="cardImage" src="/PizzaBuilder/resources/images/{{object.picturePath}}" 
-                         alt="{{object.name}} Image"> 
-                </div><!-- PANEL BODY -->
 
-                <!-- PANEL FOOTER -->
-                <div class="panel panel-footer"> 
-                    <div class="{{type}}Text">
-                        <!-- object NAME -->
-                        <h3>{{object.name}}</h3>
+{% if number is not defined %}
+        {% set number = null %}
+{% endif %}
 
-                        <hr>
-                        <!-- DESCRIPTION -->
-                        <span class="caption">
-                            {{object.description}}
-                        </span>
-                        <br>
-                    </div>
-                </div><!-- PANEL FOOTER -->
-            </div><!-- PANEL -->
-        </div><!-- Card Item -->    
+{# If the object parameter is null, then is an empty flavor card #}
+{% if object is null %}
+    {% set object = 
+    {name:'Choose a Flavor',id:null,picturePath:'pizza_pencil.png',description:''} %}
+
+    {# flavorDiv class objects toggle modal on click #}
+    {% set class = "flavorDiv" %}
+    
+{% endif %}
+
+
+<div class='{{class}}' data-value="{{number}}"> 
+    {# if a number is defined, then is a numbered  flavor card #} 
+    {% if number is not null %}
+        <h3>{{number}}</h3>
+        {# Creating the div that will receive flavor html #}
+        <div id="flavorCard{{number}}" class="flavorCard"  value="false">
+    {% endif %}
+
+    <!-- Card Item -->
+    <div id="{{type}}Item{{object.id}}" name="{{type}}Item"  class="col-lg-3 col-md-4 col-sm-6 col-xs-12" 
+        data-value="false">
+        <!-- PANEL -->
+        <div class="panel panel-default" data-value="false">
+
+            <!-- PANEL BODY -->
+            <div class="panel-body thumbnail">
+                <img class="cardImage" src="/PizzaBuilder/resources/images/{{object.picturePath}}" 
+                alt="{{object.name}} Image"> 
+                {% if object.id is null %}
+                <span>No flavor selected</span>
+                {% endif %}
+            </div><!-- PANEL BODY -->
+
+            <!-- PANEL FOOTER -->
+            <div class="panel panel-footer"> 
+                <div class="{{type}}Text">
+                    <!-- object NAME -->
+                    <h3>{{object.name}}</h3>
+
+                    <hr>
+                    <!-- DESCRIPTION -->
+                    <span class="caption">
+                        {{object.description}}
+                    </span>
+                    <br>
+                </div>
+            </div><!-- PANEL FOOTER -->
+        </div><!-- PANEL -->
+    </div><!-- Card Item -->  
+    {% if number is not null %}
+        </div>
+    {% endif %}
+<!--Object representation -->
+<div id="{{type}}Object{{object.id}}">
+    <input type="hidden" name="id" value="{{object.id}}">
+    <input type="hidden" name="name" = value="{{object.name}}">
+    <input type="hidden" name="description" = value="{{object.description}}">
+    <input type="hidden" name="picturePath" = value="{{object.picturePath}}">
+    <!-- If this is a Flavor object, let's loop over its ingredients -->
+    {% if type == 'flavor' %}
+    {% for ingredient in object.getIngredients %}
+    <input type="hidden" name="ingredientId{{ingredient.id}}" value="{{ingredient.id}}">
+    <input type="hidden" name="ingredientName{{ingredient.id}}" value="{{ingredient.name}}">
+    <input type="hidden" name="ingredientDescription{{ingredient.id}}" value="{{ingredient.description}}">
+    {% endfor %}
+    {% endif %}
+</div><!--Object representation -->  
 </div>
