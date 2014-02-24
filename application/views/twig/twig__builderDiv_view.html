@@ -2,17 +2,53 @@
 {% include 'twig__flavorModal_view.html' %}<!-- Loading hidden modal -->
 
 
+
 <!--BUILDER DIV-->
 <div id="builderDiv" >
+    {#
+     # If pizza is not null, then we are editing a pizza.
+     # Showing the name of what we're editing...
+     #}
+
+    {% if pizza is not null %}
+        <div id="editingFlavorDiv" class="row">
+            <div id="editing" class="col-lg-12">
+                <h1>Editing <em>{{pizza.name}}</em></h1>
+                
+            </div>  
+            {# Hidden pizza object #}
+            <input type="hidden" name="pizza" value="{{pizza.__toString()}}">
+        </div>
+    {% endif %}
     <!-- SIZE ROW -->
-    <div class="row">        
+    <div class="row">              
         <!-- SIZE COLUMN -->
-        <div id="sizeColumn" class="col-lg-12">
-            <h2 class="alert alert-warning">Pizza size</h2>
-            {% for size in pizzaBuilder.getSizes %}
-            {% include 'twig__card_view.html' 
-            with {'type' : 'size', 'object' : size} %}
-            {% endfor %}
+        <div id="sizeColumn" class="col-lg-12">            
+            <h2 class="alert alert-warning">
+                Pizza size:
+                <span>
+                    {% if pizza is not null %}
+                        {{pizza.getSize().getName()|capitalize}}
+                    {% endif %}
+                </span>
+                <i class="glyphicon glyphicon-minus-sign pull-right" title="Show/Hide Sizes"></i>
+            </h2>
+
+            <div class="cardDivWrapper" style="display: block">
+                {% set selected = false %}
+                {% for size in pizzaBuilder.getSizes %}
+                    {% if pizza is not null %}
+                        {% if size.getId() == pizza.getSize().getId() %}
+                            {% set selected = true %}
+                        {% endif %}
+                    {% endif %}
+
+                    
+                    {% include 'twig__card_view.html' 
+                    with {'type' : 'size', 'object' : size,'selected':selected} %}
+                    {% set selected = false %}
+                {% endfor %}
+            </div>
         </div><!-- SIZE COLUMN -->
     </div><!-- SIZE ROW -->
 
@@ -21,12 +57,30 @@
     <div class="row">
         <!-- CRUST COLUMN -->
         <div id="crustColumn" class="col-lg-12">
-            <h2 class="alert alert-warning">Crust type</h2>
-            {% for crust in pizzaBuilder.getCrusts %}
-            {% include 'twig__card_view.html' 
-            with {'type' : 'crust', 'object' : crust} 
-            %}
-            {% endfor %}
+            <h2 class="alert alert-warning">
+                Crust type:
+                <span>
+                    {% if pizza is not null %}
+                        {{pizza.getCrust().getName()|capitalize}}
+                    {% endif %}
+                </span>
+                <i class="glyphicon glyphicon-plus-sign pull-right" title="Show/Hide Crusts"></i>
+            </h2>
+
+            <div class="cardDivWrapper">
+                {% for crust in pizzaBuilder.getCrusts %}
+                    {% if pizza is not null %}
+                        {% if crust.getId() == pizza.getCrust().getId() %}
+                            {% set selected = true %}
+                        {% endif %}
+                    {% endif %}
+                    {% include 'twig__card_view.html' 
+                    with {'type' : 'crust', 'object' : crust, 'selected':selected} 
+                    %}
+                    {% set selected = false %}
+                {% endfor %}
+            </div>
+
         </div><!-- CRUST COLUMN -->
     </div><!-- CRUST ROW -->
 
@@ -34,15 +88,27 @@
     <div class="row">
         <!-- EDGE COLUMN -->
         <div id="edgeColumn" class="col-lg-12">
-            <h2 class="alert alert-warning">Edge</h2>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-10">
+            <h2 class="alert alert-warning">
+                Edge:
+                <span>
+                    {% if pizza is not null %}
+                        {{pizza.getEdge().getName()|capitalize}}
+                    {% endif %}
+                </span>
+                <i class="glyphicon glyphicon-plus-sign pull-right" title="Show/Hide Edges"></i>
+            </h2>
+            <div class="cardDivWrapper">
                 {% for edge in pizzaBuilder.getEdges %}
-                {% include 'twig__card_view.html' 
-                with {'type' : 'edge', 'object' : edge} %}
+                    {% if pizza is not null %}
+                        {% if edge.getId() == pizza.getEdge().getId() %}
+                            {% set selected = true %}
+                        {% endif %}
+                    {% endif %}
+                    {% include 'twig__card_view.html' 
+                        with {'type' : 'edge', 'object' : edge,'selected':selected} %}
+                    {% set selected = false %}
                 {% endfor %}
             </div>
-            <div class="col-lg-1"></div>
         </div><!-- EDGE COLUMN -->
     </div><!-- EDGE ROW -->
 
@@ -50,11 +116,28 @@
     <div class="row">
         <!-- LAYOUT COLUMN -->
         <div id="layoutColumn" class="col-lg-12">
-            <h2 class="alert alert-warning">Layout</h2>
-            {% for layout in pizzaBuilder.getLayouts %}
-            {% include 'twig__card_view.html' 
-            with {'type' : 'layout', 'object' : layout} %}
-            {% endfor %}
+            <h2 class="alert alert-warning">
+                Layout:
+                <span>
+                    {% if pizza is not null %}
+                        {{pizza.getLayout().getName()|capitalize}}
+                    {% endif %}
+                </span>
+                <i class="glyphicon glyphicon-plus-sign pull-right" title="Show/Hide Layouts"></i>
+            </h2>
+            <div class="cardDivWrapper">
+                {% for layout in pizzaBuilder.getLayouts %}
+                    {% if pizza is not null %}
+                        {% if layout.getId() == pizza.getLayout().getId() %}
+                            {% set selected = true %}
+                        {% endif %}
+                    {% endif %}
+                    {% include 'twig__card_view.html' 
+                        with {'type' : 'layout', 'object' : layout,'selected':selected} %}
+                    {% set selected = false %}
+
+                {% endfor %}
+            </div>
         </div><!-- LAYOUT COLUMN -->
     </div><!-- LAYOUT ROW -->
 
@@ -62,11 +145,53 @@
     <div class="row">
         <!-- FLAVOR COLUMN -->
         <div id="flavorColumn" class="col-lg-12">
-            <h2 class="alert alert-warning">Flavors</h2>            
-            {% include 'twig__card_view.html' with {'number': '1','type':'flavor','object':null} %}            
-            {% include 'twig__card_view.html' with {'number': '2','type':'flavor','object':null} %}            
-            {% include 'twig__card_view.html' with {'number': '3','type':'flavor','object':null} %}            
-            {% include 'twig__card_view.html' with {'number': '4','type':'flavor','object':null} %}               
+            <h2 class="alert alert-warning">
+                Toppings:
+                <span>
+                    {# Toppings names in case we're opening a pizza to edit #}
+                    {% if pizza is not null %}
+                        {% if pizza.getFlavor1 is not null %}
+                            {{pizza.getFlavor1.getName()|capitalize}}
+                        {% endif %}
+
+                        {% if pizza.getFlavor2 is not null %}
+                            , {{pizza.getFlavor2.getName()|capitalize}}
+                        {% endif %}
+
+                        {% if pizza.getFlavor3 is not null %}
+                            , {{pizza.getFlavor3.getName()|capitalize}}
+                        {% endif %}
+
+                        {% if pizza.getFlavor4 is not null %}
+                            , {{pizza.getFlavor4.getName()|capitalize}}
+                        {% endif %}
+
+                    {% else %}    
+                        <small>(select a layout)</small>
+                    {% endif %}
+                </span>
+                <i class="glyphicon glyphicon-plus-sign pull-right" title="Show/Hide Layouts"></i>
+            </h2> 
+
+            <div class="cardDivWrapper">
+                {% set flavor1 = null %}
+                {% set flavor2 = null %}
+                {% set flavor3 = null %}
+                {% set flavor4 = null %}
+                
+                {% if pizza is not null %}
+                    {% set flavor1 = pizza.getFlavor1() %}
+                    {% set flavor2 = pizza.getFlavor2() %}
+                    {% set flavor3 = pizza.getFlavor3() %}
+                    {% set flavor4 = pizza.getFlavor4() %}                    
+                {% endif %}         
+                
+
+                {% include 'twig__card_view.html' with {'number': '1','object':flavor1} %}   
+                {% include 'twig__card_view.html' with {'number': '2','object':flavor2} %}            
+                {% include 'twig__card_view.html' with {'number': '3','object':flavor3} %}            
+                {% include 'twig__card_view.html' with {'number': '4','object':flavor4} %}   
+            </div>            
         </div><!-- FLAVOR COLUMN -->
     </div><!-- FLAVOR ROW -->
 
@@ -74,14 +199,25 @@
     <div class="row">
         <!-- OBS COLUMN -->
         <div id="obsColumn" class="col-lg-12">
-            <h2 class="alert alert-warning">Observations</h2> 
-            <div class="obsTextArea">
-                <textarea class="form-control" rows="6"></textarea>
+            <h2 class="alert alert-warning">
+                Additional Info
+                <i class="glyphicon glyphicon-plus-sign pull-right" title="Show/Hide Layouts"></i>
+            </h2> 
+            <div class="cardDivWrapper">
+                <div class="obsTextArea">
+                    <textarea class="form-control" rows="6"></textarea>
+                </div>
             </div>
         </div><!-- OBS COLUMN -->
     </div><!-- OBS ROW -->
     <br>
     <hr>
+
+    <form id="pizzaBuilderForm" name="pizzaBuilderForm" action="/PizzaBuilder/pizzaBuilder" method="post">
+        <input type="hidden" name="userPizza" value="">        
+        <input type="hidden" name="{{tokenName}}" value="{{tokenHash}}">
+    </form>
+
     <button type="button" class="btn btn-danger btn-lg">
         Add to Cart
         <i class="glyphicon glyphicon-shopping-cart"></i>

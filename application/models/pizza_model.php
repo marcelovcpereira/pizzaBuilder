@@ -46,6 +46,11 @@ class Pizza_model extends CI_Model
 		{
             return $this->pizzaDAO->fetchAll();
 		}
+
+		public function fetch($id)
+		{
+			return $this->pizzaDAO->fetch($id);
+		}
 }
 /* End of file pizza_model.php */
 /* Location: ./application/models/pizza_model.php */

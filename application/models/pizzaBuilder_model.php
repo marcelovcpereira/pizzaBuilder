@@ -53,6 +53,7 @@ class PizzaBuilder_model extends CI_Model
 		
 		return $pizzaBuilder;
 	}
+
 }
 /* End of file pizzaBuilder_model.php */
 /* Location: ./application/models/pizzaBuilder_model.php */

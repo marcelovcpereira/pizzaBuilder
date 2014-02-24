@@ -10,7 +10,7 @@
  * @license    http://opensource.org/licenses/gpl-license.php GNU Public License
  */
 
-class Ingredient {
+class Ingredient implements JsonSerializable{
     
     //id of the ingredient
     private $id;
@@ -21,11 +21,12 @@ class Ingredient {
     //The path to the picture of this Ingredient!
     private $picturePath;
     
-    public function __construct()
+    public function __construct($id=null,$name="",$description="",$picturePath="")
     {
-        $this->setName("");
-        $this->setDescription("");
-        $this->setPicturePath("");
+        $this->setId($id);
+        $this->setName($name);
+        $this->setDescription($description);
+        $this->setPicturePath($picturePath);
     }
     
     public function getId() {
@@ -61,12 +62,15 @@ class Ingredient {
         $this->picturePath = $picturePath;
     }
 
-    public function __toString() {
-        $string = "|INGREDIENT:";
-        $string .= $this->getName() . ",<br>"
-                . $this->getDescription() . ",<br>"
-                . $this->getPicturePath() . "|";
-        return $string;
+
+    public function __toString() {        
+        return json_encode($this);
+    }
+
+
+    public function JsonSerialize()
+    {
+        return get_object_vars($this);
     }
 
 }

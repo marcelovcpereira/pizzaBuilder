@@ -1,4 +1,4 @@
-<a id="pizzaCardLink{{pizza.id}}" class="pizzaCardLink" href="javascript:flipPizzaCard('{{pizza.id}}')">
+<a id="pizzaCardLink{{pizza.id}}" class="pizzaCardLink" href="">
     <div class="pizzaCard{{pizza.id}}" id="pizzaCard{{pizza.id}}" value="false">
         <!-- Menu Item: the name attribute is used by JavaScript -->
         <div name="menuItem" id="menuItem{{pizza.id}}" class="col-lg-3 col-md-4 col-sm-6 col-xs-12" 
@@ -6,10 +6,10 @@
              data-toggle="popover">
                 <!-- PANEL -->
                 <div class="panel panel-default">
-                    
+                    <a href="javascript:flipPizzaCard('{{pizza.id}}')">
                     <!-- PANEL BODY -->
                     <div class="panel-body thumbnail">
-                        <img class="img-circle" src="/PizzaBuilder/resources/images/{{pizza.picturePath}}" 
+                        <img src="/PizzaBuilder/resources/images/{{pizza.picturePath}}" 
                              alt="{{pizza.name}} Image"
                              title="Click to see details">            
                     </div><!-- PANEL BODY -->
@@ -29,7 +29,7 @@
                             <br>
                         </div>
                     </div><!-- PANEL FOOTER -->
-                    
+                    </a>
                     <div class="botao">
                         <!-- BUTTON  --> 
                         <button type="button" class="btn btn-warning">
@@ -46,6 +46,7 @@
 <!-- HIDDEN DETAILS DIV, USED TO SHOW DETAILS -->
 <div id="content{{pizza.id}}" name="content{{pizza.id}}" class="sr-only">
     <div id="panelPizzaDetails{{pizza.id}}" name="panelPizzaDetails" class="panel panel-default">
+        <a href="javascript:flipPizzaCard('{{pizza.id}}')">
         <div id="scrollableContent{{pizza.id}}" class="scrollableContent">
             <div class="crustDiv">                        
                 <span class="label label-warning">
@@ -85,11 +86,13 @@
                 {% endfor %}
             </div>
         </div>
-        
-        <button type="button" class="btn btn-warning">
-            <i class="glyphicon glyphicon-pencil"></i>
-            Edit before add
-        </button>
+        </a>
+        <a href="/PizzaBuilder/pizzaBuilder/{{pizza.id}}">
+            <button type="button" class="btn btn-warning">
+                <i class="glyphicon glyphicon-pencil"></i>
+                Edit before add
+            </button>
+        </a>
     </div>
 </div><!-- HIDDEN DETAILS DIV -->
 

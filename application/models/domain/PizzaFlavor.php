@@ -10,7 +10,7 @@ require_once 'Ingredient.php';
  * @license    http://opensource.org/licenses/gpl-license.php GNU Public License
  */
 
-class PizzaFlavor {
+class PizzaFlavor implements JsonSerializable{
     
     //flavor id
     private $id;
@@ -75,19 +75,12 @@ class PizzaFlavor {
     }
 
     public function __toString() {
-        $string = "|Flavor:";
-        $string .= $this->getName() . ",<br>"
-                . $this->getDescription() . ",<br>";
-        $ingredients = $this->getIngredients();
-        if($ingredients !== array())
-        {
-            foreach($ingredients as $ingredient)
-            {
-                $string .= $ingredient;
-            }
-        }
-        $string .= "<br>".$this->getPicturePath() . "|";
-        return $string;
+       return json_encode($this);
+    }
+
+    public function JsonSerialize()
+    {
+        return get_object_vars($this);
     }
 
 }

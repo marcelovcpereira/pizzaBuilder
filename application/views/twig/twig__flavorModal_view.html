@@ -14,15 +14,16 @@
                         </a>
                     </li>
                     <li id="liFlavors" >
-                        <a href="#flavorsContent" data-toggle="tab"><h4 class="modal-title">Flavors</h4></a>
+                        <a href="#flavorsContent" data-toggle="tab"><h4 class="modal-title">Toppings</h4></a>
                     </li>
                 </ul>
             </div>
             <!-- CONTENT TABS -->
-            <div class="tab-content">
+            <div class="tab-content">                
                 <!-- INGREDIENT CONTENT PANE -->
                 <div class="tab-pane active" id="ingredientsContent">
                     <div class="modal-body">
+                        <span>Create your own topping by choosing ingredients on the list bellow:</span>
                         <div class="row">
                             <div id="ingredientsList" class="col-lg-7">
                                 <ul>
@@ -31,11 +32,11 @@
                                         {{ingredient.name}}                 
                                         <button id="removeIngredient{{ingredient.id}}" type="button" class="btn btn-danger pull-right">-</button>
                                         <button id="addIngredient{{ingredient.id}}" type="button" class="btn btn-warning pull-right">+</button>
+                                        
+                                        {# Object representation #}
+                                        <input type="hidden" name="ingredient" value="{{ingredient.__toString()}}">
+                                        {# Object representation #}
 
-                                        <input type="hidden" name="id" value="{{ingredient.id}}">
-                                        <input type="hidden" name="name" = value="{{ingredient.name}}">
-                                        <input type="hidden" name="description" = value="{{ingredient.description}}">
-                                        <input type="hidden" name="picturePath" = value="{{ingredient.picturePath}}">
                                     </li>                                    
                                     {% endfor %}
                                 </ul>
@@ -59,17 +60,16 @@
                 <!-- FLAVORS CONTENT PANE -->
                 <div class="tab-pane" id="flavorsContent">
                     <div class="modal-body">
+                        <span>Choose your topping from our menu:</span>
                         <div class="row">
                             <div id="flavorsList" class="col-lg-7">
                                 <ul>
+                                    {# for each flavor, create a list item and 
+                                     # a hidden input to hold its json string #}
                                     {% for flavor in pizzaBuilder.getFlavors %}
                                     <li id="flavor{{flavor.id}}" name="flavorListItem" class="alert alert-warning" value="{{flavor.id}}">
                                         {{flavor.name}} 
-                                        <input type="hidden" name="id" value="{{flavor.id}}">
-                                        <input type="hidden" name="name" = value="{{flavor.name}}">
-                                        <input type="hidden" name="description" = value="{{flavor.description}}">
-                                        <input type="hidden" name="picturePath" = value="{{flavor.picturePath}}">
-                                         
+                                        <input type="hidden" name="flavor" value="{{flavor.__toString()}}">
                                     </li>
                                     {% endfor %}
                                 </ul>

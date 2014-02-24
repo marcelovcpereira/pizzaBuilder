@@ -83,8 +83,9 @@ body{
 	display: block;
 	width: 50px;
 	height: 50px;
-	float: right;
-	margin-right: 10px;
+	margin-left: 10px;
+    display: inline;
+    float:left;
 }
 
 /* PIZZA BUILDER TITLE NAVBAR */
@@ -107,6 +108,7 @@ body{
 /*NAVBAR MENU LINKS*/
 .navbar-default .navbar-nav li a:hover{
 	background-color: white;
+    color: #f0ad4e;
 }
 
 /* MENUS: HOME, MENU, ABOUT*/
@@ -117,12 +119,10 @@ body{
 .collapse ul li:hover{
     background-color: white;
 }
-.navbar-default .navbar-nav  li  a{
+.navbar-default .navbar-nav li a{
     color: white;
 }
-.navbar-default .navbar-nav  li  a:hover{
-    color: #f0ad4e;
-}
+
 
 
 /*----------END: NAVBAR-------------*/
@@ -270,6 +270,9 @@ div[name='panelPizzaDetails']{
     font-weight: lighter;
     position: relative;
 }
+div[name='panelPizzaDetails'] button{
+    z-index: 5;
+}
 
 /* scrollable div that contains pizza details */
 .scrollableContent{
@@ -298,6 +301,8 @@ div[name='panelPizzaDetails'] span{
     font-size: 16px;  
     width: 97%;
     margin: 3px;
+    overflow: auto;
+    color: #F0AD4E;
 }
 /* Details side button (edit) */
 div[name='panelPizzaDetails'] button{    
@@ -328,7 +333,11 @@ div[name='menuItem'] .panel .panel-body{
     border: 1px solid #B48E59;
     border-top: none;
     overflow: hidden;
-    background-color: #fcf8e3;
+    background-color: #fcf8e3;    
+}
+div[name='menuItem'] .panel .panel-body img{
+    width: 100%;
+    height: 100%;
 }
 /*removing bottom margin in the menu item description*/
 div[name='menuItem'] .panel .panel-footer{
@@ -454,6 +463,15 @@ div[name='progressDiv'] .pizzaDetails{
 #builderDiv{
     text-align: center; 
 }
+#builderDiv h1{
+    font-family: Stark, Verdana;
+    color: #745B39;    
+    margin: 10px auto;
+    width: 40%;
+}
+#builderDiv h1 em{
+    font-weight: bold;
+}
 #builderDiv h2{
     background-color: #745B39;
     font-family: Stark, Verdana;
@@ -463,8 +481,21 @@ div[name='progressDiv'] .pizzaDetails{
     color: #ed9c28;
     height: 100%;
     vertical-align: super;
-    margin: 8px auto;
+    margin: 5px auto;
     text-align: left;
+    cursor: pointer;
+}
+#builderDiv h2:hover{
+    background-color: #ed9c28;
+    color: #745B39;
+}
+#builderDiv h2:hover span{
+    text-shadow: -1px 0 #745B39, 0 1px #745B39, 1px 0 #745B39, 0 -1px #745B39;
+}
+#builderDiv h2 span{
+    color: white;
+    font-size: 80%;
+    margin-left: 10px;
 }
 .cardImage{
     width: 100% !important;
@@ -520,10 +551,6 @@ div[name='sizeItem'] .panel:hover{
 div[name='sizeItem'] .panel .panel-footer hr{
     margin: 3px;
     border-color: #9C6619;
-}
-
-#sizeColumn{
-    display: inline-block;
 }
 /* END SIZE CARD */
 
@@ -811,6 +838,10 @@ div[name='flavorItem'] .panel .panel-footer hr{
     padding-top: 10px;
     cursor: pointer;
 }
+.cardDivWrapper{
+    display: none;
+}
+
 .cardDivSelected{
     border: 5px solid #d2322d !important;
     box-shadow: 2px 2px 2px #d2322d !important;
@@ -821,7 +852,7 @@ div[name='flavorItem'] .panel .panel-footer hr{
 /* START INGREDIENTS MODAL */
 #ingredientsPane{
     border: 1px solid #745B39;
-   
+
 }
 #ingredientsPane #ingredientsList{
     overflow: auto;
@@ -829,7 +860,7 @@ div[name='flavorItem'] .panel .panel-footer hr{
 
 
 #ingredientsPane h4,h3{
-    font-family: Freshman;
+    font-family: Stark;
     font-size: 20px;
     color: #745B39;    
 }
@@ -850,16 +881,20 @@ div[name='flavorItem'] .panel .panel-footer hr{
 }
 #ingredientsPane .modal-header ul li a{
     background-color: transparent;
-    text-decoration: none;
-    color: transparent;
     border: none;
+    color: #745B39;
 }
 #ingredientsPane .modal-header ul li{
     background-color: #F8D19C;
+    color: #745B39;
+    border-color: #745B39;
+    text-decoration: underline;    
 }
-#ingredientsPane .modal-header .active{
+#ingredientsPane .modal-header ul li.active{
     background-color: #FFF2E0;
+    text-decoration: none !important;   
 }
+
 #ingredientsPane .modal-footer button{
     font-weight: bold;
     margin: 5px;
@@ -908,6 +943,17 @@ div[name='flavorItem'] .panel .panel-footer hr{
     font-size: 16px;
     border: 1px solid #745B39;
     background-color: #FFF2E0;
+}
+
+#ingredientsPane .tab-content .modal-body > span{
+    text-align: center;
+    margin: 15px auto;
+    display: block;
+    margin-top: 0px;
+    font-family: Stark;
+    color: #745B39;
+    font-size: 110%;
+    font-weight: lighter;
 }
 .activeFlavor{
     background-color: #ed9c28 !important;
@@ -988,14 +1034,13 @@ div[name='flavorItem'] .panel .panel-footer hr{
     border-color: #9C6619;
     width: 100%;
     height: auto;
+    display: inline-block;
 }
 .ingredientText{
     display: block;
 }
 /* END INGREDIENTS CARD */
 /* END INGREDIENTS MODAL */
-
-
 /* END BUILDER DIV */
 
 /*--------------END:Pizza Builder View-------------*/

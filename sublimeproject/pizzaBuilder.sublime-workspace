@@ -4,6 +4,110 @@
 		"selected_items":
 		[
 			[
+				"la",
+				"layoutID"
+			],
+			[
+				"ed",
+				"edgeID"
+			],
+			[
+				"cr",
+				"crustID"
+			],
+			[
+				"si",
+				"sizeID"
+			],
+			[
+				"has",
+				"hasSelected"
+			],
+			[
+				"cho",
+				"chosenFlavors"
+			],
+			[
+				"num",
+				"numberOfFlavors"
+			],
+			[
+				"che",
+				"checkPizzaCrust"
+			],
+			[
+				"check",
+				"checkPizzaSize"
+			],
+			[
+				"border",
+				"border-color"
+			],
+			[
+				"text-",
+				"text-decoration"
+			],
+			[
+				"all",
+				"allFlavors"
+			],
+			[
+				"lay",
+				"layout"
+			],
+			[
+				"to",
+				"toggleBuilderRow"
+			],
+			[
+				"ingre",
+				"ingredients"
+			],
+			[
+				"add",
+				"addClass"
+			],
+			[
+				"remove",
+				"removeClass"
+			],
+			[
+				"flavor",
+				"flavorDiv"
+			],
+			[
+				"upda",
+				"updateLayout"
+			],
+			[
+				"user",
+				"userLayout"
+			],
+			[
+				"pic",
+				"picturePath"
+			],
+			[
+				"layout",
+				"layoutObj"
+			],
+			[
+				"select",
+				"selectedLayout"
+			],
+			[
+				"data",
+				"data-value"
+			],
+			[
+				"des",
+				"description"
+			],
+			[
+				"fla",
+				"flavorPic"
+			],
+			[
 				"tradi",
 				"traditionalFlavor"
 			],
@@ -38,14 +142,6 @@
 			[
 				"ing",
 				"ingredients"
-			],
-			[
-				"user",
-				"userFlavor"
-			],
-			[
-				"ingre",
-				"ingredientName"
 			],
 			[
 				"custom",
@@ -103,23 +199,15 @@
 			"file": "/P/Projects/PizzaBuilder/application/views/twig/twig__builderDiv_view.html",
 			"settings":
 			{
-				"buffer_size": 3345,
+				"buffer_size": 4825,
 				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/P/Projects/PizzaBuilder/application/views/twig/twig__flavorModal_view.html",
-			"settings":
-			{
-				"buffer_size": 5972,
-				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "/P/Projects/PizzaBuilder/resources/js/portal-js.js",
 			"settings":
 			{
-				"buffer_size": 11010,
+				"buffer_size": 23079,
 				"line_ending": "Unix"
 			}
 		},
@@ -127,15 +215,31 @@
 			"file": "/P/Projects/PizzaBuilder/application/views/twig/twig__card_view.html",
 			"settings":
 			{
-				"buffer_size": 2832,
+				"buffer_size": 3164,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/P/Projects/PizzaBuilder/application/views/twig/twig__flavorCard_view.html",
+			"file": "/P/Projects/PizzaBuilder/application/views/twig/twig__flavorModal_view.html",
 			"settings":
 			{
-				"buffer_size": 1593,
+				"buffer_size": 6564,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/P/Projects/PizzaBuilder/application/views/twig/twig__progressDiv_view.html",
+			"settings":
+			{
+				"buffer_size": 1402,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/P/Projects/PizzaBuilder/application/views/twig/twig_pizzaBuilder_view.html",
+			"settings":
+			{
+				"buffer_size": 145,
 				"line_ending": "Unix"
 			}
 		},
@@ -143,7 +247,7 @@
 			"file": "/P/Projects/PizzaBuilder/resources/css/portal-template.css",
 			"settings":
 			{
-				"buffer_size": 21023,
+				"buffer_size": 21788,
 				"line_ending": "Unix"
 			}
 		}
@@ -184,11 +288,16 @@
 	},
 	"file_history":
 	[
-		"/P/Projects/PizzaBuilder/application/models/domain/Ingredient.php",
-		"/P/Projects/PizzaBuilder/application/models/domain/PizzaFlavor.php",
-		"/P/Projects/PizzaBuilder/application/views/twig/twig_flavorModal_view",
 		"/P/Projects/PizzaBuilder/application/views/twig/twig__flavorCard_view.html",
+		"/P/Projects/PizzaBuilder/application/views/twig/twig__footer.html",
+		"/P/Projects/PizzaBuilder/application/views/twig/twig__header.html",
+		"/P/Projects/PizzaBuilder/application/libraries/TemplateWrapper.php",
+		"/P/Projects/PizzaBuilder/resources/js/jquery-ui-1.10.4.custom.min.js",
+		"/P/Projects/PizzaBuilder/application/models/domain/PizzaFlavor.php",
+		"/P/Projects/PizzaBuilder/application/models/domain/PizzaLayout.php",
 		"/P/Projects/PizzaBuilder/application/views/twig/twig_pizzaBuilder_view.html",
+		"/P/Projects/PizzaBuilder/application/models/domain/Ingredient.php",
+		"/P/Projects/PizzaBuilder/application/views/twig/twig_flavorModal_view",
 		"/P/Projects/PizzaBuilder/application/views/twig/twig_menu_view.html",
 		"/P/Projects/PizzaBuilder/application/views/twig/twig__menu_item_view.html",
 		"/P/Projects/PizzaBuilder/application/views/twig/twig__card_view.html",
@@ -206,7 +315,6 @@
 		"/P/Projects/PizzaBuilder/application/config/autoload.php",
 		"/P/Projects/PizzaBuilder/application/models/pizzaBuilder_model.php",
 		"/P/Projects/PizzaBuilder/application/models/pizza_model.php",
-		"/P/Projects/PizzaBuilder/application/libraries/TemplateWrapper.php",
 		"/P/Projects/PizzaBuilder/application/models/domain/PizzaBuilderDomain.php",
 		"/P/Projects/PizzaBuilder/application/models/domain/Pizza.php",
 		"/P/Projects/PizzaBuilder/sublimeproject/pizzaBuilder.sublime-project",
@@ -228,6 +336,28 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"#sizeColumn",
+			"text-sha",
+			"builderDiv",
+			"cardDivSele",
+			";\n",
+			"flavorColumn",
+			"\").",
+			"toggleBuilderRow",
+			"toggleAllBuilderRows",
+			"parent",
+			"data-value",
+			"contex",
+			"context",
+			".value",
+			"flavorCard",
+			"selectSize",
+			"selected",
+			".value",
+			"attr('va",
+			"hiddenIngre",
+			"hiddenFlavor",
+			"hiddenFla",
 			"myModalLa",
 			"flavorDiv",
 			".flavorDiv",
@@ -270,7 +400,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -278,15 +408,15 @@
 					"file": "/P/Projects/PizzaBuilder/application/views/twig/twig__builderDiv_view.html",
 					"settings":
 					{
-						"buffer_size": 3345,
+						"buffer_size": 4825,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2104,
-								2104
+								4459,
+								4475
 							]
 						],
 						"settings":
@@ -296,53 +426,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1395.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "/P/Projects/PizzaBuilder/application/views/twig/twig__flavorModal_view.html",
-					"settings":
-					{
-						"buffer_size": 5972,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								106,
-								106
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP-Twig.tmbundle/Syntaxes/HTML (Twig).tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
 					"file": "/P/Projects/PizzaBuilder/resources/js/portal-js.js",
 					"settings":
 					{
-						"buffer_size": 11010,
+						"buffer_size": 23079,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8252,
-								8252
+								9187,
+								9187
 							]
 						],
 						"settings":
@@ -352,25 +454,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1080.0,
+						"translation.y": 3780.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 2,
 					"file": "/P/Projects/PizzaBuilder/application/views/twig/twig__card_view.html",
 					"settings":
 					{
-						"buffer_size": 2832,
+						"buffer_size": 3164,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								423,
-								423
+								405,
+								405
 							]
 						],
 						"settings":
@@ -380,32 +482,85 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 855.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "/P/Projects/PizzaBuilder/application/views/twig/twig__flavorCard_view.html",
+					"buffer": 3,
+					"file": "/P/Projects/PizzaBuilder/application/views/twig/twig__flavorModal_view.html",
 					"settings":
 					{
-						"buffer_size": 1593,
+						"buffer_size": 6564,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								48,
-								71
+								983,
+								983
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP-Twig.tmbundle/Syntaxes/HTML (Twig).tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 270.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/P/Projects/PizzaBuilder/application/views/twig/twig__progressDiv_view.html",
+					"settings":
+					{
+						"buffer_size": 1402,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								1402
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/P/Projects/PizzaBuilder/application/views/twig/twig_pizzaBuilder_view.html",
+					"settings":
+					{
+						"buffer_size": 145,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								126,
+								126
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -420,19 +575,19 @@
 			"sheets":
 			[
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "/P/Projects/PizzaBuilder/resources/css/portal-template.css",
 					"settings":
 					{
-						"buffer_size": 21023,
+						"buffer_size": 21788,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								15551,
-								15552
+								9895,
+								9895
 							]
 						],
 						"settings":
@@ -442,7 +597,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 10941.0,
+						"translation.y": 7378.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -478,7 +633,7 @@
 		"cols":
 		[
 			0.0,
-			0.674092868375,
+			0.777216792417,
 			1.0
 		],
 		"rows":
@@ -498,6 +653,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"flavorcard_view",
+				"application/views/twig/twig__flavorCard_view.html"
+			]
 		],
 		"width": 0.0
 	},
@@ -513,6 +672,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 167.0,
+	"side_bar_width": 253.0,
 	"status_bar_visible": true
 }

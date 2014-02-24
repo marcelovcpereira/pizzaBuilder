@@ -1,25 +1,57 @@
-{# default Div class #}
+{#
+ # Set the default class. Has no interaction beyond
+ # being selected and unselected. 
+ #}
 {% set class = "cardDiv" %}
 
-
+{#
+ # The number is used to determine the position of 
+ # the Flavor in the Layout. If is undefined, is not
+ # a Flavor card, so the number is empty. A flavor card
+ # also holds in its "data-value" attribute the ID of the flavor 
+ #}
 {% if number is not defined %}
-        {% set number = null %}
+        {% set number = "" %}
+        {% set dataValue = "" %}
+{% else %}
+        {% set dataValue = "data-value=" ~ number %}
+        {% set type = 'flavor' %}
 {% endif %}
 
-{# If the object parameter is null, then is an empty flavor card #}
-{% if object is null %}
-    {% set object = 
-    {name:'Choose a Flavor',id:null,picturePath:'pizza_pencil.png',description:''} %}
-
+{#
+ # If its a Flavor div, let's put the flavorDiv class on it.
+ # flavorDiv classed objectes show Modal Ingredients/Flavors on click
+ #}
+{% if type == 'flavor' %}
     {# flavorDiv class objects toggle modal on click #}
     {% set class = "flavorDiv" %}
-    
 {% endif %}
 
+{# If the object parameter is null, let's initialize an empty flavor #}
+{% if object is null %}
+    {% set object = 
+    {name:'Choose a Topping',id:null,picturePath:'pizza_pencil.png',description:''} %}    
+    {% if type == 'flavor' %}
+        {% set class = "flavorDiv hide" %}
+    {% endif %}
+{% endif %}
 
-<div class='{{class}}' data-value="{{number}}"> 
+{# 
+ # Checks if this is a selected Card. Selected cards have "cardDivSelected"
+ # class and attribute "data-value" set to true.
+ #}
+{% set panelSelected = "" %}
+{% set panelValue = 'false' %}
+{% if selected is defined %}
+    {% if selected == 'true' %}
+        {% set panelSelected = "cardDivSelected" %}
+        {% set panelValue = 'true' %}
+    {% endif %}
+{% endif %}
+
+<div class='{{class}}' {{dataValue}}> 
     {# if a number is defined, then is a numbered  flavor card #} 
-    {% if number is not null %}
+    {% if number != "" %}
         <h3>{{number}}</h3>
         {# Creating the div that will receive flavor html #}
         <div id="flavorCard{{number}}" class="flavorCard"  value="false">
@@ -27,9 +59,10 @@
 
     <!-- Card Item -->
     <div id="{{type}}Item{{object.id}}" name="{{type}}Item"  class="col-lg-3 col-md-4 col-sm-6 col-xs-12" 
-        data-value="false">
+        data-value="false"
+        data-id="{{object.id}}">
         <!-- PANEL -->
-        <div class="panel panel-default" data-value="false">
+        <div class="panel panel-default {{panelSelected}}" data-value="{{panelValue}}">
 
             <!-- PANEL BODY -->
             <div class="panel-body thumbnail">
@@ -56,22 +89,10 @@
             </div><!-- PANEL FOOTER -->
         </div><!-- PANEL -->
     </div><!-- Card Item -->  
-    {% if number is not null %}
+    {% if number != "" %}
         </div>
     {% endif %}
-<!--Object representation -->
-<div id="{{type}}Object{{object.id}}">
-    <input type="hidden" name="id" value="{{object.id}}">
-    <input type="hidden" name="name" = value="{{object.name}}">
-    <input type="hidden" name="description" = value="{{object.description}}">
-    <input type="hidden" name="picturePath" = value="{{object.picturePath}}">
-    <!-- If this is a Flavor object, let's loop over its ingredients -->
-    {% if type == 'flavor' %}
-    {% for ingredient in object.getIngredients %}
-    <input type="hidden" name="ingredientId{{ingredient.id}}" value="{{ingredient.id}}">
-    <input type="hidden" name="ingredientName{{ingredient.id}}" value="{{ingredient.name}}">
-    <input type="hidden" name="ingredientDescription{{ingredient.id}}" value="{{ingredient.description}}">
-    {% endfor %}
-    {% endif %}
-</div><!--Object representation -->  
+    <!--Object representation -->
+    <input type="hidden" name="{{type}}Object{{object.id}}" value="{{object.__toString()}}">
+    <!--Object representation -->  
 </div>

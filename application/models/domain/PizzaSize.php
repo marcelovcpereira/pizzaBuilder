@@ -10,7 +10,7 @@
  * @license    http://opensource.org/licenses/gpl-license.php GNU Public License
  */
 
-class PizzaSize {
+class PizzaSize implements JsonSerializable{
 
     //layout id
     private $id;    
@@ -61,12 +61,14 @@ class PizzaSize {
         $this->picturePath = $picturePath;
     }
 
-    public function __toString() {
-        $string = "|Size:";
-        $string .= $this->getName() . ",<br>"
-                . $this->getDescription() . ",<br>"
-                . $this->getPicturePath() . "|";
-        return $string;
+    public function __toString()
+    {
+        return json_encode($this);
+    }
+
+    public function JsonSerialize()
+    {
+        return get_object_vars($this);
     }
 
 }

@@ -10,7 +10,8 @@ require_once 'Ingredient.php';
  * @license    http://opensource.org/licenses/gpl-license.php GNU Public License
  */
 
-class PizzaEdge {
+class PizzaEdge implements JsonSerializable
+{
     //edge id
     private $id;
     //The pizza edge name.
@@ -30,55 +31,66 @@ class PizzaEdge {
         $this->setPicturePath("");
     }
     
-    public function getFilling() {
+    public function getFilling() 
+    {
         return $this->filling;
     }
 
-    public function setFilling(Ingredient $filling = null) {
+    public function setFilling(Ingredient $filling = null)
+    {
         $this->filling = $filling;
     }
 
         
-    public function getId() {
+    public function getId() 
+    {
         return $this->id;
     }
 
-    public function setId($id) {
+    public function setId($id) 
+    {
         $this->id = $id;
     }
 
         
-    public function getName() {
+    public function getName()
+    {
         return $this->name;
     }
 
-    public function getDescription() {
+    public function getDescription()
+    {
         return $this->description;
     }
 
-    public function getPicturePath() {
+    public function getPicturePath()
+    {
         return $this->picturePath;
     }
 
-    public function setName($name) {
+    public function setName($name)
+    {
         $this->name = $name;
     }
 
-    public function setDescription($description) {
+    public function setDescription($description)
+    {
         $this->description = $description;
     }
 
-    public function setPicturePath($picturePath) {
+    public function setPicturePath($picturePath)
+    {
         $this->picturePath = $picturePath;
     }
 
-    public function __toString() {
-        $string = "|Edge:";
-        $string .= $this->getName() . ",<br>"
-                . $this->getDescription() . ",<br>FILL:"
-                . $this->getFilling() . ",<br>"
-                . $this->getPicturePath() . "|";
-        return $string;
+    public function __toString()
+    {
+        return json_encode($this);
+    }
+
+    public function JsonSerialize()
+    {
+        return get_object_vars($this);
     }
 
 }

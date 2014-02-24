@@ -10,7 +10,8 @@
  * @license    http://opensource.org/licenses/gpl-license.php GNU Public License
  */
 
-class PizzaCrust {
+class PizzaCrust implements JsonSerializable
+{
 
     //crust id
     private $id;
@@ -27,45 +28,55 @@ class PizzaCrust {
         $this->setDescription("");
         $this->setPicturePath("");
     }
-    public function getId() {
+    public function getId() 
+    {
         return $this->id;
     }
 
-    public function setId($id) {
+    public function setId($id) 
+    {
         $this->id = $id;
     }
 
         
-    public function getName() {
+    public function getName() 
+    {
         return $this->name;
     }
 
-    public function getDescription() {
+    public function getDescription()
+    {
         return $this->description;
     }
 
-    public function getPicturePath() {
+    public function getPicturePath() 
+    {
         return $this->picturePath;
     }
 
-    public function setName($name) {
+    public function setName($name)
+    {
         $this->name = $name;
     }
 
-    public function setDescription($description) {
+    public function setDescription($description) 
+    {
         $this->description = $description;
     }
 
-    public function setPicturePath($picturePath) {
+    public function setPicturePath($picturePath) 
+    {
         $this->picturePath = $picturePath;
     }
 
-    public function __toString() {
-        $string = "Crust:";
-        $string .= $this->getName() . ",<br>"
-                . $this->getDescription() . ",<br>"
-                . $this->getPicturePath() . "|";
-        return $string;
+    public function __toString() 
+    {
+        return json_encode($this);
+    }
+
+    public function JsonSerialize()
+    {
+        return get_object_vars($this);
     }
 
 }

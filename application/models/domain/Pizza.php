@@ -11,7 +11,7 @@ require_once 'PizzaCrust.php';
  * @license    http://opensource.org/licenses/gpl-license.php GNU Public License
  */
 
-class Pizza {
+class Pizza implements JsonSerializable{
     
     //pizza id
     private $id;
@@ -160,26 +160,14 @@ class Pizza {
     }
 
 
-    public function __toString() {
-        $string = "Pizza: " . $this->getId() . "<br>";
-        $string .= "-----------------------------<br>";
-        $string .= $this->getName() . "<br>";
-        $string .= "-----------------------------<br>";
-        $string .= $this->getDescription() . "<br>";
-        $string .= "-----------------------------<br>";
-        $string .= $this->getObservations() . "<br>";
-        $string .= "-----------------------------<br>";
-        $string .= $this->getPicturePath() . "<br>";
-        $string .= "-----------------------------<br>";
-        $string .= $this->getCrust();
-        $string .= $this->getEdge();
-        $string .= $this->getLayout();
-        $string .= $this->getSize();
-        $string .= $this->getFlavor1();
-        $string .= $this->getFlavor2();
-        $string .= $this->getFlavor3();
-        $string .= $this->getFlavor4();
-        return $string;
+    public function __toString()
+    {
+        return json_encode($this);
+    }
+
+    public function JsonSerialize()
+    {
+        return get_object_vars($this);
     }
     
     public function getRecipe()
