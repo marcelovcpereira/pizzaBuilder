@@ -1,0 +1,135 @@
+{% include 'twig__history.html' %}
+
+<div id="cartContainer" class="container table-responsive">
+	<table class="table" cellspacing="0" cellpadding="0">
+		<thead>
+			<tr>
+				<th><i class="glyphicon glyphicon-shopping-cart"></i></th>
+				<th>Item Description</th>
+				<th>Quantity</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% if cart|length > 0 %}
+				{% for item in cart %}
+					{% set pizza = item['options']['object'] %}
+					{% if pizza is not null  %}
+				        <tr name="pizzaRow" >				        	
+				        	<!-- image of pizza -->
+				        	<td>
+				        		 <div name="image">
+				        			<img src="/PizzaBuilder/resources/images/{{pizza.picturePath}}" alt="Pizza Image">
+				        		</div>
+				        	</td><!-- image of pizza -->
+				        	<!-- contents of pizza -->
+				            <td name="contents" >
+				            	<!-- pizza name-->
+				                <div name="pizzaName" class="row">
+				                	<div class="col-lg-12">
+				                		{{pizza.name}} <!---->
+				                	</div>
+				            	</div>
+				            	<!-- pizza parts: crust, edge, size... -->
+				            	<div name="pizzaParts" class="row">
+				                	<div class="col-lg-12">
+				                		{{pizza.getSize().getName()}},
+				                		{{pizza.getCrust().getName()}} Crust,
+				                		{{pizza.getEdge().getName()}} Edge,
+				                		{{pizza.getLayout().getName()}}				                		
+				                	</div>
+				            	</div>
+				            	<div name="pizzaFlavor1" class="row">
+				                	<div class="col-lg-12">
+				                		{% set flavor1 = pizza.getFlavor1() %}                		
+
+				                		{% if flavor1 is not null %}
+				                			{{flavor1.getName()}}:
+				                			{% for ingredient in flavor1.getIngredients() %}
+				                				{{ingredient.getName()}}
+				                				{% if loop.index != flavor1.getIngredients()|length %},{% endif %}
+				                			{% endfor %}
+				                		{% endif %}                		
+				                	</div>
+				            	</div>
+				            	<div name="pizzaFlavor2" class="row">
+				            		<div class="col-lg-12">
+				            			{% set flavor2 = pizza.getFlavor2() %}
+					            		{% if flavor2 is not null %}
+					            			{{flavor2.getName()}}:
+					            			{% for ingredient in flavor2.getIngredients() %}
+					            				{{ingredient.getName()}}
+					            				{% if loop.index != flavor2.getIngredients()|length %},{% endif %}
+					            			{% endfor %}
+					            		{% endif %}
+				        			</div>
+				            	</div>
+
+				            	<div name="pizzaFlavor3" class="row">
+				            		<div class="col-lg-12">
+				            			{% set flavor3 = pizza.getFlavor3() %}
+					            		{% if flavor3 is not null %}
+					            			{{flavor3.getName()}}:
+					            			{% for ingredient in flavor3.getIngredients() %}
+					            				{{ingredient.getName()}}
+					            				{% if loop.index != flavor3.getIngredients()|length %},{% endif %}
+					            			{% endfor %}
+					            		{% endif %}
+				        			</div>
+				            	</div>
+
+				            	<div name="pizzaFlavor4" class="row">
+				            		<div class="col-lg-12">
+				            			{% set flavor4 = pizza.getFlavor4() %}
+					            		{% if flavor4 is not null %}
+					            			{{flavor4.getName()}}:
+					            			{% for ingredient in flavor4.getIngredients() %}
+					            				{{ingredient.getName()}}
+					            				{% if loop.index != flavor4.getIngredients()|length %},{% endif %}
+					            			{% endfor %}
+					            		{% endif %}
+				        			</div>
+				            	</div>
+				            </td><!-- contents of pizza --> 
+
+				            <!-- Quantity column of pizza -->
+				            <td name="qtyDiv" >		            	
+				            	
+				            	<div class="row">
+				            		<div class="col-lg-12">
+				            			<div class="input-group input-group-xs">
+				            				<span class="input-group-btn">
+						            			<a class="btn btn-default" href="/PizzaBuilder/cart/remove/{{item['rowid']}}">
+						            				<i class="glyphicon glyphicon-minus"></i>
+						            			</a>		            
+					            			</span>			
+					            			<input type="text" class="form-control" value="{{item['qty']}}" >
+					            			<span class="input-group-btn">
+
+						            			<a class="btn btn-default" href="/PizzaBuilder/cart/add/{{item['id']}}/{{item['rowid']}}">
+						            				<i class="glyphicon glyphicon-plus"></i>
+						            			</a>
+						            		</span>
+
+				            			</div>
+				            		</div>
+				            	</div>
+
+				            	<div name="updateQty" class="row" data-value="{{item['rowid']}}">
+				            		<div class="col-lg-12">
+				            			<a href="#">Update</a>
+				            		</div>
+				            	</div>
+				            </td><!-- Quantity column of pizza -->         
+				       
+				        </tr>		    
+				    {% endif %}
+				{% endfor %}
+			{% else %}
+				<tr><td id="emptyCartCell" colspan="3"><span>Empty cart.</span></td></tr>
+			{% endif %}
+		</tbody>
+	</table>
+</div>
+       
+
+        

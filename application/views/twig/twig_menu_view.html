@@ -3,15 +3,15 @@
 <div id="menuRow" class="container">
     <span class="">Click pizzas to see details</span>
     {% for pizza in pizzas %}
-            {% if loop.index0 is divisible by(4) %}	                    
-                    <!-- CONTAINER -->
-                    <div class='row'>
+            {% if loop.index0 is divisible by(4) %}	
+                <!-- CONTAINER -->
+                <div class='row'>
             {% endif %}
 
             {% include 'twig__menu_item_view.html'%}
 
             {% if loop.index is divisible by(4) %}	
-                    </div> <!-- END: ROW -->
+                </div> <!-- END: ROW -->
             {% endif %}
 
     {% endfor %}

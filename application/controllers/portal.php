@@ -15,9 +15,14 @@ class Portal extends CI_Controller
 		//Parameters to the view
         $data = array('user' => $user); 
         //Load the home_view page with the user
-		$this->templatewrapper->set('twig');
         $this->templatewrapper->load('home_view', $data);
     }    
+
+    public function about()
+    {
+        $data = array('history_title' => 'About Pizza Builder');
+         $this->templatewrapper->load('about_view', $data);
+    }
    
 }
 

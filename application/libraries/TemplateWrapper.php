@@ -33,6 +33,7 @@ class TemplateWrapper {
         'about' => 'About',
         'menu' => 'Menu',
 		'builder' => 'Builder',
+        'cart' => 'Your Cart',
         'product_name' => 'Pizza Builder',
         'account' => 'Account',
         'sign_up' => 'Sign Up',

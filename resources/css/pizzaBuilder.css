@@ -1,0 +1,928 @@
+/**************FONTS**************/
+@font-face {
+  font-family: DolceVita;
+  src: url('../fonts/Dolce Vita.TTF');
+}
+@font-face {
+  font-family: Freshman;
+  src: url('../fonts/Freshman.TTF');
+}
+@font-face {
+  font-family: Stark;
+  src: url('../fonts/Stark.OTF');
+}
+/**************END:FONTS**************/
+/**************VARIABLES**************/
+/**************END:VARIABLES**************/
+/**************MIXINS**************/
+/* Card Panel Style */
+/* Returns the button style, when the card has a button */
+/**************END:MIXINS**************/
+/**************STYLES**************/
+html {
+  min-height: 100%;
+  height: 100%;
+}
+html body {
+  background-color: #fff2e0;
+  min-height: 100%;
+  height: 100%;
+}
+/*-----------FOOTER-------------*/
+#rowComplemento {
+  height: 400px;
+  width: 100%;
+}
+#footerRow {
+  height: 220px;
+  width: 100%;
+  margin: 0px;
+  background-color: #f0ad4e;
+  border-top: 1px solid #745b39;
+  color: white;
+  padding: 10px;
+  position: relative;
+  bottom: 0px;
+}
+#footerRow #footerDiv2 {
+  text-align: center;
+}
+#footerRow #footerDiv2 h2 {
+  margin-top: 4px;
+}
+/*-----------END:FOOTER-------------*/
+/* ----------NAVBAR----------- */
+#navBar {
+  box-shadow: 2px 2px 2px #888888;
+  border: none;
+  background-color: #f0ad4e;
+  /*Pizza Image*/
+  /* Title and hidden collapse menu button */
+  /* Menu links */
+}
+#navBar #pizzaBasRelief {
+  display: block;
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+  display: inline;
+  float: left;
+}
+#navBar .navbar-header {
+  /* Pizza Builder title */
+  /* Hidden button that appears on small screens
+		 * to collapse menu links 
+		 */
+}
+#navBar .navbar-header .navbar-brand {
+  font-family: Stark;
+  font-weight: bold;
+  font-size: 24px;
+  color: #745b39;
+}
+#navBar .navbar-header .navbar-brand:hover {
+  color: white;
+}
+#navBar .navbar-header button {
+  border-color: #745b39;
+}
+#navBar .navbar-header button span {
+  background-color: #745b39;
+}
+#navBar .navbar-header button:hover {
+  background-color: white;
+}
+#navBar .navbar-header button:hover span {
+  background-color: #f0ad4e;
+}
+#navBar .navbar-header button:focus {
+  background-color: white;
+}
+#navBar .navbar-header button:focus span {
+  background-color: #f0ad4e;
+}
+#navBar #navbarMenu ul li {
+  font-family: Stark;
+  font-size: 18px;
+}
+#navBar #navbarMenu ul li:hover {
+  background-color: white;
+}
+#navBar #navbarMenu ul li a {
+  color: white;
+}
+#navBar #navbarMenu ul li a:hover {
+  color: #f0ad4e;
+}
+/*#navBar*/
+/* ----------NAVBAR----------- */
+/*----------PAGE HEADER (except in home) ---------*/
+#historyRow #history {
+  font-family: Stark;
+  margin-bottom: 5px;
+  width: 100%;
+  height: 80px;
+  line-height: 45px;
+  text-align: center;
+  border: 1px solid #745b39;
+  position: relative;
+  overflow: hidden;
+  background: url('/PizzaBuilder/resources/images/bannerPizza.png');
+}
+#historyRow #history .spanTitle {
+  font-size: 32px;
+  color: #9c6619;
+  text-shadow: -1px 0 #fcf8e3, 0 1px #fcf8e3, 1px 0 #fcf8e3, 0 -1px #fcf8e3;
+}
+/*----------END: PAGE HEADER---------*/
+/*----------HOME---------------*/
+#row1 {
+  width: 100%;
+}
+#row1 .jumbotron {
+  margin: auto;
+  padding: 0px;
+  width: 1000px;
+  height: 165px;
+  background: url('/PizzaBuilder/resources/images/news_pizzaSmall.jpg');
+  border: 1px solid #745b39;
+  text-align: center;
+  position: relative;
+}
+#row1 .jumbotron h1 {
+  background-color: rgba(252, 248, 227, 0.5);
+  margin-top: 25px;
+  width: 100%;
+  line-height: 100px;
+  font-family: Stark;
+  font-size: 34px;
+  color: #fcf8e3;
+  text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
+}
+#row1 .jumbotron h1 small {
+  text-transform: uppercase;
+  font-size: 45%;
+  color: #fcf8e3;
+}
+/* This row contains links to Menu, Builder, Delivery and Contact */
+#row2 {
+  text-align: center;
+  padding-top: 20px;
+  width: 100%;
+  /*.menuLink*/
+}
+#row2 .menuLink h3 span {
+  font-family: Stark;
+  font-size: 80%;
+  color: #745b39;
+  text-decoration: underline;
+}
+#row2 .menuLink h3 span:hover {
+  border: 1px solid #745b39;
+}
+/* #row2 */
+/*---------END: HOME-----------*/
+/*----------------Menu Item View--------------*/
+/* Row of pizza cards */
+#menuRow {
+  margin-top: 10px;
+  /* Card item FRONT */
+  /* Card item FRONT */
+}
+#menuRow div[name='menuItem'] {
+  height: 340px;
+  width: 269px;
+  margin-bottom: 15px;
+  text-align: left;
+  /* Card Panel Style */
+  /* The card panel adjusts to Height and Width of its container */
+  /* Card Item Back */
+  /* Card Item Back */
+}
+#menuRow div[name='menuItem'] a {
+  color: #745b39;
+}
+#menuRow div[name='menuItem'] a:hover {
+  text-decoration: none;
+}
+#menuRow div[name='menuItem'] .panel {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #f8d19c;
+  box-shadow: 2px 2px 2px #888888;
+  border: 3px solid #b48e59;
+  /* Div that contains the card image */
+  /* Contains card info: Title and Description */
+  /* Div that contains the button */
+}
+#menuRow div[name='menuItem'] .panel:hover {
+  border-color: #f0ad4e;
+}
+#menuRow div[name='menuItem'] .panel .panel-body {
+  height: 135px;
+  margin-bottom: 0px;
+  padding: 0px;
+  border: 1px solid #b48e59;
+  border-top: none;
+  overflow: hidden;
+  background-color: #fcf8e3;
+  /* Actual card image */
+}
+#menuRow div[name='menuItem'] .panel .panel-body img {
+  width: 100%;
+  height: 100%;
+}
+#menuRow div[name='menuItem'] .panel .panel-footer {
+  margin-bottom: 0px;
+  height: 150px;
+  border: none;
+  width: 100%;
+  color: #745b39;
+  text-decoration: none;
+  overflow: hidden;
+  overflow-y: auto;
+  background-color: #f8d19c;
+  /* Actual Title */
+  /* Line separating Title and Description */
+  /* Description */
+}
+#menuRow div[name='menuItem'] .panel .panel-footer h3 {
+  font-family: Freshman;
+  font-size: 22px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+#menuRow div[name='menuItem'] .panel .panel-footer hr {
+  margin: 3px;
+  border-color: #9c6619;
+}
+#menuRow div[name='menuItem'] .panel .panel-footer span {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+#menuRow div[name='menuItem'] .panel .botao {
+  text-align: center;
+  background-color: #f8d19c;
+  /* Actual ADD button */
+}
+#menuRow div[name='menuItem'] .panel .botao button {
+  width: 97%;
+  font-family: Stark;
+  font-size: 16px;
+  height: 45px;
+  font-weight: bold;
+  margin-bottom: 6px;
+  background-color: #9c6619;
+  border-color: #9c6619;
+}
+#menuRow div[name='menuItem'] .panel .botao button:hover {
+  background-color: white;
+  color: #9c6619;
+}
+#menuRow div[name='menuItem'] div[name='panelPizzaDetails'] {
+  text-align: center;
+  color: #745b39;
+  font-family: Stark;
+  font-weight: lighter;
+  position: relative;
+  /* Link that flips card */
+  /* Link that edits pizza */
+}
+#menuRow div[name='menuItem'] div[name='panelPizzaDetails'] a {
+  /* Destails of pizza */
+}
+#menuRow div[name='menuItem'] div[name='panelPizzaDetails'] a .scrollableContent {
+  height: 285px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  /* Pizza Part name */
+  /* Pizza Part description */
+}
+#menuRow div[name='menuItem'] div[name='panelPizzaDetails'] a .scrollableContent span {
+  font-weight: lighter;
+  font-family: Stark;
+  font-size: 16px;
+  width: 97%;
+  height: auto;
+  margin: 3px;
+  overflow: auto;
+  background-color: #745b39;
+  color: #f0ad4e;
+  display: block;
+  /* Info ICON */
+}
+#menuRow div[name='menuItem'] div[name='panelPizzaDetails'] a .scrollableContent span .glyphicon {
+  float: right;
+}
+#menuRow div[name='menuItem'] div[name='panelPizzaDetails'] a .scrollableContent small {
+  font-family: Verdana;
+}
+#menuRow div[name='menuItem'] div[name='panelPizzaDetails'] a button {
+  width: 97%;
+  position: absolute;
+  bottom: 0px;
+  left: 4px;
+  font-size: 16px;
+  height: 45px;
+  font-weight: bold;
+  margin-bottom: 3px;
+  background-color: #9c6619;
+  border-color: #9c6619;
+  z-index: 5;
+}
+#menuRow div[name='menuItem'] div[name='panelPizzaDetails'] a button:hover {
+  background-color: white;
+  color: #9c6619;
+}
+/*----------------END: Menu Item View--------------*/
+/*----------------Pizza Builder View---------------*/
+/* BUILDER DIV */
+#builderDiv {
+  text-align: center;
+  /* Row Div contaning name of pizza being edited */
+  /* Each row of pizza builder (size, crust, edge...) */
+  /* Pizza Part Row */
+  /* Line separating builder from ADD BUTTON */
+  /* ADD BUTTON - adds new built pizza to cart */
+}
+#builderDiv #editingFlavorDiv {
+  /* Col div containing name of pizza being edited */
+}
+#builderDiv #editingFlavorDiv #editing {
+  /* Actual "editing pizza" text */
+}
+#builderDiv #editingFlavorDiv #editing h1 {
+  font-family: Stark, Verdana;
+  color: #745b39;
+  margin: 10px auto;
+  width: 40%;
+  /* Pizza name emphasis */
+}
+#builderDiv #editingFlavorDiv #editing h1 em {
+  font-weight: bold;
+}
+#builderDiv div[name='pizzaPartRow'] {
+  /* Each part column */
+  /* Pizza part Col */
+}
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] {
+  /* Each part title: Pizza Size, Crust Type...)*/
+  /* Wraps every card on builder view */
+  /* CardWrapper */
+}
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] h2 {
+  background-color: #745b39;
+  font-family: Stark, Verdana;
+  font-size: 24px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  color: #f0ad4e;
+  height: 100%;
+  margin: 5px auto;
+  text-align: left;
+  cursor: pointer;
+}
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] h2:hover {
+  background-color: #f0ad4e;
+  color: #745b39;
+}
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] h2:hover span {
+  text-shadow: -1px 0 #745b39, 0 1px #745b39, 1px 0 #745b39, 0 -1px #745b39;
+}
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] h2 span {
+  color: white;
+  font-size: 80%;
+  margin-left: 10px;
+}
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper {
+  display: none;
+  /* SizeCards - size is separated cause
+				 * it has a smaller size */
+  /* Size Cards */
+  /* Pizza Part Cards */
+  /* Pizza Part Cards */
+  /* Div wrapping FlavorItems*/
+  /* When a card is selected this class is applied 
+				 * it needs to be important
+				 */
+  /* Additional info div */
+}
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='sizeItem'] {
+  height: 200px;
+  width: 240px;
+  margin-bottom: 15px;
+  text-align: center;
+  display: inline;
+  /* Card panel */
+  /* The card panel adjusts to Height and Width of its container */
+}
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='sizeItem'] .panel {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #f8d19c;
+  box-shadow: 2px 2px 2px #888888;
+  border: 3px solid #b48e59;
+  /* Div that contains the card image */
+  /* Contains card info: Title and Description */
+}
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='sizeItem'] .panel:hover {
+  border-color: #f0ad4e;
+}
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='sizeItem'] .panel .panel-body {
+  height: false;
+  margin-bottom: 0px;
+  padding: 0px;
+  border: 1px solid #b48e59;
+  border-top: none;
+  overflow: hidden;
+  background-color: #fcf8e3;
+  /* Actual card image */
+}
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='sizeItem'] .panel .panel-body img {
+  width: 100%;
+  height: 100%;
+}
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='sizeItem'] .panel .panel-footer {
+  margin-bottom: 0px;
+  height: 150px;
+  border: none;
+  width: 100%;
+  color: #745b39;
+  text-decoration: none;
+  overflow: hidden;
+  overflow-y: auto;
+  background-color: #f8d19c;
+  /* Actual Title */
+  /* Line separating Title and Description */
+  /* Description */
+}
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='sizeItem'] .panel .panel-footer h3 {
+  font-family: Freshman;
+  font-size: 22px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='sizeItem'] .panel .panel-footer hr {
+  margin: 3px;
+  border-color: #9c6619;
+}
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='sizeItem'] .panel .panel-footer span {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='crustItem'],
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='edgeItem'],
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='layoutItem'],
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='flavorItem'] {
+  height: 270px;
+  width: 240px;
+  margin-bottom: 15px;
+  text-align: left;
+  /* Part Card */
+  /* The card panel adjusts to Height and Width of its container */
+}
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='crustItem'] .panel,
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='edgeItem'] .panel,
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='layoutItem'] .panel,
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='flavorItem'] .panel {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #f8d19c;
+  box-shadow: 2px 2px 2px #888888;
+  border: 3px solid #b48e59;
+  /* Div that contains the card image */
+  /* Contains card info: Title and Description */
+}
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='crustItem'] .panel:hover,
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='edgeItem'] .panel:hover,
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='layoutItem'] .panel:hover,
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='flavorItem'] .panel:hover {
+  border-color: #f0ad4e;
+}
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='crustItem'] .panel .panel-body,
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='edgeItem'] .panel .panel-body,
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='layoutItem'] .panel .panel-body,
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='flavorItem'] .panel .panel-body {
+  height: 120px;
+  margin-bottom: 0px;
+  padding: 0px;
+  border: 1px solid #b48e59;
+  border-top: none;
+  overflow: hidden;
+  background-color: #fcf8e3;
+  /* Actual card image */
+}
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='crustItem'] .panel .panel-body img,
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='edgeItem'] .panel .panel-body img,
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='layoutItem'] .panel .panel-body img,
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='flavorItem'] .panel .panel-body img {
+  width: 100%;
+  height: 100%;
+}
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='crustItem'] .panel .panel-footer,
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='edgeItem'] .panel .panel-footer,
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='layoutItem'] .panel .panel-footer,
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='flavorItem'] .panel .panel-footer {
+  margin-bottom: 0px;
+  height: 150px;
+  border: none;
+  width: 100%;
+  color: #745b39;
+  text-decoration: none;
+  overflow: hidden;
+  overflow-y: auto;
+  background-color: #f8d19c;
+  /* Actual Title */
+  /* Line separating Title and Description */
+  /* Description */
+}
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='crustItem'] .panel .panel-footer h3,
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='edgeItem'] .panel .panel-footer h3,
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='layoutItem'] .panel .panel-footer h3,
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='flavorItem'] .panel .panel-footer h3 {
+  font-family: Freshman;
+  font-size: 22px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='crustItem'] .panel .panel-footer hr,
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='edgeItem'] .panel .panel-footer hr,
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='layoutItem'] .panel .panel-footer hr,
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='flavorItem'] .panel .panel-footer hr {
+  margin: 3px;
+  border-color: #9c6619;
+}
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='crustItem'] .panel .panel-footer span,
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='edgeItem'] .panel .panel-footer span,
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='layoutItem'] .panel .panel-footer span,
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='flavorItem'] .panel .panel-footer span {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper .flavorDiv {
+  display: inline-table;
+  cursor: pointer;
+}
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper .cardDiv {
+  display: inline-block;
+  cursor: pointer;
+}
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper .cardDivSelected {
+  border: 5px solid #d2322d !important;
+  box-shadow: 2px 2px 2px #d2322d !important;
+  box-shadow: -2px -2px -2px #d2322d !important;
+}
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper .obsTextArea {
+  /* Additional info text area */
+}
+#builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper .obsTextArea textarea {
+  width: 50%;
+  margin: 0 auto;
+}
+#builderDiv hr {
+  border-color: black;
+}
+#builderDiv button {
+  width: 40%;
+  height: 80px;
+  font-family: Stark;
+  font-size: 20px;
+  box-shadow: 2px 2px 2px #888888;
+}
+/* Builder Div */
+/* Ingredients/Flavors Modal Pane */
+#ingredientsPane {
+  border: 1px solid #745b39;
+  /* Modal DIV */
+  /* Modal DIV */
+}
+#ingredientsPane .modal-content {
+  /* Tabs Ingredients/Toppings */
+  /* Footer containing 3 buttons: Save, Reset and Cancel */
+}
+#ingredientsPane .modal-content .modal-header {
+  padding-bottom: 0px;
+  border: none;
+  background-color: #f8d19c;
+  /* List of tabs */
+}
+#ingredientsPane .modal-content .modal-header ul {
+  border: none;
+  /* Tab list item */
+  /* Active tab item */
+}
+#ingredientsPane .modal-content .modal-header ul li {
+  background-color: #f8d19c;
+  color: #745b39;
+  border-color: #745b39;
+  text-decoration: underline;
+  /* Toggle tabs */
+}
+#ingredientsPane .modal-content .modal-header ul li a {
+  background-color: transparent;
+  border: none;
+  color: #745b39;
+  /* Tabs text: "Ingredients" and "Toppings" */
+}
+#ingredientsPane .modal-content .modal-header ul li a h4 {
+  font-family: Stark;
+  font-size: 20px;
+  color: #745b39;
+}
+#ingredientsPane .modal-content .modal-header ul li.active {
+  background-color: #fff2e0;
+  text-decoration: none;
+}
+#ingredientsPane .modal-content .tab-content {
+  /* Outside tabs to affect both Ingredient list
+				 * and Flavors list 
+				 */
+}
+#ingredientsPane .modal-content .tab-content .cardImage {
+  width: 100%;
+  height: 100%;
+}
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body {
+  background-color: #fff2e0;
+  /* Div containing list of ingredients */
+  /* Divs containing card of hovered ingredient/flavor */
+  /* "Summary:" */
+  /* Ingredients of summary */
+}
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body > span {
+  text-align: center;
+  margin: 15px auto;
+  display: block;
+  margin-top: 0px;
+  font-family: Stark;
+  color: #745b39;
+  font-size: 110%;
+  font-weight: lighter;
+}
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #ingredientsList {
+  overflow: auto;
+}
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #ingredientColumn,
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #flavorsColumn {
+  padding: 0;
+  margin-top: 20px;
+  /* Divs containing actual ingredient/flavor card */
+}
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #ingredientColumn div[name$='ingredientItem'],
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #flavorsColumn div[name$='ingredientItem'],
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #ingredientColumn div[name='flavorItem'],
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #flavorsColumn div[name='flavorItem'] {
+  height: 270px;
+  width: 240px;
+  margin-bottom: 15px;
+  text-align: left;
+  /* The card panel adjusts to Height and Width of its container */
+}
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #ingredientColumn div[name$='ingredientItem'] .panel,
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #flavorsColumn div[name$='ingredientItem'] .panel,
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #ingredientColumn div[name='flavorItem'] .panel,
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #flavorsColumn div[name='flavorItem'] .panel {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #f8d19c;
+  box-shadow: 2px 2px 2px #888888;
+  border: 3px solid #b48e59;
+  /* Div that contains the card image */
+  /* Contains card info: Title and Description */
+}
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #ingredientColumn div[name$='ingredientItem'] .panel:hover,
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #flavorsColumn div[name$='ingredientItem'] .panel:hover,
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #ingredientColumn div[name='flavorItem'] .panel:hover,
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #flavorsColumn div[name='flavorItem'] .panel:hover {
+  border-color: #f0ad4e;
+}
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #ingredientColumn div[name$='ingredientItem'] .panel .panel-body,
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #flavorsColumn div[name$='ingredientItem'] .panel .panel-body,
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #ingredientColumn div[name='flavorItem'] .panel .panel-body,
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #flavorsColumn div[name='flavorItem'] .panel .panel-body {
+  height: false;
+  margin-bottom: 0px;
+  padding: 0px;
+  border: 1px solid #b48e59;
+  border-top: none;
+  overflow: hidden;
+  background-color: #fcf8e3;
+  /* Actual card image */
+}
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #ingredientColumn div[name$='ingredientItem'] .panel .panel-body img,
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #flavorsColumn div[name$='ingredientItem'] .panel .panel-body img,
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #ingredientColumn div[name='flavorItem'] .panel .panel-body img,
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #flavorsColumn div[name='flavorItem'] .panel .panel-body img {
+  width: 100%;
+  height: 100%;
+}
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #ingredientColumn div[name$='ingredientItem'] .panel .panel-footer,
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #flavorsColumn div[name$='ingredientItem'] .panel .panel-footer,
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #ingredientColumn div[name='flavorItem'] .panel .panel-footer,
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #flavorsColumn div[name='flavorItem'] .panel .panel-footer {
+  margin-bottom: 0px;
+  height: 150px;
+  border: none;
+  width: 100%;
+  color: #745b39;
+  text-decoration: none;
+  overflow: hidden;
+  overflow-y: auto;
+  background-color: #f8d19c;
+  /* Actual Title */
+  /* Line separating Title and Description */
+  /* Description */
+}
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #ingredientColumn div[name$='ingredientItem'] .panel .panel-footer h3,
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #flavorsColumn div[name$='ingredientItem'] .panel .panel-footer h3,
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #ingredientColumn div[name='flavorItem'] .panel .panel-footer h3,
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #flavorsColumn div[name='flavorItem'] .panel .panel-footer h3 {
+  font-family: Freshman;
+  font-size: 22px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #ingredientColumn div[name$='ingredientItem'] .panel .panel-footer hr,
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #flavorsColumn div[name$='ingredientItem'] .panel .panel-footer hr,
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #ingredientColumn div[name='flavorItem'] .panel .panel-footer hr,
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #flavorsColumn div[name='flavorItem'] .panel .panel-footer hr {
+  margin: 3px;
+  border-color: #9c6619;
+}
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #ingredientColumn div[name$='ingredientItem'] .panel .panel-footer span,
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #flavorsColumn div[name$='ingredientItem'] .panel .panel-footer span,
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #ingredientColumn div[name='flavorItem'] .panel .panel-footer span,
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #flavorsColumn div[name='flavorItem'] .panel .panel-footer span {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #h3customFlavorSummary {
+  font-family: Stark;
+  font-size: 120%;
+  color: #745b39;
+}
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #customFlavorSummary {
+  font-family: Stark;
+  margin-top: 4px;
+  color: #745b39;
+}
+#ingredientsPane .modal-content .tab-content ul {
+  list-style-type: none;
+  margin: auto 0;
+  padding-left: 0px;
+  /* When flavor item is clicked, receives this class */
+}
+#ingredientsPane .modal-content .tab-content ul li {
+  padding: 4px;
+  height: 44px;
+  line-height: 35px;
+  font-family: Stark;
+  font-weight: lighter;
+  font-size: 16px;
+  border: 1px solid #745b39;
+  background-color: #fff2e0;
+}
+#ingredientsPane .modal-content .tab-content ul li:hover {
+  cursor: pointer;
+  background-color: #f8d19c;
+}
+#ingredientsPane .modal-content .tab-content ul li button {
+  margin-left: 4px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+#ingredientsPane .modal-content .tab-content ul li.activeFlavor {
+  background-color: #ec971f;
+  color: #745b39;
+}
+#ingredientsPane .modal-content .modal-footer {
+  background-color: #f8d19c;
+  text-align: left;
+  margin-top: 0px;
+  /* Actual buttons */
+}
+#ingredientsPane .modal-content .modal-footer button {
+  font-weight: bold;
+  margin: 5px;
+  width: 30%;
+  height: 50%;
+  box-shadow: 2px 2px 2px #888888;
+}
+/* #ingredientsPane */
+/*--------------END:Pizza Builder View-------------*/
+/*--------------Cart View-------------*/
+#cartContainer {
+  /* TABLE */
+}
+#cartContainer .table {
+  width: 80%;
+  margin: 0px auto;
+  background-color: #fbe3c2;
+  color: #745b39;
+  font-family: Stark;
+  box-shadow: 2px 2px 2px #888888;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border-collapse: seperate;
+  /* TBODY */
+}
+#cartContainer .table th {
+  font-size: 120%;
+  font-weight: lighter;
+  text-align: center;
+  border-top: none;
+  border-bottom: 1px solid #b29061;
+}
+#cartContainer .table tbody {
+  /* TR */
+}
+#cartContainer .table tbody tr {
+  margin: 0px auto;
+  height: 120px !important;
+  overflow: hidden;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  /* Removing borders from TD's of last row */
+}
+#cartContainer .table tbody tr td {
+  border-color: #b29061;
+  border-top: none;
+  border-bottom: 1px solid #b29061;
+  height: 100%;
+}
+#cartContainer .table tbody tr td > div[name='image'] {
+  width: 150px !important;
+  height: 120px !important;
+  padding: 3px;
+}
+#cartContainer .table tbody tr td > div[name='image'] img {
+  width: 100%;
+  height: 100%;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+#cartContainer .table tbody tr td#emptyCartCell {
+  text-align: center;
+  font-size: 110%;
+}
+#cartContainer .table tbody tr td[name='contents'] {
+  overflow: hidden;
+  width: 100%;
+}
+#cartContainer .table tbody tr td[name='contents'] div[name='pizzaName'] {
+  font-weight: bold;
+  font-size: 130%;
+}
+#cartContainer .table tbody tr td[name='contents'] div[name='pizzaParts'] {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: lighter;
+}
+#cartContainer .table tbody tr td[name='contents'] div[name^='pizzaFlavor'] {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: lighter;
+}
+#cartContainer .table tbody tr td[name='qtyDiv'] {
+  vertical-align: middle;
+}
+#cartContainer .table tbody tr td[name='qtyDiv'] .input-group {
+  width: 120px;
+}
+#cartContainer .table tbody tr td[name='qtyDiv'] .input-group > span > a {
+  border-color: #745b39;
+  background-color: #fdf4e8;
+  color: #745b39;
+}
+#cartContainer .table tbody tr td[name='qtyDiv'] .input-group > input {
+  border-color: #745b39;
+  text-align: center;
+  color: #745b39;
+}
+#cartContainer .table tbody tr td[name='qtyDiv'] div[name="updateQty"] {
+  margin-top: 5px;
+  text-align: center;
+}
+#cartContainer .table tbody tr td[name='qtyDiv'] div[name="updateQty"] a {
+  color: #745b39;
+  text-decoration: underline;
+}
+#cartContainer .table tbody tr:last-child td {
+  border-bottom: none !important;
+}
+#cartContainer .table tbody tr:hover {
+  background-color: #f8d19c;
+}
+/* CART CONTAINER */
+/*--------------END:Cart View-------------*/
+/**************END:STYLES**************/

@@ -1,6 +1,5 @@
 /*------------------START DECLARATIONS--------------------*/
 
-
 /* 
  * GLOBAL VARIABLES 
  * used to store user chosen ingredients (array of ingredients)
@@ -10,15 +9,14 @@
  var traditionalFlavor = null;
  var userLayout = null;
 
-
- /* simple Ingredient Object representation */
+/** @constructor */
  function Ingredient(id,name,description,picturePath){
     this.id = id;
     this.name = name;
     this.description = description;
     this.picturePath = picturePath;
 }
-/* simple Flavor Object representation */
+/** @constructor */
 function Flavor(id,name,description,picturePath, ingredients){
     this.id = id;
     this.name = name;
@@ -46,6 +44,7 @@ function getFlavorIngredients(flavor){
     }
     return toString;
 }
+/** @constructor */
 function Pizza(id,name,description,picturePath,sizeID, crustID, edgeID,layoutID,flavors,obs){
     this.id = id;
     this.name = name;
@@ -59,7 +58,7 @@ function Pizza(id,name,description,picturePath,sizeID, crustID, edgeID,layoutID,
     this.observation = obs;
 }
 
-/* simple Layout Object representation */
+/** @constructor */
 function Layout(id,name,description,picturePath,pattern){
     this.id = id;
     this.name = name;
@@ -67,6 +66,8 @@ function Layout(id,name,description,picturePath,pattern){
     this.picturePath = picturePath;
     this.pattern = pattern;
 }
+
+
 
 
 /* Changes pizza card to details and back*/
@@ -505,7 +506,7 @@ function toggleBuilderRow(type, option){
     //var invisible = row.hasClass('hide');
     var invisible = !row.is(':visible');
 
-    if(option === undefined ){
+    if(option === undefined || option === null ){
 
         if(invisible){
             row.show(time);
@@ -634,9 +635,9 @@ function createPizzaFromBuilder(sizeID,crustID,edgeID,layoutID){
     var flavors = window.allFlavors.slice(1);
     var obs = $(".obsTextArea textarea").val();
     var id = -1;
-    var name = "";
-    var description = "";
-    var picturePath = "";
+    var name = "Custom";
+    var description = "User built pizza!";
+    var picturePath = "pizzaColor.png";
 
     var editingPizza = $("#editingFlavorDiv");
     if(editingPizza.length == 1){
@@ -684,7 +685,7 @@ $("document").ready(function() {
 });
   /*SETTING BUILDER SIZE ROW TO TOGGLE SIZE CARDS VISIBILITY WHEN CLICKED*/
   $("#sizeColumn h2").click(function(e){
-    toggleBuilderRow('size');
+    toggleBuilderRow('size',null);
 });
   /* SETTING CRUST CARDS TO SELECT ON CLICK */
   $("div[name='crustItem']").click(function(e){
@@ -692,7 +693,7 @@ $("document").ready(function() {
 });
   /*SETTING BUILDER CRUST ROW TO TOGGLE CRUST CARDS VISIBILITY WHEN CLICKED*/
   $("#crustColumn h2").click(function(e){
-    toggleBuilderRow('crust');
+    toggleBuilderRow('crust',null);
 });
   /* SETTING EDGE CARDS TO SELECT ON CLICK */
   $("div[name='edgeItem']").click(function(e){
@@ -700,7 +701,7 @@ $("document").ready(function() {
 });
   /*SETTING BUILDER EDGE ROW TO TOGGLE EDGE CARDS VISIBILITY WHEN CLICKED*/
   $("#edgeColumn h2").click(function(e){
-    toggleBuilderRow('edge');
+    toggleBuilderRow('edge',null);
 });
   /* SETTING LAYOUT CARDS TO BEHAVE ON CLICK */
   $("div[name='layoutItem']").click(function(e){
@@ -709,16 +710,16 @@ $("document").ready(function() {
 });
   /*SETTING BUILDER EDGE ROW TO TOGGLE EDGE CARDS VISIBILITY WHEN CLICKED*/
   $("#layoutColumn h2").click(function(e){
-    toggleBuilderRow('layout');
+    toggleBuilderRow('layout',null);
 });
 
   /*SETTING BUILDER FLAVOR ROW TO TOGGLE VISIBILITY WHEN CLICKED*/
   $("#flavorColumn h2").click(function(e){
-    toggleBuilderRow('flavor');
+    toggleBuilderRow('flavor',null);
 });
   /*SETTING BUILDER FLAVOR ROW TO TOGGLE VISIBILITY WHEN CLICKED*/
   $("#obsColumn h2").click(function(e){
-    toggleBuilderRow('obs');
+    toggleBuilderRow('obs',null);
 });
   /* SETTING FLAVOR CARDS TO SHOW INGREDIENTS MODAL ON CLICK */
   $("div[class^='flavorDiv']").click(function(e){
@@ -750,6 +751,15 @@ $("document").ready(function() {
     checkPizzaBuilder();
 });
 
+  /* Setting "update qty" links on cart view to update the item quantity */
+  $("#cartContainer div[name='updateQty'] a").click(function(e){
+        e.preventDefault();
+        var updateQtyDiv = $(this).parent().parent();
+        var rowid = updateQtyDiv.attr('data-value');
+        var qty =   updateQtyDiv.parent().find("input").val();
+        window.location.href = "/PizzaBuilder/cart/update/"+rowid+"/" + qty;
+  });
+
 
     /**
      * Initializing the functionality of the AddressToggleButton
@@ -778,6 +788,7 @@ $("document").ready(function() {
                 $("#addressPanel").css('visibility', value);
             }
             );
+    
  });
 
 

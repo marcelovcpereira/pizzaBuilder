@@ -1,0 +1,785 @@
+/**************FONTS**************/
+@font-face { font-family: DolceVita; src: url('../fonts/Dolce Vita.TTF'); } 
+@font-face { font-family: Freshman; src: url('../fonts/Freshman.TTF'); } 
+@font-face { font-family: Stark; src: url('../fonts/Stark.OTF'); } 
+/**************END:FONTS**************/
+
+
+/**************VARIABLES**************/
+@colorTheme: #f0ad4e; 
+@themeBrown: #745B39;
+@lightBrown: #9C6619;
+@bgColor: #FFF2E0;
+@cardBgColor: #F8D19C;
+@lightYellow: #fcf8e3;
+@pizzaCardBrown: #B48E59;
+@transparentJumboColor: rgba(252,248,227,0.5);
+@cardSelectedRed: #d2322d;
+
+@footerHeight: 220px;  
+
+
+@bannerPizza: '/PizzaBuilder/resources/images/bannerPizza.png';
+@bannerJumbo: '/PizzaBuilder/resources/images/news_pizzaSmall.jpg';
+/**************END:VARIABLES**************/
+
+
+
+/**************MIXINS**************/
+.boxShadow(@width:2px,@color:#888888){
+	box-shadow: @width @width @width @color;
+}
+
+/* Card Panel Style */
+.cardPanel(@height:120px,@hasButton:false){
+	/* The card panel adjusts to Height and Width of its container */
+	.panel{
+		width: 100%;
+		height:100%;
+		overflow: hidden;
+		background-color: @cardBgColor;
+		.boxShadow();
+		border: 3px solid @pizzaCardBrown;
+		&:hover{
+			border-color: @colorTheme;  
+		}
+		/* Div that contains the card image */
+		.panel-body{
+			height: @height;
+			margin-bottom: 0px; 
+			padding: 0px;
+			border: 1px solid @pizzaCardBrown;
+			border-top: none;
+			overflow: hidden;
+			background-color: @lightYellow;
+			/* Actual card image */
+			img{
+				width: 100%;
+				height: 100%;
+			}
+		}
+		/* Contains card info: Title and Description */
+		.panel-footer{
+			margin-bottom: 0px;  
+			height: 150px;
+			border: none; 
+			width: 100%;
+			color: @themeBrown;
+			text-decoration: none;
+			overflow: hidden;
+			overflow-y: auto;
+			background-color: @cardBgColor;
+			/* Actual Title */
+			h3{
+				font-family: Freshman;  
+				font-size: 22px;
+				margin-top: 0px;
+				margin-bottom: 0px;
+			}
+			/* Line separating Title and Description */
+			hr{
+				margin: 3px;
+				border-color: @lightBrown;
+			}
+			/* Description */
+			span{
+				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			}
+		}
+
+		.addButton(@hasButton);
+		
+	}
+}
+
+/* Returns the button style, when the card has a button */
+.addButton(@hasButton) when (@hasButton = true){
+	/* Div that contains the button */
+	.botao{
+		text-align: center; 
+		background-color: @cardBgColor;
+
+		/* Actual ADD button */
+		button{        
+			width: 97%;    
+			font-family: Stark;
+			font-size: 16px;
+			height: 45px;
+			font-weight: bold;
+			margin-bottom: 6px;
+			background-color: @lightBrown;
+			border-color: @lightBrown;
+			&:hover{
+				background-color: white;	
+				color: @lightBrown;
+			}
+		}
+	}
+}
+
+.borderRadius(@radius:10px){
+	-webkit-border-radius: @radius;
+	-moz-border-radius:    @radius;
+	border-radius:         @radius;
+	-moz-background-clip:    padding;
+	-webkit-background-clip: padding-box;
+	background-clip:         padding-box;
+}
+/**************END:MIXINS**************/
+
+
+/**************STYLES**************/
+html{
+	min-height: 100%;
+  	height: 100%; 
+	body{
+		background-color: @bgColor; 
+		min-height: 100%;
+	  	height: 100%;   
+	}
+}
+
+/*-----------FOOTER-------------*/
+#rowComplemento{
+	height: 400px;
+	width: 100%;
+}
+
+#footerRow{
+	height: @footerHeight;
+	width: 100%;
+	margin: 0px;
+	background-color: @colorTheme;
+	border-top: 1px solid @themeBrown;
+	color: white;
+	padding: 10px;
+	position: relative;
+ 	bottom: 0px;
+	#footerDiv2{
+		text-align: center;
+		h2{
+			margin-top: 4px;
+		}
+	}
+
+}
+/*-----------END:FOOTER-------------*/
+
+
+/* ----------NAVBAR----------- */
+#navBar{
+	box-shadow: 2px 2px 2px #888888;
+	border: none;	
+	background-color: @colorTheme;
+	/*Pizza Image*/	
+	#pizzaBasRelief{
+		display: block;
+		width: 50px;
+		height: 50px;
+		margin-left: 10px;
+		display: inline;
+		float:left;
+	}
+	/* Title and hidden collapse menu button */
+	.navbar-header{	
+		/* Pizza Builder title */
+		.navbar-brand{
+			font-family: Stark;
+			font-weight: bold;
+			font-size: 24px;
+			color: @themeBrown;
+			&:hover{
+				color: white;				
+			}
+		}
+		/* Hidden button that appears on small screens
+		 * to collapse menu links 
+		 */
+		button{
+			border-color: @themeBrown;
+			span{
+				background-color: @themeBrown;
+			}
+			&:hover{
+				background-color: white;
+				span{
+					background-color: @colorTheme;
+				}
+			}
+			&:focus{
+				background-color: white;
+				span{
+					background-color: @colorTheme;
+				}
+			}
+		}
+	}
+	/* Menu links */
+	#navbarMenu{
+		ul li{
+			font-family: Stark;
+			font-size: 18px;
+			&:hover{
+				background-color: white;
+			}
+
+			a{
+				color: white;
+				&:hover{
+					color: @colorTheme;
+				}
+			}
+		}
+	}
+}/*#navBar*/
+/* ----------NAVBAR----------- */
+
+
+/*----------PAGE HEADER (except in home) ---------*/
+#historyRow{
+
+	#history{
+		font-family: Stark; 
+		margin-bottom: 5px;
+		width: 100%;  
+		height: 80px;
+		line-height: 45px;
+		text-align: center;
+		border: 1px solid @themeBrown;
+		position: relative;
+		overflow: hidden;
+		background: url(@bannerPizza);		
+
+		.spanTitle{
+			font-size: 32px;
+			color: @lightBrown;
+			text-shadow: -1px 0 @lightYellow, 0 1px @lightYellow, 1px 0 @lightYellow, 0 -1px @lightYellow;
+		}
+	}
+}/*----------END: PAGE HEADER---------*/
+
+/*----------HOME---------------*/
+#row1{  
+	width: 100%;
+	.jumbotron{  
+		margin: auto;
+		padding: 0px;
+		width: 1000px;
+		height: 165px;
+		background: url(@bannerJumbo);
+		border: 1px solid @themeBrown;
+		text-align: center;
+		position: relative;
+		h1{
+			background-color: @transparentJumboColor;
+			margin-top: 25px;
+			width: 100%;
+			line-height: 100px;
+			font-family: Stark;
+			font-size: 34px;
+			color: @lightYellow;
+			text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+			small{
+				text-transform: uppercase;
+				font-size: 45%;
+				color: @lightYellow;
+			}
+		}
+	}
+}
+/* This row contains links to Menu, Builder, Delivery and Contact */
+#row2 {
+	text-align: center;
+	padding-top: 20px;
+	width: 100%;
+	.menuLink{
+		h3 {
+			span{
+				font-family: Stark;
+				font-size: 80%;
+				color: @themeBrown;
+				text-decoration: underline;
+				&:hover{
+					border: 1px solid @themeBrown;
+				}
+			}
+		}
+	}/*.menuLink*/
+}/* #row2 */
+/*---------END: HOME-----------*/
+
+
+/*----------------Menu Item View--------------*/
+
+/* Row of pizza cards */
+#menuRow{
+	margin-top: 10px;
+	/* Card item FRONT */
+	div[name='menuItem']{
+		height: 340px;
+		width: 269px;
+		margin-bottom: 15px;
+		text-align:left;
+		a{
+			color: @themeBrown;
+			&:hover{
+				text-decoration: none;
+			}
+		}
+
+		/* Card Panel Style */
+		.cardPanel(135px,true);
+
+		/* Card Item Back */
+		div[name='panelPizzaDetails']{
+				text-align: center;
+				color: @themeBrown;
+				font-family: Stark;
+				font-weight: lighter;
+				position: relative;
+
+				/* Link that flips card */
+				a{
+					/* Destails of pizza */
+					.scrollableContent{
+						height: 285px;
+						overflow-x: hidden;
+						overflow-y: auto;
+
+						/* Pizza Part name */
+						span{
+							font-weight: lighter;							
+							font-family: Stark;
+							font-size: 16px;  
+							width: 97%;
+							height: auto;
+							margin: 3px;
+							overflow: auto;
+							background-color: @themeBrown;
+							color: @colorTheme;
+							display: block;
+							
+							/* Info ICON */
+							.glyphicon{
+								float: right;
+							}
+						}
+						/* Pizza Part description */
+						small{
+							font-family: Verdana;
+						}  
+
+
+					}
+				}
+
+				/* Link that edits pizza */
+				a{
+					button{    
+						width: 97%;  
+						position: absolute;
+						bottom: 0px;
+						left: 4px;
+						font-size: 16px;
+						height: 45px;
+						font-weight: bold;
+						margin-bottom: 3px;    
+						background-color: @lightBrown;
+						border-color: @lightBrown;
+						z-index: 5;
+
+						&:hover{
+							background-color: white;	
+							color: @lightBrown;
+						}
+					}
+				}
+		}		
+		/* Card Item Back */
+		
+	}/* Card item FRONT */
+}
+/*----------------END: Menu Item View--------------*/
+
+/*----------------Pizza Builder View---------------*/
+
+/* BUILDER DIV */
+#builderDiv{
+	text-align: center; 
+
+	/* Row Div contaning name of pizza being edited */
+	#editingFlavorDiv{
+		/* Col div containing name of pizza being edited */
+		#editing{
+			/* Actual "editing pizza" text */
+			h1{
+				font-family: Stark, Verdana;
+				color: @themeBrown;    
+				margin: 10px auto;
+				width: 40%;
+				/* Pizza name emphasis */
+				em{
+					font-weight: bold;
+				}
+			}
+		}
+	}
+	/* Each row of pizza builder (size, crust, edge...) */
+	div[name='pizzaPartRow']{
+
+		/* Each part column */
+		div[name='pizzaPartCol']{
+			/* Each part title: Pizza Size, Crust Type...)*/
+			h2{
+				background-color: @themeBrown;
+				font-family: Stark, Verdana;
+				font-size: 24px;
+				padding-top: 4px;
+				padding-bottom: 4px;
+				color: @colorTheme;
+				height: 100%;
+				margin: 5px auto;
+				text-align: left;
+				cursor: pointer;
+				&:hover{
+					background-color: @colorTheme;
+					color: @themeBrown;
+					span{
+						text-shadow: -1px 0 @themeBrown, 0 1px @themeBrown, 1px 0 @themeBrown, 0 -1px @themeBrown;
+					}
+				}
+				span{
+					color: white;
+					font-size: 80%;
+					margin-left: 10px;
+				}
+			}
+			/* Wraps every card on builder view */
+			.cardDivWrapper{
+				display: none;
+				/* SizeCards - size is separated cause
+				 * it has a smaller size */
+				div[name='sizeItem']{
+					height: 200px;
+					width: 240px;
+					margin-bottom: 15px;
+					text-align:center;
+					display: inline;
+					/* Card panel */
+					.cardPanel(false);
+				}/* Size Cards */
+
+				/* Pizza Part Cards */
+				div[name='crustItem'],
+				div[name='edgeItem'],
+				div[name='layoutItem'],
+				div[name='flavorItem']{
+					height: 270px;
+					width: 240px;
+					margin-bottom: 15px;
+					text-align:left;
+					/* Part Card */
+					.cardPanel(@hasButton: false);
+				}/* Pizza Part Cards */
+
+				/* Div wrapping FlavorItems*/
+				.flavorDiv{
+					display: inline-table;
+					cursor: pointer;
+				}
+				.cardDiv{
+					display: inline-block;
+					cursor: pointer;
+				}
+				/* When a card is selected this class is applied 
+				 * it needs to be important
+				 */
+				.cardDivSelected{
+					border: 5px solid @cardSelectedRed !important;
+					box-shadow: 2px 2px 2px @cardSelectedRed !important;
+					box-shadow: -2px -2px -2px @cardSelectedRed !important;
+				}
+				/* Additional info div */
+				.obsTextArea{ 
+					/* Additional info text area */
+					textarea{
+						width: 50%;
+						margin: 0 auto;
+					}
+				}
+			}/* CardWrapper */
+		}/* Pizza part Col */
+	}/* Pizza Part Row */
+
+	/* Line separating builder from ADD BUTTON */
+	hr{
+		border-color: black;    
+	}
+
+	/* ADD BUTTON - adds new built pizza to cart */
+	button{
+		width: 40%;
+		height: 80px;
+		font-family: Stark;
+		font-size: 20px;
+		.boxShadow();
+	}
+}/* Builder Div */
+
+/* Ingredients/Flavors Modal Pane */
+#ingredientsPane{
+		border: 1px solid @themeBrown;
+
+		/* Modal DIV */
+		.modal-content{
+			/* Tabs Ingredients/Toppings */
+			.modal-header{
+				padding-bottom: 0px;
+				border: none;
+				background-color: @cardBgColor;
+				/* List of tabs */
+				ul{
+					border: none;
+					/* Tab list item */
+					li{
+						background-color: @cardBgColor;
+						color: @themeBrown;
+						border-color: @themeBrown;
+						text-decoration: underline;						   
+						/* Toggle tabs */
+						a{
+							background-color: transparent;
+							border: none;
+							color: @themeBrown;
+							/* Tabs text: "Ingredients" and "Toppings" */
+							h4{								
+								font-family: Stark;
+								font-size: 20px;
+								color: @themeBrown;    	
+							}
+						}
+					}
+					/* Active tab item */
+					li.active{
+						background-color: @bgColor;
+						text-decoration: none;   
+					}
+				}
+			}
+
+			.tab-content{
+				.cardImage{
+					width: 100%;
+					height: 100%;
+				}
+				.tab-pane{
+					.modal-body{
+						background-color: @bgColor;
+						> span{
+							text-align: center;
+							margin: 15px auto;
+							display: block;
+							margin-top: 0px;
+							font-family: Stark;
+							color: @themeBrown;
+							font-size: 110%;
+							font-weight: lighter;
+						}
+						/* Div containing list of ingredients */
+						#ingredientsList{
+							overflow: auto;
+						}
+						/* Divs containing card of hovered ingredient/flavor */
+						#ingredientColumn,
+						#flavorsColumn{
+							padding: 0;
+							margin-top: 20px;
+							/* Divs containing actual ingredient/flavor card */
+							div[name$='ingredientItem'],
+							div[name='flavorItem']{
+								height: 270px;
+								width: 240px;
+								margin-bottom: 15px;
+								text-align:left;
+								
+								.cardPanel(false);
+							}
+						}
+						/* "Summary:" */
+						#h3customFlavorSummary{
+							font-family: Stark;
+							font-size: 120%;
+							color: @themeBrown;
+						}
+						/* Ingredients of summary */
+						#customFlavorSummary{
+							font-family: Stark;
+							margin-top: 4px;
+							color: @themeBrown;
+						}
+					}
+
+				}
+				/* Outside tabs to affect both Ingredient list
+				 * and Flavors list 
+				 */
+				ul{
+					list-style-type: none;
+					margin: auto 0;
+					padding-left: 0px;
+					li{
+						padding: 4px;
+						height: 44px;
+						line-height: 35px;
+						font-family: Stark;
+						font-weight: lighter;
+						font-size: 16px;
+						border: 1px solid @themeBrown;
+						background-color: @bgColor;
+						&:hover{
+							cursor: pointer;
+							background-color: @cardBgColor;
+						}
+						button{
+							margin-left: 4px;
+							font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;    
+							font-weight: bold;
+						}
+					} 
+					/* When flavor item is clicked, receives this class */
+					li.activeFlavor{
+						background-color: darken(@colorTheme,10%);
+						color: @themeBrown;
+					}
+				}
+			}
+			/* Footer containing 3 buttons: Save, Reset and Cancel */
+			.modal-footer{
+				background-color: @cardBgColor;
+				text-align: left;
+				margin-top: 0px;
+				/* Actual buttons */
+				button{
+					font-weight: bold;
+					margin: 5px;	
+					width: 30%;
+					height: 50%;	
+					.boxShadow();
+				}
+			}
+		}/* Modal DIV */
+}/* #ingredientsPane */	
+/*--------------END:Pizza Builder View-------------*/
+
+/*--------------Cart View-------------*/
+#cartContainer{
+	.table{
+		width: 80%;
+		margin: 0px auto;
+		background-color: lighten(@cardBgColor,8%);
+		color: @themeBrown;
+		font-family: Stark;
+		.boxShadow();
+		.borderRadius();
+		border-collapse:seperate;
+		th{
+			font-size: 120%;
+			font-weight: lighter;
+			text-align: center;
+			border-top: none;
+			border-bottom: 1px solid  lighten(@themeBrown,20%);
+		}
+
+		tbody{
+
+			tr{
+				margin: 0px auto;	
+				height: 120px !important;
+				overflow: hidden;	
+				.borderRadius();			
+				td{
+					border-color: lighten(@themeBrown,20%);
+					border-top: none;
+					border-bottom: 1px solid  lighten(@themeBrown,20%);
+					height: 100%;
+					
+					> div[name='image']{
+						width: 150px !important;
+						height: 120px !important;
+						padding: 3px;
+						
+						img{
+							width: 100%;
+							height: 100%;
+							.borderRadius();
+						}
+					}
+				}
+				td#emptyCartCell{
+					text-align: center;
+					font-size: 110%;
+				}
+				
+
+				td[name='contents']{
+					overflow: hidden;
+					width: 100%;
+					div[name='pizzaName']{
+						font-weight: bold;
+						font-size: 130%;
+					}
+
+					div[name='pizzaParts']{
+						font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;;
+						font-weight: lighter;
+					}
+					div[name^='pizzaFlavor']{
+						font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;;
+						font-weight: lighter;	
+					}
+					
+				}
+
+				td[name='qtyDiv']{
+					vertical-align: middle;
+					.input-group{
+
+						width:120px;						
+						> span{							
+							> a{
+								border-color: @themeBrown;
+								background-color: lighten(@cardBgColor,16%);
+								color: @themeBrown;
+							}
+						}
+						> input{	
+							border-color: @themeBrown;						
+							text-align: center;
+							color: @themeBrown;
+						}
+					}
+					div[name="updateQty"]{
+						margin-top: 5px;
+						text-align: center;
+						a{
+							color: @themeBrown;
+							text-decoration: underline;
+
+						}
+					}
+				}	
+				/* Removing borders from TD's of last row */
+				&:last-child{
+						td{ border-bottom: none !important;}
+				}	
+				&:hover{
+					background-color: @cardBgColor;
+				}		
+			}/* TR */
+		}/* TBODY */
+	}/* TABLE */
+}/* CART CONTAINER */
+
+/*--------------END:Cart View-------------*/
+
+/**************END:STYLES**************/

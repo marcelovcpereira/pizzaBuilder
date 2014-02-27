@@ -1,8 +1,3 @@
-<!-- Loading hidden modal -->
-{% include 'twig__flavorModal_view.html' %}<!-- Loading hidden modal -->
-
-
-
 <!--BUILDER DIV-->
 <div id="builderDiv" >
     {#
@@ -21,9 +16,9 @@
         </div>
     {% endif %}
     <!-- SIZE ROW -->
-    <div class="row">              
+    <div name="pizzaPartRow" class="row">              
         <!-- SIZE COLUMN -->
-        <div id="sizeColumn" class="col-lg-12">            
+        <div id="sizeColumn" name="pizzaPartCol" class="col-lg-12">            
             <h2 class="alert alert-warning">
                 Pizza size:
                 <span>
@@ -54,9 +49,9 @@
 
 
     <!-- CRUST ROW -->
-    <div class="row">
+    <div name="pizzaPartRow" class="row">
         <!-- CRUST COLUMN -->
-        <div id="crustColumn" class="col-lg-12">
+        <div id="crustColumn" name="pizzaPartCol" class="col-lg-12">
             <h2 class="alert alert-warning">
                 Crust type:
                 <span>
@@ -85,9 +80,9 @@
     </div><!-- CRUST ROW -->
 
     <!-- EDGE ROW -->
-    <div class="row">
+    <div name="pizzaPartRow" class="row">
         <!-- EDGE COLUMN -->
-        <div id="edgeColumn" class="col-lg-12">
+        <div id="edgeColumn" name="pizzaPartCol" class="col-lg-12">
             <h2 class="alert alert-warning">
                 Edge:
                 <span>
@@ -113,9 +108,9 @@
     </div><!-- EDGE ROW -->
 
     <!-- LAYOUT ROW -->
-    <div class="row">
+    <div name="pizzaPartRow" class="row">
         <!-- LAYOUT COLUMN -->
-        <div id="layoutColumn" class="col-lg-12">
+        <div id="layoutColumn" name="pizzaPartCol" class="col-lg-12">
             <h2 class="alert alert-warning">
                 Layout:
                 <span>
@@ -142,9 +137,9 @@
     </div><!-- LAYOUT ROW -->
 
     <!-- FLAVOR ROW -->
-    <div class="row">
+    <div name="pizzaPartRow" class="row">
         <!-- FLAVOR COLUMN -->
-        <div id="flavorColumn" class="col-lg-12">
+        <div id="flavorColumn" name="pizzaPartCol" class="col-lg-12">
             <h2 class="alert alert-warning">
                 Toppings:
                 <span>
@@ -196,9 +191,9 @@
     </div><!-- FLAVOR ROW -->
 
     <!-- OBS ROW -->
-    <div class="row">
+    <div name="pizzaPartRow" class="row">
         <!-- OBS COLUMN -->
-        <div id="obsColumn" class="col-lg-12">
+        <div id="obsColumn" name="pizzaPartCol" class="col-lg-12">
             <h2 class="alert alert-warning">
                 Additional Info
                 <i class="glyphicon glyphicon-plus-sign pull-right" title="Show/Hide Layouts"></i>
@@ -213,7 +208,7 @@
     <br>
     <hr>
 
-    <form id="pizzaBuilderForm" name="pizzaBuilderForm" action="/PizzaBuilder/pizzaBuilder" method="post">
+    <form id="pizzaBuilderForm" name="pizzaBuilderForm" action="/PizzaBuilder/Cart/add" method="post">
         <input type="hidden" name="userPizza" value="">        
         <input type="hidden" name="{{tokenName}}" value="{{tokenHash}}">
     </form>

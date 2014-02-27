@@ -39,7 +39,7 @@
 */
 $route['pizzaBuilder/(:any)'] = 'pizzaBuilder/index/$1';
 $route['PizzaBuilder/(:any)'] = 'pizzaBuilder/index/$1';
-//$route['(:any)'] = 'portal/$1';
+$route['about/(:any)'] = 'portal/about';
 $route['default_controller'] = "portal";
 $route['404_override'] = '';
 

@@ -15,11 +15,12 @@ class PizzaBuilder extends CI_Controller
 
 
 
-		/* If the user have just submited a pizza,
+		/* If the user has just submitted a pizza,
 		 * let's save it in session
 		 */
 		$pizza = $this->input->post('userPizza');
-		if($pizza !== FALSE){
+		if($pizza !== FALSE)
+		{
 			
 			//Decode string into json object
 			$pizza = json_decode($pizza);
