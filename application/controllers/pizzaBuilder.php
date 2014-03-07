@@ -59,18 +59,23 @@ class PizzaBuilder extends CI_Controller
 		$tokenName = $CI->security->get_csrf_token_name();
 		$tokenHash = $CI->security->get_csrf_hash();
 		
+		$cart = $this->cart->contents();
+
 		//Initializing parameters to view
 		$params = array(
 			'history_title' => 'Build Your Pizza!',
 			'pizzaBuilder'	=>	$pizzaBuilder,
 			'pizza'	=>	$pizza,
 			'tokenName' => $tokenName,
-			'tokenHash' => $tokenHash
+			'tokenHash' => $tokenHash,
+			'cart' => $cart,
+			'user' => $this->authwrapper->getUser()
 		);
 		
-		//Load the view with parameters
+		$this->configwrapper->append($params);
 
-		$this->templatewrapper->load('pizzaBuilder_view', $params);
+		//Load the view with parameters
+		$this->templatewrapper->load('pizzaBuilder_view', $this->configwrapper->toArray());
     }
 }
 

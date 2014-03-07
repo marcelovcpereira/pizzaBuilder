@@ -779,6 +779,14 @@ $("document").ready(function() {
                 //set showAddres new value
                 $("input[name='showAddress']").val(value);
 
+                if(value == 'TRUE')
+                {
+                    $(this).children('span').html('- Address');
+                }
+                else
+                {
+                    $(this).children('span').html('+ Address');   
+                }
                 /* TOGGLE ADDRESS PANEL VISIBILITY */
                 //get address panel visibility
                 value = $("#addressPanel").css('visibility');

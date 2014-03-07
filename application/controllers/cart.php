@@ -30,15 +30,17 @@ class Cart extends CI_Controller
 		$cart = $this->cart->contents();
 
 		//Initializing parameters to view
-		$params = array(
-			'history_title' => 'Your Order',
+		$params = array(     
+            'history_title' => 'Your Order',  
 			'pizza'	=>	$pizza,
-			'cart' => $cart
-			);
+			'cart' => $cart,
+            'user' => $this->authwrapper->getUser()
+	   );
+        $this->configwrapper->append($params);
 		
 		//Load the view with parameters
 
-		$this->templatewrapper->load('cart_view', $params);
+		$this->templatewrapper->load('cart_view', $this->configwrapper->toArray());
 	}
 
 	/**
@@ -110,7 +112,7 @@ class Cart extends CI_Controller
     			'qty'     => 1,
     			'price'   => 10,
     			'name'    => $pizza->getName(),
-    			'options' => array('object'=> $pizza)
+    			'options' => array('type' => 'pizza','object'=> $pizza)
 			);
     		$this->cart->insert($cartPizza);
         }

@@ -9,7 +9,7 @@ $config = array(
     /**
      * Validation rules for the login form - Portal/login
      */
-    'portal/login' => array(
+    'auth/index' => array(
             array(
                 'field' => 'password',
                 'label' => 'Password',
@@ -21,21 +21,7 @@ $config = array(
                 'rules' => 'required|trim|valid_email|xss_clean|strtolower'
             )
     ),
-    
-    /**
-     * Validation rules for the seach property form - Portal/searchProperty
-     */
-    'portal/searchProperty' => array(
-            
-    ),
-    /**
-    * Alternate validation rule for the register form 
-    * OBS: The register form is made of two parts:
-    * 1) User basic data (name, last_name, email and pass)
-    * 2) User address data (optional)
-    * This rule validates ONLY BASIC DATA and IGNORES ADDRESS
-    * See register_no_addr rule 
-    */
+
     'noAddress' => array(
         array(
             'field' => 'name',
@@ -72,6 +58,7 @@ $config = array(
             'rules' => 'required|trim|xss_clean|matches[password]'
         )            
     ),
+   
     
     /**
      * Default validation rules for the register form 
@@ -81,7 +68,7 @@ $config = array(
      * This rule validates both parts
      * See register_no_addr rule 
      */
-    'portal/register' => array(
+    'auth/register' => array(
             array(
                 'field' => 'name',
                 'label' => 'First Name',

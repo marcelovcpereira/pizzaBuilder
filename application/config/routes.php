@@ -37,9 +37,10 @@
 | in the URL cannot be matched to a valid route.
 |
 */
+$route['about'] = 'portal/about';
+$route['about/(:any)'] = 'portal/about';
 $route['pizzaBuilder/(:any)'] = 'pizzaBuilder/index/$1';
 $route['PizzaBuilder/(:any)'] = 'pizzaBuilder/index/$1';
-$route['about/(:any)'] = 'portal/about';
 $route['default_controller'] = "portal";
 $route['404_override'] = '';
 

@@ -10,7 +10,8 @@ if (!defined('BASEPATH'))
  * can be easily changed.
  * that's a great place to implement factory pattern: TemplateFactory
  */
-class TemplateWrapper {
+class TemplateWrapper 
+{
 
     //Stub. This will be changed to OO design. For now, it's just a String
     private $templateEngine = "twig";
@@ -33,7 +34,7 @@ class TemplateWrapper {
         'about' => 'About',
         'menu' => 'Menu',
 		'builder' => 'Builder',
-        'cart' => 'Your Cart',
+        'cart_link' => 'Your Cart',
         'product_name' => 'Pizza Builder',
         'account' => 'Account',
         'sign_up' => 'Sign Up',
@@ -106,12 +107,40 @@ class TemplateWrapper {
         $twigEnv = new Twig_Environment($twigLoader, array('debug' => true));
 		$twigEnv->addExtension(new Twig_Extension_Debug());
 
+        /*var_dump($params);
+        var_dump(TemplateWrapper::$data);
         /* Rendering the header tenplate */
-        echo $twigEnv->render($this->prefix . $this->header . $this->sufix, TemplateWrapper::$data);
+        echo $twigEnv->render($this->prefix . $this->header . $this->sufix, $params);
         /* Rendering the actual page */
         echo $twigEnv->render($page, $params);
         /* Rendering the footer template */
         echo $twigEnv->render($this->prefix . $this->footer . $this->sufix);
+    }
+
+    public function ciTwigPageLoad($page, $params)
+    {
+
+         /* Loading Twig Filesystem Loader */
+        $twigLoader = new Twig_Loader_Filesystem(APPPATH . 'views/twig');
+        /* Loading Twig Environment */
+        $twigEnv = new Twig_Environment($twigLoader, array('debug' => true));
+        $twigEnv->addExtension(new Twig_Extension_Debug());
+
+
+        /* Rendering the header tenplate */
+        $output = $twigEnv->render($this->prefix . $this->header . $this->sufix, $params);
+
+        $dir = 'ci/';
+
+        /* Refers to the global instance of Code Igniter */
+        $CI = & get_instance();
+        /* Render the actual page */
+        $output = $output . $CI->parser->parse($dir . "ci_" . $page , $params,true);
+
+        /* Rendering the footer template */
+        $output = $output . $twigEnv->render($this->prefix . $this->footer . $this->sufix);
+
+        echo $output;
     }
 
 }

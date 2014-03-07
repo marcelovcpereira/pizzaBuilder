@@ -16,7 +16,7 @@ class DbUserDao extends UserDao
     }
     
     
-    public function delete() 
+    public function delete($id) 
     {
         //stub
         return null;
@@ -124,6 +124,11 @@ class DbUserDao extends UserDao
     {
         //stub
         return null;
+    }
+
+    public function fetchAll()
+    {
+    	
     }
 
 }

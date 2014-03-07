@@ -1,0 +1,46 @@
+<div id="container" class="container">
+    <!-- DIV: ROW1 -->
+    <div class='row'>
+        <!-- Div: First Column -->
+        <div class="col-xs-4"></div><!-- Div: First Column -->
+
+        <!-- Div: Second Column: LoginForm -->
+        <div class="col-xs-4">
+        
+        <% if error is not null %>
+            <!-- bootstrap danger alert panel -->
+            <div class="alert alert-danger">
+                <strong>Error:</strong>
+            </div> <!-- bootstrap danger alert panel --> 
+
+        <% endif %>
+
+        <!-- Open the login form -->
+        <?php echo form_open('portal/login', $formParams); ?>  
+            <!-- Form Panel -->
+            <div class="panel panel-default">
+                <!-- Form Heading -->
+                <div class="panel-heading">
+                    {form_title}
+                </div><!-- Form Heading -->
+
+                <!-- Form Body -->
+                <div class="panel-body">
+                    <!-- username label and input -->
+                    <label for="username">{username}</label><?php echo form_input($usernameParams);?></p>
+
+                    <!-- password label and input -->
+                    <label for="password">{password}</label><?php echo form_password($passwordParams);?></p>
+                    
+                    <!-- Print the Form Submit Button -->
+                    <?php echo form_submit($submitParams); ?>
+                    
+                </div><!-- Form Body -->
+            </div><!-- Form Panel -->   
+        <?php echo form_close(); ?> <!-- Close the login form -->
+        </div><!-- Div: Second Column: LoginForm -->
+
+        <!-- Div: Third Column -->
+        <div class="col-xs-4"></div><!-- Div: Third Column -->
+    </div><!-- DIV: ROW1 -->
+</div><!-- FULL LOGIN PAGE DIV CONTAINER -->

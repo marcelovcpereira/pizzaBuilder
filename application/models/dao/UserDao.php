@@ -21,10 +21,15 @@ abstract class UserDao implements Dao
     {
         $this->connection = $conn;
     }
+
+    public function getConnection()
+    {
+        return $this->connection;
+    }
     
     //To be overwritten by the Concrete SubClasses
     abstract public function fetch($id);
-    abstract public function delete();
+    abstract public function delete($id);
     abstract public function save($object);
     
 }

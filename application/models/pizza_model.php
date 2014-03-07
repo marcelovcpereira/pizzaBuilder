@@ -1,11 +1,6 @@
 <?php
 require_once APPPATH . '/models/dao/DbPizzaDao.php';
-require_once APPPATH . '/models/dao/DbPizzaCrustDao.php';
-require_once APPPATH . '/models/dao/DbPizzaSizeDao.php';
-require_once APPPATH . '/models/dao/DbPizzaEdgeDao.php';
-require_once APPPATH . '/models/dao/DbPizzaLayoutDao.php';
-require_once APPPATH . '/models/dao/DbIngredientDao.php';
-require_once APPPATH . '/models/dao/DbPizzaFlavorDao.php';
+
 
 
 /**
@@ -26,19 +21,13 @@ class Pizza_model extends CI_Model
 			parent::__construct();
 			$this->load->database();
 			$this->pizzaDAO = new DbPizzaDao($this->db);
-                        //$this->pizzaDAO = new DbPizzaCrustDao($this->db);
-                        //$this->pizzaDAO = new DbPizzaSizeDao($this->db);
-                        //$this->pizzaDAO = new DbPizzaEdgeDao($this->db);
-                        //$this->pizzaDAO = new DbPizzaLayoutDao($this->db);
-                        //$this->pizzaDAO = new DbIngredientDao($this->db);
-                        //$this->pizzaDAO = new DbPizzaFlavorDao($this->db);
                         
 		}		
 		
 		/**
 		 * Asks the PizzaDAO to list all pizzas in the database.
 		 * It knows that the menu requested by the controller is made only 
-		 * of pizzas(business logic). If the store decides to add new foods
+		 * of pizzas. If the store decides to add new foods
 		 * it should be changed to look up for additional DAOs and build
 		 * the menu of Foods.
 		 */

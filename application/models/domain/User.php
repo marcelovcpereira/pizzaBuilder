@@ -8,7 +8,7 @@
  * @access     public
  * @license    http://opensource.org/licenses/gpl-license.php GNU Public License
  */
-class User
+class User implements JsonSerializable
 {
     /**
      *
@@ -181,6 +181,16 @@ class User
      */
     public function setAddress($address) {
         $this->address = $address;
+    }
+
+    public function JsonSerialize()
+    {
+        return get_object_vars($this);
+    }
+
+    public function __toString()
+    {
+        return json_encode($this);
     }
 
 

@@ -8,7 +8,7 @@
  * @access     public
  * @license    http://opensource.org/licenses/gpl-license.php GNU Public License
  */
-class Address
+class Address implements JsonSerializable
 {
     /**
      *
@@ -138,6 +138,16 @@ class Address
 
     public function setPostalCode($postalCode) {
         $this->postalCode = $postalCode;
+    }
+
+    public function JsonSerialize()
+    {
+        return get_object_vars($this);
+    }
+
+    public function __toString()
+    {
+        return json_encode($this);
     }
 
 

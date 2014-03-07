@@ -42,50 +42,6 @@ class User_model extends CI_Model
     }
     
     /**
-     * Searches for username and password in the database.
-     * Returns user if there's a match and empty array if not
-     * Uses common SQL Query
-     * @param type $username
-     * @param type $password
-     * @return int User object (array) from searched user or empty array
-     * if not found
-     */
-    public function login($username,$password)
-    {    
-        $user = array();
-        
-        $query = "SELECT id,name,last_name FROM {$this->table} "
-        . "WHERE username = '{$username}' AND "
-        . "password = SHA2(CONCAT({$this->table}.{$this->salt_column},'{$password}'),{$this->sha_algorithm})";
-        
-        //Looking for user in database... 
-        //This model uses a SALT concatenated before the pass
-        //example: PASS: 123, SALT:1 , saltedpass: 1123
-        //This model uses SHA256 as hashing function        
-        $result = $this->db->query($query);       
-       
-        //If there's any result -> Success
-        if ($result->num_rows() > 0)
-        {   
-            $this->messages['status'] = 'Successfull Login';
-            
-            $user = array(
-                'id' => $result->row()->id,
-                'name' => $result->row()->name,
-                'last_name' => $result->row()->id,
-                'username' => $username
-            );            
-        }else
-        {
-            $this->messages['status'] = 'Unsuccessfull Login';
-            $this->messages['error'] = 'Invalid username or incorrect password.';            
-        }
-        return $user;
-        
-        
-    }
-    
-    /**
      * Adds a new user to the USERS table
      * 
      * @param type $name
@@ -99,12 +55,12 @@ class User_model extends CI_Model
         $salt = md5($this->generate_random_salt());
         
         //Password is a SHA-256 hash of SALT + PLAIN PASSWORD
-        $password = hash('SHA256',$salt.$password);
+        $saltedPassword = hash('SHA256',$salt.$password);
         
         //Creating User object for insertion
         $new_user = array(
             'username'  =>  $email,
-            'password'  =>  $password,
+            'password'  =>  $saltedPassword,
             'salt'      =>  $salt,
             'name'      =>  $name,
             'last_name' =>  $last_name,
@@ -123,124 +79,12 @@ class User_model extends CI_Model
         }
     }
     
-    /**
-     * Searches and returns an User object by it's id
-     * @param type int $id id of the user to be fetched
-     * @return type User 
-     */
-    public function fetch_tmp($id=null)
-    {        
-        $this->load->model('address_model');
-        
-        //this function will return a null User if there's something wrong
-        $user = null;
-        
-        //If there's no valid $id passed as argument, return empty
-        if ($id !== null)
-        {        
-            //get all user columns
-            $result = $this->db->get_where($this->table,array('id'=>$id));
-            
-            //If the search brings results, lets 
-            if ($result->num_rows() > 0)
-            {
-                //Getting the returned table row
-                $row = $result->row();
-                
-                //Creating the User instance
-                $user = new User();
-                $user->setId($row->id);
-                $user->setUsername($row->username);
-                $user->setName($row->name);
-                $user->setLastName($row->last_name);
-                $user->setPassword($row->password);
-                $user->setSalt($row->salt);
-                
-                /**
-                 * Searching for the user address.
-                 * Returns a null address if not found.
-                 */                
-                $address = $this->address_model->fetch($row->address_id);
-                
-                //Setting the address to the user
-                $user->setAddress($address);                
-            }
-        }
-        return $user;
-    }
-    
     public function fetch($id = null, $pass = null)
     {
         return $this->userDao->fetch($id,$pass);
     }
 
-    /**
-     * Searches the database for an user with a given ID
-     * @param type $id
-     * @return type
-     */
-    public function get_user_by_id($id=-1)
-    {
-        $user = array();
-        
-        //If there's no ID passed as argument, return empty
-        if ($id !== -1)
-        {        
-            //get all user columns, we must change that to what we actually need to load
-            $result = $this->db->get_where('user',array('id'=>$id));
-            
-            if ($result->num_rows() > 0)
-            {
-                $row = $result->row();
-                
-                //Quering user ADDRESS
-                $address = $this->get_user_address($row->id);
-                /*
-                 * Creating an object of the found user
-                 */
-                $user = array(
-                    'user_id' => $row->id,
-                    'username' => $row->username,
-                    'name'      =>  $row->name,
-                    'last_name' =>  $row->last_name,
-                    'address' => $address
-                );
-                
-            }
-        }
-        return $user;
-    }
-    
-    public function get_user_address($id=-1)
-    {
-        $address = array();
-        
-        if ($id !== -1)
-        {
-            $address_id = $this->get_address_id($id);
-            
-            //ACCESSING ANOTHER MODEL 
-            $address = $this->address_model->get_address($address_id);
-        }
-        
-        return $address;
-    }
-    
-    public function get_address_id($user_id)
-    {
-        $address_id = -1;
-        
-        $this->db->select('address_id');
-        $result = $this->db->get_where('user', array('id'=>$user_id ));
-        
-        if ($result->num_rows() === 1)
-        {
-            $address_id = $result->row()->address_id;
-        }
-        
-        return $address_id;
-    }
-    
+
     /**
      * Generates a random alpha-numeric String.
      * @param type $length length of the returned random string

@@ -10,18 +10,34 @@ class Portal extends CI_Controller
      */
     public function index()
     {
-		//that's the user who is here
-        $user = null;
-		//Parameters to the view
-        $data = array('user' => $user); 
+
+		//Parameters to the view       
+        $cart = $this->cart->contents();
+
+        $params = array(       
+            'cart' => $cart,
+            'user' => $this->authwrapper->getUser()
+        );
+        $this->configwrapper->append($params);
         //Load the home_view page with the user
-        $this->templatewrapper->load('home_view', $data);
+        $this->templatewrapper->load('home_view', $this->configwrapper->toArray());
     }    
 
+    /**
+     * Renders the about page
+     */
     public function about()
     {
-        $data = array('history_title' => 'About Pizza Builder');
-         $this->templatewrapper->load('about_view', $data);
+        //Parameters to the view       
+        $cart = $this->cart->contents();
+
+        $data = array(
+            'history_title' => 'About Pizza Builder',
+            'cart'=>$cart,
+            'user' => $this->authwrapper->getUser());
+        $this->configwrapper->append($data);
+
+        $this->templatewrapper->load('about_view', $this->configwrapper->toArray());
     }
    
 }
