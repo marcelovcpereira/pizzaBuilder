@@ -8,6 +8,7 @@
  var userFlavor = new Flavor(-1,"Custom","User defined flavor","pizzaColor.png",new Array());
  var traditionalFlavor = null;
  var userLayout = null;
+ var imageFolder = "/PizzaBuilder/assets/images/";
 
 /** @constructor */
  function Ingredient(id,name,description,picturePath){
@@ -106,7 +107,7 @@ function changeIngredientCard(element){
     /* Changing Card HTML to show new ingredient attributes */
     $("#ingredientColumn .caption").html(ingredient.description);
     $("#ingredientColumn h3").html(ingredient.name);
-    $("#ingredientColumn img").attr('src','/PizzaBuilder/resources/images/' + ingredient.picturePath);   
+    $("#ingredientColumn img").attr('src',imageFolder + ingredient.picturePath);   
 
 }
 
@@ -119,7 +120,7 @@ function changeFlavorCard(element){
     /* Setting card html */
     $("#flavorsColumn .caption").html(flavor.description);
     $("#flavorsColumn h3").html(flavor.name);
-    $("#flavorsColumn img").attr('src','/PizzaBuilder/resources/images/' + flavor.picturePath);  
+    $("#flavorsColumn img").attr('src',imageFolder + flavor.picturePath);  
 
 }
 
@@ -437,7 +438,7 @@ function clearModal(){
     ingredient = JSON.parse(ingredient);
     $("#ingredientColumn .caption").html(ingredient.description);
     $("#ingredientColumn h3").html(ingredient.name);
-    $("#ingredientColumn img").attr('src','/PizzaBuilder/resources/images/' + ingredient.picturePath);  
+    $("#ingredientColumn img").attr('src',imageFolder + ingredient.picturePath);  
     
 }
 
@@ -462,7 +463,7 @@ function clearModal(){
             /* Setting card html */
             $("#flavorCard" + targetID + " .caption").html(getFlavorIngredients(window.userFlavor));
             $("#flavorCard" + targetID + " h3").html(window.userFlavor.name);
-            $("#flavorCard" + targetID + " img").attr('src','/PizzaBuilder/resources/images/' + window.userFlavor.picturePath);
+            $("#flavorCard" + targetID + " img").attr('src',imageFolder + window.userFlavor.picturePath);
             /* Adding window.userFlavor to flavors array*/
             window.allFlavors[parseInt(targetID)] = window.userFlavor;
             /* Saving json object in hidden input */
@@ -480,7 +481,7 @@ function clearModal(){
             /* Setting card html */
             $("#flavorCard" + targetID + " .caption").html(getFlavorIngredients(window.traditionalFlavor));
             $("#flavorCard" + targetID + " h3").html(window.traditionalFlavor.name);
-            $("#flavorCard" + targetID + " img").attr('src','/PizzaBuilder/resources/images/' + window.traditionalFlavor.picturePath);
+            $("#flavorCard" + targetID + " img").attr('src',imageFolder + window.traditionalFlavor.picturePath);
             
             /* Adding window.userFlavor to flavors array*/
             window.allFlavors[parseInt(targetID)] = window.traditionalFlavor; //CLONE HERE
