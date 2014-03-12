@@ -1,8 +1,10 @@
+{% set assetsFolder = "/PizzaBuilder/assets/" %}
+{% set imageFolder = assetsFolder ~ "/images/" %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <link href="/PizzaBuilder/resources/css/bootstrap.css" rel="stylesheet" type="text/css" />        <!-- Loading OWN CSS -->
-        <link href="/PizzaBuilder/resources/css/pizzaBuilder.css" rel="stylesheet" type="text/css" />        
+        <link href="{{assetsFolder}}css/bootstrap.css" rel="stylesheet" type="text/css" />        <!-- Loading OWN CSS -->
+        <link href="{{assetsFolder}}css/pizzaBuilder.css" rel="stylesheet" type="text/css" />        
        
         <!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -27,7 +29,7 @@
                 <!-- Div:NAVBAR -->
                 <div id="navBar" class="navbar navbar-default" role="navigation">
 					<!-- BAS RELIEF IMG -->
-					<img id="pizzaBasRelief" src="/PizzaBuilder/resources/images/pizzaColorSmall.png" alt="Bas-relief Pizza Logo" >
+					<img id="pizzaBasRelief" src="{{imageFolder}}pizzaColorSmall.png" alt="Bas-relief Pizza Logo" >
                     <!-- BAVBAR Header -->
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarMenu">

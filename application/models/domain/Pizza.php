@@ -1,5 +1,5 @@
 <?php
-
+require_once 'PizzaFlavor.php';
 require_once 'PizzaCrust.php';
 /*
  * This class represents a Pizza entity of the
@@ -31,11 +31,8 @@ class Pizza implements JsonSerializable{
     private $layout;
     //The pizza size object
     private $size;
-    //The four pizza flavors (only flavor1 not nullable
-    private $flavor1;
-    private $flavor2;
-    private $flavor3;
-    private $flavor4;
+    //The list of flavors of this pizza
+    private $flavors;
     
     public function __construct()
     {
@@ -45,101 +42,93 @@ class Pizza implements JsonSerializable{
         $this->setPicturePath("");
         $this->setCrust();
         $this->setEdge();
-        $this->setFlavor1();
-        $this->setFlavor2();
-        $this->setFlavor3();
-        $this->setFlavor4();
         $this->setLayout();
         $this->setSize();
+        $this->flavors = array();
         
     }
+
+    public function getFlavors()
+    {
+        return $this->flavors;
+    }
     
-    public function getPicturePath() {
+    public function getPicturePath() 
+    {
         return $this->picturePath;
     }
 
-    public function setPicturePath($picturePath) {
+    public function setPicturePath($picturePath) 
+    {
         $this->picturePath = $picturePath;
     }
 
         
-    public function getName() {
+    public function getName() 
+    {
         return $this->name;
     }
 
-    public function getDescription() {
+    public function getDescription() 
+    {
         return $this->description;
     }
 
-    public function getEdge() {
+    public function getEdge() 
+    {
         return $this->edge;
     }
 
-    public function getLayout() {
+    public function getLayout() 
+    {
         return $this->layout;
     }
 
-    public function getSize() {
+    public function getSize() 
+    {
         return $this->size;
     }
 
-    public function getFlavor1() {
-        return $this->flavor1;
-    }
-
-    public function getFlavor2() {
-        return $this->flavor2;
-    }
-
-    public function getFlavor3() {
-        return $this->flavor3;
-    }
-
-    public function getFlavor4() {
-        return $this->flavor4;
-    }
-
-    public function getObservations() {
+    public function getObservations()
+    {
         return $this->observations;
     }
 
-    public function setName($name) {
+    public function setName($name)
+    {
         $this->name = $name;
     }
 
-    public function setDescription($description) {
+    public function setFlavors(array $flavors)
+    {
+        if(count($flavors) > 0)
+        {
+            $this->flavors = array_merge($this->flavors, $flavors);
+        }
+    }
+
+    public function setDescription($description)
+    {
         $this->description = $description;
     }
 
-    public function setEdge(PizzaEdge $edge = null) {
+    public function setEdge(PizzaEdge $edge = null)
+    {
         $this->edge = $edge;
     }
 
-    public function setLayout(PizzaLayout $layout = null) {
+    public function setLayout(PizzaLayout $layout = null)
+    {
         $this->layout = $layout;
     }
 
-    public function setSize(PizzaSize $size = null) {
+    public function setSize(PizzaSize $size = null)
+    {
         $this->size = $size;
     }
 
-    public function setFlavor1(PizzaFlavor $flavor1 = null) {
-        $this->flavor1 = $flavor1;
-    }
-
-    public function setFlavor2(PizzaFlavor $flavor2 = null) {
-        $this->flavor2 = $flavor2;
-    }
-
-    public function setFlavor3(PizzaFlavor $flavor3 = null) {
-        $this->flavor3 = $flavor3;
-    }
-
-    public function setFlavor4(PizzaFlavor $flavor4 = null) {
-        $this->flavor4 = $flavor4;
-    }
-
-    public function setObservations($observations) {
+    public function setObservations($observations)
+    {
         $this->observations = $observations;
     }
 
@@ -147,15 +136,18 @@ class Pizza implements JsonSerializable{
         return $this->crust;
     }
 
-    public function setCrust(PizzaCrust $crust = null) {
+    public function setCrust(PizzaCrust $crust = null)
+    {
         $this->crust = $crust;
     }
     
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
-    public function setId($id) {
+    public function setId($id)
+    {
         $this->id = $id;
     }
 
@@ -182,32 +174,12 @@ class Pizza implements JsonSerializable{
         return $recipe;
     }
     
-    /**
-     * Return all flavors as an array
-     * @return type PizzaFlavor[] array of flavors of this pizza
-     */
-    public function getFlavors()
+    public function addFlavor(Flavor $flavor)
     {
-        $return = array();
-        
-        if($this->flavor1 !== null){
-            $return[] = $this->flavor1;
+        if($flavor != null)
+        {
+            $this->flavors[] = flavor;
         }
-        
-        if($this->flavor2 !== null){
-            $return[] = $this->flavor2;
-        }
-        
-        if($this->flavor3 !== null){
-            $return[] = $this->flavor3;
-        }
-        
-        if($this->flavor4 !== null){
-            $return[] = $this->flavor4;
-        }
-        
-        return $return;
-       
     }
 
 

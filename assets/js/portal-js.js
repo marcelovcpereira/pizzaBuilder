@@ -766,6 +766,12 @@ $("document").ready(function() {
         window.location.href = "/PizzaBuilder/cart/update/"+rowid+"/" + qty;
   });
 
+   /* Setting "update qty" links on cart view to update the item quantity */
+  $("#cartContainer #clearCartButton").click(function(e){
+        e.preventDefault();
+        window.location.href = "/PizzaBuilder/cart/clear";
+  });
+
     /**
      * Initializing the functionality of the AddressToggleButton
      */

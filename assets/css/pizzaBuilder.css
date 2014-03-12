@@ -4,10 +4,6 @@
   src: url('../fonts/Dolce Vita.TTF');
 }
 @font-face {
-  font-family: Freshman;
-  src: url('../fonts/Freshman.TTF');
-}
-@font-face {
   font-family: Stark;
   src: url('../fonts/Stark.OTF');
 }
@@ -205,7 +201,7 @@ html body {
   border: 1px solid #745b39;
   position: relative;
   overflow: hidden;
-  background: url('/PizzaBuilder/resources/images/bannerPizza.png');
+  background: url('/PizzaBuilder/assets/images/bannerPizza.png');
 }
 #historyRow #history .spanTitle {
   font-size: 32px;
@@ -223,7 +219,7 @@ html body {
   padding: 0px;
   width: 1000px;
   height: 200px;
-  background: url('/PizzaBuilder/resources/images/news_pizzaSmall.jpg');
+  background: url('/PizzaBuilder/assets/images/news_pizzaSmall.jpg');
   border: 1px solid #745b39;
   text-align: center;
   position: relative;
@@ -345,7 +341,8 @@ html body {
   /* Description */
 }
 #menuRow div[name='menuItem'] .panel .panel-footer h3 {
-  font-family: Freshman;
+  font-family: Stark;
+  font-weight: bold;
   font-size: 22px;
   margin-top: 0px;
   margin-bottom: 0px;
@@ -555,7 +552,8 @@ html body {
   /* Description */
 }
 #builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='sizeItem'] .panel .panel-footer h3 {
-  font-family: Freshman;
+  font-family: Stark;
+  font-weight: bold;
   font-size: 22px;
   margin-top: 0px;
   margin-bottom: 0px;
@@ -638,7 +636,8 @@ html body {
 #builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='edgeItem'] .panel .panel-footer h3,
 #builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='layoutItem'] .panel .panel-footer h3,
 #builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='flavorItem'] .panel .panel-footer h3 {
-  font-family: Freshman;
+  font-family: Stark;
+  font-weight: bold;
   font-size: 22px;
   margin-top: 0px;
   margin-bottom: 0px;
@@ -741,7 +740,7 @@ html body {
 }
 #ingredientsPane .modal-content .tab-content .tab-pane .modal-body {
   background-color: #fff2e0;
-  /* Div containing list of ingredients */
+  /* Div containing list of ingredients/flavors */
   /* Divs containing card of hovered ingredient/flavor */
   /* "Summary:" */
   /* Ingredients of summary */
@@ -756,7 +755,9 @@ html body {
   font-size: 110%;
   font-weight: lighter;
 }
-#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #ingredientsList {
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #ingredientsList,
+#ingredientsPane .modal-content .tab-content .tab-pane .modal-body #flavorsList {
+  max-height: 400px;
   overflow: auto;
 }
 #ingredientsPane .modal-content .tab-content .tab-pane .modal-body #ingredientColumn,
@@ -835,7 +836,8 @@ html body {
 #ingredientsPane .modal-content .tab-content .tab-pane .modal-body #flavorsColumn div[name$='ingredientItem'] .panel .panel-footer h3,
 #ingredientsPane .modal-content .tab-content .tab-pane .modal-body #ingredientColumn div[name='flavorItem'] .panel .panel-footer h3,
 #ingredientsPane .modal-content .tab-content .tab-pane .modal-body #flavorsColumn div[name='flavorItem'] .panel .panel-footer h3 {
-  font-family: Freshman;
+  font-family: Stark;
+  font-weight: bold;
   font-size: 22px;
   margin-top: 0px;
   margin-bottom: 0px;
@@ -909,9 +911,11 @@ html body {
 /*--------------END:Pizza Builder View-------------*/
 /*--------------Cart View-------------*/
 #cartContainer {
+  text-align: center;
   /* TABLE */
 }
 #cartContainer .table {
+  text-align: left;
   width: 80%;
   margin: 0px auto;
   background-color: #fbe3c2;
@@ -1018,6 +1022,10 @@ html body {
 }
 #cartContainer .table tbody tr:hover {
   background-color: #f8d19c;
+}
+#cartContainer #clearCartButton {
+  margin: 10px auto;
+  box-shadow: 2px 2px 2px #888888;
 }
 /* CART CONTAINER */
 /*--------------END:Cart View-------------*/

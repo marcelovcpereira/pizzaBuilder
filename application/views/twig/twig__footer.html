@@ -1,3 +1,5 @@
+{% set assetsFolder = "/PizzaBuilder/assets/" %}
+{% set imageFolder = assetsFolder ~ "/images/" %}
 <div id="rowComplemento" class="row">
     
 </div>
@@ -14,17 +16,17 @@
     <div id="footerDiv1" class="col-md-4">
         <h4>Find us on Social Networks</h4>
         <div>
-            <img src="/PizzaBuilder/resources/images/social/facebook.png" 
+            <img src="{{imageFolder}}social/facebook.png" 
                 alt="Like us on Facebook" title="Like us on Facebook">
-        <img src="/PizzaBuilder/resources/images/social/googleplus.png" 
+        <img src="{{imageFolder}}social/googleplus.png" 
                 alt="Like us on Google+" title="Like us on Google+">
                 <br>
         <a href="http://www.github.com/marcelovcpereira">
-            <img src="/PizzaBuilder/resources/images/social/github.png" 
+            <img src="{{imageFolder}}social/github.png" 
                 alt="Fork PizzaBuilder on Github" title="Fork PizzaBuilder on Github">
         </a>
         <a href="http://www.linkedin.com/profile/view?id=312305693">
-            <img src="/PizzaBuilder/resources/images/social/linkedin.png" 
+            <img src="{{imageFolder}}social/linkedin.png" 
                 alt="See developer on Linkedin" title="See developer on Linkedin">
         </a>
         </div>
@@ -58,7 +60,7 @@
     <div class="col-lg-12">
         <center>
             <span>
-                Images from <a href="http://www.freedigitalphotos.net/‎">FreeDigitalPhotos</a>
+                Images from <a href="http://www.freedigitalphotos.net/‎">FreeDigitalPhotos</a> and <a href="http://all-free-download.com/">AllFreeDownloads</a>
             </span>
         </center>
     </div>
@@ -71,15 +73,15 @@
 	<!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script type="text/javascript" src="/PizzaBuilder/resources/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="{{assetsFolder}}js/jquery-1.11.0.min.js"></script>
     
     <!--<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>-->
         
     <!-- loading twitter bootstrap -->
-    <script type="text/javascript" src="/PizzaBuilder/resources/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{assetsFolder}}js/bootstrap.min.js"></script>
     
     <!-- loading portal javascript file -->
-    <script type="text/javascript" src="/PizzaBuilder/resources/js/portal-js.js"></script>  
+    <script type="text/javascript" src="{{assetsFolder}}js/portal-js.js"></script>  
     
       
     

@@ -10,12 +10,13 @@
 
             {% include 'twig__menu_item_view.html'%}
 
-            {% if loop.index is divisible by(4) %}	
+            {# if this is the last pizza or is the end of a row, close div #}
+            {% if loop.index is divisible by(4) or loop.index == pizzas|length %}	
                 </div> <!-- END: ROW -->
             {% endif %}
 
     {% endfor %}
-</div>
+</div><!--menurow-->
        
 
         

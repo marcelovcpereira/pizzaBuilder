@@ -3,6 +3,8 @@
  # being selected and unselected. 
  #}
 {% set class = "cardDiv" %}
+{% set assetsFolder = "/PizzaBuilder/assets/" %}
+{% set imageFolder = assetsFolder ~ "/images/" %}
 
 {#
  # The number is used to determine the position of 
@@ -66,7 +68,7 @@
 
             <!-- PANEL BODY -->
             <div class="panel-body thumbnail">
-                <img class="cardImage" src="/PizzaBuilder/resources/images/{{object.picturePath}}" 
+                <img class="cardImage" src="{{imageFolder}}{{object.picturePath}}" 
                 alt="{{object.name}} Image"> 
                 {% if object.id is null %}
                 <span>No flavor selected</span>
@@ -77,7 +79,7 @@
             <div class="panel panel-footer"> 
                 <div class="{{type}}Text">
                     <!-- object NAME -->
-                    <h3>{{object.name}}</h3>
+                    <h3>{{object.name|capitalize}}</h3>
 
                     <hr>
                     <!-- DESCRIPTION -->

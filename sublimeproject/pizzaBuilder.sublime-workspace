@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"mar",
+				"margin"
+			],
+			[
+				"font",
+				"font-weight"
+			],
+			[
+				"is",
+				"is_array"
+			],
+			[
 				"la",
 				"layoutObj"
 			],
@@ -78,10 +90,6 @@
 			[
 				"confirm_",
 				"confirm_password"
-			],
-			[
-				"font",
-				"font-family"
 			],
 			[
 				"tex",
@@ -380,18 +388,50 @@
 	"buffers":
 	[
 		{
-			"file": "/P/Projects/PizzaBuilder/application/controllers/menu.php",
+			"file": "/P/Projects/PizzaBuilder/resources/js/portal-js.js",
 			"settings":
 			{
-				"buffer_size": 776,
+				"buffer_size": 26461,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/P/Projects/PizzaBuilder/application/models/domain/Pizza.php",
+			"settings":
+			{
+				"buffer_size": 3777,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/P/Projects/PizzaBuilder/application/libraries/ConfigWrapper.php",
+			"file": "/P/Projects/PizzaBuilder/application/views/twig/twig__card_view.html",
 			"settings":
 			{
-				"buffer_size": 1608,
+				"buffer_size": 3371,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/P/Projects/PizzaBuilder/application/controllers/cart.php",
+			"settings":
+			{
+				"buffer_size": 4910,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/P/Projects/PizzaBuilder/application/views/twig/twig_cart_view.html",
+			"settings":
+			{
+				"buffer_size": 5935,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/P/Projects/PizzaBuilder/application/views/twig/twig__flavorModal_view.html",
+			"settings":
+			{
+				"buffer_size": 5484,
 				"line_ending": "Windows"
 			}
 		},
@@ -399,7 +439,7 @@
 			"file": "/P/Projects/PizzaBuilder/application/controllers/auth.php",
 			"settings":
 			{
-				"buffer_size": 7338,
+				"buffer_size": 7149,
 				"line_ending": "Windows"
 			}
 		},
@@ -412,18 +452,34 @@
 			}
 		},
 		{
-			"file": "/P/Projects/PizzaBuilder/resources/js/portal-js.js",
+			"file": "/P/Projects/PizzaBuilder/application/views/twig/twig__builderDiv_view.html",
 			"settings":
 			{
-				"buffer_size": 26232,
+				"buffer_size": 8130,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/P/Projects/PizzaBuilder/application/views/ci/ci__history.php",
+			"settings":
+			{
+				"buffer_size": 287,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/P/Projects/PizzaBuilder/application/views/twig/twig__history.html",
+			"settings":
+			{
+				"buffer_size": 289,
+				"line_ending": "Windows"
 			}
 		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 35.0,
+		"height": 392.0,
 		"selected_items":
 		[
 			[
@@ -439,7 +495,7 @@
 				"Preferences: Settings - Default"
 			]
 		],
-		"width": 392.0
+		"width": 512.0
 	},
 	"console":
 	{
@@ -456,47 +512,54 @@
 	},
 	"file_history":
 	[
-		"/P/Projects/PizzaBuilder/application/views/twig/twig_menu_view.html",
+		"/P/Projects/PizzaBuilder/resources/less/pizzaBuilder.less",
+		"/P/Projects/PizzaBuilder/application/views/ci/ci_register_view.php",
 		"/P/Projects/PizzaBuilder/application/views/twig/twig__menu_item_view.html",
-		"/P/Projects/PizzaBuilder/resources/js/portal-js.js",
-		"/P/Projects/PizzaBuilder/application/controllers/auth.php",
+		"/P/Projects/PizzaBuilder/application/views/twig/twig__progressDiv_view.html",
+		"/P/Projects/PizzaBuilder/application/views/twig/twig__header.html",
+		"/P/Projects/PizzaBuilder/application/views/twig/twig__footer.html",
+		"/P/Projects/PizzaBuilder/application/views/twig/twig_about_view.html",
+		"/P/Projects/PizzaBuilder/application/views/twig/twig_home_view.html",
+		"/P/Projects/PizzaBuilder/application/views/ci/ci__history.php",
+		"/P/Projects/PizzaBuilder/application/views/twig/twig__history.html",
+		"/P/Projects/PizzaBuilder/application/controllers/pizzaBuilder.php",
+		"/P/Projects/PizzaBuilder/application/models/pizzaBuilder_model.php",
+		"/P/Projects/PizzaBuilder/application/models/dao/DbIngredientDao.php",
+		"/P/Projects/PizzaBuilder/application/models/dao/DbPizzaCrustDao.php",
 		"/P/Projects/PizzaBuilder/application/models/dao/DbPizzaDao.php",
-		"/P/Projects/PizzaBuilder/application/models/dao/PizzaDao.php",
+		"/P/Projects/PizzaBuilder/application/models/dao/DbPizzaEdgeDao.php",
+		"/P/Projects/PizzaBuilder/application/models/dao/DbPizzaFlavorDao.php",
+		"/P/Projects/PizzaBuilder/application/models/dao/DbPizzaLayoutDao.php",
+		"/P/Projects/PizzaBuilder/application/models/dao/DbPizzaSizeDao.php",
 		"/P/Projects/PizzaBuilder/application/models/pizza_model.php",
+		"/P/Projects/PizzaBuilder/application/models/user_model.php",
+		"/P/Projects/PizzaBuilder/application/views/twig/twig__builderDiv_view.html",
+		"/P/Projects/PizzaBuilder/application/models/domain/PizzaBuilderDomain.php",
+		"/P/Projects/PizzaBuilder/application/views/twig/twig_menu_view.html",
+		"/P/Projects/PizzaBuilder/application/controllers/auth.php",
+		"/P/Projects/PizzaBuilder/application/libraries/ConfigWrapper.php",
+		"/P/Projects/PizzaBuilder/application/controllers/menu.php",
+		"/P/Projects/PizzaBuilder/resources/js/portal-js.js",
+		"/P/Projects/PizzaBuilder/application/models/dao/PizzaDao.php",
 		"/P/Projects/PizzaBuilder/application/controllers/portal.php",
 		"/P/Projects/PizzaBuilder/application/libraries/TemplateWrapper.php",
-		"/P/Projects/PizzaBuilder/application/libraries/ConfigWrapper.php",
 		"/P/Projects/PizzaBuilder/application/libraries/AuthWrapper.php",
 		"/P/Projects/PizzaBuilder/application/views/twig/twig_pizzaBuilder_view.html",
-		"/P/Projects/PizzaBuilder/application/controllers/pizzaBuilder.php",
-		"/P/Projects/PizzaBuilder/application/views/twig/twig__builderDiv_view.html",
 		"/P/Projects/PizzaBuilder/application/controllers/cart.php",
-		"/P/Projects/PizzaBuilder/application/views/twig/twig__history.html",
-		"/P/Projects/PizzaBuilder/application/controllers/menu.php",
-		"/P/Projects/PizzaBuilder/application/models/user_model.php",
-		"/P/Projects/PizzaBuilder/application/models/pizzaBuilder_model.php",
-		"/P/Projects/PizzaBuilder/application/views/twig/twig_home_view.html",
 		"/P/Projects/PizzaBuilder/application/models/domain/Ingredient.php",
-		"/P/Projects/PizzaBuilder/application/models/domain/PizzaBuilderDomain.php",
 		"/P/Projects/PizzaBuilder/application/models/domain/User.php",
 		"/P/Projects/PizzaBuilder/application/models/dao/UserDao.php",
 		"/P/Projects/PizzaBuilder/application/models/dao/DbUserDao.php",
-		"/P/Projects/PizzaBuilder/application/views/twig/twig__header.html",
 		"/P/Projects/PizzaBuilder/application/views/ci/ci_login_view.php",
-		"/P/Projects/PizzaBuilder/resources/less/pizzaBuilder.less",
-		"/P/Projects/PizzaBuilder/application/views/ci/ci_register_view.php",
-		"/P/Projects/PizzaBuilder/application/models/dao/DbPizzaFlavorDao.php",
 		"/P/Projects/PizzaBuilder/application/config/form_validation.php",
 		"/P/Projects/PizzaBuilder/application/models/domain/Address.php",
 		"/P/Projects/PizzaBuilder/application/config/config.php",
-		"/P/Projects/PizzaBuilder/application/views/twig/twig__footer.html",
 		"/P/Projects/PizzaBuilder/index.php",
 		"/P/Projects/PizzaBuilder/application/libraries/autoload.php",
 		"/P/Projects/PizzaBuilder/application/libraries/composer/autoload_real.php",
 		"/P/Projects/PizzaBuilder/application/libraries/composer/ClassLoader.php",
 		"/P/Projects/PizzaBuilder/application/config/autoload.php",
 		"/P/Projects/PizzaBuilder/application/models/address_model.php",
-		"/P/Projects/PizzaBuilder/application/views/twig/twig_about_view.html",
 		"/P/Projects/PizzaBuilder/application/config/routes.php",
 		"/P/Projects/PizzaBuilder/application/config/smileys.php",
 		"/P/Projects/PizzaBuilder/application/views/twig/twig_cart_view.html",
@@ -509,7 +572,6 @@
 		"/P/Projects/PizzaBuilder/resources/less/teste.css",
 		"/P/Projects/PizzaBuilder/application/libraries/doctrine/common/tests/Doctrine/Tests/Common/Proxy/CallableTypeHintClass.php",
 		"/P/Projects/PizzaBuilder/resources/css/teste.css",
-		"/P/Projects/PizzaBuilder/application/views/twig/twig__progressDiv_view.html",
 		"/P/Projects/PizzaBuilder/application/views/twig/twig__flavorCard_view.html",
 		"/P/Projects/PizzaBuilder/resources/js/jquery-ui-1.10.4.custom.min.js",
 		"/P/Projects/PizzaBuilder/application/models/domain/PizzaFlavor.php",
@@ -518,11 +580,7 @@
 		"/C/Users/marcelo.pereira/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/C/Users/marcelo.pereira/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 		"/C/Users/marcelo.pereira/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
-		"/P/Projects/PizzaBuilder/application/models/dao/DbPizzaCrustDao.php",
 		"/P/Projects/PizzaBuilder/application/libraries/CacheWrapper.php",
-		"/P/Projects/PizzaBuilder/application/models/dao/DbPizzaEdgeDao.php",
-		"/P/Projects/PizzaBuilder/application/models/dao/DbPizzaLayoutDao.php",
-		"/P/Projects/PizzaBuilder/application/models/dao/DbPizzaSizeDao.php",
 		"/P/Projects/PizzaBuilder/sublimeproject/pizzaBuilder.sublime-project",
 		"/C/Users/marcelo.pereira/Downloads/Sublime Text 2.0.2 x64/Data/Packages/Default/Preferences.sublime-settings"
 	],
@@ -542,6 +600,8 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"url",
+			"Freshman",
 			"updateLayout",
 			"pizzaCardLink",
 			"flip",
@@ -648,75 +708,51 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 10,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/P/Projects/PizzaBuilder/application/controllers/menu.php",
+					"file": "/P/Projects/PizzaBuilder/resources/js/portal-js.js",
 					"settings":
 					{
-						"buffer_size": 776,
+						"buffer_size": 26461,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								75,
-								75
+								25018,
+								25018
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 11016.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "/P/Projects/PizzaBuilder/application/libraries/ConfigWrapper.php",
+					"file": "/P/Projects/PizzaBuilder/application/models/domain/Pizza.php",
 					"settings":
 					{
-						"buffer_size": 1608,
+						"buffer_size": 3777,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								376,
-								376
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 180.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "/P/Projects/PizzaBuilder/application/controllers/auth.php",
-					"settings":
-					{
-						"buffer_size": 7338,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1118,
-								1118
+								0,
+								0
 							]
 						],
 						"settings":
@@ -726,13 +762,153 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 135.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/P/Projects/PizzaBuilder/application/views/twig/twig__card_view.html",
+					"settings":
+					{
+						"buffer_size": 3371,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								220,
+								220
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 315.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
+					"file": "/P/Projects/PizzaBuilder/application/controllers/cart.php",
+					"settings":
+					{
+						"buffer_size": 4910,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4193,
+								4193
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1305.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/P/Projects/PizzaBuilder/application/views/twig/twig_cart_view.html",
+					"settings":
+					{
+						"buffer_size": 5935,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1043,
+								1043
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/P/Projects/PizzaBuilder/application/views/twig/twig__flavorModal_view.html",
+					"settings":
+					{
+						"buffer_size": 5484,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 855.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/P/Projects/PizzaBuilder/application/controllers/auth.php",
+					"settings":
+					{
+						"buffer_size": 7149,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7058,
+								7058
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2520.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
 					"file": "/P/Projects/PizzaBuilder/application/models/user_model.php",
 					"settings":
 					{
@@ -754,35 +930,87 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 180.0,
+						"translation.y": 630.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "/P/Projects/PizzaBuilder/resources/js/portal-js.js",
+					"buffer": 8,
+					"file": "/P/Projects/PizzaBuilder/application/views/twig/twig__builderDiv_view.html",
 					"settings":
 					{
-						"buffer_size": 26232,
+						"buffer_size": 8130,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								18511,
-								18511
+								1102,
+								1102
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 10836.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "/P/Projects/PizzaBuilder/application/views/ci/ci__history.php",
+					"settings":
+					{
+						"buffer_size": 287,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "/P/Projects/PizzaBuilder/application/views/twig/twig__history.html",
+					"settings":
+					{
+						"buffer_size": 289,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

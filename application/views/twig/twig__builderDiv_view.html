@@ -145,22 +145,12 @@
                 <span>
                     {# Toppings names in case we're opening a pizza to edit #}
                     {% if pizza is not null %}
-                        {% if pizza.getFlavor1 is not null %}
-                            {{pizza.getFlavor1.getName()|capitalize}}
-                        {% endif %}
-
-                        {% if pizza.getFlavor2 is not null %}
-                            , {{pizza.getFlavor2.getName()|capitalize}}
-                        {% endif %}
-
-                        {% if pizza.getFlavor3 is not null %}
-                            , {{pizza.getFlavor3.getName()|capitalize}}
-                        {% endif %}
-
-                        {% if pizza.getFlavor4 is not null %}
-                            , {{pizza.getFlavor4.getName()|capitalize}}
-                        {% endif %}
-
+                        {% for flavor in pizza.getFlavors() %}
+                            {{flavor.getName()|capitalize}}
+                            {% if loop.index != pizza.getFlavors()|length %}
+                                ,
+                            {% endif %}
+                        {% endfor %}
                     {% else %}    
                         <small>(select a layout)</small>
                     {% endif %}
@@ -169,23 +159,15 @@
             </h2> 
 
             <div class="cardDivWrapper">
-                {% set flavor1 = null %}
-                {% set flavor2 = null %}
-                {% set flavor3 = null %}
-                {% set flavor4 = null %}
-                
-                {% if pizza is not null %}
-                    {% set flavor1 = pizza.getFlavor1() %}
-                    {% set flavor2 = pizza.getFlavor2() %}
-                    {% set flavor3 = pizza.getFlavor3() %}
-                    {% set flavor4 = pizza.getFlavor4() %}                    
-                {% endif %}         
-                
-
-                {% include 'twig__card_view.html' with {'number': '1','object':flavor1} %}   
-                {% include 'twig__card_view.html' with {'number': '2','object':flavor2} %}            
-                {% include 'twig__card_view.html' with {'number': '3','object':flavor3} %}            
-                {% include 'twig__card_view.html' with {'number': '4','object':flavor4} %}   
+                {% set counter = 0 %}
+                {% for flavor in pizza.getFlavors() %}
+                    {% include 'twig__card_view.html' with {'number': loop.index,'object':flavor} %}
+                    {% set counter = counter + 1 %}
+                {% endfor %}                
+                {# While counter is not 4 #}
+                {% for counter in counter..3 %}
+                    {% include 'twig__card_view.html' with {'number': counter+1,'object':null} %}
+                {% endfor %}
             </div>            
         </div><!-- FLAVOR COLUMN -->
     </div><!-- FLAVOR ROW -->

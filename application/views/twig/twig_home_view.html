@@ -1,3 +1,5 @@
+{% set assetsFolder = "/PizzaBuilder/assets/" %}
+{% set imageFolder = assetsFolder ~ "/images/" %}
 <div class="container">
     <!-- ROW1: Contains NEWS DIV -->
     <div id="row1" class="row">
@@ -13,20 +15,20 @@
                   <!-- Wrapper for slides -->
                   <div class="carousel-inner">
                     <div class="item active">
-                        <img src="/PizzaBuilder/resources/images/news_pizzaSmall.jpg" alt="News Pizza">
+                        <img src="{{imageFolder}}news_pizzaSmall.jpg" alt="News Pizza">
                         
                         <div class="carousel-caption">
                             <span>Delicious pizzas especially made for your taste</span>
                         </div>
                     </div>
                     <div class="item">
-                        <img src="/PizzaBuilder/resources/images/interiorRestaurante.jpg" alt="interior">                    
+                        <img src="{{imageFolder}}interiorRestaurante.jpg" alt="interior">                    
                         <div class="carousel-caption">
                             <span>A charmy and cozy place for you and your family</span>
                         </div>
                     </div>
                     <div class="item">
-                        <img src="/PizzaBuilder/resources/images/lenha300.jpg" alt="Pizza">                   
+                        <img src="{{imageFolder}}lenha300.jpg" alt="Pizza">                   
                         <div class="carousel-caption">
                             <span>We deliver the pizza the way you want</span>
                         </div>
@@ -51,7 +53,7 @@
         <div class="col-lg-3">
             <a class="menuLink" href="/PizzaBuilder/menu">
             <div> 
-                <img src="/PizzaBuilder/resources/images/home/menuSmallColor.png" alt="Menu">            
+                <img src="{{imageFolder}}home/menuSmallColor.png" alt="Menu">            
                 <h3><span class="label label-warning ">Menu<span></h3>            
             </div> 
             </a>
@@ -61,7 +63,7 @@
         <div class="col-lg-3">
             <a class="menuLink" href="/PizzaBuilder/pizzaBuilder">
             <div> 
-                <img src="/PizzaBuilder/resources/images/home/pizzaSmallColor.png" alt="Pizza Builder">            
+                <img src="{{imageFolder}}home/pizzaSmallColor.png" alt="Pizza Builder">            
                 <h3><span class="label label-warning ">Build Your Pizza<span></h3>            
             </div> 
             </a>
@@ -71,7 +73,7 @@
         <div class="col-lg-3">
             <a class="menuLink" href="#">
             <div> 
-                <img src="/PizzaBuilder/resources/images/home/deliverySmallColor.png" alt="Delivery Area">                      
+                <img src="{{imageFolder}}home/deliverySmallColor.png" alt="Delivery Area">                      
                 <h3><span class="label label-warning ">Delivery Area<span></h3>            
             </div> 
             </a>
@@ -81,7 +83,7 @@
         <div class="col-lg-3">
             <a class="menuLink" href="#">
                 <div> 
-                    <img src="/PizzaBuilder/resources/images/home/contactSmallColor.png" alt="Contact Us">            
+                    <img src="{{imageFolder}}home/contactSmallColor.png" alt="Contact Us">            
                     <h3><span class="label label-warning ">Contact Us<span></h3>            
                 </div> 
             </a>

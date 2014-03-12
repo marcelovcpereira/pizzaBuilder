@@ -109,87 +109,27 @@ class PizzaBuilderDomain {
         $edge = $this->findEdge($jsonPizza->edgeId);
         //Get PizzaLayout object by id
         $layout = $this->findLayout($jsonPizza->layoutId);
-
-        //Get Flavors if they are setted, null otherwise
-        $flavor1 = isset($jsonPizza->flavors[0]) ? $jsonPizza->flavors[0] : null;
-        $flavor2 = isset($jsonPizza->flavors[1]) ? $jsonPizza->flavors[1] : null;
-        $flavor3 = isset($jsonPizza->flavors[2]) ? $jsonPizza->flavors[2] : null;
-        $flavor4 = isset($jsonPizza->flavors[3]) ? $jsonPizza->flavors[3] : null;
         
-        /* If flavor1 is valid, lets parse it to PizzaFlavor Object */
-        if($flavor1)
+        $flavors = array();
+        /* Foreach flavor, create a PizzaFlavor object and insert Ingredient
+         * objects */
+        foreach($jsonPizza->flavors as $flavor)
         {
-            $flavor1Obj = new PizzaFlavor();
-            $flavor1Obj->setId($flavor1->id);
-            $flavor1Obj->setName($flavor1->name);
-            $flavor1Obj->setDescription($flavor1->description);
-            $flavor1Obj->setPicturePath($flavor1->picturePath);
-
-            /* Parsing all json ingredients to actual Ingredients instances */
-            $ingredients = array();            
-            foreach($flavor1->ingredients as $ingredient)
-            {                
-                $ingredients[] = new Ingredient($ingredient->id,$ingredient->name,$ingredient->description,$ingredient->picturePath);
-            }
-            $flavor1Obj->setIngredients($ingredients);
-
-            $flavor1 = $flavor1Obj;
-        }
-        /* If flavor2 is valid, lets parse it to PizzaFlavor Object */
-        if($flavor2)
-        {
-            $flavor2Obj = new PizzaFlavor();
-            $flavor2Obj->setId($flavor2->id);
-            $flavor2Obj->setName($flavor2->name);
-            $flavor2Obj->setDescription($flavor2->description);
-            $flavor2Obj->setPicturePath($flavor2->picturePath);
+            $flavorObj = new PizzaFlavor();
+            $flavorObj->setId($flavor->id);
+            $flavorObj->setName($flavor->name);
+            $flavorObj->setDescription($flavor->description);
+            $flavorObj->setPicturePath($flavor->picturePath);
 
             $ingredients = array();
-            foreach($flavor2->ingredients as $ingredient)
+            foreach($flavor->ingredients as $ingredient)
             {
                 $ingredients[] = new Ingredient($ingredient->id,$ingredient->name,$ingredient->description,$ingredient->picturePath);
             }
-            $flavor2Obj->setIngredients($ingredients);
+            $flavorObj->setIngredients($ingredients);
 
-            $flavor2 = $flavor2Obj;
+            $flavors[] = $flavorObj;
         }
-        /* If flavor3 is valid, lets parse it to PizzaFlavor Object */
-        if($flavor3)
-        {
-            $flavor3Obj = new PizzaFlavor();
-            $flavor3Obj->setId($flavor3->id);
-            $flavor3Obj->setName($flavor3->name);
-            $flavor3Obj->setDescription($flavor3->description);
-            $flavor3Obj->setPicturePath($flavor3->picturePath);
-
-            $ingredients = array();
-            foreach($flavor3->ingredients as $ingredient)
-            {
-                $ingredients[] = new Ingredient($ingredient->id,$ingredient->name,$ingredient->description,$ingredient->picturePath);
-            }
-            $flavor3Obj->setIngredients($ingredients);
-
-            $flavor3 = $flavor3Obj;
-        }
-        /* If flavor4 is valid, lets parse it to PizzaFlavor Object */
-        if($flavor4)
-        {
-            $flavor4Obj = new PizzaFlavor();
-            $flavor4Obj->setId($flavor4->id);
-            $flavor4Obj->setName($flavor4->name);
-            $flavor4Obj->setDescription($flavor4->description);
-            $flavor4Obj->setPicturePath($flavor4->picturePath);
-
-            $ingredients = array();
-            foreach($flavor4->ingredients as $ingredient)
-            {
-                $ingredients[] = new Ingredient($ingredient->id,$ingredient->name,$ingredient->description,$ingredient->picturePath);
-            }
-            $flavor4Obj->setIngredients($ingredients);
-
-            $flavor4 = $flavor4Obj;
-        }         
-        
         /* Creating and returning the pizza */
         $pizza = new Pizza();
         $pizza->setId($jsonPizza->id);
@@ -200,10 +140,7 @@ class PizzaBuilderDomain {
         $pizza->setCrust($crust);
         $pizza->setEdge($edge);
         $pizza->setLayout($layout);
-        $pizza->setflavor1($flavor1);
-        $pizza->setflavor2($flavor2);
-        $pizza->setflavor3($flavor3);
-        $pizza->setflavor4($flavor4);
+        $pizza->setFlavors($flavors);
         $pizza->setObservations($jsonPizza->observation);
         return $pizza;
     }

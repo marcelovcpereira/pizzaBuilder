@@ -1,6 +1,5 @@
 /**************FONTS**************/
 @font-face { font-family: DolceVita; src: url('../fonts/Dolce Vita.TTF'); } 
-@font-face { font-family: Freshman; src: url('../fonts/Freshman.TTF'); } 
 @font-face { font-family: Stark; src: url('../fonts/Stark.OTF'); } 
 /**************END:FONTS**************/
 
@@ -20,8 +19,8 @@
 @footerHeight: 220px;  
 
 
-@bannerPizza: '/PizzaBuilder/resources/images/bannerPizza.png';
-@bannerJumbo: '/PizzaBuilder/resources/images/news_pizzaSmall.jpg';
+@bannerPizza: '/PizzaBuilder/assets/images/bannerPizza.png';
+@bannerJumbo: '/PizzaBuilder/assets/images/news_pizzaSmall.jpg';
 /**************END:VARIABLES**************/
 
 
@@ -78,7 +77,8 @@
 			background-color: @cardBgColor;
 			/* Actual Title */
 			h3{
-				font-family: Freshman;  
+				font-family: Stark;  
+				font-weight: bold;
 				font-size: 22px;
 				margin-top: 0px;
 				margin-bottom: 0px;
@@ -720,8 +720,10 @@ html{
 							font-size: 110%;
 							font-weight: lighter;
 						}
-						/* Div containing list of ingredients */
-						#ingredientsList{
+						/* Div containing list of ingredients/flavors */
+						#ingredientsList,#flavorsList{
+							max-height: 400px;
+
 							overflow: auto;
 						}
 						/* Divs containing card of hovered ingredient/flavor */
@@ -807,8 +809,10 @@ html{
 /*--------------END:Pizza Builder View-------------*/
 
 /*--------------Cart View-------------*/
-#cartContainer{	
+#cartContainer{
+	text-align: center;	
 	.table{
+		text-align: left;
 		width: 80%;
 		margin: 0px auto;
 		background-color: lighten(@cardBgColor,8%);
@@ -914,6 +918,11 @@ html{
 			}/* TR */
 		}/* TBODY */
 	}/* TABLE */
+
+	#clearCartButton{
+		margin: 10px auto;
+		.boxShadow();
+	}
 }/* CART CONTAINER */
 
 /*--------------END:Cart View-------------*/

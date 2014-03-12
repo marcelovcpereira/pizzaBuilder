@@ -130,7 +130,7 @@
 <div id="registerContainer" class='container'>
     <div name="errorsDiv" class="row">
         <div class='col-lg-12'>
-            <?php if(validation_errors() OR isset($error) ){ ?>
+            <?php if(validation_errors() OR isset($error) ): ?>
                 <!-- bootstrap danger alert panel -->
                 <div class="alert alert-danger">
                     <i class="glyphicon glyphicon-exclamation-sign"></i>
@@ -153,9 +153,9 @@
                     ?>
 
                     <!--Database Errors-->
-                    <?php if(isset($error))echo $error; ?>
+                    
                 </div> <!-- bootstrap danger alert panel -->
-            <?php } ?>
+            <?php endif; ?>
         </div><!-- Div: First Column -->
     </div>
     <!-- DIV: ROW1 -->
