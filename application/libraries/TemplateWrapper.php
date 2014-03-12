@@ -117,6 +117,9 @@ class TemplateWrapper
         echo $twigEnv->render($this->prefix . $this->footer . $this->sufix);
     }
 
+    /* Loads the page with CodeIgniter template, but loads header and footer 
+     * with Twig Template
+     */
     public function ciTwigPageLoad($page, $params)
     {
 
@@ -130,12 +133,10 @@ class TemplateWrapper
         /* Rendering the header tenplate */
         $output = $twigEnv->render($this->prefix . $this->header . $this->sufix, $params);
 
-        $dir = 'ci/';
-
         /* Refers to the global instance of Code Igniter */
         $CI = & get_instance();
         /* Render the actual page */
-        $output = $output . $CI->parser->parse($dir . "ci_" . $page , $params,true);
+        $output = $output . $CI->parser->parse("ci/ci_" . $page , $params,true);
 
         /* Rendering the footer template */
         $output = $output . $twigEnv->render($this->prefix . $this->footer . $this->sufix);

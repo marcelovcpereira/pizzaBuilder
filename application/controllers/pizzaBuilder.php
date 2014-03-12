@@ -27,7 +27,6 @@ class PizzaBuilder extends CI_Controller
 
 			//Transform json object into Pizza object
 			$pizza = $pizzaBuilder->getPizzaByJSON($pizza);
-			//var_dump($pizza);
 
 			//Saving pizza in session
 			$this->session->set_userdata('customPizza',serialize($pizza));		
@@ -51,7 +50,7 @@ class PizzaBuilder extends CI_Controller
         }
 		
 		/* Doing manual CSRF protection because I'm not using CodeIgniter 
-		 * Form Helper (twig templating), so I'll use the token name and hash in the view
+		 * Form Helper (using twig templating), so I'll use the token name and hash in the view
 		 * to embed this data so codeigniter csrf protection does not
 		 * block the submition of the form
 		 */
@@ -59,7 +58,7 @@ class PizzaBuilder extends CI_Controller
 		$tokenName = $CI->security->get_csrf_token_name();
 		$tokenHash = $CI->security->get_csrf_hash();
 		
-		$cart = $this->cart->contents();
+
 
 		//Initializing parameters to view
 		$params = array(
@@ -67,9 +66,7 @@ class PizzaBuilder extends CI_Controller
 			'pizzaBuilder'	=>	$pizzaBuilder,
 			'pizza'	=>	$pizza,
 			'tokenName' => $tokenName,
-			'tokenHash' => $tokenHash,
-			'cart' => $cart,
-			'user' => $this->authwrapper->getUser()
+			'tokenHash' => $tokenHash
 		);
 		
 		$this->configwrapper->append($params);

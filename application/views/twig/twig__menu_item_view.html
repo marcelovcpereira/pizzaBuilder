@@ -1,5 +1,4 @@
 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-<a id="pizzaCardLink{{pizza.id}}" class="pizzaCardLink" href="">
     <div class="pizzaCard{{pizza.id}}" id="pizzaCard{{pizza.id}}" value="false">
         <!-- Menu Item FRONT: the name attribute is used by JavaScript -->
         <div name="menuItem" id="menuItem{{pizza.id}}" class="col-lg-3 col-md-4 col-sm-6 col-xs-12" 
@@ -7,7 +6,7 @@
              data-toggle="popover">
                 <!-- PANEL -->
                 <div class="panel panel-default">
-                    <a href="javascript:flipPizzaCard('{{pizza.id}}')">
+                    <a name="flipLink" data-value="{{pizza.id}}" href="javascript:flipPizzaCard({{pizza.id}})">
                     <!-- PANEL BODY -->
                     <div class="panel-body thumbnail">
                         <img src="/PizzaBuilder/resources/images/{{pizza.picturePath}}" 
@@ -22,7 +21,7 @@
                             <!-- PIZZA NAME -->
                             <h3>{{pizza.name}}</h3>
 
-                                                <hr>
+                            <hr>
                             <!-- DESCRIPTION -->
                             <span>
                                 {{pizza.description}}
@@ -45,9 +44,9 @@
         </div><!-- Menu Item -->
 
         <!-- MENU ITEM BACK: HIDDEN pizza DETAILS DIV -->
-        <div id="content{{pizza.id}}" name="pizzaDetails" class="sr-only">
+        <div id="content{{pizza.id}}" name="pizzaDetails" class="sr-only" style="display:none">
             <div id="panelPizzaDetails{{pizza.id}}" name="panelPizzaDetails" class="panel panel-default">
-                <a href="javascript:flipPizzaCard('{{pizza.id}}')">
+                <a name="flipLink" data-value="{{pizza.id}}" href="javascript:flipPizzaCard({{pizza.id}})">
                 <div id="scrollableContent{{pizza.id}}" class="scrollableContent">
                     <div class="crustDiv">                        
                         <span class="label label-warning">
@@ -93,7 +92,6 @@
         </div><!-- MENU ITEM BACK: HIDDEN pizza DETAILS DIV -->
 
     </div><!-- Pizza Card -->
-</a>
 </div>
 
 

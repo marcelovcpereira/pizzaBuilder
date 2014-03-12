@@ -1,11 +1,15 @@
 <?php
 require_once 'PizzaDao.php';
+require_once 'DbPizzaFlavorDao.php';
+require_once 'DbIngredientDao.php';
+
 require_once APPPATH . 'models/domain/Pizza.php';
 require_once APPPATH . 'models/domain/PizzaCrust.php';
 require_once APPPATH . 'models/domain/PizzaEdge.php';
 require_once APPPATH . 'models/domain/PizzaSize.php';
 require_once APPPATH . 'models/domain/PizzaLayout.php';
 require_once APPPATH . 'models/domain/PizzaFlavor.php';
+
 /**
  * Class that persists a Pizza object in a Database.
  * It extends PizzaDao, so it will implement PizzaDao's abstract methods:
@@ -127,7 +131,7 @@ class DbPizzaDao extends PizzaDao
 			$result = $this->connection->query($query);        
 			
 			//Checks if the pizza was found
-			if($result->num_rows() == 1 )
+			if($result->num_rows() == 1)
 			{							
 				$row = $result->row();
 				//Instantiate a new Pizza

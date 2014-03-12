@@ -44,14 +44,20 @@
 <div id="loginContainer" class="container">
     <div class="row">
       <div class="col-lg-12">
-          <?php if(validation_errors() OR isset($error) ){ ?>
+          <?php if(validation_errors()){ ?>
             <!-- bootstrap danger alert panel -->
             <div name="errorsDiv" class="alert alert-danger">
                 <i class="glyphicon glyphicon-exclamation-sign"></i>
                 <strong>Fix the form errors below</strong>
             </div> <!-- bootstrap danger alert panel --> 
 
-        <?php } ?>
+          <?php }elseif(isset($error)){ ?>
+                <!-- bootstrap danger alert panel -->
+            <div name="errorsDiv" class="alert alert-danger">
+                <i class="glyphicon glyphicon-exclamation-sign"></i>
+                <strong><?php echo $error; ?></strong>
+            </div> <!-- bootstrap danger alert panel --> 
+          <?php } ?>
       </div>
     </div>
     <!-- DIV: ROW1 -->

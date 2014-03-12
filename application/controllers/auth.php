@@ -1,6 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 require_once APPPATH . 'models/domain/User.php';
 
+/**
+ * Controller class that handles user authentication (login and registration).
+ */
 class Auth extends CI_Controller
 {
     /**
@@ -8,26 +11,30 @@ class Auth extends CI_Controller
      */
     public function index()
     {
+        /* If the user is logged, send him to home */
 		if ($this->authwrapper->isLogged())
         {
-        	redirect('home');
+        	redirect();
         }
+        /* Delimiting CodeIgniter validation errors */
+        $this->_delimitErrors();
 
-        $this->form_validation->set_error_delimiters('<span class="formError">', '</span>');
-
+        /* If validation fails, show login again */
         if($this->form_validation->run() === FALSE)
         { 
+            /* This time we'll get validation errors on screen */
             $this->_load_login();      
         }
         else
         {
+            /* If validation is successful... */
             $this->load->model('user_model');
             
-            //At this point the form has valid data.            
+            /* Get submitted username and password */
             $pass = $this->input->post('password'); 
             $username = $this->input->post('username'); 
         
-            //Trying to login
+            //Trying to login...
             $user = $this->user_model->fetch($username,$pass);            
                 
             //if the login failed
@@ -47,11 +54,6 @@ class Auth extends CI_Controller
                 
             
         }
-
-
-
-		
-		
     }
 
     public function register($data=array())
@@ -59,12 +61,15 @@ class Auth extends CI_Controller
 
         if ($this->authwrapper->isLogged())
         {
-            redirect('home');
+            redirect();
         }
+
         //Loading models
         $this->load->model('user_model');
         $this->load->model('address_model');
-        $this->form_validation->set_error_delimiters('<span class="formError">', '</span>');
+
+        /* Delimiting CodeIgniter validation errors */
+        $this->_delimitErrors();
 
         //Getting the hidden post variable showAddress
         //that indicates if the user sent address data or not
@@ -127,7 +132,7 @@ class Auth extends CI_Controller
                 $this->user_model->add_user($name,$last_name,$email,$password,$added_id);             
 
                 //Loads 
-                redirect('home');
+                redirect();
             }
 
            
@@ -147,7 +152,6 @@ class Auth extends CI_Controller
 
     public function _load_register($data=array())
     {
-    	$cart = $this->cart->contents();
 		
 		//Parameters to the view
 		$viewParams = array_merge($data,  array(		
@@ -173,9 +177,7 @@ class Auth extends CI_Controller
             'country' => 'Country',
             'zip' => 'Zip/Postal Code',
             'show_address_toggle' => '+ Address',
-            'showAddress' => 'FALSE',
-            'cart' => $cart,
-            'user' => $this->authwrapper->getUser()
+            'showAddress' => 'FALSE'
         ) );
 
         $this->configwrapper->append($viewParams);		
@@ -186,7 +188,6 @@ class Auth extends CI_Controller
 
     public function _load_login($data=array())
     {
-        $cart = $this->cart->contents();
         
         //Parameters to the view
         $viewParams = array_merge($data,  array(        
@@ -194,9 +195,7 @@ class Auth extends CI_Controller
             'form_title' => 'Login',
             'username' => 'Username',
             'password' => 'Password',
-            'sign_in' => 'Sign In',            
-            'cart' => $cart,
-            'user' => $this->authwrapper->getUser()
+            'sign_in' => 'Sign In'
         ) );
 
         $this->configwrapper->append($viewParams);      
@@ -205,11 +204,15 @@ class Auth extends CI_Controller
         $this->templatewrapper->ciTwigPageLoad('login_view', $this->configwrapper->toArray());
     }
 
-    
-        
-    
+    private function _delimitErrors()
+    {
+        /* Getting delimiters of error messages in config wrapper */
+        $delimiters = $this->configwrapper->get('error_delimiters');
+        $errorOpen = $delimiters[0];
+        $errorClose = $delimiters[1];
+        /* Setting delimiters of error messages in CodeIgniter form_validation */
+        $this->form_validation->set_error_delimiters($errorOpen, $errorClose);
+    }
 }
-
-
 /* End of file menu.php */
 /* Location: ./application/controllers/menu.php */

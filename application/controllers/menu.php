@@ -13,14 +13,10 @@ class Menu extends CI_Controller
 		//Get a List of pizzas of the menu
         $pizzas = $this->pizza_model->getMenu();
 		
-		$cart = $this->cart->contents();
-		
 		//Parameters to the view
 		$viewParams = array(			
 	        'pizzas' => $pizzas,
-            'history_title'=>'Menu',
-            'cart' => $cart,
-            'user' => $this->authwrapper->getUser()
+            'history_title'=>'Menu'
         );
 
         $this->configwrapper->append($viewParams);		

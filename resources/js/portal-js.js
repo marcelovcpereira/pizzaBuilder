@@ -138,7 +138,6 @@ function changeFlavorCard(element){
     var flavorItem =  selectedLayoutPanel.parent();
     var flavorDiv = flavorItem.parent();
     var layoutObj = flavorDiv.children("input").val();
-
     //Setting the global variable
     window.userLayout = JSON.parse(layoutObj);
 
@@ -548,7 +547,7 @@ function toggleBuilderRow(type, option){
  * of pizzaBuilder
  */
  function checkPizzaBuilder(){
-    updateLayout();
+    
     //Checking if user selected a size
     var sizeID = checkPizzaPart('size');
     var msg = "Fix the following:\n";
@@ -579,7 +578,8 @@ function toggleBuilderRow(type, option){
         error = true;
     }else{
         //User selected a layout, let's check flavors...
-
+        updateLayout();
+        
         //Count how many flavors user should choose
         var numberOfFlavors = parseLayoutPattern(window.userLayout.pattern);
 
@@ -630,7 +630,10 @@ function toggleBuilderRow(type, option){
     return id;
 }
 
-
+/** 
+ * Creates a pizza object from user options, transform it into a JSON Object,
+ * set the json string into a hidden input in the form and submit it
+ */
 function createPizzaFromBuilder(sizeID,crustID,edgeID,layoutID){
     var flavors = window.allFlavors.slice(1);
     var obs = $(".obsTextArea textarea").val();
@@ -640,13 +643,16 @@ function createPizzaFromBuilder(sizeID,crustID,edgeID,layoutID){
     var picturePath = "pizzaColor.png";
 
     var editingPizza = $("#editingFlavorDiv");
+    /* If the user is editting an existent pizza, let's check modifications */
     if(editingPizza.length == 1){
+        /* get the original pizza object */
         editingPizza = editingPizza.children("input[name='pizza']").val();
         editingPizza = JSON.parse(editingPizza);
-        id = editingPizza.id;
-        name = editingPizza.name;
+
+        name = "Custom " + editingPizza.name;
         description = editingPizza.description;
         picturePath = editingPizza.picturePath;
+        
     }
 
     var pizza = new Pizza(id,name,description,picturePath,sizeID,crustID,edgeID,layoutID,flavors,obs);
@@ -759,7 +765,6 @@ $("document").ready(function() {
         var qty =   updateQtyDiv.parent().find("input").val();
         window.location.href = "/PizzaBuilder/cart/update/"+rowid+"/" + qty;
   });
-
 
     /**
      * Initializing the functionality of the AddressToggleButton

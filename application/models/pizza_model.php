@@ -1,8 +1,5 @@
 <?php
 require_once APPPATH . '/models/dao/DbPizzaDao.php';
-
-
-
 /**
  * Model representation of the Pizza Entity.
  * This class manipulates persistance via a PizzaDao
@@ -26,16 +23,15 @@ class Pizza_model extends CI_Model
 		
 		/**
 		 * Asks the PizzaDAO to list all pizzas in the database.
-		 * It knows that the menu requested by the controller is made only 
-		 * of pizzas. If the store decides to add new foods
-		 * it should be changed to look up for additional DAOs and build
-		 * the menu of Foods.
 		 */
 		public function getMenu()
 		{
             return $this->pizzaDAO->fetchAll();
 		}
 
+		/**
+		 * Asks the PizzaDAO to find a pizza by id.
+		 */
 		public function fetch($id)
 		{
 			return $this->pizzaDAO->fetch($id);
