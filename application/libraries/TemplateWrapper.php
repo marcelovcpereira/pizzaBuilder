@@ -94,7 +94,7 @@ class TemplateWrapper
         /* Render the actual page */
         $CI->load->view($dir . $page, $params);
         /* Parse the footer template */
-        $CI->load->view($dir . $this->prefix . $this->footer . $this->sufix);
+        $CI->load->view($dir . $this->prefix . $this->footer . $this->sufix,$params);
     }
 
     /* Using Twig Template Engine */
@@ -114,7 +114,7 @@ class TemplateWrapper
         /* Rendering the actual page */
         echo $twigEnv->render($page, $params);
         /* Rendering the footer template */
-        echo $twigEnv->render($this->prefix . $this->footer . $this->sufix);
+        echo $twigEnv->render($this->prefix . $this->footer . $this->sufix,$params);
     }
 
     /* Loads the page with CodeIgniter template, but loads header and footer 
@@ -139,7 +139,7 @@ class TemplateWrapper
         $output = $output . $CI->parser->parse("ci/ci_" . $page , $params,true);
 
         /* Rendering the footer template */
-        $output = $output . $twigEnv->render($this->prefix . $this->footer . $this->sufix);
+        $output = $output . $twigEnv->render($this->prefix . $this->footer . $this->sufix,$params);
 
         echo $output;
     }

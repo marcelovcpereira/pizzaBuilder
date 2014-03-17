@@ -1,0 +1,21 @@
+{% include 'twig__history.html' %}
+<div id="profileContainer" class="container">
+    <!-- DIV: ROW1 -->
+    <div class='row'>        
+        {% if selected is not defined %}
+            {% set selected = 'profile' %}                
+        {% endif %}
+
+        {% include 'twig__profileNav_view.html' with {select:selected} %}
+
+        <div id="contentCol" class="col-lg-10">
+            {% if selected == 'profile' %}
+                {% include 'twig__profileContent_view.html' %}
+            {% elseif selected == 'favorite' %}
+                {% include 'twig__favoritesContent_view.html' %}
+            {% endif %}
+        </div><!-- content col -->
+
+
+    </div><!-- DIV: ROW1 -->
+</div>

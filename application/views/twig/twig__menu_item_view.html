@@ -1,6 +1,24 @@
 {% set assetsFolder = "/PizzaBuilder/assets/" %}
 {% set imageFolder = assetsFolder ~ "/images/" %}
-<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+
+{% if user is defined and user.getId() != null and user.getId() != -1 %}
+    {% set logged = true %}
+{% else %}
+    {% set logged = false %}
+{% endif %}
+
+{% if isFavorite is not defined %}
+    {% set isFavorite = false %}
+{% endif %}
+
+
+{% if isFavorite %}
+    {% set column = 'col-lg-4 col-md-6 col-sm-6 col-xs-12' %}
+{% else %}
+    {% set column = 'col-lg-3 col-md-4 col-sm-6 col-xs-12' %}
+{% endif %}
+
+<div class="{{column}}">
     <div class="pizzaCard{{pizza.id}}" id="pizzaCard{{pizza.id}}" value="false">
         <!-- Menu Item FRONT: the name attribute is used by JavaScript -->
         <div name="menuItem" id="menuItem{{pizza.id}}" class="col-lg-3 col-md-4 col-sm-6 col-xs-12" 
@@ -19,9 +37,24 @@
 
                     <!-- PANEL FOOTER -->
                     <div class="panel-footer"> 
-                        
+                            {% if logged == true %}
+                                {% if user.isFavorite(pizza) %}
+                                    {% set star = true %}
+                                {% else %}
+                                    {% set star = false %}
+                                {% endif %}
+                            {% endif %}
                             <!-- PIZZA NAME -->
-                            <h3>{{pizza.name}}</h3>
+                            <h3>
+                                {{pizza.name}} 
+                                {% if logged and star %}
+                                    <i name="favoritedPizzaStar" data-value="{{pizza.id}}" class='glyphicon glyphicon-star pull-right'></i>
+                                {% elseif logged %}
+                                    <i name="unfavoritedPizzaStar" data-value="{{pizza.id}}" class='glyphicon glyphicon-star-empty pull-right empty'></i>
+                                {% endif %}
+                            </h3>
+                            
+                            
                             <hr>
                             <!-- DESCRIPTION -->
                             <span>

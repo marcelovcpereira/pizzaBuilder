@@ -1,0 +1,39 @@
+{% if selected is not defined %}
+    {% set selected = 'profile' %}
+{% endif %}
+
+
+{% set profile = '' %}
+{% set favorite = '' %}
+{% set order = '' %}
+{% set comment = '' %}
+
+{% if selected == 'profile' %}
+    {% set profile = 'active' %}
+{% elseif selected == 'favorite' %}
+    {% set favorite = 'active' %}
+{% elseif selected == 'order' %}
+    {% set order = 'active' %}
+{% elseif selected == 'comment' %}
+    {% set comment = 'active' %}
+{% endif %}
+
+
+<div id="navCol" class="col-lg-2">
+    <div id="profileNav" class="list-group">
+        <ul class="list-group">
+            <a href="/PizzaBuilder/profile" class="list-group-item {{profile}}">
+                <li class="{{profile}}">Profile</li>
+            </a>
+            <a href="/PizzaBuilder/profile/favorites" class="list-group-item {{favorite}}">
+                <li class="{{favorite}}">Favorites</li>
+            </a>
+            <a href="#" class="list-group-item {{order}}">
+                <li class="{{order}}">Order History</li>
+            </a>
+            <a href="#" class="list-group-item {{comment}}">
+                <li class="{{comment}}">Comments</li>
+            </a>
+        </ul>                
+    </div>
+</div>

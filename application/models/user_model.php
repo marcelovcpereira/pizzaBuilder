@@ -84,6 +84,39 @@ class User_model extends CI_Model
         return $this->userDao->fetch($id,$pass);
     }
 
+    public function addFavoritePizza($userId=null,$pizzaId=null)
+    {
+        if($userId !== null && $pizzaId !== null)
+        {
+            $this->userDao->addFavoritePizza($userId,$pizzaId);
+        }
+    }
+
+    public function removeFavoritePizza($userId=null,$pizzaId=null)
+    {
+        if($userId !== null && $pizzaId !== null)
+        {
+            $this->userDao->removeFavoritePizza($userId,$pizzaId);
+        }
+    }
+
+    public function getFavorites($userId=null)
+    {
+        $pizzas = array();
+        if($userId !== null)
+        {
+            $ids = $this->userDao->getFavorites($userId);
+
+            $this->load->model('pizza_model');
+
+            foreach ($ids as $id) {
+                $pizzas[] = $this->pizza_model->fetch($id);
+            }
+        }
+
+        return $pizzas;
+    }
+
 
     /**
      * Generates a random alpha-numeric String.

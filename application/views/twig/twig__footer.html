@@ -1,8 +1,13 @@
 {% set assetsFolder = "/PizzaBuilder/assets/" %}
 {% set imageFolder = assetsFolder ~ "/images/" %}
-<div id="rowComplemento" class="row">
-    
-</div>
+{% set total = 0 %}
+{% if cart is not null %}
+
+    {% for item in cart %}
+        {% set total = total + item['qty'] %}
+    {% endfor %}
+
+{% endif %}
 
 <div id="footerRow" class="row">
 	<!-- GIT HUB "FORK ME" RIBBON --
@@ -34,16 +39,17 @@
 	
 	<!-- CENTERED COLUMN CONTAINING "WHAT's PIZZA BUILDER TEXT -->
     <div id="footerDiv2" class="col-md-4">
-        
-        <h2>
-            <span class="glyphicon glyphicon-info-sign"></span>
-            What's Pizza Builder?
+        <div id="footerArrow">
+                <i class="glyphicon glyphicon-chevron-down"></i>
+            </div>
+        <h2>            
+            What's Pizza Builder<span class="glyphicon glyphicon-question-sign"></span>
         </h2>
         
         <span>
             Pizza Builder is an open source web application for your online Pizza 
             Store. It allows your customers to create new pizzas, modify existing ones,
-            save their favourites flavors (including custom flavors) and buy 
+            save their favorites flavors (including custom flavors) and buy 
             the pizzas based on their own taste and preferences.        
             You have total control on your menu options, available flavors and 
             ingredients, user customization limitations, and more.
@@ -52,21 +58,36 @@
     </div><!-- CENTERED COLUMN CONTAINING "WHAT's PIZZA BUILDER TEXT -->
 	
     <!-- CURRENTLY EMPTY COLUMN: RIGHT -->
-    <div id="footerDiv" class="col-md-4">
-        
+    <div id="footerDiv3" class="col-md-4">
+       <h2>
+            <span class="glyphicon glyphicon-info-sign"></span>
+            About the Author
+        </h2>
+        <span>
+            Marcelo Pereira is a brazilian Software Engineer with passion for web applications development.
+            He loves technology, music, science, games, series... In short terms, he's a nerd =p. He comes from Recife, but lives in São Paulo and works for the brazilian National Civil Aviation Agency, in IT squad. The idea of this project arose when he and his beloved vegan girlfriend were having trouble to choose a pizza that match both taste needs (from a scary big menu of an online pizza store).
+        </span> 
     </div><!-- CURRENTLY EMPTY COLUMN: RIGHT -->
     
-    <div class="row">
-    <div class="col-lg-12">
-        <center>
-            <span>
-                Images from <a href="http://www.freedigitalphotos.net/‎">FreeDigitalPhotos</a> and <a href="http://all-free-download.com/">AllFreeDownloads</a>
-            </span>
-        </center>
-    </div>
+    
 </div>
    
 </div> 
+
+<div id="footerRow2" class="row">
+    <div id="footerCol" class="col-lg-8">
+        <span>|</span><a href="/PizzaBuilder/">Home</a> <span>|</span>
+        <a href="/PizzaBuilder/menu">Menu</a><span>|</span>
+        <a href="/PizzaBuilder/pizzaBuilder">Builder</a><span>|</span>
+        <a href="/PizzaBuilder/about">About</a><span>|</span>
+        <a href="/PizzaBuilder/cart">Cart <i class="badge">{{total}}</i></a><span>|</span>
+    </div>
+    <div id="footerCol2" class="col-lg-4">
+        <span id="imagesCopyright">
+                Images from <a href="http://www.freedigitalphotos.net/‎">FreeDigitalPhotos</a>, <a href="http://www.freepik.com/">Freepik</a> and <a href="http://all-free-download.com/">AllFreeDownload</a>
+            </span>
+    </div>
+</div>
 
 
 

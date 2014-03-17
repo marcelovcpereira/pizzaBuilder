@@ -3,13 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/P:/Projects/PizzaBuilder/application/controllers/pizzaBuilder.php</file>
-            <file>file:/P:/Projects/PizzaBuilder/application/controllers/menu.php</file>
-            <file>file:/P:/Projects/PizzaBuilder/application/views/twig/twig_pizzaBuilder_view.html</file>
-            <file>file:/P:/Projects/PizzaBuilder/application/views/twig/twig__menu_item_view.html</file>
-            <file>file:/P:/Projects/PizzaBuilder/resources/js/portal-js.js</file>
-            <file>file:/P:/Projects/PizzaBuilder/application/views/twig/twig_cart_view.html</file>
-            <file>file:/P:/Projects/PizzaBuilder/application/views/twig/twig__card_view.html</file>
+            <file>file:/P:/Projects/PizzaBuilder/application/controllers/profile.php</file>
+            <file>file:/P:/Projects/PizzaBuilder/application/views/twig/twig__favoritesContent_view.html</file>
+            <file>file:/P:/Projects/PizzaBuilder/application/models/user_model.php</file>
             <file>file:/P:/Projects/PizzaBuilder/application/views/twig/twig_menu_view.html</file>
         </group>
     </open-files>

@@ -1,0 +1,13 @@
+<div id="favoritesContent">
+    <h2>Favorite pizzas</h2>
+
+    {% if favorites is defined and favorites|length > 0 %}
+        {% for pizza in favorites %}
+            
+            {% include 'twig__menu_item_view.html' with {isFavorite:true} %}
+
+        {% endfor %}
+    {% else %}
+        <span>You do not have any favorited pizzas.</span>
+    {% endif %}
+</div>

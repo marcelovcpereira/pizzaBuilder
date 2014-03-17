@@ -49,6 +49,12 @@ class User implements JsonSerializable
      * @var type Address (Object) of the user (can be null)
      */
     private $address;
+
+    /**
+     *
+     * @var type Array of pizza Id (can be empty)
+     */
+    private $favorites;
     
     /**
      * Constructor of User class.     
@@ -63,6 +69,7 @@ class User implements JsonSerializable
         $this->setAddress(null);
         $this->setPassword("");
         $this->setSalt("");
+        $this->favorites = array();
     }
     
     /**
@@ -74,12 +81,18 @@ class User implements JsonSerializable
         return $this->id;
     }   
 
+    public function getFavorites()
+    {
+        return $this->favorites;
+    }
+
     
     /**
      * 
      * @return type String name of the user
      */
-    public function getUsername() {
+    public function getUsername() 
+    {
         return $this->username;
     }
 
@@ -87,7 +100,8 @@ class User implements JsonSerializable
      * 
      * @return type String hashed password of the user
      */
-    public function getPassword() {
+    public function getPassword() 
+    {
         return $this->password;
     }
 
@@ -95,7 +109,8 @@ class User implements JsonSerializable
      * 
      * @return type String hashed salt of the password
      */
-    public function getSalt() {
+    public function getSalt() 
+    {
         return $this->salt;
     }
 
@@ -103,7 +118,8 @@ class User implements JsonSerializable
      * 
      * @return type String the first name of the user
      */
-    public function getName() {
+    public function getName() 
+    {
         return $this->name;
     }
 
@@ -111,7 +127,8 @@ class User implements JsonSerializable
      * 
      * @return type String the family/last name of the user
      */
-    public function getLastName() {
+    public function getLastName() 
+    {
         return $this->lastName;
     }
 
@@ -119,7 +136,8 @@ class User implements JsonSerializable
      * 
      * @return type Address the user's address info 
      */
-    public function getAddress() {
+    public function getAddress() 
+    {
         return $this->address;
     }
     
@@ -139,7 +157,8 @@ class User implements JsonSerializable
      * 
      * @param String $username
      */
-    public function setUsername($username) {
+    public function setUsername($username) 
+    {
         $this->username = $username;
     }
 
@@ -147,7 +166,8 @@ class User implements JsonSerializable
      * 
      * @param String $password
      */
-    public function setPassword($password) {
+    public function setPassword($password)
+    {
         $this->password = $password;
     }
 
@@ -155,7 +175,8 @@ class User implements JsonSerializable
      * 
      * @param String $salt
      */
-    public function setSalt($salt) {
+    public function setSalt($salt) 
+    {
         $this->salt = $salt;
     }
 
@@ -163,7 +184,8 @@ class User implements JsonSerializable
      * 
      * @param String $name
      */
-    public function setName($name) {
+    public function setName($name) 
+    {
         $this->name = $name;
     }
 
@@ -171,7 +193,8 @@ class User implements JsonSerializable
      * 
      * @param String $lastName
      */
-    public function setLastName($lastName) {
+    public function setLastName($lastName) 
+    {
         $this->lastName = $lastName;
     }
 
@@ -179,8 +202,14 @@ class User implements JsonSerializable
      * 
      * @param String $address
      */
-    public function setAddress($address) {
+    public function setAddress($address) 
+    {
         $this->address = $address;
+    }
+
+    public function setFavorites(array $favs)
+    {
+        $this->favorites = $favs;
     }
 
     public function JsonSerialize()
@@ -193,7 +222,24 @@ class User implements JsonSerializable
         return json_encode($this);
     }
 
+    public function isFavorite(Pizza $pizza)
+    {
+        return in_array($pizza->getId(),$this->getFavorites());
+    }
 
+    public function addFavorite($id)
+    {
+        $this->favorites[] = $id;
+    }
+
+    public function removeFavorite($id)
+    {
+        $index = array_search($id,$this->favorites);
+        if(FALSE !== $index)
+        {
+          unset($this->favorites[$index]);  
+        } 
+    }
 }
 /* End of file User.php */
 /* Location: ./application/controllers/User.php */

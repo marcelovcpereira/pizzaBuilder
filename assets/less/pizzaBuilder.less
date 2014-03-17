@@ -8,14 +8,14 @@
 @colorTheme: #f0ad4e; 
 @themeBrown: #745B39;
 @lightBrown: #9C6619;
-@bgColor: #FFF2E0;
+@bgColor: darken(#FFF2E0,5%);
 @cardBgColor: #F8D19C;
 @lightYellow: #fcf8e3;
 @lightBlue: #66AFE9;
 @pizzaCardBrown: #B48E59;
 @transparentJumboColor: rgba(252,248,227,0.5);
 @cardSelectedRed: #d2322d;
-
+@starColor: #FFAA00;
 @footerHeight: 220px;  
 
 
@@ -82,6 +82,22 @@
 				font-size: 22px;
 				margin-top: 0px;
 				margin-bottom: 0px;
+				i{
+					color: @starColor;
+					text-shadow: -1px 0 @themeBrown, 0 1px @themeBrown, 1px 0 @themeBrown, 0 -1px @themeBrown;
+					&:hover{
+						text-shadow: -1px 0 @cardSelectedRed, 0 1px @cardSelectedRed, 1px 0 @cardSelectedRed, 0 -1px @cardSelectedRed;
+					}
+				}
+				i.empty{
+					color: @themeBrown;
+					font-weight: lighter;
+					border: none;
+					text-shadow: none;
+					&:hover{
+						text-shadow: -1px 0 @cardSelectedRed, 0 1px @cardSelectedRed, 1px 0 @cardSelectedRed, 0 -1px @cardSelectedRed;
+					}
+				}
 			}
 			/* Line separating Title and Description */
 			hr{
@@ -147,6 +163,95 @@
 	    color:   @color;
 	}
 }
+
+.menuItem(@margin: 0px){
+	/* Card item FRONT */
+	div[name='menuItem']{
+		height: 340px;
+		width: 269px;
+		margin: @margin;
+		margin-bottom: 15px;
+		text-align:left;
+		
+		a{
+			color: @themeBrown;
+			&:hover{
+				text-decoration: none;
+			}
+		}
+
+		/* Card Panel Style */
+		.cardPanel(135px,true);
+
+		/* Card Item Back */
+		div[name='panelPizzaDetails']{
+				text-align: center;
+				color: @themeBrown;
+				font-family: Stark;
+				font-weight: lighter;
+				position: relative;
+
+				/* Link that flips card */
+				a{
+					/* Destails of pizza */
+					.scrollableContent{
+						height: 285px;
+						overflow-x: hidden;
+						overflow-y: auto;
+
+						/* Pizza Part name */
+						span{
+							font-weight: lighter;							
+							font-family: Stark;
+							font-size: 16px;  
+							width: 97%;
+							height: auto;
+							margin: 3px;
+							overflow: auto;
+							background-color: @themeBrown;
+							color: @colorTheme;
+							display: block;
+							
+							/* Info ICON */
+							.glyphicon{
+								float: right;
+							}
+						}
+						/* Pizza Part description */
+						small{
+							font-family: Verdana;
+						}  
+
+
+					}
+				}
+
+				/* Link that edits pizza */
+				a{
+					button{    
+						width: 97%;  
+						position: absolute;
+						bottom: 0px;
+						left: 4px;
+						font-size: 16px;
+						height: 45px;
+						font-weight: bold;
+						margin-bottom: 3px;    
+						background-color: @lightBrown;
+						border-color: @lightBrown;
+						z-index: 5;
+
+						&:hover{
+							background-color: white;	
+							color: @lightBrown;
+						}
+					}
+				}
+		}		
+		/* Card Item Back */
+		
+	}/* Card item FRONT */
+}
 /**************END:MIXINS**************/
 
 
@@ -163,7 +268,7 @@ html{
 
 /*-----------FOOTER-------------*/
 #rowComplemento{
-	height: 400px;
+	height: 350px;
 	width: 100%;
 }
 
@@ -172,7 +277,6 @@ html{
 	width: 100%;
 	margin: 0px;
 	background-color: @colorTheme;
-	border-top: 1px solid @themeBrown;
 	color: @themeBrown;
 	padding: 10px;
 	position: relative;
@@ -207,10 +311,74 @@ html{
  			display: block;
  		}
  	}
-	#footerDiv2{
+	#footerDiv2,#footerDiv3{
 		text-align: center;
+		#footerArrow{
+			background-color: @colorTheme;
+			width: 30%;
+			margin: -65px auto 0px auto;
+			padding: 10px;
+			color: @themeBrown;
+			font-size: 36px;
+			.borderRadius();
+		}
 		h2{
 			margin-top: 4px;
+			span{
+				margin-left: 5px;
+			}
+		}
+	}
+
+	#footerDiv3{
+		margin-top: 6px;
+	}
+
+}
+
+#footerRow2{
+	background-color: @themeBrown;
+	width: 100%;
+	margin: auto 0px;
+	height: 50px;
+	#footerCol{
+		height: 100%;	
+		text-align: center;
+		color: @colorTheme;
+		font-weight: bold;
+		display: table;
+		a{
+			display: table-cell;
+			vertical-align: middle;
+			width: 80px;
+			text-decoration: none;
+			color: @colorTheme;
+			&:hover{
+				text-decoration:underline;
+			}
+			i{
+				color: @themeBrown;
+				background-color: @colorTheme;
+			}
+		}
+		span{
+			display: table-cell;
+			vertical-align: middle;
+		}
+	}
+
+	#footerCol2{
+		height: 100%;		
+		display: table;
+		text-align: center;
+		#imagesCopyright{
+			color: @colorTheme;
+			display: table-cell;
+			vertical-align: middle;
+			a{
+				color: @colorTheme;
+				text-decoration: underline;
+			}
 		}
 	}
 
@@ -378,7 +546,7 @@ html{
 		margin: auto;
 		padding: 0px;
 		width: 1000px;
-		height: 200px;
+		height: 300px;
 		background: url(@bannerJumbo);
 		border: 1px solid @themeBrown;
 		text-align: center;
@@ -415,8 +583,8 @@ html{
 
 		} 
 		.carousel-indicators{
-			left: 100%;
-			bottom: 0%;
+			left: 120%;
+			bottom: 2%;
 			width: 50px;
 		}
 	}
@@ -426,6 +594,7 @@ html{
 #row2 {
 	text-align: center;
 	padding-top: 20px;
+	margin-top: 50px;
 	width: 100%;
 	.menuLink{
 		h3 {
@@ -441,6 +610,89 @@ html{
 		}
 	}/*.menuLink*/
 }/* #row2 */
+
+#rowRegister{
+	text-align: center;
+	margin-top: 50px;
+	color: @themeBrown;
+	span{
+		font-size: 120%;
+		font-family: Stark;
+		a{
+			font-weight: bold;
+		}
+	}
+}
+
+/*row3*/
+div[name='containerSteps']{
+	background-color: lighten(@bgColor,3%);
+	background-image: url('/PizzaBuilder/assets/images/home/lenhaTransparent.png');
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+	background-size:cover;
+	background-repeat: no-repeat;
+	margin-top: 250px;
+	width: 100%;
+	padding-bottom: 160px;
+	#row3{
+		#arrowCol{
+			text-align: center;
+			padding-left: 0px;
+			padding-right: 0px;
+			#leftFillStepArrow{
+				display: inline-block;
+				width: 44%;
+				float: left;
+				height: 70px;
+				background-color: @bgColor;
+			}
+			#rightFillStepArrow{
+				display: inline-block;
+				width: 44%;
+				float: right;
+				height: 70px;
+				background-color: @bgColor;
+			}
+			#stepArrow{
+				background-color: transparent;
+				width: 10%;
+				margin: 0px auto 0px auto;
+				padding: 10px;
+				color: @themeBrown;
+				font-size: 36px;
+				.borderRadius();
+				display: inline-block;
+			}
+			#stepsImage{		
+				margin: 50px auto 0px auto;
+			}
+			span{
+				display: block;
+				font-size: 48px;
+				font-family: Stark;
+				color: darken(@colorTheme,15%);
+				background-color: transparent;
+				text-shadow: -1px 0 @themeBrown, 0 1px @themeBrown, 1px 0 @themeBrown, 0 -1px @themeBrown;
+				margin-top: 50px;
+			}
+			p{
+				margin: 15px;
+				display: block;
+				font-size: 36px;
+				font-family: Stark;
+				color: darken(@themeBrown,0%);
+				text-shadow: -1px 0 @colorTheme, 0 1px @colorTheme, 1px 0 @colorTheme, 0 -1px @colorTheme;
+				background-color: transparent;
+				i{
+					color: #5CB85C;
+				}
+			}
+		}
+	}
+}
+/*row3*/
 /*---------END: HOME-----------*/
 
 
@@ -449,90 +701,18 @@ html{
 /* Row of pizza cards */
 #menuRow{
 	margin-top: 10px;
-	/* Card item FRONT */
-	div[name='menuItem']{
-		height: 340px;
-		width: 269px;
-		margin-bottom: 15px;
-		text-align:left;
-		a{
-			color: @themeBrown;
-			&:hover{
-				text-decoration: none;
-			}
+	padding-bottom: 160px;
+	/* click to see details span */
+	#menuRow2{
+		text-align: center;
+		margin-top: 5px;
+		margin-bottom: 25px;
+		span{
+			color: @colorTheme;
+			background-color: @themeBrown;
 		}
-
-		/* Card Panel Style */
-		.cardPanel(135px,true);
-
-		/* Card Item Back */
-		div[name='panelPizzaDetails']{
-				text-align: center;
-				color: @themeBrown;
-				font-family: Stark;
-				font-weight: lighter;
-				position: relative;
-
-				/* Link that flips card */
-				a{
-					/* Destails of pizza */
-					.scrollableContent{
-						height: 285px;
-						overflow-x: hidden;
-						overflow-y: auto;
-
-						/* Pizza Part name */
-						span{
-							font-weight: lighter;							
-							font-family: Stark;
-							font-size: 16px;  
-							width: 97%;
-							height: auto;
-							margin: 3px;
-							overflow: auto;
-							background-color: @themeBrown;
-							color: @colorTheme;
-							display: block;
-							
-							/* Info ICON */
-							.glyphicon{
-								float: right;
-							}
-						}
-						/* Pizza Part description */
-						small{
-							font-family: Verdana;
-						}  
-
-
-					}
-				}
-
-				/* Link that edits pizza */
-				a{
-					button{    
-						width: 97%;  
-						position: absolute;
-						bottom: 0px;
-						left: 4px;
-						font-size: 16px;
-						height: 45px;
-						font-weight: bold;
-						margin-bottom: 3px;    
-						background-color: @lightBrown;
-						border-color: @lightBrown;
-						z-index: 5;
-
-						&:hover{
-							background-color: white;	
-							color: @lightBrown;
-						}
-					}
-				}
-		}		
-		/* Card Item Back */
-		
-	}/* Card item FRONT */
+	}
+	.menuItem();
 }
 /*----------------END: Menu Item View--------------*/
 
@@ -541,7 +721,7 @@ html{
 /* BUILDER DIV */
 #builderDiv{
 	text-align: center; 
-
+	padding-bottom: 250px;
 	/* Row Div contaning name of pizza being edited */
 	#editingFlavorDiv{
 		/* Col div containing name of pizza being edited */
@@ -811,11 +991,12 @@ html{
 /*--------------Cart View-------------*/
 #cartContainer{
 	text-align: center;	
+	min-height: 800px;
 	.table{
 		text-align: left;
 		width: 80%;
 		margin: 0px auto;
-		background-color: lighten(@cardBgColor,8%);
+		background-color: lighten(@cardBgColor,3%);
 		color: @themeBrown;
 		font-family: Stark;
 		.boxShadow();
@@ -913,7 +1094,7 @@ html{
 						td{ border-bottom: none !important;}
 				}	
 				&:hover{
-					background-color: @cardBgColor;
+					background-color: darken(@cardBgColor,3%);
 				}		
 			}/* TR */
 		}/* TBODY */
@@ -930,6 +1111,8 @@ html{
 /*------------Login and Register-----------*/
 #loginContainer{
 	padding-top: 15px;
+	padding-bottom: 150px;
+	min-height: 800px;
 	div[name='errorsDiv']{
 		text-align: center;
 		width: 32%;
@@ -992,6 +1175,7 @@ html{
 
 #registerContainer{
 	padding-top: 15px;
+	min-height: 800px;
 	div[name='errorsDiv']{
 		text-align: center;
 		width: 50%;
@@ -1063,5 +1247,80 @@ html{
 
 }
 /*-----------END: Login and Register---------*/
+
+/* ABOUT VIEW */
+#aboutRow{
+	min-height: 800px;
+}
+/* END:ABOUT VIEW */
+
+/* PROFILE VIEW */
+#profileContainer{
+	min-height: 800px;
+	margin-top: 20px;
+	margin-bottom: 200px;
+	#navCol{
+		padding-right: 0px;
+		#profileNav{
+			width: 100%;
+			margin: 0px;
+			ul.list-group{
+				padding: 0px;
+				a{
+					list-style: none;
+					font-family: Stark;
+					text-align: center;
+					font-size: 20px;
+					width: 100%;
+					padding: 0px;
+					margin: 15px 0px 0px 0px;
+					border-color: transparent;
+					background-color: transparent;
+					text-align: right; 	
+					li{
+						background-color: transparent;
+						color: @colorTheme;
+						&:hover{
+							color: @themeBrown;
+							background-color: @colorTheme;
+						}
+					}
+					li.active{					
+						color: @themeBrown;
+						background-color: transparent;
+
+					}
+
+				}
+				
+			}
+		}
+	}
+	#contentCol{
+		text-align: left;
+		border-left: 1px solid @themeBrown;
+		h2{
+			color: @themeBrown;
+			font-family: Stark;
+			margin-top: 15px;
+		}	
+		#profileContent{
+			width: 100%;
+			height: 400px;
+			margin: 0px !important;
+			font-family: Stark;
+			font-weight: lighter;
+			margin-top: 0px;
+			overflow: auto;
+			
+		}
+
+		#favoritesContent{
+
+			.menuItem();
+		}
+	}
+}
+/* END:PROFILE VIEW */
 
 /**************END:STYLES**************/

@@ -8,7 +8,8 @@
 	{
 		"twig/twig": "1.15.*@dev",
 		"doctrine/orm": "2.4.*",
-        "symfony/yaml": "2.*"
+        "symfony/yaml": "2.*",
+		"facebook/php-sdk" : "*"
 	},
 	"autoload": {
         "psr-0": {"": "src/"}

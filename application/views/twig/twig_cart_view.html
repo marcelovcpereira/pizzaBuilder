@@ -52,7 +52,14 @@
                                                 {% endfor %}                                        
                                             </div>
                                         </div>
-                                        {% endfor %}                                
+                                        {% endfor %} 
+                                        {% if pizza.getObservations() != "" %}
+                                            <div name="pizzaObs" class="row">
+                                                <div class="col-lg-12">
+                                                    Add. Info: {{pizza.getObservations()}}
+                                                </div>
+                                            </div>                             
+                                        {% endif %}  
                                     </td><!-- contents of pizza --> 
 
                                     <!-- Quantity column of pizza -->

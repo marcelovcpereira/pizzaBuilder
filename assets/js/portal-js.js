@@ -490,7 +490,7 @@ function clearModal(){
                 JSON.stringify(window.traditionalFlavor)
             );
         }else{
-            return alert("You didn't select any flavor");
+            return alert("You didn't select any topping");
         }        
     }
     /* Updates the title with flavors name */
@@ -772,6 +772,20 @@ $("document").ready(function() {
         e.preventDefault();
         window.location.href = "/PizzaBuilder/cart/clear";
   });
+
+  /* Setting the pizza card star to add favorite pizza on click */
+  $("i[name='unfavoritedPizzaStar']").click(function(e){
+        e.preventDefault();
+        var id = $(this).attr('data-value');        
+        window.location.href = "/PizzaBuilder/profile/addFavoritePizza/" + id;
+  });
+  /* Setting the pizza card star to remove favorite pizza on click */
+    $("i[name='favoritedPizzaStar']").click(function(e){
+        e.preventDefault();
+        var id = $(this).attr('data-value');        
+        window.location.href = "/PizzaBuilder/profile/removeFavoritePizza/" + id;
+  });
+  
 
     /**
      * Initializing the functionality of the AddressToggleButton

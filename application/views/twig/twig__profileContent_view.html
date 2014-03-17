@@ -1,0 +1,28 @@
+<div id="profileContent">
+    <h2>{{user.getName() ~ " " ~ user.getLastName()}}</h2>
+
+    {% if user.getAddress() is not null %}
+        {% set address = user.getAddress() %}
+
+        <div name="address">
+            <h3>Address 1:</h3>
+            <span>{{address.getType()}}:</span>
+            <span>{{address.getName()}},</span>
+            <span>{{address.getNumber()}}.</span>
+            <br />
+            <span>{{address.getCity()}}, {{address.getState()}} - {{address.getCountry()}}</span>
+            <br />
+            <span>Postal: {{address.getPostalCode()}}</span>
+            <br />
+            <span>Add Info.: {{address.getAdditionalInfo()}}</span>
+            <br/>
+            <button class="btn btn-default">Edit</button>
+            <button class="btn btn-default">Remove</button>
+        </div>
+        <br/>
+    {% else %}
+        <span>You do not have any address information yet.</span>                    
+    {% endif %}
+
+    <button class="btn btn-default">Add an Address</button>
+</div>

@@ -200,5 +200,5 @@ class Auth extends CI_Controller {
 
 }
 
-/* End of file menu.php */
-/* Location: ./application/controllers/menu.php */
+/* End of file auth.php */
+/* Location: ./application/controllers/auth.php */

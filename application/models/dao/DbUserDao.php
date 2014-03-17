@@ -10,6 +10,7 @@ class DbUserDao extends UserDao
 {
     private $table = 'user';
     private $addressTable = 'address';
+    private $favoritesTable = 'user_favorite_pizzas';
     
     public function __construct($conn) {
         parent::__construct($conn);
@@ -114,7 +115,11 @@ class DbUserDao extends UserDao
 				}                
 				
 				//Setting the address to the user
-				$user->setAddress($address);                
+				$user->setAddress($address);  
+
+
+				//Verifyng favorites...
+				$user->setFavorites($this->getFavorites($user->getId()));              
 			}
         }
         return $user;
@@ -129,6 +134,31 @@ class DbUserDao extends UserDao
     public function fetchAll()
     {
     	
+    }
+
+    public function addFavoritePizza($userId=null,$pizzaId=null)
+    {
+    	$row = array('userId' => $userId, 'pizzaId' => $pizzaId);
+    	$result = $this->getConnection()->insert($this->favoritesTable,$row);
+    }
+
+    public function removeFavoritePizza($userId=null,$pizzaId=null)
+    {
+    	$row = array('userId' => $userId, 'pizzaId' => $pizzaId);
+    	$result = $this->getConnection()->delete($this->favoritesTable,$row);
+    }
+
+    /* Return user favorite pizzas */
+    public function getFavorites($userId)
+    {
+    	$pizzas = array();
+    	$this->getConnection()->select('pizzaId');
+    	$query = $this->getConnection()->get_where($this->favoritesTable, array('userId' => $userId));
+    	foreach ($query->result() as $row)
+		{
+		    $pizzas[] = $row->pizzaId;
+		}
+    	return $pizzas;
     }
 
 }
