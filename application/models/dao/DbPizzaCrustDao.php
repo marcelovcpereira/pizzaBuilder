@@ -130,7 +130,7 @@ class DbPizzaCrustDao extends PizzaCrustDao
         return $crusts;
     }
     
-    public function delete($id) 
+    public function delete($object) 
     {
         //stub
     }    

@@ -37,6 +37,8 @@
 | in the URL cannot be matched to a valid route.
 |
 */
+$route['contact'] = 'portal/contact';
+$route['contact/(:any)'] = 'portal/contact';
 $route['about'] = 'portal/about';
 $route['about/(:any)'] = 'portal/about';
 $route['pizzaBuilder/(:any)'] = 'pizzaBuilder/index/$1';

@@ -775,17 +775,20 @@ $("document").ready(function() {
 
   /* Setting the pizza card star to add favorite pizza on click */
   $("i[name='unfavoritedPizzaStar']").click(function(e){
-        e.preventDefault();
+        e.preventDefault();        
         var id = $(this).attr('data-value');        
         window.location.href = "/PizzaBuilder/profile/addFavoritePizza/" + id;
   });
   /* Setting the pizza card star to remove favorite pizza on click */
     $("i[name='favoritedPizzaStar']").click(function(e){
-        e.preventDefault();
+        e.preventDefault();        
         var id = $(this).attr('data-value');        
         window.location.href = "/PizzaBuilder/profile/removeFavoritePizza/" + id;
   });
-  
+    /* Starting tooltip when hover on favorite stars */
+    $("i[name='unfavoritedPizzaStar']").tooltip();
+    $("i[name='favoritedPizzaStar']").tooltip();
+
 
     /**
      * Initializing the functionality of the AddressToggleButton

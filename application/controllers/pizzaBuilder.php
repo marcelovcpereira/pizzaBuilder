@@ -2,7 +2,9 @@
 
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
-
+/**
+ * Controller that handles the pizza build process
+ */
 class PizzaBuilder extends CI_Controller {
 
     /**

@@ -1,9 +1,11 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+/**
+ * Controller that shows the store menu
+ */
 class Menu extends CI_Controller
 {
     /**
-     * Default page of the Menu
+     * Default action of the Menu
      */
     public function index()
     {

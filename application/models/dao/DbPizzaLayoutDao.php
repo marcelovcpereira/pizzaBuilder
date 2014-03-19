@@ -134,7 +134,7 @@ class DbPizzaLayoutDao extends PizzaLayoutDao
         return $layouts;
     }
     
-    public function delete($id) 
+    public function delete($object) 
     {
         //stub
     }    

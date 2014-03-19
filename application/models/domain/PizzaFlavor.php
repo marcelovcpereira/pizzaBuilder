@@ -22,6 +22,8 @@ class PizzaFlavor implements JsonSerializable{
     private $picturePath;
     //The ingredients that compounds this flavor
     private $ingredients;
+    //Type of flavor ('user' or 'system')
+    private $type;
     
     
     public function __construct()
@@ -54,6 +56,11 @@ class PizzaFlavor implements JsonSerializable{
         return $this->name;
     }
 
+    public function getType()
+    {
+        return $this->type;
+    }
+
     public function getDescription() {
         return $this->description;
     }
@@ -72,6 +79,20 @@ class PizzaFlavor implements JsonSerializable{
 
     public function setPicturePath($picturePath) {
         $this->picturePath = $picturePath;
+    }
+
+    public function setType($type)
+    {
+        switch($type)
+        {
+            case 'user':
+                $this->type = 'user';
+                break;
+            case 'system':
+            default:
+                $this->type = 'system';
+                break;
+        }
     }
 
     public function __toString() {

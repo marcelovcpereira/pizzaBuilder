@@ -35,6 +35,17 @@ class Pizza_model extends CI_Model {
         return $this->pizzaDAO->fetch($id);
     }
 
+    /* Asks the pizzaDAO to save the pizza */
+    public function save(Pizza $pizza)
+    {
+        $this->pizzaDAO->save($pizza);
+    }
+
+    public function delete(Pizza $pizza)
+    {
+        $this->pizzaDAO->delete($pizza);
+    }
+
 }
 
 /* End of file pizza_model.php */

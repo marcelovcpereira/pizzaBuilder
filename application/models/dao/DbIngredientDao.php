@@ -72,7 +72,7 @@ class DbIngredientDao extends IngredientDao
         return $ingredient;
     }
     
-    public function delete($id) 
+    public function delete($object) 
     {
         //stub
         return null;

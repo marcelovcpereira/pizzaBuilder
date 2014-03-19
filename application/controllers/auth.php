@@ -5,12 +5,12 @@ if (!defined('BASEPATH'))
 require_once APPPATH . 'models/domain/User.php';
 
 /**
- * Controller class that handles user authentication (login and registration).
+ * Controller class that handles user authentication (login, logout and registration).
  */
 class Auth extends CI_Controller {
 
     /**
-     * Default page of the Menu
+     * Default action of the controller
      */
     public function index() {
         /* If the user is logged, send him to home */
@@ -26,6 +26,8 @@ class Auth extends CI_Controller {
             $this->_load_login();
         } else {
             /* If validation is successful... */
+
+            /* Load user model */
             $this->load->model('user_model');
 
             /* Get submitted username and password */
@@ -37,7 +39,7 @@ class Auth extends CI_Controller {
 
             //if the login failed
             if ($user === null) {
-                $data = array('status' => 'login failed', 'error' => 'Invalid username or password');
+                $data = array('error' => 'Invalid username or password');
                 $this->_load_login($data);
             }
             //if the login matched
@@ -50,8 +52,9 @@ class Auth extends CI_Controller {
         }
     }
 
+    /* Action that receives form submits to register new users */
     public function register($data = array()) {
-
+        /* If the user is logged, send him to home */
         if ($this->authwrapper->isLogged()) {
             redirect();
         }
@@ -68,20 +71,22 @@ class Auth extends CI_Controller {
         //that indicates if the user sent address data or not
         $showAddress = $this->input->post('showAddress'); //hidden input
         //the default validation rule will also validate the address info
-        //If you change it to register_no_addr, it will ignore address info
+        //If you change it to noAddress, it will ignore address info
         $validationRule = '';
 
         //If the user did not send address info
         if (isset($showAddress) && $showAddress === 'FALSE') {
-            //Use the register_no_addr rule instead of default registration rule
+            //Use the noAddress rule instead of default registration rule
             $validationRule = 'noAddress';
         }
 
 
-
+        /* If the validation fails */
         if ($this->form_validation->run($validationRule) === FALSE) {
+            /* Show the register form again */
             $this->_load_register();
         } else {
+            /* If form data is valid */
 
             //Gathering user data
             $name = $this->input->post('name');
@@ -91,6 +96,7 @@ class Auth extends CI_Controller {
 
 
             $added_id = null;
+            /* if the user submited his address info... */
             if ($showAddress !== 'FALSE') {
                 //Gathering user address
                 $address = $this->input->post('addr_name');
@@ -110,28 +116,31 @@ class Auth extends CI_Controller {
             //If there was an error when trying to add the address...
             if ($added_id === -1 OR $added_id === -2) {
                 //there's something wrong
-                $this->_load_register_view(array('error' => 'PAU:' . $added_id));
+                $this->_load_register_view(array('error' => 'Failed to insert address:' . $added_id));
             }
             //If the address was successfully added, let's try to add the User
             else {
                 //Try adding the user to database
                 $this->user_model->add_user($name, $last_name, $email, $password, $added_id);
 
-                //Loads 
+                //Go home
                 redirect();
             }
         }
     }
 
+    /* Logs user out destroying it's session data */
     public function logout() {
         $this->session->sess_destroy();
         redirect('/');
     }
 
+    /* Alias for index */
     public function login() {
         return $this->index();
     }
 
+    /* Loads the Register View */
     public function _load_register($data = array()) {
 
         //Parameters to the view
@@ -161,12 +170,14 @@ class Auth extends CI_Controller {
             'showAddress' => 'FALSE'
                 ));
 
+        /* Append parameters */
         $this->configwrapper->append($viewParams);
 
-        //Load the menu_view page with the list of pizzas as menu
+        //Load the register_view
         $this->templatewrapper->ciTwigPageLoad('register_view', $this->configwrapper->toArray());
     }
 
+    /* Loads the login view */
     public function _load_login($data = array()) {
 
         //Parameters to the view
@@ -177,13 +188,16 @@ class Auth extends CI_Controller {
             'password' => 'Password',
             'sign_in' => 'Sign In'
                 ));
-
+        //Append parameters
         $this->configwrapper->append($viewParams);
 
-        //Load the menu_view page with the list of pizzas as menu
+        //Load the login_view page
         $this->templatewrapper->ciTwigPageLoad('login_view', $this->configwrapper->toArray());
     }
 
+    /* Set html delimiter to CodeIgniter validation errors.
+     * The delimiter used is set by config wrapper 
+     */
     private function _delimitErrors() {
         /* Getting delimiters of error messages in config wrapper */
         $delimiters = $this->configwrapper->get('error_delimiters');
@@ -193,6 +207,10 @@ class Auth extends CI_Controller {
         $this->form_validation->set_error_delimiters($errorOpen, $errorClose);
     }
 
+    /* Especifies the error message to be shown when there's
+     * a "UNIQUE" constraint violation (eg: when someone tries to register
+     * an already registered login
+     */
     public function _uniqueErrorMessage()
     {
         $this->form_validation->set_message('is_unique', 'This value is already registered');

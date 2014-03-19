@@ -9,10 +9,13 @@ require_once APPPATH . 'models/domain/PizzaLayout.php';
 require_once APPPATH . 'models/domain/PizzaFlavor.php';
 require_once APPPATH . 'models/domain/PizzaSize.php';
 
+/**
+ * Controller class that handles user cart (add, remove and update products on cart).
+ */
 class Cart extends CI_Controller {
 
     /**
-     * Starts building the pizza
+     * Default action. Starts building the pizza
      */
     public function index($id = null) {
 
@@ -28,26 +31,25 @@ class Cart extends CI_Controller {
             $pizza = null;
         }
 
-        $cart = $this->cart->contents();
 
         //Initializing parameters to view
         $params = array(
             'history_title' => 'Your Order',
-            'pizza' => $pizza,
-            'cart' => $cart,
-            'user' => $this->authwrapper->getUser()
+            'pizza' => $pizza
         );
         $this->configwrapper->append($params);
 
         //Load the view with parameters
-
         $this->templatewrapper->load('cart_view', $this->configwrapper->toArray());
     }
 
     /**
      * Adds an item to the cart and redirects to cart view.
-     * The user can add an item via PizzaBuilder submit, adding from Menu
-     * passing the pizza id as parameter or via cart view, updating item qty.
+     * The user can add an item via:
+     * 1 - PizzaBuilder submit
+     * 2 - Adding from Menu
+     * 3 - Passing the pizza id as parameter to Cart add action
+     * 4 - Click the plus sign in cart view
      */
     public function add($id = null, $rowid = null) {
 
@@ -106,11 +108,34 @@ class Cart extends CI_Controller {
                 'options' => array('type' => 'pizza', 'object' => $pizza)
             );
             
+            /* Check if the user asked to add this pizza as favorite */            
+            $fav = $this->input->post('favoriteCheck');
+            if($fav !== FALSE && $fav == true)
+            {
+                $user = $this->authwrapper->getUser();
+
+                $this->load->model('pizza_model');
+                $this->load->model('user_model');
+
+                /* Saving new pizza in database */
+                $this->pizza_model->save($pizza);
+
+                /* Saving pizza as favorite to user in database */
+                $this->user_model->addFavoritePizza($user->getId(),$pizza->getId());
+
+                /* Updating user object with the new favorite pizza */
+                $user->addFavorite($pizza->getId());
+
+                /* Updating session user data */
+                $this->session->set_userdata('user', serialize($user));
+            }
+            
             $this->cart->insert($cartPizza);
         }
         redirect('cart');
     }
 
+    /* Remove an item from the cart by rowid (codeigniter generated id)*/
     public function remove($rowid = null) {
         if ($rowid != null) {
             $this->_updateCart($rowid, -1);
@@ -118,6 +143,7 @@ class Cart extends CI_Controller {
         redirect('cart');
     }
 
+    /* Updates item quantity on cart */
     public function update($rowid = null, $qty = null) {
 
         if ($rowid != null && $qty != null) {
@@ -126,6 +152,7 @@ class Cart extends CI_Controller {
         redirect('cart');
     }
 
+    /* Delete all item from cart */
     public function clear()
     {
         $this->cart->destroy();
@@ -147,6 +174,9 @@ class Cart extends CI_Controller {
         $this->cart->update($cartPizza);
     }
 
+    /* Returns the rowid based on item's $id.
+     * Returns null if there's no item with given $id
+     */
     private function _getRowId($id) {
         $rowid = null;
         foreach ($this->cart->contents() as $item) {

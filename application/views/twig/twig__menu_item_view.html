@@ -22,8 +22,7 @@
     <div class="pizzaCard{{pizza.id}}" id="pizzaCard{{pizza.id}}" value="false">
         <!-- Menu Item FRONT: the name attribute is used by JavaScript -->
         <div name="menuItem" id="menuItem{{pizza.id}}" class="col-lg-3 col-md-4 col-sm-6 col-xs-12" 
-             value="false" 
-             data-toggle="popover">
+             value="false">
                 <!-- PANEL -->
                 <div class="panel panel-default">
                     <a name="flipLink" data-value="{{pizza.id}}" href="javascript:flipPizzaCard({{pizza.id}})">
@@ -48,9 +47,9 @@
                             <h3>
                                 {{pizza.name}} 
                                 {% if logged and star %}
-                                    <i name="favoritedPizzaStar" data-value="{{pizza.id}}" class='glyphicon glyphicon-star pull-right'></i>
+                                    <i name="favoritedPizzaStar" data-value="{{pizza.id}}" class='glyphicon glyphicon-star pull-right' data-toggle="tooltip" data-placement="top" title="Remove from Favorites"></i>
                                 {% elseif logged %}
-                                    <i name="unfavoritedPizzaStar" data-value="{{pizza.id}}" class='glyphicon glyphicon-star-empty pull-right empty'></i>
+                                    <i name="unfavoritedPizzaStar" data-value="{{pizza.id}}" class='glyphicon glyphicon-star-empty pull-right empty' data-toggle="tooltip" data-placement="top" title="Add to favorites"></i>
                                 {% endif %}
                             </h3>
                             
@@ -108,10 +107,16 @@
                     </div>                     
                     <div class="flavorsDiv">
                         {% for flavor in pizza.getflavors %}
-                        <span class="label label-warning">
-                            Flavor: {{flavor.name}}
-                        </span>
-                        <small>{{flavor.description}}</small>
+                            <span class="label label-warning">
+                                Flavor: {{flavor.name}}
+                            </span>
+                            
+                            <small>
+                                {% for ingredient in flavor.getIngredients() %}
+                                    {{ingredient.getName()}}
+                                    {% if loop.index != flavor.getIngredients()|length %},{% endif %}
+                                {% endfor %}
+                            </small>
                         {% endfor %}
                     </div>
                 </div>

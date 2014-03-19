@@ -35,6 +35,20 @@
 	@blue: blue(@color);
 	box-shadow: inset 0 @width @width rgba(0, 0, 0, 0.075), 0 0 8px rgba(@red, @green, @blue, 0.6);
 }
+.borderRadius(@radius:10px){
+	-webkit-border-radius: @radius;
+	-moz-border-radius:    @radius;
+	border-radius:         @radius;
+	-moz-background-clip:    padding;
+	-webkit-background-clip: padding-box;
+	background-clip:         padding-box;
+}
+.borderRadiusTop(@radius: 10px){
+	border-radius: @radius @radius 0px 0px;
+}
+.borderRadiusBottom(@radius: 10px){
+	border-radius: 0px 0px @radius @radius;
+}
 
 /* Card Panel Style */
 .cardPanel(@height:120px,@hasButton:false){
@@ -77,13 +91,14 @@
 			background-color: @cardBgColor;
 			/* Actual Title */
 			h3{
-				font-family: Stark;  
+				font-family: Verdana;  
 				font-weight: bold;
 				font-size: 22px;
 				margin-top: 0px;
 				margin-bottom: 0px;
 				i{
 					color: @starColor;
+
 					text-shadow: -1px 0 @themeBrown, 0 1px @themeBrown, 1px 0 @themeBrown, 0 -1px @themeBrown;
 					&:hover{
 						text-shadow: -1px 0 @cardSelectedRed, 0 1px @cardSelectedRed, 1px 0 @cardSelectedRed, 0 -1px @cardSelectedRed;
@@ -94,8 +109,9 @@
 					font-weight: lighter;
 					border: none;
 					text-shadow: none;
-					&:hover{
-						text-shadow: -1px 0 @cardSelectedRed, 0 1px @cardSelectedRed, 1px 0 @cardSelectedRed, 0 -1px @cardSelectedRed;
+					&:hover{						
+						color: @starColor;
+						text-shadow: -1px 0 @themeBrown, 0 1px @themeBrown, 1px 0 @themeBrown, 0 -1px @themeBrown;
 					}
 				}
 			}
@@ -140,14 +156,7 @@
 	}
 }
 
-.borderRadius(@radius:10px){
-	-webkit-border-radius: @radius;
-	-moz-border-radius:    @radius;
-	border-radius:         @radius;
-	-moz-background-clip:    padding;
-	-webkit-background-clip: padding-box;
-	background-clip:         padding-box;
-}
+
 
 .placeHolderColor(@color: lighten(@themeBrown,25%)){
 	&::-webkit-input-placeholder { /* WebKit browsers */
@@ -227,7 +236,7 @@
 				}
 
 				/* Link that edits pizza */
-				a{
+				
 					button{    
 						width: 97%;  
 						position: absolute;
@@ -239,14 +248,14 @@
 						margin-bottom: 3px;    
 						background-color: @lightBrown;
 						border-color: @lightBrown;
-						z-index: 5;
+						z-index: 15;
 
 						&:hover{
 							background-color: white;	
 							color: @lightBrown;
 						}
 					}
-				}
+				
 		}		
 		/* Card Item Back */
 		
@@ -351,7 +360,7 @@ html{
 			display: table-cell;
 			vertical-align: middle;
 			width: 80px;
-			text-decoration: none;
+			text-decoration: underline;
 			color: @colorTheme;
 			&:hover{
 				text-decoration:underline;
@@ -675,7 +684,7 @@ div[name='containerSteps']{
 				color: darken(@colorTheme,15%);
 				background-color: transparent;
 				text-shadow: -1px 0 @themeBrown, 0 1px @themeBrown, 1px 0 @themeBrown, 0 -1px @themeBrown;
-				margin-top: 50px;
+				margin-top: 65px;
 			}
 			p{
 				margin: 15px;
@@ -830,6 +839,15 @@ div[name='containerSteps']{
 	hr{
 		border-color: black;    
 	}
+	#favoriteDiv{
+		margin: 20px;
+		font-family: Stark;
+		font-size: 120%;
+		font-weight: lighter;
+		color: @themeBrown;
+		#favoriteCheck{
+		}	
+	}	
 
 	/* ADD BUTTON - adds new built pizza to cart */
 	button{
@@ -992,6 +1010,7 @@ div[name='containerSteps']{
 #cartContainer{
 	text-align: center;	
 	min-height: 800px;
+	margin-bottom: 200px;
 	.table{
 		text-align: left;
 		width: 80%;
@@ -1091,7 +1110,21 @@ div[name='containerSteps']{
 				}	
 				/* Removing borders from TD's of last row */
 				&:last-child{
-						td{ border-bottom: none !important;}
+					td{ border-bottom: none !important;}
+					.borderRadiusBottom();
+					/* when last row is hovered*/
+					&:hover{						
+						td{ 
+							/* the last cell gets rounded bottom right corner */
+							&:last-child{
+								border-radius: 0px 0px 10px 0px;
+							}
+							/* the first cell gets rounded bottom left corner */
+							&:first-child{
+								border-radius: 0px 0px 0px 10px;	
+							}
+						}
+					}
 				}	
 				&:hover{
 					background-color: darken(@cardBgColor,3%);
@@ -1251,6 +1284,11 @@ div[name='containerSteps']{
 /* ABOUT VIEW */
 #aboutRow{
 	min-height: 800px;
+	text-align: center;
+	#aboutDiv{
+		text-align: left;
+		background-color: darken(@bgColor,10%);
+	}
 }
 /* END:ABOUT VIEW */
 
@@ -1266,29 +1304,33 @@ div[name='containerSteps']{
 			margin: 0px;
 			ul.list-group{
 				padding: 0px;
+				margin-right: -1px;
 				a{
 					list-style: none;
 					font-family: Stark;
-					text-align: center;
 					font-size: 20px;
 					width: 100%;
 					padding: 0px;
-					margin: 15px 0px 0px 0px;
+					margin: 0px 0px 10px 0px;
 					border-color: transparent;
 					background-color: transparent;
 					text-align: right; 	
 					li{
-						background-color: transparent;
+						background-color: @themeBrown;
 						color: @colorTheme;
 						&:hover{
 							color: @themeBrown;
 							background-color: @colorTheme;
 						}
+						border-radius: 10px 0px 0px 10px; 
+						text-align: center;
 					}
 					li.active{					
 						color: @themeBrown;
-						background-color: transparent;
-
+						background-color: darken(@bgColor,10%);
+						border-radius: 10px 0px 0px 10px;
+						padding-right: 15px;
+						text-align: right;
 					}
 
 				}
@@ -1298,29 +1340,145 @@ div[name='containerSteps']{
 	}
 	#contentCol{
 		text-align: left;
-		border-left: 1px solid @themeBrown;
+		padding-left: 0px;
+
 		h2{
 			color: @themeBrown;
 			font-family: Stark;
 			margin-top: 15px;
 		}	
 		#profileContent{
-			width: 100%;
-			height: 400px;
-			margin: 0px !important;
+			h2{
+				text-align: center;
+			}
+			width: 95%;
+			min-height: 300px;
 			font-family: Stark;
 			font-weight: lighter;
 			margin-top: 0px;
 			overflow: auto;
-			
+			background-color: darken(@bgColor,10%);
+			padding-left: 20px;
+			.boxShadow();
+			position: absolute;
+			top: 0px;
+			left: 0px;
 		}
 
 		#favoritesContent{
-
+			h2{
+				text-align: center;
+			}
+			display: block;
+			background-color: darken(@bgColor,10%);
 			.menuItem();
+			.boxShadow();
+			min-height: 300px;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 95%;	
+			padding-left: 20px;		
 		}
 	}
 }
 /* END:PROFILE VIEW */
+
+/* CONTACT VIEW */
+#contactContainer{
+	padding-top: 15px;
+	#contactRow{
+		margin-bottom: 200px;
+		min-height: 500px;
+		text-align: center;
+		.formError{
+			color: @cardSelectedRed;
+			font-weight: bold;		
+		}
+		div[name='errorsDiv']{
+			width: 50%;
+			margin: 0px auto 10px auto;
+		}
+		div[name='statusDiv']{
+			width: 50%;
+			margin: 0px auto 10px auto;
+		}
+		#contactDiv{
+			margin: 0px auto;
+			width: 50%;
+			background-color: @cardBgColor;
+			.boxShadow();
+			.borderRadiusTop();
+			.panel-heading{
+				width: 100%;
+				background-color: @themeBrown;
+				.borderRadiusTop();
+				color: @colorTheme;
+				i{
+					font-size: 230%;
+				}
+				h2{
+					font-family: Stark;				
+					margin: 0px;				
+				}
+			}
+			
+			
+			.panel-body{
+				padding-top: 5px;
+				background-color: lighten(@cardBgColor,8%);
+				color: @themeBrown;
+				input,textarea{
+					font-family: Stark;
+					display: inline-block;
+					margin: 10px;	
+					.placeHolderColor();
+					background-color: lighten(@cardBgColor,15%);
+					color: @themeBrown;
+					border: 1px solid @themeBrown;
+					font-size: 120%;
+					&:focus{
+						border-color: @cardSelectedRed;
+						.boxFocus(@cardSelectedRed);
+					}
+				}
+
+				input[name='name']{
+					width: 35%;
+					margin-left: 0px;
+				}
+				input[name='email']{
+					width: 61%;
+					margin-right: 0px;
+				}
+
+				input[type='submit']{
+						background-color: lighten(@colorTheme,10%);
+						border: 1px solid @themeBrown;
+						font-size: 120%;
+						width: 40%;
+						height: 60px;
+						margin-top: 10px;
+						margin-bottom: 0px;
+						.boxShadow(); 
+						&:hover{
+							background-color: @colorTheme;
+						}
+						&:focus{
+							.boxFocus(@cardSelectedRed);
+						}
+				}
+				textarea{
+					max-width: 100%;
+					height: 150px;
+					min-height: 150px;
+					display: block;
+					margin: 0px;
+				}
+			}
+		}
+	}
+}
+/* END: CONTACT VIEW */
 
 /**************END:STYLES**************/

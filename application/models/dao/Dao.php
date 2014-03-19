@@ -13,7 +13,7 @@ interface Dao
 {    
     public function fetch($id);
     public function fetchAll();
-    public function delete($id);
+    public function delete($object);
     public function save($object);
     
 }

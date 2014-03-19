@@ -129,7 +129,7 @@ class DbPizzaSizeDao extends PizzaSizeDao
         return $sizes;
     }
     
-    public function delete($id) 
+    public function delete($object) 
     {
         //stub
     }    

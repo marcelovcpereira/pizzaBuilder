@@ -32,6 +32,7 @@ class DbPizzaDao extends PizzaDao {
     private $sizeCol = 'size';
     private $layoutCol = 'layout';
     private $obsCol = 'observations';
+    private $typeCol = 'type';
     //Other Table names
     private $crusts = 'crusts';
     private $edges = 'edges';
@@ -74,6 +75,7 @@ class DbPizzaDao extends PizzaDao {
                     . ",p.{$this->descriptionCol}"
                     . ",p.{$this->picturePathCol}"
                     . ",p.{$this->obsCol}"
+                    . ",p.{$this->typeCol}"
                     //crust columns
                     . ",c.id as crustId"
                     . ",c.name as crustName"
@@ -124,6 +126,7 @@ class DbPizzaDao extends PizzaDao {
                 $pizza->setDescription($row->description);
                 $pizza->setPicturePath($row->picture);
                 $pizza->setObservations($row->observations);
+                $pizza->setType($row->type);
 
                 //Create the Crust
                 $crust = new PizzaCrust();
@@ -174,8 +177,8 @@ class DbPizzaDao extends PizzaDao {
                 $flavorDao = new DbPizzaFlavorDao($this->connection);
 
                 $query = "SELECT"
-                        . " f.id, f.name,f.description, f.picture,"
-                        . "ppf.flavorPosition as position"
+                        . " f.id, f.name,f.description, f.picture,f.type"
+                        . ",ppf.flavorPosition as position"
                         . " FROM {$this->pizza_pizzaFlavors} ppf,"
                         . " {$this->flavors} f"
                         . " WHERE ppf.pizzaId = {$row->id}"
@@ -188,6 +191,7 @@ class DbPizzaDao extends PizzaDao {
                     $tmpFlavor->setName($row->name);
                     $tmpFlavor->setDescription($row->description);
                     $tmpFlavor->setPicturePath($row->picture);
+                    $tmpFlavor->setType($row->type);
 
                     //Search for the flavor ingredients					
                     $ingredients = $flavorDao->getIngredients($tmpFlavor->getId());
@@ -216,9 +220,51 @@ class DbPizzaDao extends PizzaDao {
         return $pizza;
     }
 
-    public function delete($id) {
-        //stub
-        return null;
+    public function delete($object) {
+        if($object instanceof Pizza && $object->getType() == 'user')
+        {
+            /* ids to remove from pizza_flavors */
+            $flavorsId = array();
+            foreach($object->getFlavors() as $flavor)
+            {
+                $flavorsId[] = $flavor->getId();
+            }
+
+            $flavorDao = new DbPizzaFlavorDao($this->connection);
+
+            /***************************************************/
+            /* Starting the transaction to remove the pizza    */
+            /***************************************************/
+            $this->connection->trans_start();
+
+            /* remove pizza_flavors link */
+            $this->connection->where_in('flavorId',$flavorsId);
+            $this->connection->where('pizzaId',$object->getId());
+            $this->connection->delete($this->pizza_pizzaFlavors);
+
+            foreach($object->getFlavors() as $flavor)
+            {
+                if($flavor->getType() == 'user')
+                {
+                    /* Delete each custom flavor associated with it */
+                    $flavorDao->delete($flavor);
+                }
+            }
+            
+            /* finally removing the pizza */
+            $obj = array('id' => $object->getId());
+            $this->connection->delete($this->table,$obj);
+
+            /**************************************************/
+            /* Completed transaction, lets search for errors  */
+            /**************************************************/
+            $this->connection->trans_complete();
+            if ($this->connection->trans_status() === FALSE)
+            {
+                throw new Exception("Transaction failed: delete {$object->getId()}");
+            }
+
+        }
     }
 
     /**
@@ -239,9 +285,11 @@ class DbPizzaDao extends PizzaDao {
      * them as an array.
      * (*)mysql can't mix right and left joins
      * 
+     * @param type bool This param tells the function to include or not 
+     * User defined pizzas
      * @return type Pizza[] An array of pizzas
      */
-    public function fetchAll() {
+    public function fetchAll($includeUser=false) {
         /*
          * Trying to fetch from cache.
          * If it's not cached, execute all the method and cache it.
@@ -270,6 +318,7 @@ class DbPizzaDao extends PizzaDao {
                     . ",p.{$this->descriptionCol}"
                     . ",p.{$this->picturePathCol}"
                     . ",p.{$this->obsCol}"
+                    . ",p.{$this->typeCol}"
                     //crust columns
                     . ",c.id as crustId"
                     . ",c.name as crustName"
@@ -303,7 +352,11 @@ class DbPizzaDao extends PizzaDao {
                     . " AND p.{$this->edgeCol} = e.id"
                     . " AND p.{$this->sizeCol} = s.id"
                     . " AND p.{$this->layoutCol} = l.id";
-
+            /* If we want just system pizzas, let's add a clausule */
+            if(!$includeUser)
+            {
+                $query .= " AND p.{$this->typeCol} = 'system'";
+            }
 
             //Executes the query
             $result = $this->connection->query($query);
@@ -320,6 +373,7 @@ class DbPizzaDao extends PizzaDao {
                     $pizza->setDescription($row->description);
                     $pizza->setPicturePath($row->picture);
                     $pizza->setObservations($row->observations);
+                    $pizza->setType($row->type);
                     
                     //Create the Crust
                     $crust = new PizzaCrust();
@@ -369,7 +423,7 @@ class DbPizzaDao extends PizzaDao {
                     $flavorDao = new DbPizzaFlavorDao($this->connection);
 
                     $query = "SELECT"
-                            . " f.id, f.name,f.description, f.picture"
+                            . " f.id, f.name,f.description, f.picture,f.type"
                             . ",ppf.flavorPosition as position"
                             . " FROM {$this->pizza_pizzaFlavors} ppf"
                             . " ,{$this->flavors} f"
@@ -383,7 +437,7 @@ class DbPizzaDao extends PizzaDao {
                         $tmpFlavor->setName($row->name);
                         $tmpFlavor->setDescription($row->description);
                         $tmpFlavor->setPicturePath($row->picture);
-
+                        $tmpFlavor->setType($row->type);
                         //Search for the flavor ingredients					
                         $ingredients = $flavorDao->getIngredients($tmpFlavor->getId());
                         //Add ingredients to the flavor
@@ -415,8 +469,62 @@ class DbPizzaDao extends PizzaDao {
     }
 
     public function save($object) {
-        //stub
-        return null;
+        if($object instanceof Pizza && $object->getId() == -1)
+        {
+            /* Pizza */
+            $pizzaObj = array(
+                'name' => $object->getName(),
+                'description' => $object->getDescription(),
+                'crust' => $object->getCrust()->getId(),
+                'edge' => $object->getEdge()->getId(),
+                'layout' => $object->getLayout()->getId(),
+                'size' => $object->getSize()->getId(),
+                'observations' => $object->getObservations(),
+                'picture' => $object->getPicturePath(),
+                'type' => 'user' 
+            );
+
+            /*************************************************/
+            /* Starting transaction to add full pizza object */
+            /*************************************************/
+            $this->connection->trans_start();
+
+            /* add pizza row */
+            $this->connection->insert($this->table,$pizzaObj);
+            /* set the inserted id to the object */
+            $object->setId($this->connection->insert_id());
+
+            /* Flavors */
+            $flavorDao = new DbPizzaFlavorDao($this->connection);
+            foreach($object->getFlavors() as $key => $flavor)
+            {
+                /* If this is a custom flavor, save it too */
+                if($flavor->getId() == -1 || $flavor->getId() == null)
+                {
+                    /* Flavor saving will be inside transaction */
+                    $flavorDao->save($flavor);
+                }
+
+                /* linking the flavor to the pizza (pizza_pizzaFlavor table)*/
+                $pizzaFlavor = array(
+                    'pizzaId' => $object->getId(),
+                    'flavorId' => $flavor->getId(),
+                    'flavorPosition' => $key+1
+                );
+                $this->connection->insert($this->pizza_pizzaFlavors,$pizzaFlavor);
+                
+            }
+            /**************************************************/
+            /* Completed transaction, lets search for errors  */
+            /**************************************************/
+            $this->connection->trans_complete();
+
+
+            if ($this->connection->trans_status() === FALSE)
+            {
+                throw new Exception("Transaction failed.");
+            }
+        }        
     }
 
 }

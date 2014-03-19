@@ -166,7 +166,7 @@ class DbPizzaEdgeDao extends PizzaEdgeDao {
         return $edges;
     }
 
-    public function delete($id) {
+    public function delete($object) {
         //stub
     }
 

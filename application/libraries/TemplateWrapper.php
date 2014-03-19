@@ -24,24 +24,6 @@ class TemplateWrapper
     //Template file default sufix
     private $sufix = ".html";
 
-    /**
-     * Parameters to Header template. We could
-     * load it from a file, but for now, let's keep it up here
-     */
-    static $data = array(
-        'home' => 'Home',
-        'profile' => 'Profile',
-        'about' => 'About',
-        'menu' => 'Menu',
-		'builder' => 'Builder',
-        'cart_link' => 'Your Cart',
-        'product_name' => 'Pizza Builder',
-        'account' => 'Account',
-        'sign_up' => 'Sign Up',
-        'login' => 'Login',
-        'logout' => 'Logout',
-        'header_title' => 'Pizza Builder'
-    );
 
     /**
      * Sets the TemplateWrapper engine
@@ -90,7 +72,7 @@ class TemplateWrapper
         /* Refers to the global instance of Code Igniter */
         $CI = & get_instance();
         /* Parse the header template */
-        $CI->parser->parse($dir . $this->prefix . $this->header . $this->sufix, TemplateWrapper::$data);
+        $CI->parser->parse($dir . $this->prefix . $this->header . $this->sufix);
         /* Render the actual page */
         $CI->load->view($dir . $page, $params);
         /* Parse the footer template */
@@ -107,8 +89,6 @@ class TemplateWrapper
         $twigEnv = new Twig_Environment($twigLoader, array('debug' => true));
 		$twigEnv->addExtension(new Twig_Extension_Debug());
 
-        /*var_dump($params);
-        var_dump(TemplateWrapper::$data);
         /* Rendering the header tenplate */
         echo $twigEnv->render($this->prefix . $this->header . $this->sufix, $params);
         /* Rendering the actual page */

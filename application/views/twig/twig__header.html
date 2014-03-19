@@ -49,6 +49,7 @@
                             <li><a href="/PizzaBuilder/">{{home}}</a></li>
                             <li><a href="/PizzaBuilder/menu">{{menu}}</a></li>
 							<li><a href="/PizzaBuilder/pizzaBuilder">{{builder}}</a></li>
+                            <li><a href="/PizzaBuilder/contact">{{contact_us}}</a></li>
                             <li><a href="/PizzaBuilder/about">{{about}}</a></li>
                             {% if user is not null %}
                                 <li class="dropdown">
@@ -82,7 +83,7 @@
                                 <ul class="dropdown-menu">
                                     {% if cart|length > 0 %}
                                         {% for item in cart %}
-                                            <li class="disabled"><a href="">{{item['qty']}}x: {{item['name']}} ({{ item['options']['type'] }})</a></li>
+                                            <li class="disabled"><a href="#">{{item['qty']}}x: {{item['name']}} ({{ item['options']['type'] }})</a></li>
                                         {% endfor %}
                                     {% endif %}             
                                     <li class="disabled"><a href="">{{total}} product(s)</a></li>                       

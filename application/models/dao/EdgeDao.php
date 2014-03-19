@@ -21,7 +21,7 @@ abstract class EdgeDao implements Dao
     //To be overwritten by the Concrete SubClasses
     abstract public function fetch($id);
     abstract public function fetchAll();
-    abstract public function delete($id);
+    abstract public function delete($object);
     abstract public function save($object);
     
 }

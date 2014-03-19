@@ -1,3 +1,9 @@
+{% if user is defined and user.getId() != null and user.getId() != -1 %}
+    {% set logged = true %}
+{% else %}
+    {% set logged = false %}
+{% endif %}
+
 <!--BUILDER DIV-->
 <div id="builderDiv" >
     {#
@@ -182,7 +188,8 @@
             </h2> 
             <div class="cardDivWrapper">
                 <div class="obsTextArea">
-                    <textarea class="form-control" rows="6"></textarea>
+                    <textarea class="form-control" rows="6">{% if pizza is not null %}{{pizza.getDescription()}}{% endif %}
+                    </textarea>
                 </div>
             </div>
         </div><!-- OBS COLUMN -->
@@ -193,7 +200,17 @@
     <form id="pizzaBuilderForm" name="pizzaBuilderForm" action="/PizzaBuilder/Cart/add" method="post">
         <input type="hidden" name="userPizza" value="">        
         <input type="hidden" name="{{tokenName}}" value="{{tokenHash}}">
+        
+        {% if logged %}
+            <div id="favoriteDiv">
+                <input id="favoriteCheck" name="favoriteCheck" type="checkbox">
+                <label for="favoriteCheck">Add to favorites</label>
+            </div>
+        {% endif %}
     </form>
+
+    
+    
 
     <button type="button" class="btn btn-danger btn-lg">
         Add to Cart

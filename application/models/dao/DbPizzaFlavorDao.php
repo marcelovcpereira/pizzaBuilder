@@ -20,6 +20,7 @@ class DbPizzaFlavorDao extends PizzaFlavorDao
     private $nameCol = 'name';
     private $descriptionCol = 'description';
     private $picturePathCol = 'picture';
+    private $typeCol = 'type';
     
     /**
      * Constructor, sending the connection to the parent
@@ -44,6 +45,7 @@ class DbPizzaFlavorDao extends PizzaFlavorDao
                 .",f.{$this->nameCol}"
                 .",f.{$this->descriptionCol}" 
                 .",f.{$this->picturePathCol}"
+                . ",f.{$this->typeCol}"
                 ." FROM"
                 ." {$this->table} f"
                 ." WHERE"
@@ -67,6 +69,7 @@ class DbPizzaFlavorDao extends PizzaFlavorDao
             $flavor->setName($row->name);
             $flavor->setDescription($row->description);
             $flavor->setPicturePath($row->picture);
+            $flavor->setType($row->type);
             
             //Querying for the ingredients of this flavor
             $ingredients = $this->getIngredients($flavor->getId());
@@ -83,7 +86,7 @@ class DbPizzaFlavorDao extends PizzaFlavorDao
      * Returns all pizza flavor records of the database
      * @return type \PizzaFlavor[] A list of all pizza flavors
      */
-    public function fetchAll() 
+    public function fetchAll($includeUser=false) 
     { 
         //the key value where this query will be cached     
         $key = 'allFlavors';
@@ -93,7 +96,7 @@ class DbPizzaFlavorDao extends PizzaFlavorDao
         $CI = & get_instance();
         //Seeking value in CacheWrapper 
         $flavors = $CI->cachewrapper->fetch($key);
-        if($flavors === FALSE)
+        if($flavors === FALSE || true)
         {
             //Returned PizzaFlavor List
             $flavors = array();
@@ -104,8 +107,13 @@ class DbPizzaFlavorDao extends PizzaFlavorDao
                     .",f.{$this->nameCol}"
                     .",f.{$this->descriptionCol}" 
                     .",f.{$this->picturePathCol}"
+                    .",f.{$this->typeCol}"
                     ." FROM"
                     ." {$this->table} f";
+            if(!$includeUser)
+            {
+                $query .= " WHERE f.type = 'system'";
+            }
 
             //Executes the query
             $result = $this->connection->query($query);        
@@ -123,6 +131,7 @@ class DbPizzaFlavorDao extends PizzaFlavorDao
                     $flavor->setName($row->name);
                     $flavor->setDescription($row->description);
                     $flavor->setPicturePath($row->picture);
+                    $flavor->setType($row->type);
                     
                     //Querying for the ingredients of this flavor
                     $ingredients = $this->getIngredients($flavor->getId());
@@ -143,14 +152,46 @@ class DbPizzaFlavorDao extends PizzaFlavorDao
         return $flavors;
     }
     
-    public function delete($id) 
+    public function delete($object) 
     {
-        //stub
+        if($object instanceof PizzaFlavor && $object->getType() == 'user')
+        {
+            /* removing flavor_ingredients */
+            $this->connection->where('flavorId',$object->getId());
+            $this->connection->delete($this->flavor_ingredients);
+
+            /* removing the flavor */
+            $this->connection->where('id', $object->getId());
+            $this->connection->delete($this->table,$obj);
+        }
     }    
 
     public function save($object) 
     {
-        //stub
+        if($object instanceof PizzaFlavor && $object->getId() == -1)
+        {
+            $flavorObj = array(
+                'name' => $object->getName(),
+                'description' => $object->getDescription(),
+                'picture' => $object->getPicturePath(),
+                'type' => 'user' 
+            );
+
+            /* if this is a custom Flavor, add this new flavor row */
+            $this->connection->insert($this->table,$flavorObj);
+            $object->setId($this->connection->insert_id());
+
+            /* linking ingredients to this new flavor (flavor_ingredients table)*/
+            foreach($object->getIngredients() as $ingredient)
+            {
+                $ingreObj = array(
+                    'flavorId' => $object->getId(),
+                    'ingredientId' => $ingredient->getId()
+                );
+                $this->connection->insert($this->flavor_ingredients,$ingreObj);
+            }
+
+        }
     }
     
     /**

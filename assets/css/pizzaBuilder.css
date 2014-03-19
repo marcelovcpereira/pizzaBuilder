@@ -120,7 +120,7 @@ html body {
   display: table-cell;
   vertical-align: middle;
   width: 80px;
-  text-decoration: none;
+  text-decoration: underline;
   color: #f0ad4e;
 }
 #footerRow2 #footerCol a:hover {
@@ -412,7 +412,7 @@ div[name='containerSteps'] #row3 #arrowCol span {
   color: #df8a13;
   background-color: transparent;
   text-shadow: -1px 0 #745b39, 0 1px #745b39, 1px 0 #745b39, 0 -1px #745b39;
-  margin-top: 50px;
+  margin-top: 65px;
 }
 div[name='containerSteps'] #row3 #arrowCol p {
   margin: 15px;
@@ -506,7 +506,7 @@ div[name='containerSteps'] #row3 #arrowCol p i {
   /* Description */
 }
 #menuRow div[name='menuItem'] .panel .panel-footer h3 {
-  font-family: Stark;
+  font-family: Verdana;
   font-weight: bold;
   font-size: 22px;
   margin-top: 0px;
@@ -526,7 +526,8 @@ div[name='containerSteps'] #row3 #arrowCol p i {
   text-shadow: none;
 }
 #menuRow div[name='menuItem'] .panel .panel-footer h3 i.empty:hover {
-  text-shadow: -1px 0 #d2322d, 0 1px #d2322d, 1px 0 #d2322d, 0 -1px #d2322d;
+  color: #ffaa00;
+  text-shadow: -1px 0 #745b39, 0 1px #745b39, 1px 0 #745b39, 0 -1px #745b39;
 }
 #menuRow div[name='menuItem'] .panel .panel-footer hr {
   margin: 3px;
@@ -592,7 +593,7 @@ div[name='containerSteps'] #row3 #arrowCol p i {
 #menuRow div[name='menuItem'] div[name='panelPizzaDetails'] a .scrollableContent small {
   font-family: Verdana;
 }
-#menuRow div[name='menuItem'] div[name='panelPizzaDetails'] a button {
+#menuRow div[name='menuItem'] div[name='panelPizzaDetails'] button {
   width: 97%;
   position: absolute;
   bottom: 0px;
@@ -603,9 +604,9 @@ div[name='containerSteps'] #row3 #arrowCol p i {
   margin-bottom: 3px;
   background-color: #9c6619;
   border-color: #9c6619;
-  z-index: 5;
+  z-index: 15;
 }
-#menuRow div[name='menuItem'] div[name='panelPizzaDetails'] a button:hover {
+#menuRow div[name='menuItem'] div[name='panelPizzaDetails'] button:hover {
   background-color: white;
   color: #9c6619;
 }
@@ -734,7 +735,7 @@ div[name='containerSteps'] #row3 #arrowCol p i {
   /* Description */
 }
 #builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='sizeItem'] .panel .panel-footer h3 {
-  font-family: Stark;
+  font-family: Verdana;
   font-weight: bold;
   font-size: 22px;
   margin-top: 0px;
@@ -754,7 +755,8 @@ div[name='containerSteps'] #row3 #arrowCol p i {
   text-shadow: none;
 }
 #builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='sizeItem'] .panel .panel-footer h3 i.empty:hover {
-  text-shadow: -1px 0 #d2322d, 0 1px #d2322d, 1px 0 #d2322d, 0 -1px #d2322d;
+  color: #ffaa00;
+  text-shadow: -1px 0 #745b39, 0 1px #745b39, 1px 0 #745b39, 0 -1px #745b39;
 }
 #builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='sizeItem'] .panel .panel-footer hr {
   margin: 3px;
@@ -834,7 +836,7 @@ div[name='containerSteps'] #row3 #arrowCol p i {
 #builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='edgeItem'] .panel .panel-footer h3,
 #builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='layoutItem'] .panel .panel-footer h3,
 #builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='flavorItem'] .panel .panel-footer h3 {
-  font-family: Stark;
+  font-family: Verdana;
   font-weight: bold;
   font-size: 22px;
   margin-top: 0px;
@@ -866,7 +868,8 @@ div[name='containerSteps'] #row3 #arrowCol p i {
 #builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='edgeItem'] .panel .panel-footer h3 i.empty:hover,
 #builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='layoutItem'] .panel .panel-footer h3 i.empty:hover,
 #builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='flavorItem'] .panel .panel-footer h3 i.empty:hover {
-  text-shadow: -1px 0 #d2322d, 0 1px #d2322d, 1px 0 #d2322d, 0 -1px #d2322d;
+  color: #ffaa00;
+  text-shadow: -1px 0 #745b39, 0 1px #745b39, 1px 0 #745b39, 0 -1px #745b39;
 }
 #builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='crustItem'] .panel .panel-footer hr,
 #builderDiv div[name='pizzaPartRow'] div[name='pizzaPartCol'] .cardDivWrapper div[name='edgeItem'] .panel .panel-footer hr,
@@ -903,6 +906,13 @@ div[name='containerSteps'] #row3 #arrowCol p i {
 }
 #builderDiv hr {
   border-color: black;
+}
+#builderDiv #favoriteDiv {
+  margin: 20px;
+  font-family: Stark;
+  font-size: 120%;
+  font-weight: lighter;
+  color: #745b39;
 }
 #builderDiv button {
   width: 40%;
@@ -1062,7 +1072,7 @@ div[name='containerSteps'] #row3 #arrowCol p i {
 #ingredientsPane .modal-content .tab-content .tab-pane .modal-body #flavorsColumn div[name$='ingredientItem'] .panel .panel-footer h3,
 #ingredientsPane .modal-content .tab-content .tab-pane .modal-body #ingredientColumn div[name='flavorItem'] .panel .panel-footer h3,
 #ingredientsPane .modal-content .tab-content .tab-pane .modal-body #flavorsColumn div[name='flavorItem'] .panel .panel-footer h3 {
-  font-family: Stark;
+  font-family: Verdana;
   font-weight: bold;
   font-size: 22px;
   margin-top: 0px;
@@ -1094,7 +1104,8 @@ div[name='containerSteps'] #row3 #arrowCol p i {
 #ingredientsPane .modal-content .tab-content .tab-pane .modal-body #flavorsColumn div[name$='ingredientItem'] .panel .panel-footer h3 i.empty:hover,
 #ingredientsPane .modal-content .tab-content .tab-pane .modal-body #ingredientColumn div[name='flavorItem'] .panel .panel-footer h3 i.empty:hover,
 #ingredientsPane .modal-content .tab-content .tab-pane .modal-body #flavorsColumn div[name='flavorItem'] .panel .panel-footer h3 i.empty:hover {
-  text-shadow: -1px 0 #d2322d, 0 1px #d2322d, 1px 0 #d2322d, 0 -1px #d2322d;
+  color: #ffaa00;
+  text-shadow: -1px 0 #745b39, 0 1px #745b39, 1px 0 #745b39, 0 -1px #745b39;
 }
 #ingredientsPane .modal-content .tab-content .tab-pane .modal-body #ingredientColumn div[name$='ingredientItem'] .panel .panel-footer hr,
 #ingredientsPane .modal-content .tab-content .tab-pane .modal-body #flavorsColumn div[name$='ingredientItem'] .panel .panel-footer hr,
@@ -1167,6 +1178,7 @@ div[name='containerSteps'] #row3 #arrowCol p i {
 #cartContainer {
   text-align: center;
   min-height: 800px;
+  margin-bottom: 200px;
   /* TABLE */
 }
 #cartContainer .table {
@@ -1272,8 +1284,22 @@ div[name='containerSteps'] #row3 #arrowCol p i {
   color: #745b39;
   text-decoration: underline;
 }
+#cartContainer .table tbody tr:last-child {
+  border-radius: 0px 0px 10px 10px;
+  /* when last row is hovered*/
+}
 #cartContainer .table tbody tr:last-child td {
   border-bottom: none !important;
+}
+#cartContainer .table tbody tr:last-child:hover td {
+  /* the last cell gets rounded bottom right corner */
+  /* the first cell gets rounded bottom left corner */
+}
+#cartContainer .table tbody tr:last-child:hover td:last-child {
+  border-radius: 0px 0px 10px 0px;
+}
+#cartContainer .table tbody tr:last-child:hover td:first-child {
+  border-radius: 0px 0px 0px 10px;
 }
 #cartContainer .table tbody tr:hover {
   background-color: #f7ca8e;
@@ -1450,6 +1476,11 @@ div[name='containerSteps'] #row3 #arrowCol p i {
 /* ABOUT VIEW */
 #aboutRow {
   min-height: 800px;
+  text-align: center;
+}
+#aboutRow #aboutDiv {
+  text-align: left;
+  background-color: #ffd294;
 }
 /* END:ABOUT VIEW */
 /* PROFILE VIEW */
@@ -1467,22 +1498,24 @@ div[name='containerSteps'] #row3 #arrowCol p i {
 }
 #profileContainer #navCol #profileNav ul.list-group {
   padding: 0px;
+  margin-right: -1px;
 }
 #profileContainer #navCol #profileNav ul.list-group a {
   list-style: none;
   font-family: Stark;
-  text-align: center;
   font-size: 20px;
   width: 100%;
   padding: 0px;
-  margin: 15px 0px 0px 0px;
+  margin: 0px 0px 10px 0px;
   border-color: transparent;
   background-color: transparent;
   text-align: right;
 }
 #profileContainer #navCol #profileNav ul.list-group a li {
-  background-color: transparent;
+  background-color: #745b39;
   color: #f0ad4e;
+  border-radius: 10px 0px 0px 10px;
+  text-align: center;
 }
 #profileContainer #navCol #profileNav ul.list-group a li:hover {
   color: #745b39;
@@ -1490,11 +1523,14 @@ div[name='containerSteps'] #row3 #arrowCol p i {
 }
 #profileContainer #navCol #profileNav ul.list-group a li.active {
   color: #745b39;
-  background-color: transparent;
+  background-color: #ffd294;
+  border-radius: 10px 0px 0px 10px;
+  padding-right: 15px;
+  text-align: right;
 }
 #profileContainer #contentCol {
   text-align: left;
-  border-left: 1px solid #745b39;
+  padding-left: 0px;
 }
 #profileContainer #contentCol h2 {
   color: #745b39;
@@ -1502,17 +1538,37 @@ div[name='containerSteps'] #row3 #arrowCol p i {
   margin-top: 15px;
 }
 #profileContainer #contentCol #profileContent {
-  width: 100%;
-  height: 400px;
-  margin: 0px !important;
+  width: 95%;
+  min-height: 300px;
   font-family: Stark;
   font-weight: lighter;
   margin-top: 0px;
   overflow: auto;
+  background-color: #ffd294;
+  padding-left: 20px;
+  box-shadow: 2px 2px 2px #888888;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+#profileContainer #contentCol #profileContent h2 {
+  text-align: center;
 }
 #profileContainer #contentCol #favoritesContent {
+  display: block;
+  background-color: #ffd294;
   /* Card item FRONT */
   /* Card item FRONT */
+  box-shadow: 2px 2px 2px #888888;
+  min-height: 300px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 95%;
+  padding-left: 20px;
+}
+#profileContainer #contentCol #favoritesContent h2 {
+  text-align: center;
 }
 #profileContainer #contentCol #favoritesContent div[name='menuItem'] {
   height: 340px;
@@ -1574,7 +1630,7 @@ div[name='containerSteps'] #row3 #arrowCol p i {
   /* Description */
 }
 #profileContainer #contentCol #favoritesContent div[name='menuItem'] .panel .panel-footer h3 {
-  font-family: Stark;
+  font-family: Verdana;
   font-weight: bold;
   font-size: 22px;
   margin-top: 0px;
@@ -1594,7 +1650,8 @@ div[name='containerSteps'] #row3 #arrowCol p i {
   text-shadow: none;
 }
 #profileContainer #contentCol #favoritesContent div[name='menuItem'] .panel .panel-footer h3 i.empty:hover {
-  text-shadow: -1px 0 #d2322d, 0 1px #d2322d, 1px 0 #d2322d, 0 -1px #d2322d;
+  color: #ffaa00;
+  text-shadow: -1px 0 #745b39, 0 1px #745b39, 1px 0 #745b39, 0 -1px #745b39;
 }
 #profileContainer #contentCol #favoritesContent div[name='menuItem'] .panel .panel-footer hr {
   margin: 3px;
@@ -1660,7 +1717,7 @@ div[name='containerSteps'] #row3 #arrowCol p i {
 #profileContainer #contentCol #favoritesContent div[name='menuItem'] div[name='panelPizzaDetails'] a .scrollableContent small {
   font-family: Verdana;
 }
-#profileContainer #contentCol #favoritesContent div[name='menuItem'] div[name='panelPizzaDetails'] a button {
+#profileContainer #contentCol #favoritesContent div[name='menuItem'] div[name='panelPizzaDetails'] button {
   width: 97%;
   position: absolute;
   bottom: 0px;
@@ -1671,11 +1728,124 @@ div[name='containerSteps'] #row3 #arrowCol p i {
   margin-bottom: 3px;
   background-color: #9c6619;
   border-color: #9c6619;
-  z-index: 5;
+  z-index: 15;
 }
-#profileContainer #contentCol #favoritesContent div[name='menuItem'] div[name='panelPizzaDetails'] a button:hover {
+#profileContainer #contentCol #favoritesContent div[name='menuItem'] div[name='panelPizzaDetails'] button:hover {
   background-color: white;
   color: #9c6619;
 }
 /* END:PROFILE VIEW */
+/* CONTACT VIEW */
+#contactContainer {
+  padding-top: 15px;
+}
+#contactContainer #contactRow {
+  margin-bottom: 200px;
+  min-height: 500px;
+  text-align: center;
+}
+#contactContainer #contactRow .formError {
+  color: #d2322d;
+  font-weight: bold;
+}
+#contactContainer #contactRow div[name='errorsDiv'] {
+  width: 50%;
+  margin: 0px auto 10px auto;
+}
+#contactContainer #contactRow div[name='statusDiv'] {
+  width: 50%;
+  margin: 0px auto 10px auto;
+}
+#contactContainer #contactRow #contactDiv {
+  margin: 0px auto;
+  width: 50%;
+  background-color: #f8d19c;
+  box-shadow: 2px 2px 2px #888888;
+  border-radius: 10px 10px 0px 0px;
+}
+#contactContainer #contactRow #contactDiv .panel-heading {
+  width: 100%;
+  background-color: #745b39;
+  border-radius: 10px 10px 0px 0px;
+  color: #f0ad4e;
+}
+#contactContainer #contactRow #contactDiv .panel-heading i {
+  font-size: 230%;
+}
+#contactContainer #contactRow #contactDiv .panel-heading h2 {
+  font-family: Stark;
+  margin: 0px;
+}
+#contactContainer #contactRow #contactDiv .panel-body {
+  padding-top: 5px;
+  background-color: #fbe3c2;
+  color: #745b39;
+}
+#contactContainer #contactRow #contactDiv .panel-body input,
+#contactContainer #contactRow #contactDiv .panel-body textarea {
+  font-family: Stark;
+  display: inline-block;
+  margin: 10px;
+  background-color: #fdf2e3;
+  color: #745b39;
+  border: 1px solid #745b39;
+  font-size: 120%;
+}
+#contactContainer #contactRow #contactDiv .panel-body input::-webkit-input-placeholder,
+#contactContainer #contactRow #contactDiv .panel-body textarea::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #ba9c73;
+}
+#contactContainer #contactRow #contactDiv .panel-body input:-moz-placeholder,
+#contactContainer #contactRow #contactDiv .panel-body textarea:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #ba9c73;
+}
+#contactContainer #contactRow #contactDiv .panel-body input::-moz-placeholder,
+#contactContainer #contactRow #contactDiv .panel-body textarea::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #ba9c73;
+}
+#contactContainer #contactRow #contactDiv .panel-body input:-ms-input-placeholder,
+#contactContainer #contactRow #contactDiv .panel-body textarea:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #ba9c73;
+}
+#contactContainer #contactRow #contactDiv .panel-body input:focus,
+#contactContainer #contactRow #contactDiv .panel-body textarea:focus {
+  border-color: #d2322d;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(210, 50, 45, 0.6);
+}
+#contactContainer #contactRow #contactDiv .panel-body input[name='name'] {
+  width: 35%;
+  margin-left: 0px;
+}
+#contactContainer #contactRow #contactDiv .panel-body input[name='email'] {
+  width: 61%;
+  margin-right: 0px;
+}
+#contactContainer #contactRow #contactDiv .panel-body input[type='submit'] {
+  background-color: #f4c37d;
+  border: 1px solid #745b39;
+  font-size: 120%;
+  width: 40%;
+  height: 60px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  box-shadow: 2px 2px 2px #888888;
+}
+#contactContainer #contactRow #contactDiv .panel-body input[type='submit']:hover {
+  background-color: #f0ad4e;
+}
+#contactContainer #contactRow #contactDiv .panel-body input[type='submit']:focus {
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(210, 50, 45, 0.6);
+}
+#contactContainer #contactRow #contactDiv .panel-body textarea {
+  max-width: 100%;
+  height: 150px;
+  min-height: 150px;
+  display: block;
+  margin: 0px;
+}
+/* END: CONTACT VIEW */
 /**************END:STYLES**************/

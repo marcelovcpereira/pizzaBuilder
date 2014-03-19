@@ -17,7 +17,7 @@ class DbUserDao extends UserDao
     }
     
     
-    public function delete($id) 
+    public function delete($object) 
     {
         //stub
         return null;

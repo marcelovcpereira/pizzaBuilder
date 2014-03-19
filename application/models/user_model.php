@@ -81,7 +81,9 @@ class User_model extends CI_Model
     
     public function fetch($id = null, $pass = null)
     {
-        return $this->userDao->fetch($id,$pass);
+        $user = $this->userDao->fetch($id,$pass); 
+        
+        return $user; 
     }
 
     public function addFavoritePizza($userId=null,$pizzaId=null)

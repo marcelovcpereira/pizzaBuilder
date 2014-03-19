@@ -33,6 +33,8 @@ class Pizza implements JsonSerializable{
     private $size;
     //The list of flavors of this pizza
     private $flavors;
+    //Type of pizza ('user' or 'system')
+    private $type;
     
     public function __construct()
     {
@@ -45,7 +47,7 @@ class Pizza implements JsonSerializable{
         $this->setLayout();
         $this->setSize();
         $this->flavors = array();
-        
+        $this->type = 'user';        
     }
 
     public function getFlavors()
@@ -56,6 +58,11 @@ class Pizza implements JsonSerializable{
     public function getPicturePath() 
     {
         return $this->picturePath;
+    }
+
+    public function getType()
+    {
+        return $this->type;
     }
 
     public function setPicturePath($picturePath) 
@@ -104,6 +111,20 @@ class Pizza implements JsonSerializable{
         if(count($flavors) > 0)
         {
             $this->flavors = array_merge($this->flavors, $flavors);
+        }
+    }
+
+    public function setType($type)
+    {
+        switch($type)
+        {
+            case 'user':
+                $this->type = 'user';
+                break;
+            case 'system':
+            default:
+                $this->type = 'system';
+                break;
         }
     }
 

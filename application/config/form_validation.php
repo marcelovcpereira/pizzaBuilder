@@ -151,6 +151,23 @@ $config = array(
                 'rules' => 'required|trim|xss_clean'
             )
         
+    ),
+    'portal/contact'=> array(
+            array(
+                'field' => 'name',
+                'label' => 'Name',
+                'rules' => 'required|trim|xss_clean'
+            ),
+            array(
+                'field' => 'email',
+                'label' => 'Email',
+                'rules' => 'required|trim|xss_clean|valid_email|strtolower'
+            ),
+            array(
+                'field' => 'message',
+                'label' => 'Message',
+                'rules' => 'required|trim|xss_clean'
+            )
     )
                
 );
